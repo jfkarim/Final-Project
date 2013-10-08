@@ -1,0 +1,56 @@
+<% if @user.artist_name %>
+<%   @name = @user.artist_name %>
+<% else %>
+<%   @name = "Anonymous" %>
+<% end %>
+
+<h1><%= @name %></h1>
+
+<h2>About</h2>
+<br>
+<p>Alias: <%= @user.artist_name %></p>
+<br>
+<p>Home Canvas: <%= @user.primary_location %>
+<label>
+  Influences
+<ul>
+  <% @user.influences.each do |influence| %>
+    <li class="influence" value="<%= influence.id %>">
+      <%= influence.name %>
+    </li>
+  <% end %>
+</ul>
+</label>
+
+<label>
+  Media
+<ul>
+  <% @user.media.each do |medium| %>
+    <li class="medium" value="<%= medium.id %>">
+      <%= medium.name %>
+    </li>
+  <% end %>
+</ul>
+</label>
+
+<label>
+  Themes
+<ul>
+  <% @user.themes.each do |theme| %>
+    <li class="theme" value="<%= theme.id %>">
+      <%= theme.name %>
+    </li>
+  <% end %>
+</ul>
+</label>
+
+<label>
+  Other Canvases
+<ul>
+  <% @user.locations.each do |location| %>
+    <li class="location" value="<%= location.id %>">
+      <%= location.city %>, <%= location.country %>
+    </li>
+  <% end %>
+</ul>
+</label>

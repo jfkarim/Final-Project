@@ -1,4 +1,22 @@
 UrbanCanvas::Application.routes.draw do
+
+  resources :users, only: [:new, :create, :show, :index] do
+    resources :themes, only: [:index]
+    resources :user_themes, only: [:create, :destroy]
+
+    resources :influences, only: [:index]
+    resources :user_influences, only: [:create, :destroy]
+
+    resources :media, only: [:index]
+    resources :user_media, only: [:create, :destroy]
+  end
+
+  resource :session, only: [:new, :create, :destroy]
+
+  resources :themes, only: [:create]
+  resources :influences, only: [:create]
+  resources :media, only: [:create]
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

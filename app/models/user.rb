@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :artist_name, :primary_location
+  attr_accessible :email, :password, :artist_name
   attr_reader :password
 
   validates :password_digest, presence: { message: "Password can't be blank" }
   validates :password, length: { minimum: 6, allow_nil: true }
   validates :session_token, presence: true
-  validates :email, :primary_location, presence: true
+  validates :email, presence: true
 
   has_many :user_media
   has_many :media, through: :user_media, source: :medium
