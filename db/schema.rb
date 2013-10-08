@@ -11,7 +11,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131008132155) do
+ActiveRecord::Schema.define(:version => 20131008172117) do
+
+  create_table "friend_requests", :force => true do |t|
+    t.integer  "requester_id"
+    t.integer  "requested_id"
+    t.string   "status"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "friend_requests", ["requested_id"], :name => "index_friend_requests_on_requested_id"
+  add_index "friend_requests", ["requester_id"], :name => "index_friend_requests_on_requester_id"
+
+  create_table "friendships", :force => true do |t|
+    t.integer  "in_friend_id"
+    t.integer  "out_friend_id"
+    t.string   "status"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "friendships", ["in_friend_id", "out_friend_id"], :name => "index_friendships_on_in_friend_id_and_out_friend_id"
+  add_index "friendships", ["in_friend_id"], :name => "index_friendships_on_in_friend_id"
+  add_index "friendships", ["out_friend_id"], :name => "index_friendships_on_out_friend_id"
 
   create_table "influences", :force => true do |t|
     t.string   "name",       :null => false

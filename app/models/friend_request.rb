@@ -10,6 +10,10 @@ class FriendRequest < ActiveRecord::Base
   belongs_to :friend_requester, class_name: "User", primary_key: :user_id, foreign_key: :requester_id
   belongs_to :requested_friend, class_name: "User", primary_key: :user_id, foreign_key: :requested_id
 
+  before_validation :assign_pending_status
+
+  validates :requested_id, :requester_id, presence: true
+
   def approve!
     self.status = "APPROVED"
     self.save!

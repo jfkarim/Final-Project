@@ -3,10 +3,12 @@ class CreateFriendships < ActiveRecord::Migration
     create_table :friendships do |t|
       t.integer :in_friend_id
       t.integer :out_friend_id
+      t.string :status
 
       t.timestamps
     end
     add_index :friendships, :in_friend_id
     add_index :friendships, :out_friend_id
+    add_index :friendships, [:in_friend_id, :out_friend_id]
   end
 end

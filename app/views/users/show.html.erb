@@ -6,6 +6,11 @@
 
 <h1><%= @name %></h1>
 
+<% if @user != current_user %>
+  <%= button_to "Add Friend", user_friendships_url(@user), method: :post %>
+<% end %>
+
+
 <h2>About</h2>
 <p>Alias: <%= @user.artist_name %></p>
 <label>
@@ -54,5 +59,30 @@
 <%= link_to "Edit About", edit_user_url(@user) %>
 
 
+<!-- <h2>Friends</h2>
+<ul>
+  <% @user.friends.each do |friend| %>
+    <li value="<%= friend.id %>">
+      <%= link_to friend.artist_name, user_url(friend) %>
+    </li>
+  <% end %>
+</ul>
+
+<label>Pending Requests</label>
+<ul>
+  <% @user.pending_friends.each do |pending_friend| %>
+    <li>
+      <% pending_friend.artist_name %>
+
+      <%= button_to "Approve",
+          pending_friend.approve!%>
+      <%= button_to "Deny",
+          user_friendship_url(@user, Friendship.where(
+            in_friend_id: @user.id,
+            out_friend_id: pending_friend.id),
+          method: :delete) %>
+    </li>
+  <% end %>
+</ul> -->
 
 

@@ -12,6 +12,8 @@ UrbanCanvas::Application.routes.draw do
 
     resources :locations, only: [:index]
     resources :user_locations, only: [:create, :destroy]
+
+    resources :friendships, only: [:create, :destroy]
   end
 
   resource :session, only: [:new, :create, :destroy]
@@ -19,8 +21,7 @@ UrbanCanvas::Application.routes.draw do
   resources :themes, only: [:create]
   resources :influences, only: [:create]
   resources :media, only: [:create]
-  resources :friend_requests, only: [:create, :destroy]
-  resources :friends, only: [:create, :destroy]
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
