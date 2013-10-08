@@ -1,0 +1,128 @@
+<% if @user.artist_name %>
+<%   @name = @user.artist_name %>
+<% else %>
+<%   @name = "Anonymous" %>
+<% end %>
+
+<h1><%= @name %></h1>
+
+<h2>About</h2>
+
+<p>Alias: <%= @user.artist_name %></p>
+
+<label>Influences</label>
+  <ul>
+    <% @user.influences.each do |influence| %>
+      <li class="influence" value="<%= influence.id %>">
+        <%= influence.name %>
+        <%= button_to "Delete", user_user_influence_url(@user,
+          UserInfluence.where(
+            user_id: @user.id,
+            influence_id: influence.id)[0]),
+          method: :delete %>
+      </li>
+    <% end %>
+  </ul>
+
+<form action="<%= user_user_influences_url(@user) %>" method="post">
+  <input
+     name="authenticity_token"
+     type="hidden"
+     value="<%= form_authenticity_token %>">
+
+  <label for="influence_name">New Influence</label>
+  <input
+     id="influence_name"
+     name="influence[name]"
+     type="text">
+  <br>
+  <input type="submit" value="Create">
+</form>
+
+<label>Media</label>
+  <ul>
+    <% @user.media.each do |medium| %>
+      <li class="medium" value="<%= medium.id %>">
+        <%= medium.name %>
+        <%= button_to "Delete", user_user_medium_url(@user,
+          UserMedium.where(
+          user_id: @user.id,
+          medium_id: medium.id)[0]),
+          method: :delete %>
+      </li>
+    <% end %>
+  </ul>
+
+<form action="<%= user_user_media_url(@user) %>" method="post">
+  <input
+     name="authenticity_token"
+     type="hidden"
+     value="<%= form_authenticity_token %>">
+
+  <label for="medium_name">New Medium</label>
+  <input
+     id="medium_name"
+     name="medium[name]"
+     type="text">
+  <br>
+  <input type="submit" value="Create">
+</form>
+
+<label>Themes</label>
+  <ul>
+    <% @user.themes.each do |theme| %>
+      <li class="theme" value="<%= theme.id %>">
+        <%= theme.name %>
+        <%= button_to "Delete", user_user_theme_url(@user,
+          UserTheme.where(
+          user_id: @user.id,
+          theme_id: theme.id)[0]),
+          method: :delete %>
+      </li>
+    <% end %>
+  </ul>
+
+<form action="<%= user_user_themes_url(@user) %>" method="post">
+  <input
+     name="authenticity_token"
+     type="hidden"
+     value="<%= form_authenticity_token %>">
+
+  <label for="theme_name">New Theme</label>
+  <input
+     id="theme_name"
+     name="theme[name]"
+     type="text">
+  <br>
+  <input type="submit" value="Create">
+</form>
+
+<label>World Canvases</label>
+  <ul>
+    <% @user.locations.each do |location| %>
+      <li class="location" value="<%= location.id %>">
+        <%= location.city %>, <%= location.country %>
+        <%= button_to "Delete", user_user_location_url(@user,
+          UserLocation.where(
+          user_id: @user.id,
+          location_id: location.id)[0]),
+          method: :delete %>
+      </li>
+    <% end %>
+  </ul>
+
+<form action="<%= user_user_locations_url(@user) %>" method="post">
+  <input
+     name="authenticity_token"
+     type="hidden"
+     value="<%= form_authenticity_token %>">
+
+  <label for="location_name">New Location</label>
+  <input
+     id="location_name"
+     name="location[name]"
+     type="text">
+  <br>
+  <input type="submit" value="Create">
+</form>
+<%= link_to "Back to Profile", user_url(@user) %>

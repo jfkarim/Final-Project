@@ -27,10 +27,25 @@ class UsersController < ApplicationController
 
   def show
     if params.include?(:id)
-      @user = User.find(params[:id])
+      @user = User.includes(:locations, :influences, :media, :themes).find(params[:id])
       render :show
     else
       redirect_to user_url(current_user)
+    end
+  end
+
+  def edit
+    @user = User.includes(:locations, :influences, :media, :themes).find(params[:id])
+    render :edit
+  end
+
+  def update
+    @user = User.includes(:locations, :influences, :media, :themes).find(params[:id])
+    if @user.update_attributes(params[:user])
+      redirect_to user_url(@user)
+    else
+      flash[:errors] = @user.errors.full_messages
+      render :edit
     end
   end
 

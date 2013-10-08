@@ -12,7 +12,7 @@
   Influences
 <ul>
   <% @user.influences.each do |influence| %>
-    <li class="influence" value="<%= influence.id %>">
+    <li value="<%= influence.id %>">
       <%= influence.name %>
     </li>
   <% end %>
@@ -23,7 +23,7 @@
   Media
 <ul>
   <% @user.media.each do |medium| %>
-    <li class="medium" value="<%= medium.id %>">
+    <li value="<%= medium.id %>">
       <%= medium.name %>
     </li>
   <% end %>
@@ -34,7 +34,7 @@
   Themes
 <ul>
   <% @user.themes.each do |theme| %>
-    <li class="theme" value="<%= theme.id %>">
+    <li value="<%= theme.id %>">
       <%= theme.name %>
     </li>
   <% end %>
@@ -45,9 +45,10 @@
   World Canvases
 <ul>
   <% @user.locations.each do |location| %>
-    <li class="location" value="<%= location.id %>">
+    <li value="<%= location.id %>">
       <%= location.city %>, <%= location.country %>
     </li>
   <% end %>
 </ul>
 </label>
+<%= link_to "Edit About", edit_user_url(@user) %>

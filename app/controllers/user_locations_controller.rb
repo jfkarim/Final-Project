@@ -1,27 +1,27 @@
 class UserLocationsController < ApplicationController
   def create
-    @location = Location.find_by_city(params[:location_city])
+    @location = Location.find_by_city_and_country(params[:location][:city], params[:location][:country])
 
     if @location
       location_id = @location.id
     else
-      @location = Location.create({city: params[:location_city]})
+      @location = Location.create(params[:location])
       location_id = @location.id
     end
 
-    @user_location = UserLocation.new({location_id: location_id, user_id: current_user.id})
+    @user_location = UserLocation.new(location_id: location_id, user_id: current_user.id)
 
     if @user_location.save
-      render json: @user_location
+      redirect_to edit_user_url(current_user)
     else
-      render json: @user_location
+      redirect_to edit_user_url(current_user)
     end
   end
 
   def destroy
-    @user_location = UserLocation.find_by_user_id_and_location_id(current_user.id, params[:location_id])
+    @user_location = UserLocation.find(params[:id])
     @user_location.destroy
-    render json: @user_location
+    redirect_to edit_user_url(current_user)
   end
 
 end

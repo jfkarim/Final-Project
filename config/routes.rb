@@ -1,6 +1,6 @@
 UrbanCanvas::Application.routes.draw do
 
-  resources :users, only: [:new, :create, :show, :index] do
+  resources :users do
     resources :themes, only: [:index]
     resources :user_themes, only: [:create, :destroy]
 
@@ -9,6 +9,9 @@ UrbanCanvas::Application.routes.draw do
 
     resources :media, only: [:index]
     resources :user_media, only: [:create, :destroy]
+
+    resources :locations, only: [:index]
+    resources :user_locations, only: [:create, :destroy]
   end
 
   resource :session, only: [:new, :create, :destroy]
