@@ -16,20 +16,33 @@ class User < ActiveRecord::Base
   has_many :user_locations
   has_many :locations, through: :user_locations, source: :location
 
-  has_many :friendships, class_name: "Friendship", primary_key: :user_id, foreign_key: :in_friend_id
-  has_many :friends, through: :friendships, source: :out_friend
+  has_many :friendships, class_name: "Friendship", primary_key: :id, foreign_key: :in_friend_id
 
   after_initialize :ensure_session_token
 
 
   def pending_friends
-    pending_friendships = Friendship.includes(:out_friend).where(in_friend_id: self.id, status: "PENDING")
+    pending_friendships = Friendship.includes(:out_friend, :in_friend).where(status: "PENDING")
     pending_friends = []
     pending_friendships.each do |friendship|
-      pending_friends << friendship.out_friend
+      if friendship.in_friend == self
+        pending_friends << friendship.out_friend
+      end
     end
 
     pending_friends
+  end
+
+  def approved_friends
+    approved_friendships = Friendship.includes(:out_friend, :in_friend).where(status: "APPROVED")
+    approved = []
+    approved_friendships.each do |friendship|
+      if friendship.in_friend == self
+        approved << friendship.out_friend
+      end
+    end
+
+    approved
   end
 
   def self.find_by_credentials(email, password)

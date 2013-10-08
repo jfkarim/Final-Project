@@ -16,7 +16,7 @@
   <%   name = "Anonymous" %>
   <% end %>
   <ul>
-    <li>Logged in as: <%= name %></li>
+    <li>Logged in as: <%= link_to name, user_url(current_user) %></li>
     <li><%= button_to "Logout", session_url, :method => :delete %></li>
   </ul>
 <% end %>

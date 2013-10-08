@@ -7,7 +7,13 @@
 <h1><%= @name %></h1>
 
 <% if @user != current_user %>
-  <%= button_to "Add Friend", user_friendships_url(@user), method: :post %>
+  <% if current_user.approved_friends.include?(@user) %>
+    <%= button_to "Remove Friend", user_friendships_url(@user), method: :delete %>
+  <% elsif @user.pending_friends.include?(current_user) %>
+    <p>Friend Request Sent</p>
+  <% else  %>
+    <%= button_to "Add Friend", user_friendships_url(@user), method: :post %>
+  <% end %>
 <% end %>
 
 
@@ -56,33 +62,54 @@
   <% end %>
 </ul>
 </label>
+
+<% if current_user == @user  %>
 <%= link_to "Edit About", edit_user_url(@user) %>
+<% end  %>
 
-
-<!-- <h2>Friends</h2>
+<h2>Friends</h2>
 <ul>
-  <% @user.friends.each do |friend| %>
+  <% @user.approved_friends.each do |friend| %>
     <li value="<%= friend.id %>">
       <%= link_to friend.artist_name, user_url(friend) %>
     </li>
   <% end %>
 </ul>
 
+<% if current_user == @user  %>
 <label>Pending Requests</label>
 <ul>
   <% @user.pending_friends.each do |pending_friend| %>
     <li>
-      <% pending_friend.artist_name %>
+      <%= pending_friend.artist_name %>
 
-      <%= button_to "Approve",
-          pending_friend.approve!%>
-      <%= button_to "Deny",
-          user_friendship_url(@user, Friendship.where(
-            in_friend_id: @user.id,
-            out_friend_id: pending_friend.id),
-          method: :delete) %>
+      <form
+        action="<%= user_friendship_url(@user, Friendship.where(
+                    in_friend_id: @user.id,
+                    out_friend_id: pending_friend.id)[0]) %>"
+        class="button_to"
+        method="post">
+        <input type="hidden" name="_method" value="PUT">
+        <input type="submit" value="Approve">
+        <input name="authenticity_token"
+               type="hidden"
+               value="<%= form_authenticity_token %>">
+      </form>
+      <form
+        action="<%= user_friendship_url(@user, Friendship.where(
+                    in_friend_id: @user.id,
+                    out_friend_id: pending_friend.id)[0]) %>"
+        class="button_to"
+        method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Deny">
+        <input name="authenticity_token"
+               type="hidden"
+               value="<%= form_authenticity_token %>">
+      </form>
     </li>
   <% end %>
-</ul> -->
+<% end %>
+</ul>
 
 

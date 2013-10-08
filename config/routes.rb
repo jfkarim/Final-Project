@@ -13,7 +13,7 @@ UrbanCanvas::Application.routes.draw do
     resources :locations, only: [:index]
     resources :user_locations, only: [:create, :destroy]
 
-    resources :friendships, only: [:create, :destroy]
+    resources :friendships, only: [:create, :destroy, :update]
   end
 
   resource :session, only: [:new, :create, :destroy]

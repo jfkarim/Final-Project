@@ -10,7 +10,8 @@ class FriendshipsController < ApplicationController
     end
   end
 
-  def approve
+  def update
+    #once approved make a single friendship that acts as a two way instead of making two
     @friendship = Friendship.find(params[:id])
     @friendship.approve!
     new_friend = User.find(@friendship.out_friend_id)
