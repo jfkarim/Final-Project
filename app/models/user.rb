@@ -16,6 +16,12 @@ class User < ActiveRecord::Base
   has_many :user_locations
   has_many :locations, through: :user_locations, source: :location
 
+  has_many :in_friend_requests, class_name: "FriendRequest", primary_key: :user_id, foreign_key: :requested_id
+  has_many :out_friend_requests, class_name: "FriendRequest", primary_key: :user_id, foreign_key: :requester_id
+
+  has_many :friendships, class_name: "Friendship", primary_key: :user_id, foreign_key: :in_friend_id
+  has_many :friends, through: :friendships, source: :out_friend
+
   after_initialize :ensure_session_token
 
   def self.find_by_credentials(email, password)
