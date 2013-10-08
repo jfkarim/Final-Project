@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>UrbanCanvas</title>
+  <title>Urban Canvas</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<% if !current_user.nil? %>
+
+  <% if current_user.artist_name %>
+  <%   name = current_user.artist_name %>
+  <% else %>
+  <%   name = "Anonymous" %>
+  <% end %>
+  <ul>
+    <li>Logged in as: <%= name %></li>
+    <li><%= button_to "Logout", session_url, :method => :delete %></li>
+  </ul>
+<% end %>
 
 <%= yield %>
 

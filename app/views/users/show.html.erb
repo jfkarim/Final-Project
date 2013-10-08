@@ -7,10 +7,7 @@
 <h1><%= @name %></h1>
 
 <h2>About</h2>
-<br>
 <p>Alias: <%= @user.artist_name %></p>
-<br>
-<p>Home Canvas: <%= @user.primary_location %>
 <label>
   Influences
 <ul>
@@ -45,7 +42,7 @@
 </label>
 
 <label>
-  Other Canvases
+  World Canvases
 <ul>
   <% @user.locations.each do |location| %>
     <li class="location" value="<%= location.id %>">

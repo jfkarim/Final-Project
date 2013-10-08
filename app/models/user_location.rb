@@ -1,4 +1,4 @@
-class UserMedium < ActiveRecord::Base
+class UserLocation < ActiveRecord::Base
   attr_accessible :location_id, :user_id
 
   validates :user_id, :location_id, presence: true

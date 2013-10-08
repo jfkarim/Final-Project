@@ -1,4 +1,4 @@
-class Medium < ActiveRecord::Base
+class Location < ActiveRecord::Base
   attr_accessible :city, :country
 
   validates :city, :country, presence: true
