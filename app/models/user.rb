@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   has_many :influences, through: :user_influences, source: :influence
   has_many :user_themes
   has_many :themes, through: :user_themes, source: :theme
+  has_many :user_locations
+  has_many :locations, through: :user_locations, source: :location
 
   after_initialize :ensure_session_token
 

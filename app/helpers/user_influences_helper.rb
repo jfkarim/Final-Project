@@ -1,0 +1,2 @@
+module UserInfluencesHelper
+end
