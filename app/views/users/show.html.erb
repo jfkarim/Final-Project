@@ -122,6 +122,41 @@
   <% end %>
 </ul>
 
+<h2>Wall</h2>
+<ul>
+  <% @user.wall.posts.each do |post| %>
+    <li>
+      <%= post.user.artist_name %><br>
+      <%= post.content %>
+    </li>
+  <% end %>
+</ul>
+
+<% unless current_user == @user ||
+          !@user.approved_friends.include?(current_user) %>
+  <form
+    action="<%= posts_url %>"
+    class="button_to"
+    method="post">
+
+    <label>Write on Wall:</label><br>
+    <textarea name="post[content]" rows="3" cols="20"></textarea>
+    <br>
+    <input name="post[wall_id]"
+           type="hidden"
+           value="<%= @user.wall.id %>">
+    <input name="receiver_id"
+           type="hidden"
+           value="<%= @user.id %>">
+    <input name="post[user_id]"
+           type="hidden"
+           value="<%= current_user.id %>">
+    <input type="submit" value="Create Post">
+    <input name="authenticity_token"
+           type="hidden"
+           value="<%= form_authenticity_token %>">
+  </form>
+<% end %>
 
 <% if current_user == @user  %>
 <h3>Pending Requests</h3>

@@ -15,6 +15,7 @@ class GroupsController < ApplicationController
 
     if @group.save
       GroupUser.create(group_id: @group.id, user_id: current_user.id, status: "APPROVED")
+      Wall.create(wallable_type: "Group", wallable_id: @group.id)
       redirect_to group_url(@group)
     else
       render :new

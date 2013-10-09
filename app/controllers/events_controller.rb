@@ -15,6 +15,7 @@ class EventsController < ApplicationController
 
     if @event.save
       EventUser.create(event_id: @event.id, user_id: current_user.id, status: "GOING")
+      Wall.create(wallable_type: "Event", wallable_id: @event.id)
       redirect_to event_url(@event)
     else
       render :new
