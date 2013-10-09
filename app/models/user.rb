@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   has_many :user_locations
   has_many :locations, through: :user_locations, source: :location
 
+  has_one :wall, class_name: "Wall", primary_key: :id, foreign_key: :owner_id
+
   has_many :friendships, class_name: "Friendship", primary_key: :id, foreign_key: :in_friend_id
 
   has_many :group_users

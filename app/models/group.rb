@@ -3,6 +3,8 @@ class Group < ActiveRecord::Base
 
   validates :admin_id, :name, presence: true
 
+  has_one :wall, class_name: "Wall", primary_key: :id, foreign_key: :owner_id
+
   has_many :group_users, dependent: :destroy
   has_many :users, through: :group_users, source: :user
 
