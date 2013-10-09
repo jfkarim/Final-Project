@@ -1,0 +1,20 @@
+<form action="<%= groups_url %>" method="post">
+
+  <input
+     name="authenticity_token"
+     type="hidden"
+     value="<%= form_authenticity_token %>">
+
+  <label for="group_name">Name</label>
+  <input
+     id="group_name"
+     name="group[name]"
+     type="text">
+  <br>
+
+  <label for="group_description">Description</label>
+  <textarea name="group[description]" rows="4" cols="50"></textarea>
+  <br>
+
+  <input type="submit" value="Create Group">
+</form>

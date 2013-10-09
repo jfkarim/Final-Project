@@ -1,0 +1,31 @@
+<h1>Invite People To Group</h1>
+<h3>Artists</h3>
+<ul>
+  <% @users.each do |user| %>
+    <% unless user == current_user %>
+      <li>
+        <%= link_to user.artist_name, user_url(user) %>
+        <% if @group.pending_users.include?(user) %>
+          Request Sent
+        <% else %>
+        <form action="<%= group_group_users_url(@group) %>" method="post">
+          <input
+             name="authenticity_token"
+             type="hidden"
+             value="<%= form_authenticity_token %>">
+
+          <input
+             id="user_id"
+             name="user_id"
+             type="hidden"
+             value="<%= user.id %>">
+
+          <input type="submit" value="Invite">
+        </form>
+        <% end %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<%= link_to "Done", group_url(@group) %>

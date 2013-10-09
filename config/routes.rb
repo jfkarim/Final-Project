@@ -22,7 +22,7 @@ UrbanCanvas::Application.routes.draw do
   resources :influences, only: [:create]
   resources :media, only: [:create]
   resources :groups do
-    resources :group_users, only: [:create, :destroy]
+    resources :group_users, only: [:new, :update, :create, :destroy]
   end
 
 

@@ -10,9 +10,11 @@ class GroupsController < ApplicationController
   end
 
   def create
+    params[:group][:admin_id] = current_user.id
     @group = Group.new(params[:group])
 
     if @group.save
+      GroupUser.create(group_id: @group.id, user_id: current_user.id, status: "APPROVED")
       redirect_to group_url(@group)
     else
       render :new
@@ -32,6 +34,17 @@ class GroupsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def show
+    @group = Group.find(params[:id])
+    render :show
+  end
+
+  def destroy
+    @group = Group.find(params[:id])
+    @group.destroy
+    redirect_to user_url(current_user)
   end
 
 end

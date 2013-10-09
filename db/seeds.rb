@@ -6,9 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+User.create({email: "jfk303@nyu.edu", password: "password", artist_name: "IF/ELSE"})
 User.create({email: "email1", password: "password", artist_name: "oddity"})
 User.create({email: "email2", password: "password", artist_name: "Before Before"})
-User.create({email: "jfk303@nyu.edu", password: "password", artist_name: "IF/ELSE"})
+User.create({email: "email3", password: "password", artist_name: "FLIP IN"})
+User.create({email: "email4", password: "password", artist_name: "White"})
+User.create({email: "email5", password: "password", artist_name: "Street Grief"})
+User.create({email: "email6", password: "password", artist_name: "OverHERE"})
+User.create({email: "email7", password: "password", artist_name: "Not There"})
+User.create({email: "email8", password: "password", artist_name: "The Mind's Pupil"})
 
 Theme.create({name: "Politics"})
 Theme.create({name: "War"})
@@ -59,3 +65,11 @@ UserLocation.create({user_id: 2, location_id: 2})
 UserLocation.create({user_id: 2, location_id: 3})
 UserLocation.create({user_id: 3, location_id: 1})
 UserLocation.create({user_id: 3, location_id: 4})
+
+Group.create({admin_id: 1, name: "Group 1", description: "HELLO"})
+
+GroupUser.create({user_id: 1, group_id: 1, status: "APPROVED"})
+GroupUser.create({user_id: 2, group_id: 1, status: "APPROVED"})
+GroupUser.create({user_id: 3, group_id: 1, status: "APPROVED"})
+GroupUser.create({user_id: 4, group_id: 1, status: "APPROVED"})
+GroupUser.create({user_id: 5, group_id: 1, status: "APPROVED"})

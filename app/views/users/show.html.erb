@@ -65,6 +65,7 @@
 
 <% if current_user == @user  %>
 <%= link_to "Edit About", edit_user_url(@user) %>
+<%= link_to "Create Group", new_group_url %>
 <% end  %>
 
 <h2>Friends</h2>
@@ -76,8 +77,18 @@
   <% end %>
 </ul>
 
+<h2>Groups</h2>
+<ul>
+  <% @user.approved_groups.each do |group| %>
+    <li value="<%= group.id %>">
+      <%= link_to group.name, group_url(group) %>
+    </li>
+  <% end %>
+</ul>
+
 <% if current_user == @user  %>
-<label>Pending Requests</label>
+<h3>Pending Requests</h3>
+<h4>Friends</h4>
 <ul>
   <% @user.pending_friends.each do |pending_friend| %>
     <li>
@@ -109,7 +120,39 @@
       </form>
     </li>
   <% end %>
-<% end %>
 </ul>
 
+<h4>Groups</h4>
+<ul>
+  <% @user.pending_groups.each do |pending_group| %>
+    <li>
+      <%= pending_group.name %>
 
+      <form
+        action="<%= group_group_user_url(pending_group, GroupUser.where(
+                    group_id: pending_group.id,
+                    user_id: @user.id)[0]) %>"
+        class="button_to"
+        method="post">
+        <input type="hidden" name="_method" value="PUT">
+        <input type="submit" value="Approve">
+        <input name="authenticity_token"
+               type="hidden"
+               value="<%= form_authenticity_token %>">
+      </form>
+      <form
+      action="<%= group_group_user_url(pending_group, GroupUser.where(
+                  group_id: pending_group.id,
+                  user_id: @user.id)[0]) %>"
+        class="button_to"
+        method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Deny">
+        <input name="authenticity_token"
+               type="hidden"
+               value="<%= form_authenticity_token %>">
+      </form>
+    </li>
+  <% end %>
+<% end %>
+</ul>

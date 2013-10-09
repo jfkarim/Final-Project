@@ -18,31 +18,26 @@ class User < ActiveRecord::Base
 
   has_many :friendships, class_name: "Friendship", primary_key: :id, foreign_key: :in_friend_id
 
+  has_many :group_users
+  has_many :groups, through: :group_users, source: :group
+
   after_initialize :ensure_session_token
 
 
   def pending_friends
-    pending_friendships = Friendship.includes(:out_friend, :in_friend).where(status: "PENDING")
-    pending_friends = []
-    pending_friendships.each do |friendship|
-      if friendship.in_friend == self
-        pending_friends << friendship.out_friend
-      end
-    end
-
-    pending_friends
+    self.friendships.where(status: "PENDING").map { |fr| fr.out_friend }
   end
 
   def approved_friends
-    approved_friendships = Friendship.includes(:out_friend, :in_friend).where(status: "APPROVED")
-    approved = []
-    approved_friendships.each do |friendship|
-      if friendship.in_friend == self
-        approved << friendship.out_friend
-      end
-    end
+    self.friendships.where(status: "APPROVED").map { |fr| fr.out_friend }
+  end
 
-    approved
+  def pending_groups
+    self.group_users.where(status: "PENDING").map { |gu| gu.group }
+  end
+
+  def approved_groups
+    self.group_users.where(status: "APPROVED").map { |gu| gu.group }
   end
 
   def self.find_by_credentials(email, password)
