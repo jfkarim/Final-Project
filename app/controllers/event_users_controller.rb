@@ -23,8 +23,8 @@ class EventUsersController < ApplicationController
   def update
     @event = Event.find(params[:event_id])
     @event_user = EventUser.find(params[:id])
-    #have to account for maybe and decline
-    redirect_to event_url(@event)
+    @event_user.update_attributes(status: params[:status])
+    redirect_to user_url(current_user)
   end
 
 

@@ -64,8 +64,8 @@
 </label>
 
 <% if current_user == @user  %>
-<%= link_to "Edit About", edit_user_url(@user) %>
-<%= link_to "Create Group", new_group_url %>
+<%= link_to "Edit About", edit_user_url(@user) %><br>
+<%= link_to "Create Group", new_group_url %><br>
 <%= link_to "Create Event", new_event_url %>
 <% end  %>
 
@@ -86,6 +86,42 @@
     </li>
   <% end %>
 </ul>
+
+<h2>Events</h2>
+<ul>
+  <% (@user.events - @user.pending_events).each do |event| %>
+    <% eu = EventUser.find_by_event_id_and_user_id(event.id, @user.id) %>
+    <li value="<%= event.id %>">
+      <%= link_to event.name, event_url(event) %><br>
+      Attendance
+      <form
+        action="<%= event_event_user_url(event, EventUser.where(
+                    event_id: event.id,
+                    user_id: @user.id)[0]) %>"
+        class="button_to"
+        method="post">
+        <input type="hidden" name="_method" value="PUT">
+
+        <select name="status">
+          <option value="PENDING"></option>
+          <% EventUser::STATUS_STATES.each do |status| %>
+            <option
+              <%= eu.status == status ? "selected" : "" %>
+              value="<%= status %>">
+                <%= status.downcase.capitalize %>
+            </option>
+          <% end %>
+        </select>
+
+        <input type="submit" value="Change Status">
+        <input name="authenticity_token"
+               type="hidden"
+               value="<%= form_authenticity_token %>">
+      </form>
+    </li>
+  <% end %>
+</ul>
+
 
 <% if current_user == @user  %>
 <h3>Pending Requests</h3>
@@ -155,5 +191,5 @@
       </form>
     </li>
   <% end %>
-<% end %>
 </ul>
+<% end %>

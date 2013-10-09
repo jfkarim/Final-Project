@@ -42,6 +42,10 @@ class User < ActiveRecord::Base
     self.group_users.where(status: "APPROVED").map { |gu| gu.group }
   end
 
+  def pending_events
+    self.event_users.where(status: "PENDING").map { |eu| eu.event }
+  end
+
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)
 
