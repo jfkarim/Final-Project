@@ -1,0 +1,38 @@
+<h1><%= @event.name %></h1>
+
+<h2>Host: <%= @event.admin.artist_name %></h2>
+
+
+<h3>Where: <%= @event.address %></h3>
+<h3>When: <%= @event.date %> <%= @event.time.strftime('%H:%M:%S') %> </h3>
+<h3>Description</h3>
+<p><%= @event.description %></p>
+
+<h3>Invites Status</h3>
+
+<h4>Going</h4>
+<ul>
+  <% @event.going_users.each do |user| %>
+    <li><%= link_to user.artist_name, user_url(user) %></li>
+  <% end %>
+</ul>
+
+<h4>Maybe</h4>
+<ul>
+  <% @event.maybe_users.each do |user| %>
+    <li><%= link_to user.artist_name, user_url(user) %></li>
+  <% end %>
+</ul>
+
+<h4>Declined</h4>
+<ul>
+  <% @event.declined_users.each do |user| %>
+    <li><%= link_to user.artist_name, user_url(user) %></li>
+  <% end %>
+</ul>
+
+
+<% if @event.admin_id == current_user.id  %>
+  <%= link_to "Invite People", new_event_event_user_url(@event) %>
+  <%= link_to "Edit Event", edit_event_url(@event) %>
+<% end %>

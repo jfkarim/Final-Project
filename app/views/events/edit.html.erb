@@ -1,0 +1,59 @@
+<form action="<%= event_url(@event) %>" method="post">
+
+  <input
+     name="_method"
+     type="hidden"
+     value="put">
+
+  <input
+     name="authenticity_token"
+     type="hidden"
+     value="<%= form_authenticity_token %>">
+
+  <label for="event_name">Name</label>
+  <input
+     id="event_name"
+     name="event[name]"
+     type="text"
+     value="<%= @event.name %>">
+  <br>
+
+  <label for="event_description">Description</label>
+  <textarea
+     name="event[description]"
+     rows="4" cols="50">
+       <%= @event.description %>
+  </textarea>
+  <br>
+
+  <label for="event_address">Address</label><br>
+  <textarea name="event[address]" rows="3" cols="20">
+    <%= @event.address %>
+  </textarea>
+  <br>
+
+  <label for="event_date">Date</label><br>
+  <input type="date" name="event[date]" value="<%= @event.date %>">
+  <br>
+
+  <label for="event_time">Time</label><br>
+  <input
+     type="time"
+     name="event[time]"
+     value="<%= @event.time.strftime('%H:%M:%S') %>">
+  <br>
+
+  <input type="submit" value="Save Changes">
+</form>
+
+<%= link_to "Back To Event", event_url(@event) %>
+<form action="<%= event_url(@event) %>" method="post">
+  <input type="hidden" name="_method" value="DELETE">
+  <input
+     name="authenticity_token"
+     type="hidden"
+     value="<%= form_authenticity_token %>">
+
+  <input type="submit" value="Cancel Event">
+</form>
+

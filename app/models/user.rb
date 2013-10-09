@@ -21,8 +21,10 @@ class User < ActiveRecord::Base
   has_many :group_users
   has_many :groups, through: :group_users, source: :group
 
-  after_initialize :ensure_session_token
+  has_many :event_users
+  has_many :events, through: :event_users, source: :event
 
+  after_initialize :ensure_session_token
 
   def pending_friends
     self.friendships.where(status: "PENDING").map { |fr| fr.out_friend }

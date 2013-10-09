@@ -1,0 +1,32 @@
+<form action="<%= events_url %>" method="post">
+
+  <input
+     name="authenticity_token"
+     type="hidden"
+     value="<%= form_authenticity_token %>">
+
+  <label for="event_name">Name</label>
+  <input
+     id="event_name"
+     name="event[name]"
+     type="text">
+  <br>
+
+  <label for="event_description">Description</label><br>
+  <textarea name="event[description]" rows="4" cols="50"></textarea>
+  <br>
+
+  <label for="event_address">Address</label><br>
+  <textarea name="event[address]" rows="3" cols="20"></textarea>
+  <br>
+
+  <label for="event_date">Date</label><br>
+  <input type="date" name="event[date]">
+  <br>
+
+  <label for="event_time">Time</label><br>
+  <input type="time" name="event[time]">
+  <br>
+
+  <input type="submit" value="Create Event">
+</form>

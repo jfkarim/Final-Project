@@ -1,7 +1,6 @@
 class GroupUser < ActiveRecord::Base
   STATUS_STATES = [
     "APPROVED",
-    "DENIED",
     "PENDING"
   ]
 
@@ -22,15 +21,6 @@ class GroupUser < ActiveRecord::Base
 
   def approved?
     self.status == "APPROVED"
-  end
-
-  def denied?
-    self.status == "DENIED"
-  end
-
-  def deny!
-    self.status = "DENIED"
-    self.save!
   end
 
   def pending?

@@ -11,7 +11,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131009141648) do
+ActiveRecord::Schema.define(:version => 20131009180253) do
+
+  create_table "event_users", :force => true do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "status"
+  end
+
+  add_index "event_users", ["event_id", "user_id"], :name => "index_event_users_on_event_id_and_user_id"
+  add_index "event_users", ["event_id"], :name => "index_event_users_on_event_id"
+  add_index "event_users", ["user_id"], :name => "index_event_users_on_user_id"
+
+  create_table "events", :force => true do |t|
+    t.integer  "admin_id"
+    t.text     "description"
+    t.string   "name"
+    t.text     "address"
+    t.date     "date"
+    t.time     "time"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "events", ["admin_id"], :name => "index_events_on_admin_id"
 
   create_table "friend_requests", :force => true do |t|
     t.integer  "requester_id"
