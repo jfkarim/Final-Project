@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
 
     if @user.save
+      Wall.create(wallable_type: "User", wallable_id: @user.id)
       self.current_user = @user
       redirect_to user_url(@user)
     else

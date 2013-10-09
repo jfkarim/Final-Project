@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
 
   validates :admin_id, :name, :date, :time, :address, presence: true
 
-  has_one :wall, class_name: "Wall", primary_key: :id, foreign_key: :owner_id
+  has_one :wall, as: :wallable
 
   has_many :event_users, dependent: :destroy
   has_many :users, through: :event_users, source: :user

@@ -1,9 +1,8 @@
 class Wall < ActiveRecord::Base
-  attr_accessible :owner_id
+  attr_accessible :wallable_id, :wallable_type
 
-  belongs_to :user, class_name: "User", primary_key: :id, foreign_key: :owner_id
-  belongs_to :event, class_name: "Event", primary_key: :id, foreign_key: :owner_id
-  belongs_to :group, class_name: "Group", primary_key: :id, foreign_key: :owner_id
+  belongs_to :wallable, polymorphic: true
 
   has_many :posts
+
 end
