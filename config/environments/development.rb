@@ -34,4 +34,14 @@ UrbanCanvas::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  config.paperclip_defaults = {
+    storage: :s3,
+    s3_credentials: {
+      bucket: "urban_canvas_development",
+      access_key_id: "AKIAJSHDZZQHWPJ565OA",
+      secret_access_key: "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",
+      s3_host_name: 's3.amazonaws.com'
+    }
+  }
 end

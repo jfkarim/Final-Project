@@ -5,6 +5,7 @@
 <% end %>
 
 <h1><%= @name %></h1>
+<%= image_tag @user.profile_picture.url(:standard) %>
 
 <% if @user != current_user %>
   <% if current_user.approved_friends.include?(@user) %>

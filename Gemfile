@@ -22,6 +22,8 @@ end
 gem 'jquery-rails'
 gem 'backbone-on-rails'
 
+gem "paperclip"
+gem "aws-sdk"
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', require: 'bcrypt'

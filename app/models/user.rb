@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :artist_name
+  attr_accessible :email, :password, :artist_name, :profile_picture
   attr_reader :password
 
   validates :password_digest, presence: { message: "Password can't be blank" }
@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
   has_many :events, through: :event_users, source: :event
 
   after_initialize :ensure_session_token
+
+  has_attached_file :profile_picture, styles: {
+    standard: "200x200>"
+  }
 
   def pending_friends
     self.friendships.where(status: "PENDING").map { |fr| fr.out_friend }
