@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   has_many :user_locations
   has_many :locations, through: :user_locations, source: :location
 
-  has_one :wall, as: :wallable
+  has_one :wall, as: :wallable, dependent: :destroy
 
   has_many :friendships, class_name: "Friendship", primary_key: :id, foreign_key: :in_friend_id
 
@@ -28,6 +28,8 @@ class User < ActiveRecord::Base
 
   has_many :photos, dependent: :destroy
   has_many :albums, dependent: :destroy
+
+  has_many :comments
 
   after_initialize :ensure_session_token
 

@@ -5,5 +5,5 @@ class Post < ActiveRecord::Base
 
   belongs_to :wall
   belongs_to :user #POSTER
-
+  has_many :comments, as: :commentable, dependent: :destroy
 end
