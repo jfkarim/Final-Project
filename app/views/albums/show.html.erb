@@ -1,0 +1,13 @@
+<h1><%= @album.title %></h1>
+
+<h2>Description</h2>
+<p><%= @album.description %></p>
+
+<h2>Photos</h2>
+<ul>
+<% @album.photos.each do |photo| %>
+  <li>
+    <%= image_tag photo.picture.url(:standard) %><br>
+  </li>
+<% end %>
+</ul>

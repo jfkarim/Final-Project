@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     )
 
     if user.nil?
-      falsh[:errors] = user.errors.full_messages
+      flash[:errors] = user.errors.full_messages
       redirect_to new_session_url
     else
       self.current_user = user

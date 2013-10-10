@@ -1,5 +1,11 @@
 class PhotosController < ApplicationController
 
+  def index
+    @user = User.find(params[:user_id])
+    @photos = Photo.where(user_id: params[:user_id])
+    render :index
+  end
+
   def create
     @user = User.find(params[:user_id])
     params[:photo][:user_id] = params[:user_id]
@@ -26,7 +32,7 @@ class PhotosController < ApplicationController
     @user = User.find(params[:user_id])
     @photo = Photo.find(params[:id])
 
-    if @user.update_attributes(params[:photo])
+    if @photo.update_attributes(params[:photo])
       redirect_to user_photo_url(@user, @photo)
     end
   end

@@ -1,0 +1,26 @@
+<h1>Edit Photo</h1>
+
+<%= @photo.picture.url(:standard) %><br>
+
+<form action="<%= user_photo_url(@photo) %>" method="post">
+  <input
+     name="_method"
+     type="hidden"
+     value="put">
+
+     <input type="hidden"
+            name="authenticity_token"
+            value="<%= form_authenticity_token %>">
+
+     <label>Location (if applicable)</label>
+     <input type="text" name="photo[location]" value="<%= @photo.location %>">
+     <br>
+     <label>Description</label><br>
+     <textarea name="photo[description]" rows="4" cols="30">
+       <%= @photo.description %>
+     </textarea>
+     <br>
+     <input type="submit" value="Save Changes">
+</form>
+
+<%= button_to "Delete Photo", user_photo_url(@photo), method: :delete %>

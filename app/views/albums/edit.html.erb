@@ -1,6 +1,12 @@
 <h1>Edit Album/Add Photos</h1>
 
 <form action="<%= user_album_url(@user, @album) %>" method="post">
+
+  <input
+     name="_method"
+     type="hidden"
+     value="put">
+
   <input type="hidden"
          name="authenticity_token"
          value="<%= form_authenticity_token %>">
@@ -21,7 +27,7 @@
 <% @album.photos.each do |photo| %>
   <li>
     <%= image_tag photo.picture.url(:standard) %><br>
-    <%= photo.description %>
+        <%= link_to "Edit Photo", edit_user_photo_url(@user, photo) %>
   </li>
 <% end %>
 </ul>
@@ -30,7 +36,12 @@
 <h3>Add Photo</h3>
 
 <form action="<%= user_photos_url %>" method="post" enctype="multipart/form-data">
+  <input type="hidden"
+         name="authenticity_token"
+         value="<%= form_authenticity_token %>">
   <input type="file" name="photo[picture]"><br>
   <input type="hidden" name="photo[album_id]" value="<%= @album.id %>">
   <input type="submit" value="Add Photo">
 </form>
+
+<%= button_to "Delete Album", user_album_url(@album), method: :delete %>

@@ -15,9 +15,9 @@ UrbanCanvas::Application.routes.draw do
 
     resources :friendships, only: [:create, :destroy, :update]
 
-    resources :albums, except: [:index]
+    resources :albums
 
-    resources :photos, except: [:index, :new]
+    resources :photos, except: [:new]
   end
 
   resource :session, only: [:new, :create, :destroy]

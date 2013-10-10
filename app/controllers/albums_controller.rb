@@ -1,5 +1,11 @@
 class AlbumsController < ApplicationController
 
+  def index
+    @user = User.find(params[:user_id])
+    @albums = Album.where(user_id: params[:user_id])
+    render :index
+  end
+
   def new
     @user = User.find(params[:user_id])
     @album = Album.new

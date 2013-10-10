@@ -1,0 +1,11 @@
+<%= link_to "Albums", user_albums_url(@user) %>
+
+<ul>
+<% @photos.each do |photo| %>
+  <li>
+    <a href="<%= user_photo_url(@user, photo) %>">
+      <%= image_tag photo.picture.url(:standard) %>
+    </a>
+  </li>
+<% end %>
+</ul>
