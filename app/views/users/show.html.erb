@@ -17,7 +17,6 @@
   <% end %>
 <% end %>
 
-
 <h2>About</h2>
 <p>Alias: <%= @user.artist_name %></p>
 <label>
@@ -67,7 +66,8 @@
 <% if current_user == @user  %>
 <%= link_to "Edit About", edit_user_url(@user) %><br>
 <%= link_to "Create Group", new_group_url %><br>
-<%= link_to "Create Event", new_event_url %>
+<%= link_to "Create Event", new_event_url %><br>
+<%= link_to "Create New Album", new_user_album_url(@user) %>
 <% end  %>
 
 <% if current_user == @user ||
@@ -130,6 +130,7 @@
 <ul>
   <% @user.wall.posts.each do |post| %>
     <li>
+      <%= image_tag post.user.profile_picture.url(:icon) %>
       <%= post.user.artist_name %><br>
       <%= post.content %>
     </li>

@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131010152732) do
+ActiveRecord::Schema.define(:version => 20131010172646) do
+
+  create_table "albums", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "albums", ["user_id"], :name => "index_albums_on_user_id"
 
   create_table "event_users", :force => true do |t|
     t.integer  "event_id"
@@ -108,6 +118,27 @@ ActiveRecord::Schema.define(:version => 20131010152732) do
   end
 
   add_index "media", ["name"], :name => "index_media_on_name"
+
+  create_table "notifications", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "photos", :force => true do |t|
+    t.integer  "album_id"
+    t.integer  "user_id"
+    t.string   "location"
+    t.text     "description"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+  end
+
+  add_index "photos", ["album_id"], :name => "index_photos_on_album_id"
+  add_index "photos", ["user_id"], :name => "index_photos_on_user_id"
 
   create_table "posts", :force => true do |t|
     t.integer  "user_id"

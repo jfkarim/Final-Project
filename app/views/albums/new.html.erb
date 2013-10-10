@@ -1,0 +1,15 @@
+<h1>Create New Album</h1>
+
+<form action="<%= user_albums_url %>" method="post">
+  <input type="hidden"
+         name="authenticity_token"
+         value="<%= form_authenticity_token %>">
+
+  <label>Title</label>
+  <input type="text" name="album[title]">
+  <br>
+  <label>Description</label><br>
+  <textarea name="album[description]" rows="4" cols="30"></textarea>
+  <br>
+  <input type="submit" value="Create Album">
+</form>

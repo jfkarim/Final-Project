@@ -26,10 +26,14 @@ class User < ActiveRecord::Base
   has_many :event_users
   has_many :events, through: :event_users, source: :event
 
+  has_many :photos, dependent: :destroy
+  has_many :albums, dependent: :destroy
+
   after_initialize :ensure_session_token
 
   has_attached_file :profile_picture, styles: {
-    standard: "200x200>"
+    standard: "200x200>",
+    icon: "30x30>"
   }
 
   def pending_friends
