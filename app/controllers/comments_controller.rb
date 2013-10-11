@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
       elsif type == "Photo"
         redirect_to user_photo_url(User.find(params[:owner_id]), Photo.find(params[:receiver_id]))
       else
-        redirect_to user_photo_url(User.find(params[:owner_id]), Album.find(params[:receiver_id]))
+        redirect_to user_album_url(User.find(params[:owner_id]), Album.find(params[:receiver_id]))
       end
     end
   end

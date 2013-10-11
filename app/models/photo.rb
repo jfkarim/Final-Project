@@ -6,6 +6,7 @@ class Photo < ActiveRecord::Base
   belongs_to :album
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
+  has_many :likes, as: :likeable, dependent: :destroy
 
   has_attached_file :picture, styles: {
     standard: "200x200>",

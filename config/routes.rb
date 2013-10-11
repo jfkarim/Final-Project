@@ -38,6 +38,8 @@ UrbanCanvas::Application.routes.draw do
 
   resources :comments, only: [:create]
 
+  resources :likes, only: [:create, :destroy]
+
   root to: "sessions#new"
 
   # The priority is based upon order of creation:

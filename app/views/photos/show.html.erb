@@ -1,4 +1,4 @@
-<%= @photo.picture.url(:standard) %><br>
+<%= image_tag @photo.picture.url %><br>
 
 <ul>
   <li>
@@ -7,6 +7,10 @@
   <li>
     Description: <%= @photo.description %>
   </li>
+  <li>
+    likes: <%= @photo.likes.length %>
+      <%= render "comments/form", user: @user, type: @photo %>
+  </li>
 </ul>
 
 <h2>Comments: </h2>
@@ -14,7 +18,9 @@
 <% @photo.comments.each do |comment| %>
   <li>
     <%= comment.user.artist_name %>:
-    <%= comment.content %>
+    <%= comment.content %><br>
+    likes: <%= comment.likes.length %>
+    <%= render "likes/form", user: @user, type: comment, sub_type: @photo %>
   </li>
 <% end %>
 </ul>

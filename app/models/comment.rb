@@ -10,4 +10,5 @@ class Comment < ActiveRecord::Base
   belongs_to :photo
   belongs_to :album
 
+  has_many :likes, as: :likeable, dependent: :destroy
 end

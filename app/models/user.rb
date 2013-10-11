@@ -29,7 +29,8 @@ class User < ActiveRecord::Base
   has_many :photos, dependent: :destroy
   has_many :albums, dependent: :destroy
 
-  has_many :comments
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   after_initialize :ensure_session_token
 

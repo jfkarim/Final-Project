@@ -3,7 +3,7 @@
 <h2>Description</h2>
 <p><%= @album.description %></p>
 
-<h2>Photos</h2>
+<h3>Photos</h3>
 <ul>
 <% @album.photos.each do |photo| %>
   <li>
@@ -17,36 +17,10 @@
 <% @album.comments.each do |comment| %>
   <li>
     <%= comment.user.artist_name %>:
-    <%= comment.content %>
+    <%= comment.content %><br>
+    likes: <%= comment.likes.length %>
+    <%= render "likes/form", user: @user, type: comment, sub_type: @album %>
   </li>
 <% end %>
 </ul>
-
-<form
-  action="<%= comments_url %>"
-  class="button_to"
-  method="post">
-
-  <label>Enter Comment: </label><br>
-  <textarea name="comment[content]" rows="3" cols="20"></textarea>
-  <br>
-  <input name="comment[commentable_id]"
-         type="hidden"
-         value="<%= @album.id %>">
-  <input name="comment[commentable_type]"
-         type="hidden"
-         value="<%= @album.class.to_s %>">
-  <input name="comment[user_id]"
-         type="hidden"
-         value="<%= current_user.id %>">
-  <input name="receiver_id"
-         type="hidden"
-         value="<%= @album.id %>">
-  <input name="owner_id"
-         type="hidden"
-         value="<%= @user.id %>">
-  <input type="submit" value="Create Comment">
-  <input name="authenticity_token"
-         type="hidden"
-         value="<%= form_authenticity_token %>">
-</form>
+<%= render "comments/form", user: @user, type: comment %>
