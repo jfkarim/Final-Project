@@ -1,0 +1,24 @@
+<form
+  action="<%= likes_url %>"
+  class="button_to"
+  method="post">
+  <input name="like[likeable_id]"
+         type="hidden"
+         value="<%= type.id %>">
+  <input name="like[likeable_type]"
+         type="hidden"
+         value="<%= type.class.to_s %>">
+  <input name="like[user_id]"
+         type="hidden"
+         value="<%= current_user.id %>">
+  <input name="receiver_id"
+         type="hidden"
+         value="<%= sub_type ? sub_type : type %>">
+  <input name="owner_id"
+         type="hidden"
+         value="<%= user.id %>">
+  <input type="submit" value="Like">
+  <input name="authenticity_token"
+         type="hidden"
+         value="<%= form_authenticity_token %>">
+</form>

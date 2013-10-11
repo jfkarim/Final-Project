@@ -1,0 +1,28 @@
+<form
+  action="<%= comments_url %>"
+  class="button_to"
+  method="post">
+
+  <label>Enter Comment:</label><br>
+  <textarea name="comment[content]" rows="1" cols="30"></textarea>
+  <br>
+  <input name="comment[commentable_id]"
+         type="hidden"
+         value="<%= type.id %>">
+  <input name="comment[commentable_type]"
+         type="hidden"
+         value="<%= type.class.to_s %>">
+  <input name="comment[user_id]"
+         type="hidden"
+         value="<%= current_user.id %>">
+  <input name="receiver_id"
+         type="hidden"
+         value="<%= type.id %>">
+  <input name="owner_id"
+         type="hidden"
+         value="<%= user.id %>">
+  <input type="submit" value="Create Comment">
+  <input name="authenticity_token"
+         type="hidden"
+         value="<%= form_authenticity_token %>">
+</form>
