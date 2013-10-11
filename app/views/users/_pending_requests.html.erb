@@ -1,0 +1,24 @@
+<h3>Pending Requests</h3>
+<h4>Friends</h4>
+<ul>
+  <% user.pending_friends.each do |pending_friend| %>
+    <li>
+      <%= pending_friend.artist_name %>
+      <%= render "friendships/approve_deny",
+            user: user,
+            pending_friend: pending_friend %>
+    </li>
+  <% end %>
+</ul>
+
+<h4>Groups</h4>
+<ul>
+  <% user.pending_groups.each do |pending_group| %>
+    <li>
+      <%= pending_group.name %>
+      <%= render "group_users/approve_deny",
+            user: user,
+            pending_group: pending_group %>
+    </li>
+  <% end %>
+</ul>

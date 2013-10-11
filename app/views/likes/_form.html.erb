@@ -2,6 +2,7 @@
   action="<%= likes_url %>"
   class="button_to"
   method="post">
+
   <input name="like[likeable_id]"
          type="hidden"
          value="<%= type.id %>">
@@ -13,7 +14,7 @@
          value="<%= current_user.id %>">
   <input name="receiver_id"
          type="hidden"
-         value="<%= sub_type ? sub_type : type %>">
+         value="<%= !@sub_type.nil? ? @sub_type.id : type.id %>">
   <input name="owner_id"
          type="hidden"
          value="<%= user.id %>">

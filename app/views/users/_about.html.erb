@@ -1,0 +1,45 @@
+<h2>About</h2>
+<p>Alias: <%= @user.artist_name %></p>
+<label>
+  Influences
+<ul>
+  <% user.influences.each do |influence| %>
+    <li value="<%= influence.id %>">
+      <%= influence.name %>
+    </li>
+  <% end %>
+</ul>
+</label>
+
+<label>
+  Media
+<ul>
+  <% user.media.each do |medium| %>
+    <li value="<%= medium.id %>">
+      <%= medium.name %>
+    </li>
+  <% end %>
+</ul>
+</label>
+
+<label>
+  Themes
+<ul>
+  <% user.themes.each do |theme| %>
+    <li value="<%= theme.id %>">
+      <%= theme.name %>
+    </li>
+  <% end %>
+</ul>
+</label>
+
+<label>
+  World Canvases
+<ul>
+  <% user.locations.each do |location| %>
+    <li value="<%= location.id %>">
+      <%= location.city %>, <%= location.country %>
+    </li>
+  <% end %>
+</ul>
+</label>

@@ -1,0 +1,24 @@
+<form
+  action="<%= group_group_user_url(pending_group, GroupUser.where(
+              group_id: pending_group.id,
+              user_id: user.id)[0]) %>"
+  class="button_to"
+  method="post">
+  <input type="hidden" name="_method" value="PUT">
+  <input type="submit" value="Approve">
+  <input name="authenticity_token"
+         type="hidden"
+         value="<%= form_authenticity_token %>">
+</form>
+<form
+action="<%= group_group_user_url(pending_group, GroupUser.where(
+            group_id: pending_group.id,
+            user_id: user.id)[0]) %>"
+  class="button_to"
+  method="post">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Deny">
+  <input name="authenticity_token"
+         type="hidden"
+         value="<%= form_authenticity_token %>">
+</form>

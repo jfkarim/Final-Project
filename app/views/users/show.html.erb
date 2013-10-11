@@ -17,52 +17,8 @@
   <% end %>
 <% end %>
 
-<h2>About</h2>
-<p>Alias: <%= @user.artist_name %></p>
-<label>
-  Influences
-<ul>
-  <% @user.influences.each do |influence| %>
-    <li value="<%= influence.id %>">
-      <%= influence.name %>
-    </li>
-  <% end %>
-</ul>
-</label>
-
-<label>
-  Media
-<ul>
-  <% @user.media.each do |medium| %>
-    <li value="<%= medium.id %>">
-      <%= medium.name %>
-    </li>
-  <% end %>
-</ul>
-</label>
-
-<label>
-  Themes
-<ul>
-  <% @user.themes.each do |theme| %>
-    <li value="<%= theme.id %>">
-      <%= theme.name %>
-    </li>
-  <% end %>
-</ul>
-</label>
-
-<label>
-  World Canvases
-<ul>
-  <% @user.locations.each do |location| %>
-    <li value="<%= location.id %>">
-      <%= location.city %>, <%= location.country %>
-    </li>
-  <% end %>
-</ul>
-</label>
-
+<%= render "users/about", user: @user %>
+<br>
 <%= link_to "Photos", user_photos_url(@user) %>
 
 <% if current_user == @user  %>
@@ -71,14 +27,7 @@
 <%= link_to "Create Event", new_event_url %><br>
 <%= link_to "Create New Album", new_user_album_url(@user) %><br><br>
 
-<label>Upload New Photo</label>
-<form action="<%= user_photos_url(@user) %>" method="post" enctype="multipart/form-data">
-  <input type="hidden"
-         name="authenticity_token"
-         value="<%= form_authenticity_token %>">
-  <input type="file" name="photo[picture]"><br>
-  <input type="submit" value="Add Photo">
-</form>
+<%= render "photos/lone_upload", user: @user %>
 <br>
 <% end  %>
 
@@ -109,31 +58,7 @@
     <% eu = EventUser.find_by_event_id_and_user_id(event.id, @user.id) %>
     <li value="<%= event.id %>">
       <%= link_to event.name, event_url(event) %><br>
-      Attendance
-      <form
-        action="<%= event_event_user_url(event, EventUser.where(
-                    event_id: event.id,
-                    user_id: @user.id)[0]) %>"
-        class="button_to"
-        method="post">
-        <input type="hidden" name="_method" value="PUT">
-
-        <select name="status">
-          <option value="PENDING"></option>
-          <% EventUser::STATUS_STATES.each do |status| %>
-            <option
-              <%= eu.status == status ? "selected" : "" %>
-              value="<%= status %>">
-                <%= status.downcase.capitalize %>
-            </option>
-          <% end %>
-        </select>
-
-        <input type="submit" value="Change Status">
-        <input name="authenticity_token"
-               type="hidden"
-               value="<%= form_authenticity_token %>">
-      </form>
+      <%= render "event_users/status", user: @user %>
     </li>
   <% end %>
 </ul>
@@ -165,98 +90,10 @@
 
 <% unless current_user == @user ||
           !@user.approved_friends.include?(current_user) %>
-  <form
-    action="<%= posts_url %>"
-    class="button_to"
-    method="post">
-
-    <label>Write on Wall:</label><br>
-    <textarea name="post[content]" rows="3" cols="20"></textarea>
-    <br>
-    <input name="post[wall_id]"
-           type="hidden"
-           value="<%= @user.wall.id %>">
-    <input name="receiver_id"
-           type="hidden"
-           value="<%= @user.id %>">
-    <input name="post[user_id]"
-           type="hidden"
-           value="<%= current_user.id %>">
-    <input type="submit" value="Create Post">
-    <input name="authenticity_token"
-           type="hidden"
-           value="<%= form_authenticity_token %>">
-  </form>
+  <%= render "posts/form", user: @user %>
 <% end %>
 
 <% if current_user == @user  %>
-<h3>Pending Requests</h3>
-<h4>Friends</h4>
-<ul>
-  <% @user.pending_friends.each do |pending_friend| %>
-    <li>
-      <%= pending_friend.artist_name %>
-
-      <form
-        action="<%= user_friendship_url(@user, Friendship.where(
-                    in_friend_id: @user.id,
-                    out_friend_id: pending_friend.id)[0]) %>"
-        class="button_to"
-        method="post">
-        <input type="hidden" name="_method" value="PUT">
-        <input type="submit" value="Approve">
-        <input name="authenticity_token"
-               type="hidden"
-               value="<%= form_authenticity_token %>">
-      </form>
-      <form
-        action="<%= user_friendship_url(@user, Friendship.where(
-                    in_friend_id: @user.id,
-                    out_friend_id: pending_friend.id)[0]) %>"
-        class="button_to"
-        method="post">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="Deny">
-        <input name="authenticity_token"
-               type="hidden"
-               value="<%= form_authenticity_token %>">
-      </form>
-    </li>
-  <% end %>
-</ul>
-
-<h4>Groups</h4>
-<ul>
-  <% @user.pending_groups.each do |pending_group| %>
-    <li>
-      <%= pending_group.name %>
-
-      <form
-        action="<%= group_group_user_url(pending_group, GroupUser.where(
-                    group_id: pending_group.id,
-                    user_id: @user.id)[0]) %>"
-        class="button_to"
-        method="post">
-        <input type="hidden" name="_method" value="PUT">
-        <input type="submit" value="Approve">
-        <input name="authenticity_token"
-               type="hidden"
-               value="<%= form_authenticity_token %>">
-      </form>
-      <form
-      action="<%= group_group_user_url(pending_group, GroupUser.where(
-                  group_id: pending_group.id,
-                  user_id: @user.id)[0]) %>"
-        class="button_to"
-        method="post">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="Deny">
-        <input name="authenticity_token"
-               type="hidden"
-               value="<%= form_authenticity_token %>">
-      </form>
-    </li>
-  <% end %>
-</ul>
+<%= render "users/pending_requests", user: @user %>
 <% end %>
-<% end  %>
+<% end %>

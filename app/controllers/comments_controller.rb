@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     type = params[:comment][:commentable_type]
     if @comment.save
       if type == "Post"
-        redirect_to user_url(User.find(params[:receiver_id]))
+        redirect_to user_url(User.find(params[:owner_id]))
       elsif type == "Photo"
         redirect_to user_photo_url(User.find(params[:owner_id]), Photo.find(params[:receiver_id]))
       else

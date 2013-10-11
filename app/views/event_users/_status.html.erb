@@ -1,0 +1,25 @@
+Attendance
+<form
+  action="<%= event_event_user_url(event, EventUser.where(
+              event_id: event.id,
+              user_id: user.id)[0]) %>"
+  class="button_to"
+  method="post">
+  <input type="hidden" name="_method" value="PUT">
+
+  <select name="status">
+    <option value="PENDING"></option>
+    <% EventUser::STATUS_STATES.each do |status| %>
+      <option
+        <%= eu.status == status ? "selected" : "" %>
+        value="<%= status %>">
+          <%= status.downcase.capitalize %>
+      </option>
+    <% end %>
+  </select>
+
+  <input type="submit" value="Change Status">
+  <input name="authenticity_token"
+         type="hidden"
+         value="<%= form_authenticity_token %>">
+</form>

@@ -1,0 +1,24 @@
+<form
+  action="<%= user_friendship_url(user, Friendship.where(
+              in_friend_id: user.id,
+              out_friend_id: pending_friend.id)[0]) %>"
+  class="button_to"
+  method="post">
+  <input type="hidden" name="_method" value="PUT">
+  <input type="submit" value="Approve">
+  <input name="authenticity_token"
+         type="hidden"
+         value="<%= form_authenticity_token %>">
+</form>
+<form
+  action="<%= user_friendship_url(user, Friendship.where(
+              in_friend_id: user.id,
+              out_friend_id: pending_friend.id)[0]) %>"
+  class="button_to"
+  method="post">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Deny">
+  <input name="authenticity_token"
+         type="hidden"
+         value="<%= form_authenticity_token %>">
+</form>
