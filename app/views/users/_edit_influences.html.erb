@@ -1,0 +1,41 @@
+  <ul class="influences-list">
+    <% user.influences.each do |influence| %>
+      <li class="influence-list-show" value="<%= influence.id %>">
+        <%= influence.name %>
+
+        <form action="<%= user_user_influence_url(
+                user,
+                UserInfluence.where(
+                  user_id: user.id,
+                  influence_id: influence.id)[0]) %>"
+              id="influence-delete"
+              method="post">
+          <input
+             name="_method"
+             type="hidden"
+             value="delete">
+          <input
+             name="authenticity_token"
+             type="hidden"
+             value="<%= form_authenticity_token %>">
+          <input type="submit" value="Delete">
+        </form>
+
+      </li>
+    <% end %>
+  </ul>
+
+<form action="<%= user_user_influences_url(user) %>" method="post">
+  <input
+     name="authenticity_token"
+     type="hidden"
+     value="<%= form_authenticity_token %>">
+
+  <label for="influence_name">New Influence</label>
+  <input
+     id="influence_name"
+     name="influence[name]"
+     type="text">
+  <br>
+  <input type="submit" value="Create">
+</form>

@@ -1,0 +1,40 @@
+<ul class="media-list">
+  <% user.media.each do |medium| %>
+    <li class="medium-list-show" value="<%= medium.id %>">
+      <%= medium.name %>
+
+      <form action="<%= user_user_medium_url(
+              user,
+              UserMedium.where(
+                user_id: user.id,
+                medium_id: medium.id)[0]) %>"
+            id="medium-delete"
+            method="post">
+        <input
+           name="_method"
+           type="hidden"
+           value="delete">
+        <input
+           name="authenticity_token"
+           type="hidden"
+           value="<%= form_authenticity_token %>">
+        <input type="submit" value="Delete">
+      </form>
+    </li>
+  <% end %>
+</ul>
+
+<form action="<%= user_user_media_url(user) %>" method="post">
+  <input
+     name="authenticity_token"
+     type="hidden"
+     value="<%= form_authenticity_token %>">
+
+  <label for="medium_name">New Medium</label>
+  <input
+     id="medium_name"
+     name="medium[name]"
+     type="text">
+  <br>
+  <input type="submit" value="Create">
+</form>
