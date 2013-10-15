@@ -1,41 +1,24 @@
 <h1>Edit Album/Add Photos</h1>
 
-<form action="<%= user_album_url(@user, @album) %>" method="post">
-
-  <input
-     name="_method"
-     type="hidden"
-     value="put">
-
-  <input type="hidden"
-         name="authenticity_token"
-         value="<%= form_authenticity_token %>">
-
-  <label>Title</label>
-  <input type="text" name="album[title]" value="<%= @album.title %>">
-  <br>
-  <label>Description</label><br>
-  <textarea name="album[description]" rows="4" cols="30">
-    <%= @album.description %>
-  </textarea>
-  <br>
-  <input type="submit" value="Save Changes">
-</form>
+<%= render "edit_album_info", album: @album, user: current_user %>
 
 <h2>Photos</h2>
-<ul>
+<ul class="photos-list">
 <% @album.photos.each do |photo| %>
-  <li>
-    <%= image_tag photo.picture.url(:standard) %><br>
-        <%= link_to "Edit Photo", edit_user_photo_url(@user, photo) %>
-  </li>
+  <%= render "photos_list_show", user: current_user, photo: photo %>
 <% end %>
 </ul>
 
 
 <h3>Add Photo</h3>
 
-<form action="<%= user_photos_url %>" method="post" enctype="multipart/form-data">
+<form
+  action="<%= user_photos_url %>"
+  method="post"
+  enctype="multipart/form-data"
+  id="new-photo"
+  data-remote="true">
+
   <input type="hidden"
          name="authenticity_token"
          value="<%= form_authenticity_token %>">
@@ -45,3 +28,23 @@
 </form>
 
 <%= button_to "Delete Album", user_album_url(@album), method: :delete %>
+
+<script>
+
+$(document).ready(function(){
+
+  $(".photos-list").on("ajax:success", "#photo-delete", function(event, data){
+    $($(event.target).parent()[0]).remove()
+  });
+
+
+  $("#new-photo").on("ajax:success", function(event, data){
+    console.log("HERE")
+    var $form = $(this);
+    $(".photos-list").append(data);
+    $form[0].reset();
+  });
+
+});
+
+</script>

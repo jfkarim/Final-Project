@@ -1,0 +1,25 @@
+<form
+  action="<%= user_album_url(user, album) %>"
+  method="post"
+  id="album-info-edit"
+  data-remote="true">
+
+  <input
+     name="_method"
+     type="hidden"
+     value="put">
+
+  <input type="hidden"
+         name="authenticity_token"
+         value="<%= form_authenticity_token %>">
+
+  <label>Title</label>
+  <input type="text" name="album[title]" value="<%= album.title %>">
+  <br>
+  <label>Description</label><br>
+  <textarea name="album[description]" rows="4" cols="30">
+    <%= album.description %>
+  </textarea>
+  <br>
+  <input type="submit" value="Save Changes">
+</form>

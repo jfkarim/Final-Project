@@ -11,14 +11,14 @@ class PhotosController < ApplicationController
     params[:photo][:user_id] = params[:user_id]
     @photo = Photo.new(params[:photo])
 
-    if @photo.save
-      if @photo.album_id.nil?
-        redirect_to edit_user_photo_url(@user, @photo)
-      else
-        redirect_to edit_user_album_url(@user, Album.find(@photo.album_id))
-      end
+    @photo.save
+
+    if @photo.album_id.nil?
+      redirect_to edit_user_photo_url(@user, @photo)
+    elsif @photo.persisted? && request.xhr?
+      render partial: "albums/photos_list_show", locals: {photo: @photo, user: @user}
     else
-      redirect_to user_url(@user)
+      redirect_to edit_user_album_url(@user, Album.find(@photo.album_id))
     end
   end
 
