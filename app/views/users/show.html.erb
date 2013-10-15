@@ -34,6 +34,8 @@
 <% if can_see_info?(@user) %>
 
 <h2>Canvas</h2>
+<div id="map-canvas">
+</div>
 <%= render "map", photos: @user.photos %>
 
 <h2>Friends</h2>

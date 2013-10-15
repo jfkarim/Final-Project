@@ -1,6 +1,6 @@
 <h1>Edit Photo</h1>
 
-<%= @photo.picture.url(:standard) %><br>
+<%= image_tag @photo.picture.url(:standard) %><br>
 
 <form action="<%= user_photo_url(@photo) %>" method="post">
   <input

@@ -1,5 +1,14 @@
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 
+<style>
+  html, body, #map-canvas {
+    height: 400px;
+    width: 400px;
+    margin: 0px;
+    padding: 0px
+  }
+</style>
+
 <script type="text/javascript"
  src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_API_KEY'] %>&sensor=false">
 </script>
@@ -18,9 +27,16 @@
     var bounds = new google.maps.LatLngBounds();
 
     <% photos.each do |photo| %>
-      createMarker(<%= photo.latitude %>, <%= photo.longitude %>, <%= photo.description %>
-        "<%= photo.location %>")
-        bounds.extend(new google.maps.LatLng(<%= photo.latitude %>, <%= photo.longitude %>))
+      <% if photo.location != "" && photo.location != nil %>
+        createMarker(
+          <%= photo.latitude %>,
+          <%= photo.longitude %>,
+          "<%= photo.description %>"
+          "<%= photo.location %>")
+        bounds.extend(new google.maps.LatLng(
+          <%= photo.latitude %>,
+          <%= photo.longitude %>))
+        <% end %>
     <% end %>
 
     <% if photos.length > 0  %>

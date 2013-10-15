@@ -25,6 +25,9 @@ gem 'backbone-on-rails'
 gem "paperclip"
 gem "aws-sdk"
 gem "figaro"
+gem 'addressable'
+gem "rest-client"
+
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', require: 'bcrypt'
 
