@@ -31,7 +31,7 @@
         createMarker(
           <%= photo.latitude %>,
           <%= photo.longitude %>,
-          "<%= photo.description %>"
+          "<%= photo.description %>",
           "<%= photo.location %>")
         bounds.extend(new google.maps.LatLng(
           <%= photo.latitude %>,
@@ -50,11 +50,12 @@
       var marker = new google.maps.Marker({
         position: new google.maps.LatLng(lat, lng),
         map: map,
+        title: loc
       });
 
       google.maps.event.addListener(marker, 'click', function() {
         var contentString =
-          '<div id="info"><p>'+desc+'</p></div>'
+          '<div id="info"><h3>'+loc+'</h3><p>'+desc+'</p></div>'
 
         if (!this.getMap()._infoWindow){
           this.getMap()._infoWindow = new google.maps.InfoWindow();
