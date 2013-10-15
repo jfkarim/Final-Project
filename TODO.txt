@@ -1,7 +1,5 @@
 TO DO
 
-Format the Time field for event
-
 Sort the comments by date created
 
 Figure out loopholes and build methods and ways to prevent security breaches

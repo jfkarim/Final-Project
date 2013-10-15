@@ -1,0 +1,7 @@
+<ul>
+  <% user.approved_groups.each do |group| %>
+    <li value="<%= group.id %>">
+      <%= link_to group.name, group_url(group) %>
+    </li>
+  <% end %>
+</ul>

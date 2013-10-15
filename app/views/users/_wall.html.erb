@@ -1,0 +1,23 @@
+<ul>
+  <% user.wall.posts.each do |post| %>
+    <li>
+      <%= image_tag post.user.profile_picture.url(:icon) %>
+      <%= post.user.artist_name %><br>
+      <%= post.content %><br>
+      likes: <%= post.likes.length %>
+      <%= render "likes/form", user: user, type: post %>
+      <br>
+      <ul>
+        <% post.comments.each do |comment| %>
+          <li>
+            <%= comment.user.artist_name %>:
+            <%= comment.content %><br>
+            likes: <%= comment.likes.length %>
+            <%= render "likes/form", user: user, type: comment %>
+          </li>
+        <% end %>
+      </ul>
+      <%= render "comments/form", user: user, type: post %>
+    </li>
+  <% end %>
+</ul>

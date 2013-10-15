@@ -6,7 +6,7 @@ Attendance
   class="button_to"
   method="post">
   <input type="hidden" name="_method" value="PUT">
-
+  <% eu = EventUser.where(event_id: event.id, user_id: user.id)[0]  %>
   <select name="status">
     <option value="PENDING"></option>
     <% EventUser::STATUS_STATES.each do |status| %>

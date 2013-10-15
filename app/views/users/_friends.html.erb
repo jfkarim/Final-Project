@@ -1,0 +1,7 @@
+<ul>
+  <% user.approved_friends.each do |friend| %>
+    <li value="<%= friend.id %>">
+      <%= link_to friend.artist_name, user_url(friend) %>
+    </li>
+  <% end %>
+</ul>

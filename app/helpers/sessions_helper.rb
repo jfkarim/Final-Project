@@ -20,4 +20,16 @@ module SessionsHelper
   def require_no_current_user!
     redirect_to user_url(current_user) unless current_user.nil?
   end
+
+  def can_post_on_wall?(user)
+    current_user != user && user.approved_friends.include?(current_user)
+  end
+
+  def is_page_owner?(user)
+    current_user == user
+  end
+
+  def can_see_info?(user)
+    current_user == @user || @user.approved_friends.include?(current_user)
+  end
 end

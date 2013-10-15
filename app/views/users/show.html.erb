@@ -19,9 +19,9 @@
 
 <%= render "users/about", user: @user %>
 <br>
-<%= link_to "Photos", user_photos_url(@user) %>
+<%= link_to "Photos", user_photos_url(@user) %><br>
 
-<% if current_user == @user  %>
+<% if is_page_owner?(@user)  %>
 <%= link_to "Edit About", edit_user_url(@user) %><br>
 <%= link_to "Create Group", new_group_url %><br>
 <%= link_to "Create Event", new_event_url %><br>
@@ -29,71 +29,30 @@
 
 <%= render "photos/lone_upload", user: @user %>
 <br>
-<% end  %>
+<% end %>
 
-<% if current_user == @user ||
-          @user.approved_friends.include?(current_user) %>
+<% if can_see_info?(@user) %>
+
+<h2>Canvas</h2>
+<%= render "map", photos: @user.photos %>
 
 <h2>Friends</h2>
-<ul>
-  <% @user.approved_friends.each do |friend| %>
-    <li value="<%= friend.id %>">
-      <%= link_to friend.artist_name, user_url(friend) %>
-    </li>
-  <% end %>
-</ul>
+<%= render "friends", user: @user %>
 
 <h2>Groups</h2>
-<ul>
-  <% @user.approved_groups.each do |group| %>
-    <li value="<%= group.id %>">
-      <%= link_to group.name, group_url(group) %>
-    </li>
-  <% end %>
-</ul>
+<%= render "groups", user: @user %>
 
 <h2>Events</h2>
-<ul>
-  <% (@user.events - @user.pending_events).each do |event| %>
-    <% eu = EventUser.find_by_event_id_and_user_id(event.id, @user.id) %>
-    <li value="<%= event.id %>">
-      <%= link_to event.name, event_url(event) %><br>
-      <%= render "event_users/status", user: @user %>
-    </li>
-  <% end %>
-</ul>
+<%= render "events", user: @user %>
 
 <h2>Wall</h2>
-<ul>
-  <% @user.wall.posts.each do |post| %>
-    <li>
-      <%= image_tag post.user.profile_picture.url(:icon) %>
-      <%= post.user.artist_name %><br>
-      <%= post.content %><br>
-      likes: <%= post.likes.length %>
-      <%= render "likes/form", user: @user, type: post %>
-      <br>
-      <ul>
-        <% post.comments.each do |comment| %>
-          <li>
-            <%= comment.user.artist_name %>:
-            <%= comment.content %><br>
-            likes: <%= comment.likes.length %>
-            <%= render "likes/form", user: @user, type: comment %>
-          </li>
-        <% end %>
-      </ul>
-      <%= render "comments/form", user: @user, type: comment %>
-    </li>
-  <% end %>
-</ul>
+<%= render "wall", user: @user %>
 
-<% unless current_user == @user ||
-          !@user.approved_friends.include?(current_user) %>
+<% if can_post_on_wall?(@user)  %>
   <%= render "posts/form", user: @user %>
 <% end %>
 
-<% if current_user == @user  %>
+<% if is_page_owner?(@user)  %>
 <%= render "users/pending_requests", user: @user %>
 <% end %>
 <% end %>
