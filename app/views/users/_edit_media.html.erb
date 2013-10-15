@@ -1,30 +1,14 @@
 <ul class="media-list">
   <% user.media.each do |medium| %>
-    <li class="medium-list-show" value="<%= medium.id %>">
-      <%= medium.name %>
-
-      <form action="<%= user_user_medium_url(
-              user,
-              UserMedium.where(
-                user_id: user.id,
-                medium_id: medium.id)[0]) %>"
-            id="medium-delete"
-            method="post">
-        <input
-           name="_method"
-           type="hidden"
-           value="delete">
-        <input
-           name="authenticity_token"
-           type="hidden"
-           value="<%= form_authenticity_token %>">
-        <input type="submit" value="Delete">
-      </form>
-    </li>
+    <%= render "user_media/um", medium: medium, user: user %>
   <% end %>
 </ul>
 
-<form action="<%= user_user_media_url(user) %>" method="post">
+<form action="<%= user_user_media_url(user) %>"
+  method="post"
+  id="new-med"
+  data-remote="true">
+
   <input
      name="authenticity_token"
      type="hidden"
@@ -35,6 +19,24 @@
      id="medium_name"
      name="medium[name]"
      type="text">
-  <br>
   <input type="submit" value="Create">
 </form>
+
+<script>
+
+$(document).ready(function(){
+
+  $(".media-list").on("ajax:success", "#medium-delete", function(event, data){
+    $($(event.target).parent()[0]).remove()
+  });
+
+
+  $("#new-med").on("ajax:success", function(event, data){
+    var $form = $(this);
+    $(".media-list").append(data);
+    $form[0].reset();
+  });
+
+});
+
+</script>

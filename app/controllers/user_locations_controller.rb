@@ -11,8 +11,10 @@ class UserLocationsController < ApplicationController
 
     @user_location = UserLocation.new(location_id: location_id, user_id: current_user.id)
 
-    if @user_location.save
-      redirect_to edit_user_url(current_user)
+    @user_location.save
+
+    if @user_location.persisted? && request.xhr?
+      render partial: "user_locations/ul", locals: {location: @location, user: current_user}
     else
       redirect_to edit_user_url(current_user)
     end

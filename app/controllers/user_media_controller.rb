@@ -12,8 +12,10 @@ class UserMediaController < ApplicationController
 
     @user_medium = UserMedium.new(medium_id: medium_id, user_id: current_user.id)
 
-    if @user_medium.save
-      redirect_to edit_user_url(current_user)
+    @user_medium.save
+
+    if @user_medium.persisted? && request.xhr?
+      render partial: "user_media/um", locals: {medium: @medium, user: current_user}
     else
       redirect_to edit_user_url(current_user)
     end

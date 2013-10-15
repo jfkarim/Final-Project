@@ -1,30 +1,15 @@
-<ul class="theme-list">
+<ul class="themes-list">
   <% user.themes.each do |theme| %>
-    <li class="theme-list-show" value="<%= theme.id %>">
-      <%= theme.name %>
-
-      <form action="<%= user_user_theme_url(
-              user,
-              UserTheme.where(
-                user_id: user.id,
-                theme_id: theme.id)[0]) %>"
-            id="theme-delete"
-            method="post">
-        <input
-           name="_method"
-           type="hidden"
-           value="delete">
-        <input
-           name="authenticity_token"
-           type="hidden"
-           value="<%= form_authenticity_token %>">
-        <input type="submit" value="Delete">
-      </form>
-    </li>
+    <%= render "user_themes/ut", theme: theme, user: user %>
   <% end %>
 </ul>
 
-<form action="<%= user_user_themes_url(user) %>" method="post">
+<form
+  action="<%= user_user_themes_url(user) %>"
+  method="post"
+  id="new-theme"
+  data-remote="true">
+
   <input
      name="authenticity_token"
      type="hidden"
@@ -35,6 +20,24 @@
      id="theme_name"
      name="theme[name]"
      type="text">
-  <br>
   <input type="submit" value="Create">
 </form>
+
+<script>
+
+$(document).ready(function(){
+
+  $(".themes-list").on("ajax:success", "#theme-delete", function(event, data){
+    $($(event.target).parent()[0]).remove()
+  });
+
+
+  $("#new-theme").on("ajax:success", function(event, data){
+    var $form = $(this);
+    $(".themes-list").append(data);
+    $form[0].reset();
+  });
+
+});
+
+</script>

@@ -12,10 +12,11 @@ class UserThemesController < ApplicationController
 
     @user_theme = UserTheme.new(theme_id: theme_id, user_id: current_user.id)
 
-    if @user_theme.save
-      redirect_to edit_user_url(current_user)
+    @user_theme.save
+
+    if @user_theme.persisted? && request.xhr?
+      render partial: "user_themes/ut", locals: {theme: @theme, user: current_user}
     else
-      #flash error here
       redirect_to edit_user_url(current_user)
     end
   end

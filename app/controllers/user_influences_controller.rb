@@ -13,8 +13,10 @@ class UserInfluencesController < ApplicationController
 
     @user_influence = UserInfluence.new(influence_id: influence_id, user_id: current_user.id)
 
-    if @user_influence.save
-      redirect_to edit_user_url(current_user)
+    @user_influence.save
+
+    if @user_influence.persisted? && request.xhr?
+      render partial: "user_influences/ui", locals: {influence: @influence, user: current_user}
     else
       redirect_to edit_user_url(current_user)
     end

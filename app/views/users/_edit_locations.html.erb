@@ -1,40 +1,47 @@
-<ul class="location-list">
+<ul class="locations-list">
   <% user.locations.each do |location| %>
-    <li class="location-list-show" value="<%= location.id %>">
-      <%= location.city %>, <%= location.country %>
-
-      <form action="<%= user_user_location_url(
-              @user,
-              UserLocation.where(
-                user_id: user.id,
-                location_id: location.id)[0]) %>"
-            id="location-delete"
-            method="post">
-        <input
-           name="_method"
-           type="hidden"
-           value="delete">
-        <input
-           name="authenticity_token"
-           type="hidden"
-           value="<%= form_authenticity_token %>">
-        <input type="submit" value="Delete">
-      </form>
-    </li>
+    <%= render "user_locations/ul", user: user, location: location %>
   <% end %>
 </ul>
 
-<form action="<%= user_user_locations_url(user) %>" method="post">
+<form
+  action="<%= user_user_locations_url(user) %>"
+  method="post"
+  id="new-loc"
+  data-remote="true">
+
   <input
      name="authenticity_token"
      type="hidden"
      value="<%= form_authenticity_token %>">
 
-  <label for="location_name">New Location</label>
-  <input
-     id="location_name"
-     name="location[name]"
+  <label>New Location</label>
+  City: <input
+     id="location_city"
+     name="location[city]"
      type="text">
-  <br>
+  Country: <input
+     id="location_country"
+     name="location[country]"
+     type="text">
   <input type="submit" value="Create">
 </form>
+
+<script>
+
+$(document).ready(function(){
+
+  $(".locations-list").on("ajax:success", "#location-delete", function(event, data){
+    $($(event.target).parent()[0]).remove()
+  });
+
+
+  $("#new-loc").on("ajax:success", function(event, data){
+    var $form = $(this);
+    $(".locations-list").append(data);
+    $form[0].reset();
+  });
+
+});
+
+</script>

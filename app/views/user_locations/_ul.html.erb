@@ -1,0 +1,22 @@
+<li class="location-list-show" value="<%= location.id %>">
+  <%= location.city %>, <%= location.country %>
+
+  <form action="<%= user_user_location_url(
+          user,
+          UserLocation.where(
+            user_id: user.id,
+            location_id: location.id)[0]) %>"
+        id="location-delete"
+        method="post"
+        data-remote="true">
+    <input
+       name="_method"
+       type="hidden"
+       value="delete">
+    <input
+       name="authenticity_token"
+       type="hidden"
+       value="<%= form_authenticity_token %>">
+    <input type="submit" value="Delete">
+  </form>
+</li>
