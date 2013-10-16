@@ -13,12 +13,15 @@ $(document).ready(function(){
   // });
 
   $("#post-form").on("ajax:success", function(event, data){
-    console.log("HERE")
-    var $form = $(this);
     $(".wall-show").prepend(data);
-    $form[0].reset();
   });
 
+  $("[id^=comment-form]").on("ajax:success", function(event, data){
+    console.log("HERE");
+    var $list = $($($(event.target).parent()).find(".comment-list")[0]);
+    console.log($list);
+    $list.append(data);
+  });
 });
 
 </script>

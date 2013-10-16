@@ -6,15 +6,24 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
 
     type = params[:comment][:commentable_type]
-    if @comment.save
-      if type == "Post"
-        redirect_to user_url(User.find(params[:owner_id]))
-      elsif type == "Photo"
-        redirect_to user_photo_url(User.find(params[:owner_id]), Photo.find(params[:receiver_id]))
-      else
-        redirect_to user_album_url(User.find(params[:owner_id]), Album.find(params[:receiver_id]))
-      end
+
+    @comment.save
+
+    if @comment.persisted? && request.xhr?
+      render partial: "comments/show", locals: {comment: @comment, user: current_user}
+    else
+      redirect_to user_url(current_user)
     end
+    #
+    # if @comment.save
+    #   if type == "Post"
+    #     redirect_to user_url(User.find(params[:owner_id]))
+    #   elsif type == "Photo"
+    #     redirect_to user_photo_url(User.find(params[:owner_id]), Photo.find(params[:receiver_id]))
+    #   else
+    #     redirect_to user_album_url(User.find(params[:owner_id]), Album.find(params[:receiver_id]))
+    #   end
+    # end
   end
 
 end

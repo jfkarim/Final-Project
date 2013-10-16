@@ -1,0 +1,6 @@
+<li>
+  <%= comment.user.artist_name %>:
+  <%= comment.content %><br>
+  likes: <%= comment.likes.length %>
+  <%= render "likes/form", user: user, type: comment %>
+</li>

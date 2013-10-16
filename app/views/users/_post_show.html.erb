@@ -5,15 +5,10 @@
   likes: <%= post.likes.length %>
   <%= render "likes/form", user: user, type: post %>
   <br>
-  <ul>
+  <ul class="comment-list">
     <% post.comments.each do |comment| %>
-      <li>
-        <%= comment.user.artist_name %>:
-        <%= comment.content %><br>
-        likes: <%= comment.likes.length %>
-        <%= render "likes/form", user: user, type: comment %>
-      </li>
+      <%= render "comments/show", user: user, comment: comment, post: post%>
     <% end %>
   </ul>
-  <%= render "comments/form", user: user, type: post %>
+  <%= render "comments/form", user: user, type: post, post: post %>
 </li>
