@@ -1,7 +1,9 @@
 <form
   action="<%= posts_url %>"
   class="button_to"
-  method="post">
+  method="post"
+  id="post-form"
+  data-remote="true">
 
   <label>Post on Wall:</label><br>
   <textarea name="post[content]" rows="3" cols="20"></textarea>

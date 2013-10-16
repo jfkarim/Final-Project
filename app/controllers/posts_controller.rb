@@ -9,8 +9,10 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
     @user = User.find(params[:receiver_id])
 
-    if @post.save
-      redirect_to user_url(@user)
+    @post.save
+
+    if @post.persisted? && request.xhr?
+      render partial: "users/post_show", locals: {post: @post, user: current_user}
     else
       redirect_to user_url(@user)
     end

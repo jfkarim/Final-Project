@@ -1,23 +1,24 @@
-<ul>
+<ul class="wall-show">
   <% user.wall.posts.each do |post| %>
-    <li>
-      <%= image_tag post.user.profile_picture.url(:icon) %>
-      <%= post.user.artist_name %><br>
-      <%= post.content %><br>
-      likes: <%= post.likes.length %>
-      <%= render "likes/form", user: user, type: post %>
-      <br>
-      <ul>
-        <% post.comments.each do |comment| %>
-          <li>
-            <%= comment.user.artist_name %>:
-            <%= comment.content %><br>
-            likes: <%= comment.likes.length %>
-            <%= render "likes/form", user: user, type: comment %>
-          </li>
-        <% end %>
-      </ul>
-      <%= render "comments/form", user: user, type: post %>
-    </li>
+    <%= render "post_show", user: user, post: post %>
   <% end %>
 </ul>
+
+<script>
+
+$(document).ready(function(){
+
+  // $(".wall-show").on("ajax:success", "#photo-delete", function(event, data){
+  //   $($(event.target).parent()[0]).remove()
+  // });
+
+  $("#post-form").on("ajax:success", function(event, data){
+    console.log("HERE")
+    var $form = $(this);
+    $(".wall-show").prepend(data);
+    $form[0].reset();
+  });
+
+});
+
+</script>

@@ -1,7 +1,9 @@
 <form
   action="<%= likes_url %>"
   class="button_to"
-  method="post">
+  method="post"
+  id="like-form"
+  data-remote="true">
 
   <input name="like[likeable_id]"
          type="hidden"

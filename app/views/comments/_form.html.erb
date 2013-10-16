@@ -1,7 +1,9 @@
 <form
   action="<%= comments_url %>"
   class="button_to"
-  method="post">
+  method="post"
+  id="comment-form"
+  data-remote="true">
 
   <label>Enter Comment:</label><br>
   <textarea name="comment[content]" rows="1" cols="35"></textarea>
