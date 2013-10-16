@@ -1,0 +1,7 @@
+<% owner = User.find(photo.user_id) %>
+
+<li>
+  <%= owner.artist_name %> uploaded a new photo at <%= photo.created_at %><br>
+  <%= image_tag photo.picture.url(:standard) %> <br>
+  <%= link_to "Photo Page", user_photo_url(owner, photo) %>
+</li>

@@ -1,0 +1,9 @@
+<% owner = User.find(post.user_id) %>
+<% receiver = User.find(post.wall.wallable_id) %>
+
+<li>
+  <%= owner.artist_name %> posted on
+  <%= receiver.artist_name %>'s wall <br>
+  <%= post.content %><br>
+  at <%= post.created_at %>
+</li>

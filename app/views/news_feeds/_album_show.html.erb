@@ -1,0 +1,10 @@
+<% owner = User.find(album.user_id) %>
+
+<li>
+  <%= owner.artist_name %> uploaded a new album: <%= album.title %> <br>
+  <% if album.photos.length > 0 %>
+    <%= image_tag album.photos.first.picture.url(:standard) %> <br>
+  <% end %>
+  <%= link_to "Album Page", user_album_url(owner, album) %> <br>
+  at <%= album.created_at %>
+</li>

@@ -2,9 +2,12 @@
 
 <ul class="feed-list">
 <% @news.each do |n| %>
-<li>
-  <%= n.user.artist_name %>:
-  <%= n.class.to_s %>
-</li>
+  <% if n.class.to_s == "Post" %>
+    <%= render "post_show", post: n %>
+  <% elsif n.class.to_s == "Album" %>
+    <%= render "album_show", album: n %>
+  <% elsif n.class.to_s == "Photo" %>
+    <%= render "photo_show", photo: n %>
+  <% end %>
 <% end %>
 </ul>
