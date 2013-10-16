@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     @comment.save
 
     if @comment.persisted? && request.xhr?
-      render partial: "comments/show", locals: {comment: @comment, user: current_user}
+      render partial: "comments/show", locals: {comment: @comment, user: current_user, type: type}
     else
       redirect_to user_url(current_user)
     end

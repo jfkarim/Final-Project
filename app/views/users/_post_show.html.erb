@@ -7,7 +7,7 @@
   <br>
   <ul class="comment-list">
     <% post.comments.each do |comment| %>
-      <%= render "comments/show", user: user, comment: comment, post: post%>
+      <%= render "comments/show", user: user, comment: comment, type: post %>
     <% end %>
   </ul>
   <%= render "comments/form", user: user, type: post %>

@@ -14,14 +14,22 @@
 </ul>
 
 <h2>Comments: </h2>
-<ul>
+<ul class="comment-list">
 <% @album.comments.each do |comment| %>
-  <li>
-    <%= comment.user.artist_name %>:
-    <%= comment.content %><br>
-    likes: <%= comment.likes.length %>
-    <%= render "likes/form", user: @user, type: comment, sub_type: @album %>
-  </li>
+  <%= render "comments/show", user: @user, comment: comment, type: @album %>
 <% end %>
 </ul>
 <%= render "comments/form", user: @user, type: @album %>
+
+<script>
+
+$(document).ready(function(){
+
+  $("[id^=comment-form]").on("ajax:success", function(event, data){
+    var $list = $($($(event.target).parent()).find(".comment-list")[0]);
+    $list.append(data);
+  });
+
+});
+
+</script>
