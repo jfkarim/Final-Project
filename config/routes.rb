@@ -18,6 +18,8 @@ UrbanCanvas::Application.routes.draw do
     resources :albums
 
     resources :photos, except: [:new]
+
+    resource :news_feed, only: [:show]
   end
 
   resource :session, only: [:new, :create, :destroy]

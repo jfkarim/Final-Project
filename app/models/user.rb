@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
   has_one :wall, as: :wallable, dependent: :destroy
 
   has_many :friendships, class_name: "Friendship", primary_key: :id, foreign_key: :in_friend_id
+  has_many :approved_friendships, class_name: "Friendship", primary_key: :id, foreign_key: :in_friend_id, conditions: "status = 'APPROVED'"
+  has_many :friends, through: :approved_friendships, source: :out_friend
 
   has_many :group_users
   has_many :groups, through: :group_users, source: :group

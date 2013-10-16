@@ -8,10 +8,6 @@
 
 $(document).ready(function(){
 
-  // $(".wall-show").on("ajax:success", "#photo-delete", function(event, data){
-  //   $($(event.target).parent()[0]).remove()
-  // });
-
   $("#post-form").on("ajax:success", function(event, data){
     $(".wall-show").prepend(data);
   });

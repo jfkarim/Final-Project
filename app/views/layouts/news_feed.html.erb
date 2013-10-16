@@ -1,0 +1,21 @@
+<% news = [] %>
+
+<% news += current_user.wall.posts %>
+<% news += current_user.albums %>
+<% news += current_user.photos.where(album_id: nil) %>
+
+<% current_user.groups.each do |group| %>
+  <% news += group.wall.posts %>
+<% end %>
+
+<% current_user.events.each do |event| %>
+  <% news += event.wall.posts %>
+<% end %>
+
+<% current_user.friends.each do |friend| %>
+  <% news += friend.wall.posts %>
+  <% news += friend.albums %>
+  <% news += friend.photos.where(album_id: nil) %>
+<% end %>
+
+<% news.sort_by { |n| n.created_at } %>

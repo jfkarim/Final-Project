@@ -1,0 +1,10 @@
+<h1>News Feed</h1>
+
+<ul class="feed-list">
+<% @news.each do |n| %>
+<li>
+  <%= n.user.artist_name %>:
+  <%= n.class.to_s %>
+</li>
+<% end %>
+</ul>
