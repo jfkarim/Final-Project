@@ -43,9 +43,6 @@
       map.fitBounds(bounds);
     <% end %>
 
-    UrbanCanvas.map = map
-    UrbanCanvas.bounds = bounds
-
     function createMarker(lat, lng, desc, loc) {
       var marker = new google.maps.Marker({
         position: new google.maps.LatLng(lat, lng),
