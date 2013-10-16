@@ -4,14 +4,13 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.new(in_friend_id: params[:user_id], out_friend_id: current_user.id)
 
     if @friendship.save
-      redirect_to user_url(current_user)
+      render text: "Friend Request Sent"
     else
       redirect_to user_url(current_user)
     end
   end
 
   def update
-    #once approved make a single friendship that acts as a two way instead of making two
     @friendship = Friendship.find(params[:id])
     @friendship.approve!
     new_friend = User.find(@friendship.out_friend_id)
@@ -22,7 +21,8 @@ class FriendshipsController < ApplicationController
 
   def destroy
     @friendship = Friendship.find(params[:id])
+    Friendship.where(in_friend_id: @friendship.out_friend_id, out_friend_id: @friendship.in_friend_id)[0].destroy
     @friendship.destroy
-    redirect_to user_url(current_user)
+    render partial: "users/add_friend", locals: {user: User.find(params[:user_id])}
   end
 end

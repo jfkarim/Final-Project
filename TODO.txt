@@ -2,29 +2,20 @@ TO DO
 
 Sort the comments by date created
 
-Figure out loopholes and build methods and ways to prevent security breaches
-
-Implement photo tagging
-
 Properly set a homepage and root
 
-Refactor!!! Especially views:
-  - Build partials!!
-  - Move some of the functions defined in the views to the controllers or models
+Put wall on Group and Event Page
 
 Begin javascripting implementation:
-  - Anything involving editing (albums, friends, events, groups, etc.)
-  - Posts
-  - Adding photos to albums
+  -Add Friend/Remove Friend Button reactions UJS
+  -Approve/Deny etc. of Events, Groups, Friends (SHow status, remove without       refresh)
 
-Begin styling what you have
+Add Map to Picture Page
 
-Build News Feed with backbone/ajax/ujs
+Style!
 
-Finish Styling
 
-Figure out how to use location for pictures and the mapping stuff
-
-Build the Map of Works
-
+EXTRAS
+News Feed Auto Refresh
 Build search for users and user fields etc. (TALK TO JAMES FOR THIS)
+Tag Users

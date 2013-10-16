@@ -7,15 +7,17 @@
 <h1><%= @name %></h1>
 <%= image_tag @user.profile_picture.url(:standard) %>
 
+<div class="friend-status">
 <% if @user != current_user %>
   <% if current_user.approved_friends.include?(@user) %>
-    <%= button_to "Remove Friend", user_friendships_url(@user), method: :delete %>
+    <%= render "remove_friend", user: @user %>
   <% elsif @user.pending_friends.include?(current_user) %>
-    <p>Friend Request Sent</p>
+    Friend Request Sent
   <% else  %>
-    <%= button_to "Add Friend", user_friendships_url(@user), method: :post %>
+    <%= render "add_friend", user: @user %>
   <% end %>
 <% end %>
+</div>
 
 <%= render "users/about", user: @user %>
 <br>
@@ -54,7 +56,28 @@
   <%= render "posts/form", user: @user %>
 <% end %>
 
-<% if is_page_owner?(@user)  %>
+<% if is_page_owner?(@user) %>
 <%= render "users/pending_requests", user: @user %>
 <% end %>
 <% end %>
+
+
+
+<script>
+
+$(document).ready(function() {
+
+  $("#add-friend").on("ajax:success", function(event, data){
+    console.log("here");
+    console.log(data);
+    $(".friend-status").html(data);
+  });
+  // this is slow for some reason
+
+  $("#remove-friend").on("ajax:success", function(event, data){
+    $(".friend-status").html(data);
+  });
+
+})
+
+</script>
