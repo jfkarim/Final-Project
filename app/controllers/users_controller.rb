@@ -3,9 +3,14 @@ class UsersController < ApplicationController
   before_filter :require_no_current_user!, :only => [:create, :new]
 
   def index
-    @users = User.all
-    # render json: @users.to_json(include: [:influences, :themes, :media])
-    redirect_to users_url
+    @users = User.includes(:photos).all
+    @photos = []
+
+    @users.each do |user|
+      @photos += user.photos
+    end
+
+    render :index
   end
 
   def create
