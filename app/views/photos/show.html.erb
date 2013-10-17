@@ -12,7 +12,6 @@
     Description: <%= @photo.description %>
   </li>
   <li>
-    likes: <%= @photo.likes.length %>
     <div class="like">
       <% like = Like.where(user_id: current_user,
                        likeable_id: @photo.id,
