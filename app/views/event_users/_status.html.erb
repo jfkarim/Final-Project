@@ -3,8 +3,9 @@ Attendance
   action="<%= event_event_user_url(event, EventUser.where(
               event_id: event.id,
               user_id: user.id)[0]) %>"
-  class="button_to"
-  method="post">
+  class="button_to event-attendance"
+  method="post"
+  data-remote="true">
   <input type="hidden" name="_method" value="PUT">
   <% eu = EventUser.where(event_id: event.id, user_id: user.id)[0]  %>
   <select name="status">

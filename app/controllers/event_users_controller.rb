@@ -21,10 +21,11 @@ class EventUsersController < ApplicationController
   end
 
   def update
-    @event = Event.find(params[:event_id])
+    @event = Event.includes(:event_users, :users).find(params[:event_id])
     @event_user = EventUser.find(params[:id])
+    @user = @event_user.user
     @event_user.update_attributes(status: params[:status])
-    redirect_to user_url(current_user)
+    render partial: "event_users/status", locals: {user: @user, event: @event}
   end
 
 
