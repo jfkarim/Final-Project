@@ -1,7 +1,7 @@
 <h1>Edit Album/Add Photos</h1>
-
-<%= render "edit_album_info", album: @album, user: current_user %>
-
+<div class="edit-info">
+  <%= render "edit_album_info", album: @album, user: current_user %>
+</div>
 <h2>Photos</h2>
 <ul class="photos-list">
 <% @album.photos.each do |photo| %>
