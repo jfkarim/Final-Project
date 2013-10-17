@@ -24,15 +24,13 @@ class GroupUsersController < ApplicationController
     @group = Group.find(params[:group_id])
     @group_user = GroupUser.find(params[:id])
     @group_user.approve!
-    redirect_to group_url(@group)
+    render json: @group_user
   end
 
-
   def destroy
-    @group = Group.find(params[:group_id])
     @group_user = GroupUser.find(params[:id])
     @group_user.destroy
-    redirect_to edit_group_url(@group)
+    render json: @group_user
   end
 
 end

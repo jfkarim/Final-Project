@@ -4,7 +4,6 @@ class Friendship < ActiveRecord::Base
     "DENIED",
     "PENDING"
   ]
-  #use numbers as reference to status states
 
   attr_accessible :in_friend_id, :out_friend_id, :status
   #Will be saved twice, both users as each.

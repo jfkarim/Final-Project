@@ -2,8 +2,9 @@
   action="<%= group_group_user_url(pending_group, GroupUser.where(
               group_id: pending_group.id,
               user_id: user.id)[0]) %>"
-  class="button_to"
-  method="post">
+  class="button_to approve-group"
+  method="post"
+  data-remote="true">
   <input type="hidden" name="_method" value="PUT">
   <input type="submit" value="Approve">
   <input name="authenticity_token"
@@ -14,11 +15,30 @@
 action="<%= group_group_user_url(pending_group, GroupUser.where(
             group_id: pending_group.id,
             user_id: user.id)[0]) %>"
-  class="button_to"
-  method="post">
+  class="button_to deny-group"
+  method="post"
+  data-remote="true">
   <input type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Deny">
   <input name="authenticity_token"
          type="hidden"
          value="<%= form_authenticity_token %>">
 </form>
+
+<script>
+
+$(document).ready(function(){
+
+  $(".approve-group").on("ajax:success", function(event, data){
+    $approveDeny = $($(event.target).parent()[0])
+    $approveDeny.html("<span>Approved</span>")
+  });
+
+  $(".deny-group").on("ajax:success", function(event, data){
+    $approveDeny = $($(event.target).parent()[0])
+    $approveDeny.html("<span>Denied</span>")
+  });
+
+});
+
+</script>

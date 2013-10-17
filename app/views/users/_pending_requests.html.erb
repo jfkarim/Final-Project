@@ -4,9 +4,11 @@
   <% user.pending_friends.each do |pending_friend| %>
     <li>
       <%= pending_friend.artist_name %>
+      <div class="approve-deny-friend">
       <%= render "friendships/approve_deny",
             user: user,
             pending_friend: pending_friend %>
+      </div>
     </li>
   <% end %>
 </ul>
@@ -16,9 +18,11 @@
   <% user.pending_groups.each do |pending_group| %>
     <li>
       <%= pending_group.name %>
+      <div class="approve-deny-group">
       <%= render "group_users/approve_deny",
             user: user,
             pending_group: pending_group %>
+      </div>
     </li>
   <% end %>
 </ul>

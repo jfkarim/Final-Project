@@ -2,8 +2,9 @@
   action="<%= user_friendship_url(user, Friendship.where(
               in_friend_id: user.id,
               out_friend_id: pending_friend.id)[0]) %>"
-  class="button_to"
-  method="post">
+  class="button_to approve-friendship"
+  method="post"
+  data-remote="true">
   <input type="hidden" name="_method" value="PUT">
   <input type="submit" value="Approve">
   <input name="authenticity_token"
@@ -14,11 +15,30 @@
   action="<%= user_friendship_url(user, Friendship.where(
               in_friend_id: user.id,
               out_friend_id: pending_friend.id)[0]) %>"
-  class="button_to"
-  method="post">
+  class="button_to deny-friendship"
+  method="post"
+  data-remote="true">
   <input type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Deny">
   <input name="authenticity_token"
          type="hidden"
          value="<%= form_authenticity_token %>">
 </form>
+
+<script>
+
+$(document).ready(function(){
+
+  $(".approve-friendship").on("ajax:success", function(event, data){
+    $approveDeny = $($(event.target).parent()[0])
+    $approveDeny.html("<span>Approved</span>")
+  });
+
+  $(".deny-friendship").on("ajax:success", function(event, data){
+    $approveDeny = $($(event.target).parent()[0])
+    $approveDeny.html("<span>Denied</span>")
+  });
+
+});
+
+</script>
