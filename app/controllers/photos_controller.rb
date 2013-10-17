@@ -30,7 +30,11 @@ class PhotosController < ApplicationController
     @user = User.find(params[:user_id])
     @photo = Photo.find(params[:id])
 
-    if @photo.update_attributes(params[:photo])
+    @photo.update_attributes(params[:photo])
+
+    if request.xhr?
+      render partial: "albums/edit_photo_show_info", locals: {user: @user, photo: @photo}
+    else
       redirect_to user_photo_url(@user, @photo)
     end
   end

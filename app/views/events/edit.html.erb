@@ -21,15 +21,11 @@
   <label for="event_description">Description</label>
   <textarea
      name="event[description]"
-     rows="4" cols="50">
-       <%= @event.description %>
-  </textarea>
+     rows="4" cols="50"><%= @event.description %></textarea>
   <br>
 
   <label for="event_address">Address</label><br>
-  <textarea name="event[address]" rows="3" cols="20">
-    <%= @event.address %>
-  </textarea>
+  <textarea name="event[address]" rows="3" cols="20"><%= @event.address %></textarea>
   <br>
 
   <label for="event_date">Date</label><br>

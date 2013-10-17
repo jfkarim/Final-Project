@@ -1,5 +1,21 @@
 <li>
   <%= image_tag photo.picture.url(:standard) %><br>
-  <%= render "photos/edit_photo_info", user: user, photo: photo %>
+  <div class="edit-photo-info">
+    <%= render "albums/edit_photo_show_info", user: user, photo: photo %>
+  </div>
   <%= render "remove_photo", photo: photo, user: user %>
 </li>
+
+<script>
+
+$(document).ready(function(){
+
+  $(".edit-photo-info").on("ajax:success", function(event, data){
+    var $editInfo = $($(event.target).parent()[0])
+    $editInfo.html(data);
+    $editInfo.append("<span>Saved</span>")
+  });
+
+});
+
+</script>
