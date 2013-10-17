@@ -8,3 +8,17 @@
      value="<%= form_authenticity_token %>">
   <input type="submit" value="Add Friend">
 </form>
+
+<script>
+
+$(document).ready(function(){
+
+  $("#add-friend").on("ajax:success", function(event, data){
+    console.log("here");
+    console.log(data);
+    $(".friend-status").html("<p>Friend Request Sent</p>");
+  });
+
+});
+
+</script>

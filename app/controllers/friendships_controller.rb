@@ -4,7 +4,7 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.new(in_friend_id: params[:user_id], out_friend_id: current_user.id)
 
     if @friendship.save
-      render text: "Friend Request Sent"
+      render json: @friendship
     else
       redirect_to user_url(current_user)
     end

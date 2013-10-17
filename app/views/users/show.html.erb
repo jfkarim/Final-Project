@@ -13,7 +13,7 @@
     <%= render "remove_friend", user: @user %>
   <% elsif @user.pending_friends.include?(current_user) %>
     Friend Request Sent
-  <% else  %>
+  <% else %>
     <%= render "add_friend", user: @user %>
   <% end %>
 <% end %>
@@ -50,7 +50,7 @@
 <%= render "events", user: @user %>
 
 <h2>Wall</h2>
-<%= render "wall", owner: @user %>
+<%= render "layouts/wall", owner: @user %>
 
 <% if can_post_on_wall?(@user)  %>
   <%= render "posts/form", owner: @user %>
@@ -60,24 +60,3 @@
 <%= render "users/pending_requests", user: @user %>
 <% end %>
 <% end %>
-
-
-
-<script>
-
-$(document).ready(function() {
-
-  $("#add-friend").on("ajax:success", function(event, data){
-    console.log("here");
-    console.log(data);
-    $(".friend-status").html(data);
-  });
-  // this is slow for some reason
-
-  $("#remove-friend").on("ajax:success", function(event, data){
-    $(".friend-status").html(data);
-  });
-
-})
-
-</script>
