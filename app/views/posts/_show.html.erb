@@ -2,8 +2,16 @@
   <%= image_tag post.user.profile_picture.url(:icon) %>
   <%= post.user.artist_name %><br>
   <%= post.content %><br>
-  likes: <%= post.likes.length %>
-  <%= render "likes/form", owner: owner, type: post %>
+  <div class="like">
+    <% like = Like.where(user_id: current_user,
+                     likeable_id: post.id,
+                     likeable_type: "Post")[0] %>
+    <% if like %>
+      <%= render "likes/unlike", type: post, like: like %>
+    <% else %>
+      <%= render "likes/form", type: post %>
+    <% end %>
+  </div>
   <br>
   <ul class="comment-list">
     <% post.comments.each do |comment| %>

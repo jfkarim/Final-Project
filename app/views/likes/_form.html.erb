@@ -1,8 +1,10 @@
+likes: <%= type.likes.length %>
+
 <form
   action="<%= likes_url %>"
   class="button_to"
   method="post"
-  id="like-form"
+  id="like-form<%= type.id %>"
   data-remote="true">
 
   <input name="like[likeable_id]"
@@ -17,11 +19,23 @@
   <input name="receiver_id"
          type="hidden"
          value="<%= !@sub_type.nil? ? @sub_type.id : type.id %>">
-  <input name="owner_id"
-         type="hidden"
-         value="<%= owner.id %>">
   <input type="submit" value="Like">
   <input name="authenticity_token"
          type="hidden"
          value="<%= form_authenticity_token %>">
 </form>
+
+<script>
+
+$(document).ready(function(){
+
+  //move to a class
+  $("[id^=like-form]").on("ajax:success", function(event, data){
+    console.log("LIKE");
+    $like = $($(event.target).parent()[0])
+    $like.html(data)
+  });
+
+});
+
+</script>

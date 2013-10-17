@@ -1,0 +1,33 @@
+likes: <%= type.likes.length %>
+
+<form
+  action="<%= like_url(like) %>"
+  class="button_to"
+  method="post"
+  id="unlike-form<%= type.id %>"
+  data-remote="true">
+
+  <input
+     name="_method"
+     type="hidden"
+     value="delete">
+  <input type="submit" value="Unlike">
+  <input name="authenticity_token"
+         type="hidden"
+         value="<%= form_authenticity_token %>">
+</form>
+
+<script>
+
+$(document).ready(function(){
+
+  //move to a class
+  $("[id^=unlike-form]").on("ajax:success", function(event, data){
+    console.log("UNLIKE");
+    $like = $($(event.target).parent()[0])
+    $like.html(data)
+  });
+
+});
+
+</script>

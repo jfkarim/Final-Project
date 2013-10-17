@@ -1,6 +1,17 @@
 <h1><%= @album.title %></h1>
 <%= link_to "Edit Album", edit_user_album_url(@user, @album) %>
 
+<div class="like">
+  <% like = Like.where(user_id: current_user,
+                   likeable_id: @album.id,
+                   likeable_type: "Album")[0] %>
+  <% if like %>
+    <%= render "likes/unlike", type: @album, like: like %>
+  <% else %>
+    <%= render "likes/form", type: @album %>
+  <% end %>
+</div>
+
 <h2>Description</h2>
 <p><%= @album.description %></p>
 
@@ -16,10 +27,10 @@
 <h2>Comments: </h2>
 <ul class="comment-list">
 <% @album.comments.each do |comment| %>
-  <%= render "comments/show", user: @user, comment: comment, type: @album %>
+  <%= render "comments/show", owner: @user, comment: comment, type: @album %>
 <% end %>
 </ul>
-<%= render "comments/form", user: @user, type: @album %>
+<%= render "comments/form", owner: @user, type: @album %>
 
 <script>
 

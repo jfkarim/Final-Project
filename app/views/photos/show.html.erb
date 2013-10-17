@@ -10,17 +10,26 @@
   </li>
   <li>
     likes: <%= @photo.likes.length %>
-      <%= render "likes/form", user: @user, type: @photo %>
+    <div class="like">
+      <% like = Like.where(user_id: current_user,
+                       likeable_id: @photo.id,
+                       likeable_type: "Photo")[0] %>
+      <% if like %>
+        <%= render "likes/unlike", type: @photo, like: like %>
+      <% else %>
+        <%= render "likes/form", type: @photo %>
+      <% end %>
+    </div>
   </li>
 </ul>
 
 <h2>Comments: </h2>
 <ul class="comment-list">
 <% @photo.comments.each do |comment| %>
-  <%= render "comments/show", user: @user, comment: comment, type: @photo %>
+  <%= render "comments/show", owner: @user, comment: comment, type: @photo %>
 <% end %>
 </ul>
-<%= render "comments/form", user: @user, type: @photo %>
+<%= render "comments/form", owner: @user, type: @photo %>
 
 <script>
 

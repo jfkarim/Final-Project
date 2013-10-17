@@ -9,6 +9,7 @@ class Like < ActiveRecord::Base
   belongs_to :user
   belongs_to :post
   belongs_to :photo
+  belongs_to :album
   belongs_to :comment
 
 end

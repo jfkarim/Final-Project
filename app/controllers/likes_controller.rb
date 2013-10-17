@@ -5,28 +5,58 @@ class LikesController < ApplicationController
     #MUST CLEAN THIS UP / COMPLETE MESS
     type = params[:like][:likeable_type]
 
+    if type == "Comment"
+      type = Comment.find(@like.likeable_id)
+    elsif type == "Post"
+      type = Post.find(@like.likeable_id)
+    elsif type == "Photo"
+      type = Photo.find(@like.likeable_id)
+    elsif type == "Album"
+      type = Album.find(@like.likeable_id)
+    else
+      render text: "problem"
+    end
+
     if @like.save
-      if type == "Comment"
-        sub_type = Comment.find(params[:like][:likeable_id]).commentable_type.to_s
-        if sub_type == "Post"
-          redirect_to user_url(User.find(params[:owner_id]))
-        elsif sub_type == "Photo"
-          redirect_to user_photo_url(User.find(params[:owner_id]), Photo.find(params[:receiver_id]))
-        else
-          redirect_to user_album_url(User.find(params[:owner_id]), Album.find(params[:receiver_id]))
-        end
-      elsif type == "Post"
-        redirect_to user_url(User.find(params[:owner_id]))
-      else
-        redirect_to user_photo_url(User.find(params[:owner_id]), Photo.find(params[:receiver_id]))
-      end
+      render partial: "likes/unlike", locals: {like: @like, type: type}
+    else
+      render text: "problem"
     end
   end
 
   def destroy
     @like = Like.find(params[:id])
+    type = @like.likeable_type
+
     @like.destroy
-    render json: @like
+
+    if type == "Comment"
+      type = Comment.find(@like.likeable_id)
+      sub_type = type.commentable_type.to_s
+      if sub_type == "Post"
+        sub_type = Post.find(type.commentable_id)
+        render partial: "likes/form", locals: {type: type, sub_type: sub_type}
+      elsif sub_type == "Photo"
+        sub_type = Post.find(type.commentable_id)
+        render partial: "likes/form", locals: {type: type, sub_type: sub_type}
+      elsif sub_type == "Album"
+        sub_type = Album.find(type.commentable_id)
+        render partial: "likes/form", locals: {type: type, sub_type: sub_type}
+      else
+        render text: "problem"
+      end
+    elsif type == "Post"
+      type = Post.find(@like.likeable_id)
+      render partial: "likes/form", locals: {type: type}
+    elsif type == "Photo"
+      type = Photo.find(@like.likeable_id)
+      render partial: "likes/form", locals: {type: type}
+    elsif type == "Album"
+      type = Album.find(@like.likeable_id)
+      render partial: "likes/form", locals: {type: type}
+    else
+      render text: "problem"
+    end
   end
 
 end
