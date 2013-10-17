@@ -2,7 +2,6 @@
 
 <h2>Host: <%= @event.admin.artist_name %></h2>
 
-
 <h3>Where: <%= @event.address %></h3>
 <h3>When: <%= @event.date %> <%= @event.time.strftime('%H:%M:%S') %> </h3>
 <h3>Description</h3>
@@ -31,6 +30,9 @@
   <% end %>
 </ul>
 
+<%= render "layouts/wall", owner: @event %>
+
+<%= render "posts/form", owner: @event %>
 
 <% if @event.admin_id == current_user.id  %>
   <%= link_to "Invite People", new_event_event_user_url(@event) %>

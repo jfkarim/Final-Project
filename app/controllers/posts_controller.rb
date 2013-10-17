@@ -7,12 +7,21 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(params[:post])
-    @user = User.find(params[:receiver_id])
+    # throw check on server for meddling with form
+    owner_class = params[:receiver_class]
+
+    if owner_class == "User"
+      @owner = User.find(params[:receiver_id])
+    elsif owner_class == "Event"
+      @owner = Event.find(params[:receiver_id])
+    elsif owner_class == "Group"
+      @owner = Group.find(params[:receiver_id])
+    end
 
     @post.save
 
     if @post.persisted? && request.xhr?
-      render partial: "users/post_show", locals: {post: @post, user: current_user}
+      render partial: "posts/show", locals: {post: @post, owner: @owner}
     else
       redirect_to user_url(@user)
     end

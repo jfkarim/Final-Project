@@ -22,7 +22,10 @@
          value="<%= type.id %>">
   <input name="owner_id"
          type="hidden"
-         value="<%= user.id %>">
+         value="<%= owner.id %>">
+  <input name="owner_class"
+         type="hidden"
+         value="<%= owner.class.to_s %>">
   <input type="submit" value="Create Comment">
   <input name="authenticity_token"
          type="hidden"

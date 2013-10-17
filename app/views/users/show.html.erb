@@ -50,10 +50,10 @@
 <%= render "events", user: @user %>
 
 <h2>Wall</h2>
-<%= render "wall", user: @user %>
+<%= render "wall", owner: @user %>
 
 <% if can_post_on_wall?(@user)  %>
-  <%= render "posts/form", user: @user %>
+  <%= render "posts/form", owner: @user %>
 <% end %>
 
 <% if is_page_owner?(@user) %>

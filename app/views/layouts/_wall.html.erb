@@ -1,0 +1,21 @@
+<ul class="wall-show">
+  <% owner.wall.posts.each do |post| %>
+    <%= render "posts/show", owner: owner, post: post %>
+  <% end %>
+</ul>
+
+<script>
+
+$(document).ready(function(){
+
+  $("#post-form").on("ajax:success", function(event, data){
+    $(".wall-show").prepend(data);
+  });
+
+  $("[id^=comment-form]").on("ajax:success", function(event, data){
+    var $list = $($($(event.target).parent()).find(".comment-list")[0]);
+    $list.append(data);
+  });
+});
+
+</script>

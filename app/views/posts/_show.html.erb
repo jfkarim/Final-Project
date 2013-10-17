@@ -1,0 +1,14 @@
+<li>
+  <%= image_tag post.user.profile_picture.url(:icon) %>
+  <%= post.user.artist_name %><br>
+  <%= post.content %><br>
+  likes: <%= post.likes.length %>
+  <%= render "likes/form", owner: owner, type: post %>
+  <br>
+  <ul class="comment-list">
+    <% post.comments.each do |comment| %>
+      <%= render "comments/show", owner: owner, comment: comment, type: post %>
+    <% end %>
+  </ul>
+  <%= render "comments/form", owner: owner, type: post %>
+</li>
