@@ -12,11 +12,6 @@ $(document).ready(function(){
     $(".wall-show").prepend(data);
   });
 
-  $("[id^=comment-form]").on("ajax:success", function(event, data){
-    var $list = $($($(event.target).parent()).find(".comment-list")[0]);
-    $list.append(data);
-  });
-
 });
 
 </script>

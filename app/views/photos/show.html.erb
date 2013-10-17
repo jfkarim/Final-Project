@@ -1,4 +1,4 @@
-<%= image_tag @photo.picture.url %><br>
+<%= image_tag @photo.picture.url(:show) %><br>
 <%= link_to "Edit Photo", edit_user_photo_url(@user, @photo) %>
 
 <ul>

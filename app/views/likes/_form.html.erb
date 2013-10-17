@@ -2,9 +2,8 @@ likes: <%= type.likes.length %>
 
 <form
   action="<%= likes_url %>"
-  class="button_to"
+  class="button_to like-form<%= type.id %>"
   method="post"
-  id="like-form<%= type.id %>"
   data-remote="true">
 
   <input name="like[likeable_id]"
@@ -29,8 +28,7 @@ likes: <%= type.likes.length %>
 
 $(document).ready(function(){
 
-  //move to a class
-  $("[id^=like-form]").on("ajax:success", function(event, data){
+  $(".like-form<%= type.id %>").on("ajax:success", function(event, data){
     console.log("LIKE");
     $like = $($(event.target).parent()[0])
     $like.html(data)
