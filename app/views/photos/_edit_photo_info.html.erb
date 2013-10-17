@@ -1,12 +1,10 @@
 <form
-  action="<%= user_photo_url(photo) %>"
+  action="<%= user_photo_url(user, photo) %>"
   method="post"
-  id="photo-info-form"
-  data-remote="true">
-  <input
-     name="_method"
-     type="hidden"
-     value="put">
+  id="photo-info-form">
+     <input name="_method"
+            type="hidden"
+            value="put">
 
      <input type="hidden"
             name="authenticity_token"
@@ -16,9 +14,7 @@
      <input type="text" name="photo[location]" value="<%= photo.location %>">
      <br>
      <label>Description</label><br>
-     <textarea name="photo[description]" rows="4" cols="30">
-       <%= photo.description %>
-     </textarea>
+     <textarea name="photo[description]" rows="4" cols="30"><%= photo.description %></textarea>
      <br>
      <input type="submit" value="Save Changes">
 </form>

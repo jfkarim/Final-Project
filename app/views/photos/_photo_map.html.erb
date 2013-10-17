@@ -2,8 +2,8 @@
 
 <style>
   html, body, #map-canvas {
-    height: 100px;
-    width: 100px;
+    height: 200px;
+    width: 200px;
     margin: 0px;
     padding: 0px
   }
@@ -15,9 +15,9 @@
 
 <script type="text/javascript">
   function initialize() {
-
+    console.log("HERE");
     var mapOptions = {
-      zoom: 10,
+      zoom: 6,
       center: new google.maps.LatLng(40.7577, -73.9857),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -32,10 +32,11 @@
         <%= photo.longitude %>,
         "<%= photo.description %>",
         "<%= photo.location %>")
+
       bounds.extend(new google.maps.LatLng(
         <%= photo.latitude %>,
         <%= photo.longitude %>))
-      <% end %>
+    <% end %>
 
     map.fitBounds(bounds);
 
