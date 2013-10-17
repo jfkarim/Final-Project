@@ -16,8 +16,7 @@
   action="<%= user_photos_url %>"
   method="post"
   enctype="multipart/form-data"
-  id="new-photo"
-  data-remote="true">
+  id="new-photo">
 
   <input type="hidden"
          name="authenticity_token"
@@ -33,7 +32,7 @@
 
 $(document).ready(function(){
 
-  $(".photos-list").on("ajax:success", "#photo-delete", function(event, data){
+  $(".photos-list").on("ajax:success", ".photo-delete", function(event, data){
     $($(event.target).parent()[0]).remove()
   });
 

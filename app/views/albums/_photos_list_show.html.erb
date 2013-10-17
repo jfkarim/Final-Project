@@ -1,5 +1,5 @@
 <li>
   <%= image_tag photo.picture.url(:standard) %><br>
-  <%= render "photos/edit_photo_info", photo: photo %>
+  <%= render "photos/edit_photo_info", user: user, photo: photo %>
   <%= render "remove_photo", photo: photo, user: user %>
 </li>
