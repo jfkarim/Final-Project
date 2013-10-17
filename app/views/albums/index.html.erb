@@ -4,9 +4,6 @@
 <% @albums.each do |album| %>
   <li>
     <%= link_to album.title, user_album_url(@user, album) %>
-    <!-- <a href="<%#= user_photo_url(@user, photo) %>">
-      <%#= image_tag album.cover_photo.picture.url(:standard) %>
-    </a> -->
   </li>
 <% end %>
 </ul>

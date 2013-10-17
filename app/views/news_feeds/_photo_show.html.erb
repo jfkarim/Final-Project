@@ -3,5 +3,14 @@
 <li>
   <%= owner.artist_name %> uploaded a new photo at <%= photo.created_at %><br>
   <%= image_tag photo.picture.url(:standard) %> <br>
-  <%= link_to "Photo Page", user_photo_url(owner, photo) %>
+  <%= link_to "Photo Page", user_photo_url(owner, photo) %><br>
+  <div class="like">
+    <%= render "likes/show", type: photo, sub_type: nil %>
+  </div>
+  <ul class="comment-list">
+    <% photo.comments.each do |comment| %>
+      <%= render "comments/show", owner: owner, comment: comment, type: photo %>
+    <% end %>
+  </ul>
+  <%= render "comments/form", owner: owner, type: photo %>
 </li>

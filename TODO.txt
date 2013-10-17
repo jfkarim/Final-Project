@@ -4,13 +4,7 @@ Sort the comments by date created
 
 Properly set a homepage and root
 
-Put wall on Group and Event Page
-
-Begin javascripting implementation:
-  -Add Friend/Remove Friend Button reactions UJS
-  -Approve/Deny etc. of Events, Groups, Friends (SHow status, remove without       refresh)
-
-Add Map to Picture Page
+Status
 
 Style!
 

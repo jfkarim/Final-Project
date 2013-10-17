@@ -1,0 +1,8 @@
+<% like = Like.where(user_id: current_user,
+                 likeable_id: type.id,
+                 likeable_type: type.class.to_s)[0] %>
+<% if like %>
+  <%= render "likes/unlike", type: type, like: like %>
+<% else %>
+  <%= render "likes/form", type: type, sub_type: sub_type%>
+<% end %>

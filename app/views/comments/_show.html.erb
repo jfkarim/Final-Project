@@ -2,13 +2,6 @@
   <%= comment.user.artist_name %>:
   <%= comment.content %><br>
   <div class="like">
-    <% like = Like.where(user_id: current_user,
-                     likeable_id: comment.id,
-                     likeable_type: "Comment")[0] %>
-    <% if like %>
-      <%= render "likes/unlike", type: comment, like: like %>
-    <% else %>
-      <%= render "likes/form", type: comment, sub_type: type %>
-    <% end %>
+    <%= render "likes/show", type: comment, sub_type: type %>
   </div>
 </li>

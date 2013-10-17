@@ -2,8 +2,22 @@
 <% receiver = User.find(post.wall.wallable_id) %>
 
 <li>
-  <%= owner.artist_name %> posted on
-  <%= receiver.artist_name %>'s wall <br>
+  <% if owner == receiver %>
+    <%= owner.artist_name %><br>
+  <% else %>
+    <%= owner.artist_name %> posted on
+    <%= receiver.artist_name %>'s wall <br>
+  <% end %>
   <%= post.content %><br>
-  at <%= post.created_at %>
+  at <%= post.created_at %><br>
+  <div class="like">
+    <%= render "likes/show", type: post, sub_type: nil %>
+  </div>
+  <br>
+  <ul class="comment-list">
+    <% post.comments.each do |comment| %>
+      <%= render "comments/show", owner: owner, comment: comment, type: post %>
+    <% end %>
+  </ul>
+  <%= render "comments/form", owner: owner, type: post %>
 </li>

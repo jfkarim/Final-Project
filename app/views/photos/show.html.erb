@@ -13,14 +13,7 @@
   </li>
   <li>
     <div class="like">
-      <% like = Like.where(user_id: current_user,
-                       likeable_id: @photo.id,
-                       likeable_type: "Photo")[0] %>
-      <% if like %>
-        <%= render "likes/unlike", type: @photo, like: like %>
-      <% else %>
-        <%= render "likes/form", type: @photo %>
-      <% end %>
+      <%= render "likes/show", type: @photo, sub_type: nil %>
     </div>
   </li>
 </ul>
@@ -32,16 +25,3 @@
 <% end %>
 </ul>
 <%= render "comments/form", owner: @user, type: @photo %>
-
-<script>
-
-$(document).ready(function(){
-
-  $("[id^=comment-form]").on("ajax:success", function(event, data){
-    var $list = $($($(event.target).parent()).find(".comment-list")[0]);
-    $list.append(data);
-  });
-
-});
-
-</script>

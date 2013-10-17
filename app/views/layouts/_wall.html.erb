@@ -12,6 +12,10 @@ $(document).ready(function(){
     $(".wall-show").prepend(data);
   });
 
+  $("#status-form").on("ajax:success", function(event, data){
+    $(".wall-show").prepend(data);
+  });
+
 });
 
 </script>
