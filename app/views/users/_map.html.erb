@@ -12,7 +12,7 @@
 </style>
 
 <script type="text/javascript"
- src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_API_KEY'] %>&sensor=false">
+ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZKpK0ISxqqqxqbOnpC4-9FHY7rrsOlHY&sensor=false">
 </script>
 
 <script type="text/javascript">
@@ -31,14 +31,14 @@
     <% photos.each do |photo| %>
       <% if photo.location != "" && photo.location != nil %>
         createMarker(
-          <%= photo.latitude %>,
-          <%= photo.longitude %>,
+          <%= photo.lat_lng[0] %>,
+          <%= photo.lat_lng[1] %>,
           "<%= photo.description %>",
           "<%= photo.location %>",
           "<%= photo.user.artist_name %>")
         bounds.extend(new google.maps.LatLng(
-          <%= photo.latitude %>,
-          <%= photo.longitude %>))
+          <%= photo.lat_lng[0] %>,
+          <%= photo.lat_lng[1] %>))
         <% end %>
     <% end %>
 
