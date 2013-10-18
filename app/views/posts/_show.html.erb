@@ -11,7 +11,7 @@
       <%= render "likes/show", type: post, sub_type: nil %>
     </div>
     <ul class="comment-list">
-      <% post.comments.each do |comment| %>
+      <% post.comments.reverse.each do |comment| %>
         <%= render "comments/show", owner: owner, comment: comment, type: post %>
       <% end %>
     </ul>
@@ -36,29 +36,4 @@
   font-size: 16px;
 }
 
-.comment-list {
-  clear: left;
-  margin: 30px 0 0 20px;
-}
-
-.comment-list > li {
-  clear: left;
-  font-size: 14px;
-}
-
-.comment-form {
-  display: block;
-  font-size: 12px;
-  clear: left;
-  margin: 30px 0 0 20px;
-}
-
-.comment-form input[type="text"] {
-  width: 150px;
-  margin: 0;
-  border: 1px solid #FF6600;
-  border-radius: 1px;
-  background-color: #5B605F;
-  color: #E3E3E3;
-}
 </style>

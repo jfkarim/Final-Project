@@ -2,7 +2,7 @@
   action="<%= comments_url %>"
   class="button_to comment-form"
   method="post"
-  id="comment-form<%= type.id %>"
+  id="comment-form<%= type.id %><%= type.class.to_s %>"
   data-remote="true">
 
   <input type="text" name="comment[content]">
@@ -34,8 +34,10 @@
 
 $(document).ready(function(){
 
-  $("#comment-form<%= type.id %>").on("ajax:success", function(event, data){
+  $("#comment-form<%= type.id %><%= type.class.to_s %>").on("ajax:success", function(event, data){
+    console.log("here")
     var $list = $($($(event.target).parent()).find(".comment-list")[0]);
+    console.log($list)
     $list.append(data);
   });
 

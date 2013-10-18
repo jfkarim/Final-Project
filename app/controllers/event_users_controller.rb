@@ -14,7 +14,7 @@ class EventUsersController < ApplicationController
       status: "PENDING")
 
     if @event_user.save
-      redirect_to new_event_event_user_url(@event)
+      render json: @event_user
     else
       redirect_to new_event_event_user_url(@event)
     end

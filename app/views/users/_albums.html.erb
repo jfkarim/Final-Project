@@ -1,7 +1,9 @@
 <ul class="albums-dropdown">
+  <% if is_page_owner?(user) %>
   <li>
     <%= link_to "Create Album", new_user_album_url(user) %>
   </li>
+  <% end %>
   <% user.albums.each do |album| %>
     <li>
       <%= link_to album.title, user_album_url(user, album) %>

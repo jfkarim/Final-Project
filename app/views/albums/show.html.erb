@@ -1,15 +1,19 @@
-<h1><%= @album.title %></h1>
+<section class=page>
+<h1 class="album-title"><%= @album.title %></h1><br>
 <%= link_to "Edit Album", edit_user_album_url(@user, @album) %>
 
-<div class="like">
-  <%= render "likes/show", type: @album, sub_type: nil %>
-</div>
-
+<div class="album-info">
 <h2>Description</h2>
 <p><%= @album.description %></p>
 
-<h3>Photos</h3>
-<ul>
+<div class="like group">
+  <%= render "likes/show", type: @album, sub_type: nil %>
+</div>
+
+</div>
+
+<h3 class="photos-header">Photos</h3>
+<ul class="photos-list group">
 <% @album.photos.each do |photo| %>
   <li>
     <%= image_tag photo.picture.url(:standard) %><br>
@@ -19,21 +23,44 @@
 
 <h2>Comments: </h2>
 <ul class="comment-list">
-  <% @album.comments.each do |comment| %>
+  <% @album.comments.reverse.each do |comment| %>
     <%= render "comments/show", owner: @user, comment: comment, type: @album %>
   <% end %>
 </ul>
 <%= render "comments/form", owner: @user, type: @album %>
 
-<script>
+</section>
 
-$(document).ready(function(){
+<style>
 
-  $("[id^=comment-form]").on("ajax:success", function(event, data){
-    var $list = $($($(event.target).parent()).find(".comment-list")[0]);
-    $list.append(data);
-  });
+.album-title {
+  font-size: 30px;
+  color: #FF6600;
+}
 
-});
+.album-info {
+  display: block;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+  margin: 10px 0;
+}
 
-</script>
+.photos-header {
+  display: block;
+  font-size: 20px;
+  color: #FF6600;
+}
+
+.photos-list {
+  display: block;
+  margin: 10px auto;
+}
+
+.photos-list > li {
+  display: block;
+  float: left;
+  margin: 0 10px;
+  border: 2px solid #FF6600;
+}
+
+</style>

@@ -1,4 +1,15 @@
 <h2 class="alias"><%= @user.artist_name %></h2>
+<div class="friend-status">
+<% if @user != current_user %>
+  <% if current_user.approved_friends.include?(@user) %>
+    <%= render "remove_friend", user: @user %>
+  <% elsif @user.pending_friends.include?(current_user) %>
+    <p class="requested">Friend Request Sent</p>
+  <% else %>
+    <%= render "add_friend", user: @user %>
+  <% end %>
+<% end %>
+</div>
 
 <div class="user-attributes">
 <label>Influences</label>
@@ -71,4 +82,14 @@
   padding: 5px;
 }
 
+.requested {
+  text-align: center;
+  display: block;
+  padding: 5px;
+  margin: 10px 0;
+  background: #5B605F;
+  color: #FF6600;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+}
 </style>

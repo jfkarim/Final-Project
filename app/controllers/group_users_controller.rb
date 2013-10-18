@@ -14,7 +14,7 @@ class GroupUsersController < ApplicationController
       status: "PENDING")
 
     if @group_user.save
-      redirect_to new_group_group_user_url(@group)
+      render json: @group_user
     else
       redirect_to new_group_group_user_url(@group)
     end

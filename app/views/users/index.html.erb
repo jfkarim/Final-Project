@@ -1,15 +1,44 @@
-<h1>All Artists</h1>
+<section class="page">
+<h1 class="all-artists">All Artists</h1>
 
 <ul class="artist-list">
 <% @users.each do |user| %>
 <li>
-  <%= user.profile_picture.url(:icon) %>
+  <%= image_tag user.profile_picture.url(:icon) %>
   <%= link_to user.artist_name, user_url(user) %>
 </li>
 <% end %>
 </ul>
-
+<div class="map">
 <h2>The Map of Maps</h2>
 <div id="map-canvas">
 </div>
 <%= render "map_of_maps", photos: @photos %>
+</div>
+</section>
+
+<style>
+
+.all-artists {
+  font-size: 20px;
+  color: #FF6600;
+}
+
+.map {
+  margin: 10px 0;
+  padding: 10px;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+  font-weight: bold;
+}
+
+.map h2 {
+  text-align: center;
+  font-size: 30px;
+  margin: 10px;
+}
+
+#map-canvas {
+  margin: auto;
+}
+</style>

@@ -1,6 +1,6 @@
 <% owner = User.find(album.user_id) %>
 
-<li>
+<li class="news-feed-album">
   <%= owner.artist_name %> uploaded a new album: <%= album.title %> <br>
   <% if album.photos.length > 0 %>
     <%= image_tag album.photos.first.picture.url(:standard) %> <br>
@@ -11,9 +11,19 @@
     <%= render "likes/show", type: album, sub_type: nil %><br>
   </div>
   <ul class="comment-list">
-    <% album.comments.each do |comment| %>
+    <% album.comments.reverse.each do |comment| %>
       <%= render "comments/show", owner: owner, comment: comment, type: album %>
     <% end %>
   </ul>
   <%= render "comments/form", owner: owner, type: album %>
 </li>
+
+<style>
+
+.news-feed-album {
+  padding: 5px;
+  margin: 10px 0;
+  border: 2px solid #FF6600;
+}
+
+</style>

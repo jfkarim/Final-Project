@@ -1,8 +1,9 @@
 <section class="page">
-
-  <%= render "lone_upload", user: @user %>
-
-  <ul>
+  <h1 class="photos-header">Photos</h1>
+  <% if is_page_owner?(@user) %>
+    <%= render "lone_upload", user: @user %>
+  <% end %>
+  <ul class="photos-list group">
   <% @photos.each do |photo| %>
     <li>
       <a href="<%= user_photo_url(@user, photo) %>">
@@ -14,6 +15,11 @@
 </section>
 
 <style>
+
+.photos-header {
+  font-size: 20px;
+  color: #FF6600;
+}
 
 .lone-upload {
   width: 55%;
@@ -37,4 +43,15 @@
   background: #5B605F;
 }
 
+.photos-list {
+  display: block;
+  margin: 10px auto;
+}
+
+.photos-list > li {
+  display: block;
+  float: left;
+  margin: 0 10px;
+  border: 2px solid #FF6600;
+}
 </style>

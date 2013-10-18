@@ -1,4 +1,6 @@
-<form action="<%= group_url(@group) %>" method="post">
+<section class="page">
+<h1 class="edit-group">Edit Group</h1>
+<form action="<%= group_url(@group) %>" method="post" class="group-form">
 
   <input
      name="_method"
@@ -10,21 +12,21 @@
      type="hidden"
      value="<%= form_authenticity_token %>">
 
-  <label for="group_name">Name</label>
+  <div class="input-field">
+  <label class="input-label">Name:</label>
   <input
-     id="group_name"
-     name="group[name]"
-     type="text"
-     value="<%= @group.name %>">
-  <br>
+    class="input-bar"
+    name="group[name]"
+    type="text"
+    value="<%= @group.name %>">
+  </div>
 
-  <label for="group_description">Description</label><br>
-  <textarea
-     name="group[description]"
-     rows="4" cols="50"><%= @group.description %></textarea>
-  <br>
+  <div class="input-field">
+  <label class="input-label">Description:</label>
+  <input type="text" class="input-bar" name="group[description]" value="<%= @group.description %>">
+  </div>
 
-  <input type="submit" value="Save Changes">
+  <input type="submit" value="Update Group">
 </form>
 
 <h3>Members</h3>
@@ -66,4 +68,61 @@
 
   <input type="submit" value="Delete Group">
 </form>
+</section>
 
+<style>
+
+.edit-group {
+  font-size: 20px;
+  color: #FF6600;
+}
+
+.group-form {
+  width: 70%;
+  display: block;
+  margin: 10px auto;
+}
+
+.input-field {
+  width: 100%;
+  display: block;
+  float: left;
+  padding: 5px 0 10px 0;
+  margin: 5px 0 10px 0;
+  border-bottom: 2px solid #FF6600;;
+}
+
+.input-label {
+  float: left;
+  font-size: 20px;
+  vertical-align: bottom;
+  padding: 7px 0 0 0;
+  color: #FF6600;
+}
+
+.input-bar {
+  float: right;
+  width: 400px;
+  margin: 0;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+  background-color: #5B605F;
+  font-size: 20px;
+  color: #E3E3E3;
+}
+
+.group-form input[type="submit"] {
+  display: block;
+  padding: 5px;
+  margin: 10px auto;
+  background: #5B605F;
+  color: #FF6600;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+}
+
+.group-form input[type="submit"]:hover {
+  background: #464646;
+}
+
+</style>

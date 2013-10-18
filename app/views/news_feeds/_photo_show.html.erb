@@ -1,6 +1,6 @@
 <% owner = User.find(photo.user_id) %>
 
-<li>
+<li class="news-feed-photo">
   <%= owner.artist_name %> uploaded a new photo at <%= photo.created_at %><br>
   <%= image_tag photo.picture.url(:standard) %> <br>
   <%= link_to "Photo Page", user_photo_url(owner, photo) %><br>
@@ -8,9 +8,19 @@
     <%= render "likes/show", type: photo, sub_type: nil %>
   </div>
   <ul class="comment-list">
-    <% photo.comments.each do |comment| %>
+    <% photo.comments.reverse.each do |comment| %>
       <%= render "comments/show", owner: owner, comment: comment, type: photo %>
     <% end %>
   </ul>
   <%= render "comments/form", owner: owner, type: photo %>
 </li>
+
+<style>
+
+.news-feed-photo {
+  padding: 5px;
+  margin: 10px 0;
+  border: 2px solid #FF6600;
+}
+
+</style>

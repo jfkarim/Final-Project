@@ -1,15 +1,88 @@
-<h1>Create New Album</h1>
+<section class="page">
 
-<form action="<%= user_albums_url %>" method="post">
+<h1 class="create-album">Create New Album</h1>
+
+<form action="<%= user_albums_url %>" method="post" class="album-info-form">
   <input type="hidden"
          name="authenticity_token"
          value="<%= form_authenticity_token %>">
-
-  <label>Title</label>
-  <input type="text" name="album[title]">
-  <br>
-  <label>Description</label><br>
-  <textarea name="album[description]" rows="4" cols="30"></textarea>
-  <br>
+  <div class="input-field">
+  <label class="input-label">Title</label>
+  <input type="text" class="input-bar" name="album[title]">
+  </div>
+  <div class="input-field">
+  <label class="input-label">Description</label>
+  <input type="text" class="input-bar" name="album[description]">
+  </div>
   <input type="submit" value="Create Album">
 </form>
+
+</section>
+
+<style>
+
+.create-album {
+  font-size: 20px;
+  color: #FF6600;
+}
+
+.image {
+  display: block;
+  width: 70%;
+  margin: 10px auto;
+}
+
+img {
+  display: block;
+  margin: 10px auto;
+}
+
+.album-info-form {
+  width: 70%;
+  display: block;
+  margin: 10px auto;
+}
+
+.input-field {
+  width: 100%;
+  display: block;
+  float: left;
+  padding: 5px 0 10px 0;
+  margin: 5px 0 10px 0;
+  border-bottom: 2px solid #FF6600;;
+}
+
+.input-label {
+  float: left;
+  font-size: 20px;
+  vertical-align: bottom;
+  padding: 7px 0 0 0;
+  color: #FF6600;
+}
+
+.input-bar {
+  float: right;
+  width: 350px;
+  margin: 0;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+  background-color: #5B605F;
+  font-size: 20px;
+  color: #E3E3E3;
+}
+
+.album-info-form input[type="submit"] {
+  display: block;
+  padding: 5px;
+  margin: 10px auto;
+  background: #5B605F;
+  color: #FF6600;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+}
+
+.album-info-form input[type="submit"]:hover {
+  background: #464646;
+}
+
+</style>

@@ -1,23 +1,33 @@
 <% owner = User.find(post.user_id) %>
 <% receiver = User.find(post.wall.wallable_id) %>
 
-<li>
+<li class="news-feed-post">
   <% if owner == receiver %>
-    <%= owner.artist_name %><br>
+    <%= owner.artist_name %> at <%= post.created_at %><br>
   <% else %>
     <%= owner.artist_name %> posted on
-    <%= receiver.artist_name %>'s wall <br>
+    <%= receiver.artist_name %>'s wall at <%= post.created_at %><br>
   <% end %>
   <%= post.content %><br>
-  at <%= post.created_at %><br>
+  <br>
   <div class="like">
     <%= render "likes/show", type: post, sub_type: nil %>
   </div>
   <br>
   <ul class="comment-list">
-    <% post.comments.each do |comment| %>
+    <% post.comments.reverse.each do |comment| %>
       <%= render "comments/show", owner: owner, comment: comment, type: post %>
     <% end %>
   </ul>
   <%= render "comments/form", owner: owner, type: post %>
 </li>
+
+<style>
+
+.news-feed-post {
+  padding: 5px;
+  margin: 10px 0;
+  border: 2px solid #FF6600;
+}
+
+</style>

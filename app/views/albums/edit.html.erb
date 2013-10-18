@@ -1,9 +1,11 @@
-<h1>Edit Album/Add Photos</h1>
+<section class="page">
+
+<h1 class="edit-album">Edit Album/Add Photos</h1>
 <div class="edit-info">
   <%= render "edit_album_info", album: @album, user: current_user %>
 </div>
 <h2>Photos</h2>
-<ul class="photos-list">
+<ul class="photos-list group">
 <% @album.photos.each do |photo| %>
   <%= render "photos_list_show", user: current_user, photo: photo %>
 <% end %>
@@ -28,6 +30,8 @@
 
 <%= button_to "Delete Album", user_album_url(@album), method: :delete %>
 
+</section>
+
 <script>
 
 $(document).ready(function(){
@@ -39,3 +43,73 @@ $(document).ready(function(){
 });
 
 </script>
+
+<style>
+
+.edit-album {
+  font-size: 20px;
+  color: #FF6600;
+}
+
+.image {
+  display: block;
+  width: 70%;
+  margin: 10px;
+  float: left;
+}
+
+img {
+  display: block;
+  margin: 5px;
+  float: left;
+}
+
+.edit-album-info {
+  width: 70%;
+  display: block;
+  margin: 10px auto;
+}
+
+.input-field {
+  width: 100%;
+  display: block;
+  float: left;
+  padding: 5px 0 10px 0;
+  margin: 5px 0 10px 0;
+  border-bottom: 2px solid #FF6600;
+}
+
+.input-label {
+  float: left;
+  font-size: 20px;
+  vertical-align: bottom;
+  padding: 7px 0 0 0;
+  color: #FF6600;
+}
+
+.input-bar {
+  float: right;
+  width: 400px;
+  margin: 0;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+  background-color: #5B605F;
+  font-size: 20px;
+  color: #E3E3E3;
+}
+
+.edit-album-info input[type="submit"] {
+  display: block;
+  padding: 5px;
+  margin: 10px auto;
+  background: #5B605F;
+  color: #FF6600;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+}
+
+.edit-album-info input[type="submit"]:hover {
+  background: #464646;
+}
+
+</style>

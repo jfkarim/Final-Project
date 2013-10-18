@@ -2,16 +2,19 @@
 
   <div class="image">
     <%= image_tag @photo.picture.url(:show) %><br>
+    <%= link_to "Edit Photo", edit_user_photo_url(@user, @photo) %>
   </div>
-<%= link_to "Edit Photo", edit_user_photo_url(@user, @photo) %>
 
-
+<div class="photo-info group">
 <ul>
   <li>
-    Location: <%= @photo.location %>
     <div id="map-canvas">
     </div>
     <%= render "photo_map", photo: @photo %>
+  </li>
+  <div class="photo-info-no-map">
+  <li>
+    Location: <%= @photo.location %>
   </li>
   <li>
     Description: <%= @photo.description %>
@@ -21,15 +24,16 @@
       <%= render "likes/show", type: @photo, sub_type: nil %>
     </div>
   </li>
+  </div>
 </ul>
-
-<h2>Comments: </h2>
-<ul class="comment-list">
-<% @photo.comments.each do |comment| %>
+<h2>Comments:</h2>
+<ul class="comment-list group">
+<% @photo.comments.reverse.each do |comment| %>
   <%= render "comments/show", owner: @user, comment: comment, type: @photo %>
 <% end %>
 </ul>
 <%= render "comments/form", owner: @user, type: @photo %>
+</div>
 </section>
 
 <style>
@@ -47,4 +51,22 @@ img {
   border-radius: 2px;
 }
 
+.photo-info {
+  display: block;
+  width: 70%;
+  margin: 10px auto;
+}
+
+.photo-info-no-map {
+  display: block;
+  float: left;
+  margin: 10px auto;
+  border: 2px solid #FF6600;;
+  border-radius: 2px;
+}
+
+.comments-list {
+  display: block;
+  float: right;
+}
 </style>

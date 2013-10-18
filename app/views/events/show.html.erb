@@ -1,12 +1,16 @@
-<h1><%= @event.name %></h1>
+<section class="page">
+<h1 class="event-name"><%= @event.name %></h1>
 
-<h2>Host: <%= @event.admin.artist_name %></h2>
+<h2 class="event-host">Host: <%= @event.admin.artist_name %></h2>
 
+<div class="event-info">
 <h3>Where: <%= @event.address %></h3>
 <h3>When: <%= @event.date %> <%= @event.time.strftime('%H:%M:%S') %> </h3>
 <h3>Description</h3>
 <p><%= @event.description %></p>
+</div>
 
+<div class="invites-status">
 <h3>Invites Status</h3>
 
 <h4>Going</h4>
@@ -29,12 +33,21 @@
     <li><%= link_to user.artist_name, user_url(user) %></li>
   <% end %>
 </ul>
+</div>
 
-<%= render "layouts/wall", owner: @event %>
-
+<div class="event-wall">
 <%= render "posts/form", owner: @event %>
+<%= render "layouts/wall", owner: @event %>
+</div>
 
 <% if @event.admin_id == current_user.id  %>
   <%= link_to "Invite People", new_event_event_user_url(@event) %>
   <%= link_to "Edit Event", edit_event_url(@event) %>
 <% end %>
+
+</section>
+
+
+<style>
+
+</style>

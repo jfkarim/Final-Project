@@ -1,9 +1,10 @@
-<li>
+<li class="photo-show group">
   <%= image_tag photo.picture.url(:standard) %><br>
-  <div class="edit-photo-info">
+  <div class="edit-photo-info group">
     <%= render "albums/edit_photo_show_info", user: user, photo: photo %>
+    <%= render "remove_photo", photo: photo, user: user %>
   </div>
-  <%= render "remove_photo", photo: photo, user: user %>
+
 </li>
 
 <script>
@@ -19,3 +20,62 @@ $(document).ready(function(){
 });
 
 </script>
+
+<style>
+
+.photo-show {
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+  padding: 5px;
+  margin: 10px;
+}
+
+.edit-photo-info {
+  float: right;
+  display: inline;
+}
+
+.edit-photo-info-form {
+  display: inline;
+}
+
+.edit-photo-info-form input[type="submit"] {
+  font-size: 14px;
+  display: inline;
+  padding: 5px;
+  margin: 10px 0;
+  background: #5B605F;
+  color: #FF6600;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+}
+
+.edit-photo-info-form input[type="submit"]:hover {
+  background: #464646;
+}
+
+.input-field-small {
+  display: block;
+  padding: 5px 0 10px 0;
+  margin: 5px 0 10px 0;
+}
+
+.input-label-small {
+  display: block;
+  font-size: 14px;
+  vertical-align: bottom;
+  padding: 7px 0 0 0;
+  color: #FF6600;
+}
+
+.input-bar-small {
+  float: right;
+  width: 400px;
+  margin: 0;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+  background-color: #5B605F;
+  font-size: 20px;
+  color: #E3E3E3;
+}
+</style>

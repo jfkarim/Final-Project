@@ -1,14 +1,17 @@
-<h1>Invite People To Event</h1>
-<h3>Artists</h3>
+<section class="page">
+<h1 class="invite-people">Invite People To Event</h1>
+<h3 class="artists-header">Artists</h3>
 <ul>
   <% @users.each do |user| %>
     <% unless user == current_user %>
       <li>
+        <%= image_tag user.profile_picture.url(:icon) %>
         <%= link_to user.artist_name, user_url(user) %>
+        <div class="invite-status">
         <% if @event.pending_users.include?(user) %>
-          Request Sent
+          <p class="invited">Invited</p>
         <% else %>
-        <form action="<%= event_event_users_url(@event) %>" method="post">
+        <form action="<%= event_event_users_url(@event) %>" method="post" class="invite-button" data-remote="true">
           <input
              name="authenticity_token"
              type="hidden"
@@ -23,9 +26,63 @@
           <input type="submit" value="Invite">
         </form>
         <% end %>
+        </div>
       </li>
     <% end %>
   <% end %>
 </ul>
 
 <%= link_to "Done", event_url(@event) %>
+</section>
+
+<script>
+
+$(document).ready(function(){
+
+  $(".invite-button").on("ajax:success", function(event, data){
+    $inviteStatus = $($(event.target).parent()[0])
+    $inviteStatus.html("<p class='invited'>Invited</p>");
+  });
+
+});
+
+</script>
+
+<style>
+
+.invite-people {
+  font-size: 20px;
+  color: #FF6600;
+}
+
+.artists-header {
+  font-size: 18px;
+  text-decoration: underline;
+  color: #FF6600;
+}
+
+.invite-button input[type="submit"] {
+  display: block;
+  padding: 5px;
+  margin: 10px 0;
+  background: #5B605F;
+  color: #FF6600;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+}
+
+.invite-button input[type="submit"]:hover {
+  background: #464646;
+}
+
+.invited {
+  display: block;
+  width: 50px;
+  padding: 5px;
+  margin: 10px 0;
+  background: #5B605F;
+  color: #FF6600;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+}
+</style>
