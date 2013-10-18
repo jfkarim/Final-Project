@@ -1,9 +1,3 @@
-<% if @user.artist_name %>
-<%   @name = @user.artist_name %>
-<% else %>
-<%   @name = "Anonymous" %>
-<% end %>
-
 <h1><%= @name %></h1>
 <%= image_tag @user.profile_picture.url(:standard) %>
 
@@ -68,3 +62,13 @@
 <%= render "users/pending_requests", user: @user %>
 <% end %>
 <% end %>
+
+
+
+
+
+
+
+
+
+
