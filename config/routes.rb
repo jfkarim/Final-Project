@@ -1,4 +1,5 @@
 UrbanCanvas::Application.routes.draw do
+  root to: "sessions#new"
 
   resources :users do
     resources :themes, only: [:index]
@@ -42,7 +43,6 @@ UrbanCanvas::Application.routes.draw do
 
   resources :likes, only: [:create, :destroy]
 
-  root to: "sessions#new"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
