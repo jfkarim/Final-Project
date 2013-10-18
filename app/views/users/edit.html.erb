@@ -1,9 +1,4 @@
-<% if @user.artist_name %>
-<%   @name = @user.artist_name %>
-<% else %>
-<%   @name = "Anonymous" %>
-<% end %>
-
+<section class="page">
 <h1><%= @name %></h1>
 
 <h2>About</h2>
@@ -24,3 +19,10 @@
 
 <br>
 <%= link_to "Back to Profile", user_url(@user) %>
+</section>
+
+<style>
+
+
+
+</style>

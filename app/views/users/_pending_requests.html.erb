@@ -1,7 +1,7 @@
 <ul class="pending-dropdown">
   <li>
     Friends
-    <ul class="pending-friends-side-drop">
+    <ul class="pending-friends-side-drop group">
       <% user.pending_friends.each do |pending_friend| %>
         <li>
           <%= pending_friend.artist_name %>
@@ -17,7 +17,7 @@
 
   <li>
     Groups
-    <ul class="pending-groups-side-drop">
+    <ul class="pending-groups-side-drop group">
       <% user.pending_groups.each do |pending_group| %>
         <li>
           <%= pending_group.name %>
@@ -37,11 +37,9 @@
 .pending-friends-side-drop, .pending-groups-side-drop {
   display: none;
   position: absolute;
-  right: 0px;
-  margin-top: 6px;
-  left: -3px;
+  left: 200px;
+  padding-top: 6px;
   width: 200px;
-  width: 100%;
   border-bottom: 3px solid #FF6600;
   background: #5B605F;
 }
@@ -49,7 +47,6 @@
 .pending-dropdown > li {
   width: 100%;
   float: right;
-  position: relative;
   border-bottom: 3px solid #FF6600;
   background: #5B605F;
 }
@@ -59,11 +56,11 @@
 }
 
 .pending-dropdown > li:hover > .pending-friends-side-drop {
-  display: inline-block;
+  display: block;
 }
 
 .pending-dropdown > li:hover > .pending-groups-side-drop {
-  display: inline-block;
+  display: block;
 }
 
 </style>
