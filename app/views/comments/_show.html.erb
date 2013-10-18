@@ -1,7 +1,20 @@
 <li>
-  <%= comment.user.artist_name %>:
-  <%= comment.content %><br>
+  <div class="comment-info">
+    <%= comment.user.artist_name %>:
+    <%= comment.content %>
+  </div>
   <div class="like">
     <%= render "likes/show", type: comment, sub_type: type %>
   </div>
 </li>
+
+<style>
+
+.comment-info {
+  border: 2px solid #5B605F;
+  border-radius: 2px;
+  padding: 3px;
+  margin: 5px 0;
+}
+
+</style>

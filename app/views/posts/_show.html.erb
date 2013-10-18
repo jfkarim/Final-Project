@@ -1,15 +1,64 @@
-<li>
-  <%= image_tag post.user.profile_picture.url(:icon) %>
-  <%= post.user.artist_name %><br>
-  <%= post.content %><br>
-  <div class="like">
-    <%= render "likes/show", type: post, sub_type: nil %>
-  </div>
-  <br>
-  <ul class="comment-list">
-    <% post.comments.each do |comment| %>
-      <%= render "comments/show", owner: owner, comment: comment, type: post %>
-    <% end %>
-  </ul>
-  <%= render "comments/form", owner: owner, type: post %>
-</li>
+<div class="post-div">
+  <li>
+    <div class="post-header">
+      <%= image_tag post.user.profile_picture.url(:icon) %>
+      <%= post.user.artist_name %> at <%= post.created_at %>
+    </div>
+    <div class="post-content-format">
+      <%= post.content %><br>
+    </div>
+    <div class="like">
+      <%= render "likes/show", type: post, sub_type: nil %>
+    </div>
+    <ul class="comment-list">
+      <% post.comments.each do |comment| %>
+        <%= render "comments/show", owner: owner, comment: comment, type: post %>
+      <% end %>
+    </ul>
+    <%= render "comments/form", owner: owner, type: post %>
+  </li>
+</div>
+
+<style>
+
+.post-div {
+  padding: 5px;
+  margin: 5px 0;
+  border: 2px solid #5B605F;
+  border-radius: 2px;
+}
+
+.post-content-format {
+  margin: 3px;
+  padding: 2px;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+  font-size: 16px;
+}
+
+.comment-list {
+  clear: left;
+  margin: 30px 0 0 20px;
+}
+
+.comment-list > li {
+  clear: left;
+  font-size: 14px;
+}
+
+.comment-form {
+  display: block;
+  font-size: 12px;
+  clear: left;
+  margin: 30px 0 0 20px;
+}
+
+.comment-form input[type="text"] {
+  width: 150px;
+  margin: 0;
+  border: 1px solid #FF6600;
+  border-radius: 1px;
+  background-color: #5B605F;
+  color: #E3E3E3;
+}
+</style>

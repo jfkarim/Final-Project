@@ -1,13 +1,11 @@
 <form
   action="<%= comments_url %>"
-  class="button_to"
+  class="button_to comment-form"
   method="post"
   id="comment-form<%= type.id %>"
   data-remote="true">
 
-  <label>Enter Comment:</label><br>
-  <textarea name="comment[content]" rows="1" cols="35"></textarea>
-  <br>
+  <input type="text" name="comment[content]">
   <input name="comment[commentable_id]"
          type="hidden"
          value="<%= type.id %>">

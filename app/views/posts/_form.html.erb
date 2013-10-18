@@ -1,12 +1,11 @@
 <form
   action="<%= posts_url %>"
-  class="button_to"
+  class="button_to post-form"
   method="post"
-  id="status-form"
   data-remote="true">
 
-  <label>Post on Wall:</label><br>
-  <textarea name="post[content]" rows="3" cols="20"></textarea>
+  <label>Post on Wall:</label>
+  <input type="text" name="post[content]">
   <br>
   <input name="post[wall_id]"
          type="hidden"
@@ -25,3 +24,36 @@
          type="hidden"
          value="<%= form_authenticity_token %>">
 </form>
+
+<style>
+
+.post-form input[type="text"] {
+  width: 200px;
+  margin: 0;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+  background-color: #5B605F;
+  font-size: 14px;
+  color: #E3E3E3;
+}
+
+.post-form label {
+  font-size: 14px;
+}
+
+.post-form input[type="submit"] {
+  display: inline;
+  font-size: 12px;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+  background: #464646;
+  padding: 1px;
+  color: #E3E3E3;
+}
+
+.status-form input[type="submit"]:hover {
+  background: #5B605F;
+}
+
+
+</style>

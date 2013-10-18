@@ -1,13 +1,11 @@
 <form
   action="<%= posts_url %>"
-  class="button_to"
+  class="button_to status-form"
   method="post"
-  id="status-form"
   data-remote="true">
 
-  <label>What's up?</label><br>
+  <label>What's up?</label>
   <input type="text" name="post[content]">
-  <br>
   <input name="post[wall_id]"
          type="hidden"
          value="<%= owner.wall.id %>">
@@ -20,8 +18,40 @@
   <input name="post[user_id]"
          type="hidden"
          value="<%= current_user.id %>">
-  <input type="submit" value="Create Post">
+  <input type="submit" value="Create Status">
   <input name="authenticity_token"
          type="hidden"
          value="<%= form_authenticity_token %>">
 </form>
+
+<style>
+
+.status-form input[type="text"] {
+  width: 200px;
+  margin: 0;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+  background-color: #5B605F;
+  font-size: 14px;
+  color: #E3E3E3;
+}
+
+.status-form label {
+  font-size: 14px;
+}
+
+.status-form input[type="submit"] {
+  display: inline;
+  font-size: 12px;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+  background: #464646;
+  padding: 1px;
+  color: #E3E3E3;
+}
+
+.status-form input[type="submit"]:hover {
+  background: #5B605F;
+}
+
+</style>

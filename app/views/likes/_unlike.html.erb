@@ -1,4 +1,4 @@
-likes: <%= type.likes.length %>
+<div class="like-count"><%= type.likes.length %> likes</div>
 
 <form
   action="<%= like_url(like) %>"
@@ -20,7 +20,6 @@ likes: <%= type.likes.length %>
 
 $(document).ready(function(){
 
-  //move to a class
   $(".unlike-form<%= type.id %>").on("ajax:success", function(event, data){
     console.log("UNLIKE");
     $like = $($(event.target).parent()[0])

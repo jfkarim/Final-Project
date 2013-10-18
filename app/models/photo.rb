@@ -11,9 +11,9 @@ class Photo < ActiveRecord::Base
   has_many :likes, as: :likeable, dependent: :destroy
 
   has_attached_file :picture, styles: {
-    show: "500x500=",
+    show: "500x500>",
     standard: "200x200>",
-    icon: "75x75>"
+    icon: "50x50>"
   }
 
   def lat_lng

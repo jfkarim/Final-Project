@@ -8,14 +8,23 @@
 
 $(document).ready(function(){
 
-  $("#post-form").on("ajax:success", function(event, data){
+  $(".post-form").on("ajax:success", function(event, data){
     $(".wall-show").prepend(data);
   });
 
-  $("#status-form").on("ajax:success", function(event, data){
+  $(".status-form").on("ajax:success", function(event, data){
     $(".wall-show").prepend(data);
   });
 
 });
 
 </script>
+
+<style>
+
+.post-div {
+  padding: 5px;
+  margin: 5px 0;
+}
+
+</style>
