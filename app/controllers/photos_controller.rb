@@ -49,7 +49,7 @@ class PhotosController < ApplicationController
     @user = User.find(params[:user_id])
     @photo = Photo.find(params[:id])
     @photo.destroy
-    redirect_to user_url(@user)
+    render json: @photo
   end
 
 

@@ -13,6 +13,19 @@
   <input type="submit" value="Remove Photo">
 </form>
 
+<script>
+
+$(document).ready(function(){
+
+  $(".photo-delete").on("ajax:success", function(event, data){
+    console.log($(event.target).parent()[0])
+    $($($(event.target).parent()[0]).parent()[0]).remove()
+  });
+
+});
+
+</script>
+
 <style>
 
 .photo-delete {

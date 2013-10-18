@@ -1,6 +1,6 @@
 <li class="photo-show group">
   <%= image_tag photo.picture.url(:standard) %><br>
-  <div class="edit-photo-info group">
+  <div class="edit-album-photo-info group">
     <%= render "albums/edit_photo_show_info", user: user, photo: photo %>
     <%= render "remove_photo", photo: photo, user: user %>
   </div>
@@ -11,10 +11,10 @@
 
 $(document).ready(function(){
 
-  $(".edit-photo-info").on("ajax:success", function(event, data){
+  $(".edit-photo-info-form").on("ajax:success", function(event, data){
     var $editInfo = $($(event.target).parent()[0])
     $editInfo.html(data);
-    $editInfo.append("<span>Saved</span>")
+    $editInfo.append("<p class='saved'>Saved</p>")
   });
 
 });
@@ -30,16 +30,16 @@ $(document).ready(function(){
   margin: 10px;
 }
 
-.edit-photo-info {
+.edit-album-photo-info {
   float: right;
   display: inline;
 }
 
-.edit-photo-info-form {
+.edit-album-photo-info-form {
   display: inline;
 }
 
-.edit-photo-info-form input[type="submit"] {
+.edit-album-photo-info-form input[type="submit"] {
   font-size: 14px;
   display: inline;
   padding: 5px;
@@ -50,7 +50,7 @@ $(document).ready(function(){
   border-radius: 2px;
 }
 
-.edit-photo-info-form input[type="submit"]:hover {
+.edit-album-photo-info-form input[type="submit"]:hover {
   background: #464646;
 }
 

@@ -31,9 +31,18 @@ $(document).ready(function(){
   $(".edit-album-info").on("ajax:success", function(event, data){
     var $editInfo = $($(event.target).parent()[0])
     $editInfo.html(data);
-    $editInfo.append("<span>Saved</span>")
+    $editInfo.append("<p class='saved'>Saved</p>")
   });
 
 });
 
 </script>
+
+<style>
+
+.saved {
+  text-align: center;
+  margin: 5px auto;
+}
+
+</style>

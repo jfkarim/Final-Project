@@ -12,10 +12,11 @@
 </ul>
 
 
-<h3>Add Photo</h3>
+<h3 class="add-photo-header">Add Photo</h3>
 
 <form
   action="<%= user_photos_url %>"
+  class="add-photo"
   method="post"
   enctype="multipart/form-data"
   id="new-photo">
@@ -32,22 +33,38 @@
 
 </section>
 
-<script>
-
-$(document).ready(function(){
-
-  $(".photos-list").on("ajax:success", ".photo-delete", function(event, data){
-    $($(event.target).parent()[0]).remove()
-  });
-
-});
-
-</script>
-
 <style>
 
-.edit-album {
+
+.add-photo-header {
   font-size: 20px;
+  color: #FF6600;
+}
+
+.add-photo {
+  width: 55%;
+  padding: 10px;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+}
+
+.add-photo input[type="submit"] {
+  display: inline;
+  float: left;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+  background: #464646;
+  padding: 1px;
+  margin: 0 10px;
+  color: #E3E3E3;
+}
+
+.add-photo input[type="submit"]:hover {
+  background: #5B605F;
+}
+
+.edit-album {
+  font-size: 30px;
   color: #FF6600;
 }
 
