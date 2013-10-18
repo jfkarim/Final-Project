@@ -1,26 +1,186 @@
+<section class="logo group">
+  <h1>Urban Canvas</h1>
+</section>
+
+<section class="sign-in group">
+
 <h1>Sign In</h1>
 
-<form action="<%= session_url %>" method="post">
+<form action="<%= session_url %>" method="post" class="sign-in-form">
   <input
      name="authenticity_token"
      type="hidden"
      value="<%= form_authenticity_token %>">
 
-  <label for="user_username">Email</label>
+  <div class="input-field">
+  <label class="input-label">Email:</label>
   <input
-     id="user_email"
+     class="input-bar"
      name="user[email]"
      type="text">
-  <br>
+  </div>
 
-  <label for="user_password">Password</label>
+  <div class="input-field">
+  <label class="input-label">Password:</label>
   <input
-     id="user_password"
+     class="input-bar"
      name="user[password]"
      type="password">
-  <br>
-
+  </div>
   <input type="submit" value="Sign in">
 </form>
 
 <%= link_to "Sign Up", new_user_url %>
+</section>
+
+<style>
+/* --- Reset user agent styles --- */
+
+html, body, section, article, header, div, p, h3, img, a, time, input {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* --- Set basic html elements --- */
+
+body {
+  font-family: sans-serif;
+  color: #30343D;
+  background: #5B605F;
+}
+
+section, article, header {
+  display: block;
+}
+
+a {
+  color: #00f;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* --- Helper methods (clearfix) --- */
+
+.group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* --- ----------------------- --- */
+
+.logo {
+  background-color: #464646;
+  margin: 100px auto 0 auto;
+  width: 490px;
+  border: 5px solid #FF6600;
+  border-radius: 5px;
+}
+
+.logo > h1 {
+  text-align: center;
+  display: block;
+  margin: 0;
+  padding: 10px;
+  color: #FF6600;
+  background-color: #464646;
+}
+
+.sign-in {
+  background-color: #464646;
+  margin: 10px auto;
+  width: 490px;
+  border: 5px solid #FF6600;
+  border-radius: 5px;
+}
+
+.sign-in > h1 {
+  text-align: center;
+  display: block;
+  margin: 0;
+  padding: 10px;
+  color: #FF6600;
+  border-bottom: 2px solid #FF6600;
+  background-color: #464646;
+}
+
+.sign-in-form {
+  width: 70%;
+  display: block;
+  margin: 10px auto;
+}
+
+.input-field {
+  width: 100%;
+  display: block;
+  float: left;
+  padding: 5px 0 10px 0;
+  margin: 5px 0 10px 0;
+  border-bottom: 2px solid #FF6600;;
+}
+
+.input-label {
+  float: left;
+  font-size: 20px;
+  vertical-align: bottom;
+  padding: 7px 0 0 0;
+  color: #FF6600;
+}
+
+.input-bar {
+  float: right;
+  width: 200px;
+  margin: 0;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+  background-color: #5B605F;
+  font-size: 20px;
+  color: #E3E3E3;
+}
+
+.sign-in > form input[type="submit"] {
+  display: block;
+  width: 80px;
+  padding: 5px 0;
+  margin: 10px auto;
+  background: #5B605F;
+  color: #FF6600;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+}
+
+.sign-in > form input[type="submit"]:hover {
+  background: #464646;
+}
+
+.sign-in > a {
+  display: block;
+  width: 80px;
+  padding: 5px 0;
+  text-align: center;
+  margin: 10px auto;
+  background: #5B605F;
+  color: #FF6600;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+  cursor: default;
+}
+
+.sign-in > a:hover {
+  background: #464646;
+}
+
+</style>
