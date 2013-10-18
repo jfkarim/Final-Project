@@ -9,12 +9,12 @@
      <input type="hidden"
             name="authenticity_token"
             value="<%= form_authenticity_token %>">
-
-     <label>Location (if applicable)</label>
-     <input type="text" name="photo[location]" value="<%= photo.location %>">
-     <br>
-     <label>Description</label><br>
-     <textarea name="photo[description]" rows="4" cols="30"><%= photo.description %></textarea>
-     <br>
+     <div class="input-field">
+     <label class="input-label">Location (if applicable)</label>
+     <input type="text" class="input-bar" name="photo[location]" value="<%= photo.location %>">
+     </div>
+     <div class="input-field">
+     <label class="input-label">Description</label>
+     <input type="text" class="input-bar" name="photo[description]" value="<%= photo.description %>"></div>
      <input type="submit" value="Save Changes">
 </form>

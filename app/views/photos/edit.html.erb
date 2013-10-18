@@ -1,7 +1,81 @@
-<h1>Edit Photo</h1>
+<section class="page">
 
-<%= image_tag @photo.picture.url(:standard) %><br>
+  <h1 class="edit-photo">Edit Photo</h1>
 
-<%= render "photos/edit_photo_info", user: @user, photo: @photo %>
+  <div class="image">
+    <%= image_tag @photo.picture.url(:standard) %><br>
+  </div>
+  <%= render "photos/edit_photo_info", user: @user, photo: @photo %>
 
-<%= button_to "Delete Photo", user_photo_url(@photo), method: :delete %>
+  <%= button_to "Delete Photo", user_photo_url(@photo), method: :delete %>
+
+</section>
+
+<style>
+
+.edit-photo {
+  font-size: 20px;
+}
+
+.image {
+  display: block;
+  width: 70%;
+  margin: 10px auto;
+}
+
+img {
+  display: block;
+  margin: 10px auto;
+}
+
+.photo-info-form {
+  width: 70%;
+  display: block;
+  margin: 10px auto;
+}
+
+.input-field {
+  width: 100%;
+  display: block;
+  float: left;
+  padding: 5px 0 10px 0;
+  margin: 5px 0 10px 0;
+  border-bottom: 2px solid #FF6600;;
+}
+
+.input-label {
+  float: left;
+  font-size: 20px;
+  vertical-align: bottom;
+  padding: 7px 0 0 0;
+  color: #FF6600;
+}
+
+.input-bar {
+  float: right;
+  width: 350px;
+  margin: 0;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+  background-color: #5B605F;
+  font-size: 20px;
+  color: #E3E3E3;
+}
+
+.photo-info-form input[type="submit"] {
+  display: block;
+  padding: 5px;
+  margin: 10px auto;
+  background: #5B605F;
+  color: #FF6600;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+}
+
+.photo-info-form input[type="submit"]:hover {
+  background: #464646;
+}
+
+
+
+</style>

@@ -1,5 +1,10 @@
-<%= image_tag @photo.picture.url(:show) %><br>
+<section class="page">
+
+  <div class="image">
+    <%= image_tag @photo.picture.url(:show) %><br>
+  </div>
 <%= link_to "Edit Photo", edit_user_photo_url(@user, @photo) %>
+
 
 <ul>
   <li>
@@ -25,3 +30,21 @@
 <% end %>
 </ul>
 <%= render "comments/form", owner: @user, type: @photo %>
+</section>
+
+<style>
+
+.image {
+  display: block;
+  width: 70%;
+  margin: 10px auto;
+}
+
+img {
+  display: block;
+  margin: 10px auto;
+  border: 2px solid #FF6600;;
+  border-radius: 2px;
+}
+
+</style>

@@ -1,11 +1,40 @@
-<%= link_to "Albums", user_albums_url(@user) %>
+<section class="page">
 
-<ul>
-<% @photos.each do |photo| %>
-  <li>
-    <a href="<%= user_photo_url(@user, photo) %>">
-      <%= image_tag photo.picture.url(:standard) %>
-    </a>
-  </li>
-<% end %>
-</ul>
+  <%= render "lone_upload", user: @user %>
+
+  <ul>
+  <% @photos.each do |photo| %>
+    <li>
+      <a href="<%= user_photo_url(@user, photo) %>">
+        <%= image_tag photo.picture.url(:standard) %>
+      </a>
+    </li>
+  <% end %>
+  </ul>
+</section>
+
+<style>
+
+.lone-upload {
+  width: 55%;
+  padding: 10px;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+}
+
+.lone-upload input[type="submit"] {
+  display: inline;
+  float: left;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+  background: #464646;
+  padding: 1px;
+  margin: 0 10px;
+  color: #E3E3E3;
+}
+
+.lone-upload input[type="submit"]:hover {
+  background: #5B605F;
+}
+
+</style>
