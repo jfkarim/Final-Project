@@ -1,7 +1,21 @@
-<ul>
+<ul class="friends-dropdown">
   <% user.approved_friends.each do |friend| %>
-    <li value="<%= friend.id %>">
+    <li>
       <%= link_to friend.artist_name, user_url(friend) %>
     </li>
   <% end %>
 </ul>
+
+<style>
+
+.friends-dropdown > li {
+  width: 100%;
+  border-bottom: 3px solid #FF6600;
+  background: #5B605F;
+}
+
+.friends-dropdown > li:last-child {
+  border-bottom: 0;
+}
+
+</style>

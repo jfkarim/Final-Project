@@ -1,7 +1,24 @@
-<ul>
+<ul class="groups-dropdown">
+  <li>
+    <%= link_to "Create Group", new_group_url %>
+  </li>
   <% user.approved_groups.each do |group| %>
-    <li value="<%= group.id %>">
+    <li>
       <%= link_to group.name, group_url(group) %>
     </li>
   <% end %>
 </ul>
+
+<style>
+
+.groups-dropdown > li {
+  width: 100%;
+  border-bottom: 3px solid #FF6600;
+  background: #5B605F;
+}
+
+.groups-dropdown > li:last-child {
+  border-bottom: 0;
+}
+
+</style>

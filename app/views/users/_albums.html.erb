@@ -1,0 +1,24 @@
+<ul class="albums-dropdown">
+  <li>
+    <%= link_to "Create Album", new_user_album_url(user) %>
+  </li>
+  <% user.albums.each do |album| %>
+    <li>
+      <%= link_to album.title, user_album_url(user, album) %>
+    </li>
+  <% end %>
+</ul>
+
+<style>
+
+.albums-dropdown > li {
+  width: 100%;
+  border-bottom: 3px solid #FF6600;
+  background: #5B605F;
+}
+
+.albums-dropdown > li:last-child {
+  border-bottom: 0;
+}
+
+</style>

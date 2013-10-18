@@ -1,45 +1,74 @@
-<h2>About</h2>
-<p>Alias: <%= @user.artist_name %></p>
-<label>
-  Influences
+<h2 class="alias"><%= @user.artist_name %></h2>
+
+<div class="user-attributes">
+<label>Influences</label>
 <ul>
   <% user.influences.each do |influence| %>
-    <li value="<%= influence.id %>">
+    <li>
       <%= influence.name %>
     </li>
   <% end %>
 </ul>
-</label>
 
-<label>
-  Media
+<label>Media</label>
 <ul>
   <% user.media.each do |medium| %>
-    <li value="<%= medium.id %>">
+    <li>
       <%= medium.name %>
     </li>
   <% end %>
 </ul>
-</label>
 
-<label>
-  Themes
+<label>Themes</label>
 <ul>
   <% user.themes.each do |theme| %>
-    <li value="<%= theme.id %>">
+    <li>
       <%= theme.name %>
     </li>
   <% end %>
 </ul>
-</label>
 
-<label>
-  World Canvases
+<label>World Canvases</label>
 <ul>
   <% user.locations.each do |location| %>
-    <li value="<%= location.id %>">
+    <li>
       <%= location.city %>, <%= location.country %>
     </li>
   <% end %>
 </ul>
-</label>
+</div>
+<br>
+<%= link_to "Edit About", edit_user_url(user) %>
+<style>
+
+.alias {
+  padding: 5px;
+  margin-bottom: 10px;
+  padding-left: 0;
+  display: block;
+  color: #E3E3E3;
+  font-size: 26px;
+  border-bottom: 2px solid #FF6600;
+}
+
+.user-attributes > label {
+  width: 50%;
+  display: block;
+  padding: 5px;
+  padding-left: 0;
+  margin: 10px 0;
+  font-size: 16px;
+  border-bottom: 1px solid #FF6600;
+}
+
+.user-attributes > ul {
+  border: 1px solid #FF6600;
+  border-radius: 2px;
+}
+
+.user-attributes > ul > li {
+  display: block;
+  padding: 5px;
+}
+
+</style>

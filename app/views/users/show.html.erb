@@ -1,6 +1,3 @@
-<h1><%= @name %></h1>
-<%= image_tag @user.profile_picture.url(:standard) %>
-
 <div class="friend-status">
 <% if @user != current_user %>
   <% if current_user.approved_friends.include?(@user) %>
@@ -13,56 +10,170 @@
 <% end %>
 </div>
 
-<%= render "users/about", user: @user %>
-<br>
-<%= link_to "Photos", user_photos_url(@user) %><br>
+<div class="page group">
+  <section class="page-left">
+    <h1><%= @name %></h1>
+    <%= image_tag @user.profile_picture.url(:standard) %>
+    <%= render "users/about", user: @user %>
+  </section>
 
-<% if is_page_owner?(@user)  %>
-<%= link_to "Edit About", edit_user_url(@user) %><br>
-<%= link_to "Create Group", new_group_url %><br>
-<%= link_to "Create Event", new_event_url %><br>
-<%= link_to "Create New Album", new_user_album_url(@user) %><br><br>
+  <section class="page-right">
+    <nav class="activity-bar">
+      <ul>
+        <% if can_post_on_wall?(@user) || is_page_owner?(@user) %>
+        <li>
+          Friends
+          <%= render "friends", user: @user %>
+        </li>
+        <li>
+          Groups
+          <%= render "groups", user: @user %>
+        </li>
+        <li>
+          Events
+          <%= render "events", user: @user %>
+        </li>
+        <% if is_page_owner?(@user) %>
+        <li>
+          Pending
+          <%= render "users/pending_requests", user: @user %>
+        </li>
+        <% end %>
+        <li>
+          Albums
+          <%= render "albums", user: @user %>
+        </li>
+        <li>
+          <%= link_to "Photos", user_photos_url(@user) %>
+        </li>
+        <% end %>
+      </ul>
+    </nav>
 
-<%= render "photos/lone_upload", user: @user %>
-<br>
-<% end %>
+    <div class="canvas">
+      <h2>Canvas</h2>
+      <div id="map-canvas">
+      </div>
+      <%= render "map", photos: @user.photos %>
+    </div>
 
-<% if can_see_info?(@user) %>
+    <div class="wall">
+      <% if is_page_owner?(@user) %>
+        <%= render "posts/status", owner: current_user %>
+      <% end %>
+      <h2>Wall</h2>
+      <% if can_post_on_wall?(@user)  %>
+        <%= render "posts/form", owner: @user %>
+      <% end %>
 
-<h2>Canvas</h2>
-<div id="map-canvas">
-</div>
-<%= render "map", photos: @user.photos %>
+      <%= render "layouts/wall", owner: @user %>
 
-<h2>Friends</h2>
-<%= render "friends", user: @user %>
+      <% if can_post_on_wall?(@user)  %>
+        <%= render "posts/form", owner: @user %>
+      <% end %>
 
-<h2>Groups</h2>
-<%= render "groups", user: @user %>
+      <% if can_see_info?(@user) %>
 
-<h2>Events</h2>
-<%= render "events", user: @user %>
+      <% end %>
+    </div>
+  </section>
 
-<% if is_page_owner?(@user) %>
-  <%= render "posts/status", owner: current_user %>
-<% end %>
 
-<h2>Wall</h2>
-<% if can_post_on_wall?(@user)  %>
-  <%= render "posts/form", owner: @user %>
-<% end %>
 
-<%= render "layouts/wall", owner: @user %>
 
-<% if can_post_on_wall?(@user)  %>
-  <%= render "posts/form", owner: @user %>
-<% end %>
+<style>
 
-<% if is_page_owner?(@user) %>
-<%= render "users/pending_requests", user: @user %>
-<% end %>
-<% end %>
+.page {
+  background: #464646;
+  width: 960px;
+  padding: 20px;
+  margin: 10px auto;
+  border: 3px solid #FF6600;
+  border-radius: 3px;
+}
 
+.page-left {
+  float: left;
+  width: 177px;
+  padding: 0 20px 0 0;
+  border-right: 3px solid #FF6600;
+}
+
+.page-right {
+  float: right;
+  width: 700px;
+}
+
+.activity-bar {
+  display: block;
+  float: left;
+  width: 100%;
+  border: 3px solid #FF6600;
+  border-radius: 3px;
+}
+
+.activity-bar > ul > li {
+  color: #FF6600;
+  float: right;
+  position: relative;
+  cursor: default;
+  padding: 5px;
+  border-left: 3px solid #FF6600;
+}
+
+.activity-bar > ul > li > a {
+  color: #FF6600;
+}
+
+.events-dropdown, .groups-dropdown, .friends-dropdown, .albums-dropdown, .pending-dropdown {
+  display: none;
+  position: absolute;
+  margin-top: 6px;
+  left: -3px;
+  border: 3px solid #FF6600;
+  width: 200px;
+}
+
+.activity-bar > ul > li:hover {
+  background: #5B605F;
+}
+
+.activity-bar > ul > li:hover > .events-dropdown {
+  display: block;
+}
+
+.activity-bar > ul > li:hover > .friends-dropdown {
+  display: block;
+}
+
+.activity-bar > ul > li:hover > .groups-dropdown {
+  display: block;
+}
+
+.activity-bar > ul > li:hover > .albums-dropdown {
+  display: block;
+}
+
+.activity-bar > ul > li:hover > .pending-dropdown {
+  display: block;
+}
+
+.canvas {
+  margin: 20px auto;
+  float: left;
+}
+
+.canvas > h2 {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.wall {
+  display: block;
+  float: left;
+  margin: 15px;
+}
+</style>
 
 
 
