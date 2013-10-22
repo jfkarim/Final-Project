@@ -1,12 +1,10 @@
 TO DO
 
-Sort the comments by date created
-
-Properly set a homepage and root
-
-Status
-
-Style!
+Style News Feed
+Style Photo Show/Edit (Jquery edit)
+Style Event/Group (Jquery edit)
+Style Album Show/Edit (Jquery edit)
+Style Maps
 
 
 EXTRAS
