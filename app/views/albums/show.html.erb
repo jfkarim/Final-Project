@@ -16,7 +16,8 @@
 <ul class="photos-list group">
 <% @album.photos.each do |photo| %>
   <li>
-    <%= image_tag photo.picture.url(:standard) %><br>
+    <a href="<%= user_photo_url(@user, photo) %>">
+    <%= image_tag photo.picture.url %></a><br>
   </li>
 <% end %>
 </ul>
@@ -59,8 +60,13 @@
 .photos-list > li {
   display: block;
   float: left;
-  margin: 0 10px;
+  margin: 5px;
   border: 2px solid #FF6600;
+}
+
+img {
+  width: 200px;
+  height: 200px;
 }
 
 </style>

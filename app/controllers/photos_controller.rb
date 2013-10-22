@@ -30,6 +30,7 @@ class PhotosController < ApplicationController
   def update
     @user = User.find(params[:user_id])
     @photo = Photo.find(params[:id])
+    @photo.location = (params[:photo][:location])
     @photo.lat_lng
     @photo.update_attributes(params[:photo])
 

@@ -4,8 +4,10 @@
 <ul class="artist-list">
 <% @users.each do |user| %>
 <li>
-  <%= image_tag user.profile_picture.url(:icon) %>
+  <div class="listed-artist">
+  <%= image_tag user.profile_picture.url %>
   <%= link_to user.artist_name, user_url(user) %>
+  </div>
 </li>
 <% end %>
 </ul>
@@ -40,5 +42,10 @@
 
 #map-canvas {
   margin: auto;
+}
+
+.listed-artist > img {
+  width: 30px;
+  height: 30px;
 }
 </style>
