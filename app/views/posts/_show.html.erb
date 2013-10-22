@@ -1,12 +1,12 @@
 <div class="post-div">
   <li>
     <div class="post-header">
-      <%= image_tag post.user.profile_picture.url(:icon) %>
-      <%= post.user.artist_name %> at <%= post.created_at %>
+      <div class="artist-name">
+        <%= image_tag post.user.profile_picture.url(:icon) %>
+        <%= post.user.artist_name %></div>
+        at <%= post.created_at %>
     </div>
-    <div class="post-content-format">
-      <%= post.content %><br>
-    </div>
+    <p class="post-content-format"><%= post.content %></p>
     <div class="like">
       <%= render "likes/show", type: post, sub_type: nil %>
     </div>
@@ -22,6 +22,7 @@
 <style>
 
 .post-div {
+  width: 300px;
   padding: 5px;
   margin: 5px 0;
   border: 2px solid #5B605F;
@@ -29,6 +30,7 @@
 }
 
 .post-content-format {
+  width: 287px;
   margin: 3px;
   padding: 2px;
   border: 2px solid #FF6600;
@@ -36,4 +38,13 @@
   font-size: 16px;
 }
 
+.artist-name {
+  color: #FF6600;
+}
+
+.artist-name > img {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #5B605F;;
+}
 </style>

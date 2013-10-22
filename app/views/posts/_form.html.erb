@@ -1,12 +1,11 @@
 <form
   action="<%= posts_url %>"
-  class="button_to post-form"
+  class="button_to post-form group"
   method="post"
   data-remote="true">
 
   <label>Post:</label>
   <input type="text" name="post[content]">
-  <br>
   <input name="post[wall_id]"
          type="hidden"
          value="<%= owner.wall.id %>">
@@ -51,7 +50,7 @@
   color: #E3E3E3;
 }
 
-.status-form input[type="submit"]:hover {
+.post-form input[type="submit"]:hover {
   background: #5B605F;
 }
 

@@ -12,7 +12,7 @@
 </div>
 
 <div class="user-attributes">
-<label>Influences</label>
+<h3 class="attribute-overview">Influences</h3>
 <ul>
   <% user.influences.each do |influence| %>
     <li>
@@ -21,7 +21,7 @@
   <% end %>
 </ul>
 
-<label>Media</label>
+<h3 class="attribute-overview">Media</h3>
 <ul>
   <% user.media.each do |medium| %>
     <li>
@@ -30,7 +30,7 @@
   <% end %>
 </ul>
 
-<label>Themes</label>
+<h3 class="attribute-overview">Themes</h3>
 <ul>
   <% user.themes.each do |theme| %>
     <li>
@@ -39,7 +39,7 @@
   <% end %>
 </ul>
 
-<label>World Canvases</label>
+<h3 class="attribute-overview">World Canvases</h3>
 <ul>
   <% user.locations.each do |location| %>
     <li>
@@ -47,9 +47,26 @@
     </li>
   <% end %>
 </ul>
+
 </div>
 <br>
 <%= link_to "Edit About", edit_user_url(user) %>
+
+<script>
+
+$(document).ready( function () {
+
+  $(".attribute-overview").click(function () {
+    $list = $(this).next();
+    $list.toggle();
+  });
+
+});
+
+</script>
+
+
+
 <style>
 
 .alias {
@@ -62,7 +79,7 @@
   border-bottom: 2px solid #FF6600;
 }
 
-.user-attributes > label {
+.user-attributes > h3 {
   width: 50%;
   display: block;
   padding: 5px;

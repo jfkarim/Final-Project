@@ -1,6 +1,6 @@
 <li>
   <div class="comment-info">
-    <%= comment.user.artist_name %>:
+    <div class="artist-name"><%= comment.user.artist_name %></div>
     <%= comment.content %>
   </div>
   <div class="like">
@@ -11,10 +11,14 @@
 <style>
 
 .comment-info {
+  width: 268px;
   border: 2px solid #5B605F;
   border-radius: 2px;
   padding: 3px;
   margin: 5px 0;
 }
 
+.artist-name {
+  color: #FF6600;
+}
 </style>

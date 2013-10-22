@@ -1,65 +1,50 @@
 <div class="page group">
   <section class="page-left">
-    <h1><%= @name %></h1>
     <%= image_tag @user.profile_picture.url(:standard) %>
     <%= render "users/about", user: @user %>
   </section>
 
   <section class="page-right">
-    <nav class="activity-bar">
-      <ul>
-        <% if can_post_on_wall?(@user) || is_page_owner?(@user) %>
-        <li>
-          Friends
-          <%= render "friends", user: @user %>
-        </li>
-        <li>
-          Groups
-          <%= render "groups", user: @user %>
-        </li>
-        <li>
-          Events
-          <%= render "events", user: @user %>
-        </li>
-        <% if is_page_owner?(@user) %>
-        <li>
-          Pending
-          <%= render "users/pending_requests", user: @user %>
-        </li>
-        <% end %>
-        <li>
-          Albums
-          <%= render "albums", user: @user %>
-        </li>
-        <li>
-          <%= link_to "Photos", user_photos_url(@user) %>
-        </li>
-        <% end %>
-      </ul>
-    </nav>
 
-    <div class="canvas">
-      <h2>Canvas</h2>
+    <div class="canvas group">
+      <h2 class="canvas-head">Canvas</h2>
       <div id="map-canvas">
       </div>
       <%= render "map", photos: @user.photos %>
     </div>
 
+    <%= render "activity_bar", user: @user  %>
+
+
     <div class="wall">
-      <% if is_page_owner?(@user) %>
-        <%= render "posts/status", owner: current_user %>
-      <% end %>
-      <% if can_post_on_wall?(@user)  %>
-        <%= render "posts/form", owner: @user %>
-      <% end %>
-      <h2>Wall</h2>
-      <%= render "layouts/wall", owner: @user %>
-
-      <% if can_see_info?(@user) %>
-
-      <% end %>
+      <h2 class="wall-head">Wall</h2>
+      <div class="wall-body">
+        <% if is_page_owner?(@user) %>
+          <%= render "posts/status", owner: current_user %>
+        <% end %>
+        <% if can_post_on_wall?(@user)  %>
+          <%= render "posts/form", owner: @user %>
+        <% end %>
+        <%= render "layouts/wall", owner: @user %>
+      </div>
     </div>
   </section>
+</div>
+
+<script>
+$(document).ready(function() {
+  $(".wall-head").click(function (){
+    $wall = $(this).next();
+    $wall.toggle();
+  });
+
+  $(".canvas-head").click(function (){
+    $canvas = $(this).next();
+    $canvas.toggle();
+  });
+
+});
+</script>
 
 <style>
 
@@ -74,68 +59,21 @@
 
 .page-left {
   float: left;
-  width: 177px;
+  width: 175px;
   padding: 0 20px 0 0;
   border-right: 3px solid #FF6600;
 }
 
+.page-left > img {
+  width: 175px;
+  height: 175px;
+  border: 2px solid #FF6600;
+}
+
+
 .page-right {
   float: right;
   width: 700px;
-}
-
-.activity-bar {
-  display: block;
-  float: left;
-  width: 100%;
-  border: 3px solid #FF6600;
-  border-radius: 3px;
-}
-
-.activity-bar > ul > li {
-  color: #FF6600;
-  float: right;
-  position: relative;
-  cursor: default;
-  padding: 5px;
-  border-left: 3px solid #FF6600;
-}
-
-.activity-bar > ul > li > a {
-  color: #FF6600;
-}
-
-.events-dropdown, .groups-dropdown, .friends-dropdown, .albums-dropdown, .pending-dropdown {
-  display: none;
-  position: absolute;
-  padding-top: 6px;
-  left: -3px;
-  border: 3px solid #FF6600;
-  width: 200px;
-}
-
-.activity-bar > ul > li:hover {
-  background: #5B605F;
-}
-
-.activity-bar > ul > li:hover > .events-dropdown {
-  display: block;
-}
-
-.activity-bar > ul > li:hover > .friends-dropdown {
-  display: block;
-}
-
-.activity-bar > ul > li:hover > .groups-dropdown {
-  display: block;
-}
-
-.activity-bar > ul > li:hover > .albums-dropdown {
-  display: block;
-}
-
-.activity-bar > ul > li:hover > .pending-dropdown {
-  display: block;
 }
 
 .canvas {
@@ -144,14 +82,22 @@
 }
 
 .canvas > h2 {
-  display: block;
-  margin-bottom: 5px;
+  margin: 10px 0;
+  color: #FF6600;
+  font-size: 20px;
 }
 
 .wall {
+  width: 400px;
   display: block;
-  float: right;
-  margin: 20px 10px;
+  float: left;
+  margin: 20px auto;
+}
+
+.wall > h2 {
+  margin: 10px 0;
+  color: #FF6600;
+  font-size: 20px;
 }
 </style>
 
