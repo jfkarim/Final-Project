@@ -10,6 +10,7 @@ class PhotosController < ApplicationController
     @user = User.find(params[:user_id])
     params[:photo][:user_id] = params[:user_id]
     @photo = Photo.new(params[:photo])
+    @photo.lat_lng if params[:location]
 
     @photo.save
 
@@ -29,7 +30,7 @@ class PhotosController < ApplicationController
   def update
     @user = User.find(params[:user_id])
     @photo = Photo.find(params[:id])
-
+    @photo.lat_lng
     @photo.update_attributes(params[:photo])
 
     if request.xhr?

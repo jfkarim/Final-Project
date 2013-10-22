@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131011133918) do
+ActiveRecord::Schema.define(:version => 20131022133030) do
 
   create_table "albums", :force => true do |t|
     t.integer  "user_id"
@@ -158,6 +158,8 @@ ActiveRecord::Schema.define(:version => 20131011133918) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "photos", ["album_id"], :name => "index_photos_on_album_id"

@@ -1,7 +1,7 @@
 require 'addressable/uri'
 
 class Photo < ActiveRecord::Base
-  attr_accessible :picture, :location, :description, :album_id, :user_id
+  attr_accessible :picture, :location, :description, :album_id, :user_id, :latitude, :longitude
 
   validates :picture, :user_id, presence: true
 
@@ -17,30 +17,21 @@ class Photo < ActiveRecord::Base
   }
 
   def lat_lng
-    if self.location != "" && self.location != nil
-      url = Addressable::URI.new(
-        :scheme => "https",
-        :host => "maps.googleapis.com",
-        :path => "/maps/api/geocode/json",
-        :query_values => {
-          :address => self.location,
-          :sensor => "false"
-        }).to_s
+    url = Addressable::URI.new(
+      :scheme => "https",
+      :host => "maps.googleapis.com",
+      :path => "/maps/api/geocode/json",
+      :query_values => {
+        :address => self.location,
+        :sensor => "false"
+      }).to_s
 
-      response = JSON.parse(RestClient.get(url))
-      top_result = response["results"].first
-      top_result["geometry"]["location"].values_at("lat", "lng")
-    else
-      return nil
-    end
-  end
+    response = JSON.parse(RestClient.get(url))
+    top_result = response["results"].first
+    coords = top_result["geometry"]["location"].values_at("lat", "lng")
 
-  def latitude
-    self.lat_lng[0]
-  end
-
-  def longitude
-    self.lat_lng[1]
+    self.latitude = coords[0]
+    self.longitude = coords[1]
   end
 
 end
