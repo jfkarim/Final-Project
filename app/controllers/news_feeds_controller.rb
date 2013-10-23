@@ -8,14 +8,6 @@ class NewsFeedsController < ApplicationController
     @news += @user.albums
     @news += @user.photos.where(album_id: nil)
 
-    # self.groups.each do |group|
-    #  news += group.wall.posts
-    # end
-    #
-    # self.events.each do |event|
-    #  news += event.wall.posts
-    # end
-
     @user.friends.each do |friend|
      @news += friend.wall.posts
      @news += friend.albums
@@ -23,6 +15,7 @@ class NewsFeedsController < ApplicationController
     end
 
     @news = @news.sort_by { |n| n.created_at }
+    @news.reverse!
     render :show
   end
 

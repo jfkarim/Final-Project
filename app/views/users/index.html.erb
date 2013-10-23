@@ -1,13 +1,10 @@
 <section class="page">
 <h1 class="all-artists">All Artists</h1>
-
-<ul class="artist-list">
+<ul class="artist-list group">
 <% @users.each do |user| %>
 <li>
-  <div class="listed-artist">
   <%= image_tag user.profile_picture.url %>
   <%= link_to user.artist_name, user_url(user) %>
-  </div>
 </li>
 <% end %>
 </ul>
@@ -19,11 +16,36 @@
 </div>
 </section>
 
+<script>
+$(document).ready(function() {
+  $(".all-artists").click(function (){
+    $artists = $(this).next();
+    $artists.toggle();
+  });
+
+});
+</script>
+
 <style>
 
 .all-artists {
   font-size: 20px;
   color: #FF6600;
+}
+
+.artist-list > li {
+  float: left;
+  margin: 5px;
+  padding: 3px;
+  border: 2px solid #FF6600;
+}
+
+.artist-list > li:hover {
+  background: #FF6600;
+}
+
+.artist-list > li:hover > a {
+  color: #E3E3E3;
 }
 
 .map {
@@ -44,7 +66,7 @@
   margin: auto;
 }
 
-.listed-artist > img {
+.artist-list > li > img {
   width: 30px;
   height: 30px;
 }
