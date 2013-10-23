@@ -15,10 +15,10 @@
      type="hidden"
      value="<%= form_authenticity_token %>">
 
-  <label for="influence_name">New Influence</label>
   <input
      id="influence_name"
      name="influence[name]"
+     placeholder="New Influence"
      type="text">
   <input type="submit" value="Create">
 </form>
@@ -41,3 +41,35 @@ $(document).ready(function(){
 });
 
 </script>
+
+<style>
+#new-inf input[type="text"] {
+  display: inline;
+  padding: 2px;
+  width: 150px;
+  margin: 0;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+  background-color: #5B605F;
+  font-size: 14px;
+  color: #E3E3E3;
+}
+
+#new-inf input[type="submit"] {
+  display: inline;
+  font-size: 14px;
+  padding: 2px;
+  margin: 10px auto;
+  background: #5B605F;
+  color: #FF6600;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+}
+
+#new-inf input[type="submit"]:hover {
+  background-color: #FF6600;
+  border: 2px solid #E3E3E3;
+  color: #E3E3E3;
+}
+
+</style>

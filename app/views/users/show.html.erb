@@ -6,14 +6,14 @@
 
   <section class="page-right">
 
+    <%= render "activity_bar", user: @user  %>
+
     <div class="canvas group">
       <h2 class="canvas-head">Canvas</h2>
       <div id="map-canvas">
       </div>
       <%= render "map", photos: @user.photos %>
     </div>
-
-    <%= render "activity_bar", user: @user  %>
 
     <div class="wall">
       <h2 class="wall-head">Wall</h2>
