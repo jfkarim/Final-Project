@@ -1,33 +1,61 @@
 <% owner = User.find(post.user_id) %>
 <% receiver = User.find(post.wall.wallable_id) %>
 
-<li class="news-feed-post">
-  <% if owner == receiver %>
-    <%= owner.artist_name %> at <%= post.created_at %><br>
-  <% else %>
-    <%= owner.artist_name %> posted on
-    <%= receiver.artist_name %>'s wall at <%= post.created_at %><br>
-  <% end %>
-  <%= post.content %><br>
-  <br>
-  <div class="like">
-    <%= render "likes/show", type: post, sub_type: nil %>
-  </div>
-  <br>
-  <ul class="comment-list">
-    <% post.comments.reverse.each do |comment| %>
-      <%= render "comments/show", owner: owner, comment: comment, type: post %>
-    <% end %>
-  </ul>
-  <%= render "comments/form", owner: owner, type: post %>
-</li>
+<div class="post-div">
+  <li>
+    <div class="post-header">
+      <% if owner == receiver %>
+      <span class="artist-name">
+        <%= image_tag owner.profile_picture.url(:icon) %>
+        <%= owner.artist_name %></span>
+        at <%= post.created_at %>
+      <% else %>
+        <span class="artist-name">
+          <%= image_tag owner.profile_picture.url(:icon) %>
+          <%= owner.artist_name %></span> posted on
+          <%= receiver.artist_name %>'s wall at <%= post.created_at %>
+      <% end %>
+    </div>
+    <p class="post-content-format"><%= post.content %></p>
+    <div class="like">
+      <%= render "likes/show", type: post, sub_type: nil %>
+    </div>
+    <ul class="comment-list">
+      <% post.comments.reverse.each do |comment| %>
+        <%= render "comments/show", owner: owner, comment: comment, type: post %>
+      <% end %>
+    </ul>
+    <%= render "comments/form", owner: owner, type: post %>
+  </li>
+</div>
 
 <style>
 
-.news-feed-post {
+.post-div {
+  width: 500px;
   padding: 5px;
-  margin: 10px 0;
+  margin: 5px auto;
+  border: 2px solid #5B605F;
+  border-radius: 2px;
+}
+
+.post-content-format {
+  width: 487px;
+  margin: 3px;
+  padding: 2px;
   border: 2px solid #FF6600;
+  border-radius: 2px;
+  font-size: 16px;
+}
+
+.artist-name {
+  color: #FF6600;
+}
+
+.artist-name > img {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #5B605F;;
 }
 
 </style>

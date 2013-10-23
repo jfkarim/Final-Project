@@ -1,9 +1,9 @@
 <div class="post-div">
   <li>
     <div class="post-header">
-      <div class="artist-name">
+      <span class="artist-name">
         <%= image_tag post.user.profile_picture.url(:icon) %>
-        <%= post.user.artist_name %></div>
+        <%= post.user.artist_name %></span>
         at <%= post.created_at %>
     </div>
     <p class="post-content-format"><%= post.content %></p>

@@ -1,9 +1,11 @@
 <% owner = User.find(photo.user_id) %>
 
 <li class="news-feed-photo">
-  <%= owner.artist_name %> uploaded a new photo at <%= photo.created_at %><br>
-  <%= image_tag photo.picture.url(:standard) %> <br>
-  <%= link_to "Photo Page", user_photo_url(owner, photo) %><br>
+    <span class="artist-name"><%= image_tag owner.profile_picture.url(:icon) %> <%= owner.artist_name %></span> uploaded a new photo<br>
+    <div class="photo-upload-show">
+  <%= image_tag photo.picture.url(:show) %></div>
+  <%= photo.created_at %>
+  <%= link_to "Photo Page", user_photo_url(owner, photo) %>
   <div class="like">
     <%= render "likes/show", type: photo, sub_type: nil %>
   </div>
@@ -18,9 +20,31 @@
 <style>
 
 .news-feed-photo {
+  width: 500px;
   padding: 5px;
-  margin: 10px 0;
+  margin: 10px auto;
+  border: 2px solid #5B605F;
+  border-radius: 2px;
+}
+
+.photo-upload-show {
+  margin: 5px auto;
+  width: 350px;
+  height: 300px;
+}
+
+.photo-upload-show > img {
+  width: 100%;
   border: 2px solid #FF6600;
 }
 
+.artist-name {
+  color: #FF6600;
+}
+
+.artist-name > img {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #5B605F;;
+}
 </style>
