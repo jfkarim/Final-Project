@@ -1,32 +1,31 @@
-<section class="page">
-
-  <div class="image">
-    <%= image_tag @photo.picture.url(:show) %><br>
-    <%= link_to "Edit Photo", edit_user_photo_url(@user, @photo) %>
-  </div>
-
-<div class="photo-info group">
-<ul>
-  <li>
-    <div id="map-canvas">
+<section class="page group">
+  <section class="photo-show-left">
+    <div class="image">
+      <%= image_tag @photo.picture.url %>
+      <div id="map-canvas">
+      </div>
+      <%= render "photo_map", photo: @photo %>
     </div>
-    <%= render "photo_map", photo: @photo %>
-  </li>
-  <div class="photo-info-no-map">
-  <li>
-    Location: <%= @photo.location %>
-  </li>
-  <li>
-    Description: <%= @photo.description %>
-  </li>
-  <li>
-    <div class="like">
-      <%= render "likes/show", type: @photo, sub_type: nil %>
+  </section>
+<section class="photo-show-right">
+  <%= link_to "Edit Photo", edit_user_photo_url(@user, @photo) %>
+  <ul class="group">
+    <div class="photo-info">
+    <li>
+      Location: <%= @photo.location %>
+    </li>
+    <li>
+      Description: <%= @photo.description %>
+    </li>
+    <li>
+      <div class="like">
+        <%= render "likes/show", type: @photo, sub_type: nil %>
+      </div>
+    </li>
     </div>
-  </li>
-  </div>
-</ul>
-<h2>Comments:</h2>
+  </ul>
+<h2 class="comment-header">Comments:</h2>
+<div class="photo-comments">
 <ul class="comment-list group">
 <% @photo.comments.reverse.each do |comment| %>
   <%= render "comments/show", owner: @user, comment: comment, type: @photo %>
@@ -36,37 +35,72 @@
 </div>
 </section>
 
+</section>
+
+<script>
+
+$(document).ready( function () {
+
+  $(".comment-header").click(function () {
+    $comments = $(this).next();
+    $comments.toggle();
+  });
+
+});
+
+</script>
+
 <style>
+
+.photo-show-left {
+  float: left;
+  width: 575px;
+  padding: 0 20px 0 0;
+  border-right: 3px solid #FF6600;
+}
+
+.photo-show-right {
+  float: right;
+  width: 350px;
+}
+
+.comment-header {
+  font-size: 20px;
+  margin: 10px 0;
+  color: #FF6600;
+}
 
 .image {
   display: block;
-  width: 70%;
-  margin: 10px auto;
+  width: 100%;
 }
 
 img {
+  width: 550px;
+  height: 400px;
   display: block;
-  margin: 10px auto;
   border: 2px solid #FF6600;;
   border-radius: 2px;
+  margin-bottom: 10px;
 }
 
 .photo-info {
-  display: block;
-  width: 70%;
-  margin: 10px auto;
-}
-
-.photo-info-no-map {
+  width: 97%;
   display: block;
   float: left;
+  padding: 5px;
   margin: 10px auto;
   border: 2px solid #FF6600;;
   border-radius: 2px;
 }
 
-.comments-list {
+.photo-info > li {
   display: block;
-  float: right;
+  margin: 10px auto;
+}
+
+.photo-comment-list {
+  display: block;
+  margin: 0;
 }
 </style>
