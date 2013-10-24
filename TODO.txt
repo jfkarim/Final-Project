@@ -1,8 +1,8 @@
 TO DO
 
-Style Photo Show/Edit (Jquery edit)
+Style Photo Edit (Jquery edit)
 Style Event/Group (Jquery edit)
-Style Album Show/Edit (Jquery edit)
+Style Album Edit (Jquery edit)
 Style Maps
 
 
