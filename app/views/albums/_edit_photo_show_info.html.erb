@@ -22,3 +22,36 @@
      <input type="text" class="input-bar-small" name="photo[description]" value="<%= photo.description %>"></div>
      <input type="submit" value="Save Changes">
 </form>
+<%= render "remove_photo", photo: photo, user: user %>
+
+<script>
+
+$(document).ready(function(){
+
+  $(".edit-album-photo-info-form").on("ajax:success", function(event, data){
+    console.log("Here")
+    var $editInfo = $($(event.target).parent()[0])
+    $editInfo.html(data);
+    $(".edit-album-photo-info-form").append("<span class='saved'>Saved</p>")
+  });
+
+});
+
+</script>
+
+<style>
+
+.saved {
+  text-align: center;
+  float: right;
+  width: 106px;
+  display: block;
+  margin: 5px auto;
+  padding: 5px;
+  background: #5B605F;
+  color: #FF6600;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+}
+
+</style>

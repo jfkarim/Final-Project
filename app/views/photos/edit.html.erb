@@ -3,7 +3,7 @@
   <h1 class="edit-photo">Edit Photo</h1>
 
   <div class="image">
-    <%= image_tag @photo.picture.url(:standard) %><br>
+    <%= image_tag @photo.picture.url(:show) %><br>
   </div>
   <%= render "photos/edit_photo_info", user: @user, photo: @photo %>
 
@@ -14,7 +14,8 @@
 <style>
 
 .edit-photo {
-  font-size: 20px;
+  color: #FF6600;
+  font-size: 30px;
 }
 
 .image {
@@ -26,6 +27,8 @@
 img {
   display: block;
   margin: 10px auto;
+  border: 3px solid #FF6600;;
+  border-radius: 3px;
 }
 
 .photo-info-form {
@@ -73,9 +76,25 @@ img {
 }
 
 .photo-info-form input[type="submit"]:hover {
-  background: #464646;
+  border: 2px solid #E3E3E3;
+  background-color: #FF6600;
+  color: #E3E3E3;}
+
+.button_to input[value="Delete Photo"] {
+  display: block;
+  font-size: 16px;
+  padding: 5px 11px 5px 12px;
+  margin: 10px auto;
+  background: #5B605F;
+  color: #FF6600;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
 }
 
-
+.button_to input[value="Delete Photo"]:hover {
+  border: 2px solid #E3E3E3;
+  background-color: #FF6600;
+  color: #E3E3E3;
+}
 
 </style>

@@ -7,14 +7,15 @@
   <section class="page-right">
 
     <%= render "activity_bar", user: @user  %>
-
+    <section class='page-right-left'>
     <div class="canvas group">
       <h2 class="canvas-head">Canvas</h2>
       <div id="map-canvas">
       </div>
       <%= render "map", photos: @user.photos %>
     </div>
-
+</section>
+<section class="page-right-right group">
     <div class="wall">
       <h2 class="wall-head">Wall</h2>
       <div class="wall-body">
@@ -72,9 +73,18 @@ $(document).ready(function() {
 
 .page-right {
   float: right;
-  width: 700px;
+  width: 740px;
 }
 
+.page-right-right {
+  float: right;
+  width: 50%;
+}
+
+.page-right-left {
+  float: left;
+  width: 330px;
+}
 .canvas {
   margin: 20px auto;
   float: left;
@@ -87,10 +97,14 @@ $(document).ready(function() {
 }
 
 .wall {
-  width: 400px;
+  width: 100%;
   display: block;
   float: left;
   margin: 20px auto;
+}
+
+.wall-body {
+  display: block;
 }
 
 .wall > h2 {

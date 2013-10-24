@@ -4,19 +4,12 @@
 <div class="edit-info">
   <%= render "edit_album_info", album: @album, user: current_user %>
 </div>
-<h2>Photos</h2>
-<ul class="photos-list group">
-<% @album.photos.each do |photo| %>
-  <%= render "photos_list_show", user: current_user, photo: photo %>
-<% end %>
-</ul>
 
-
-<h3 class="add-photo-header">Add Photo</h3>
+<h3 class="photo-header">Add Photo</h3>
 
 <form
   action="<%= user_photos_url %>"
-  class="add-photo"
+  class="add-photo group"
   method="post"
   enctype="multipart/form-data"
   id="new-photo">
@@ -24,43 +17,86 @@
   <input type="hidden"
          name="authenticity_token"
          value="<%= form_authenticity_token %>">
-  <input type="file" name="photo[picture]"><br>
+  <input type="file" name="photo[picture]">
   <input type="hidden" name="photo[album_id]" value="<%= @album.id %>">
   <input type="submit" value="Add Photo">
 </form>
 
-<%= button_to "Delete Album", user_album_url(@album), method: :delete %>
+<h3 class="photo-header">Photos</h3>
+<ul class="photos-list group">
+<% @album.photos.each do |photo| %>
+  <%= render "photos_list_show", user: current_user, photo: photo %>
+<% end %>
+</ul>
+
 
 </section>
+
+<script>
+$(document).ready(function() {
+
+  $(".photo-header").click(function (){
+    $photoOption = $(this).next();
+    $photoOption.toggle();
+  });
+
+});
+</script>
 
 <style>
 
 
-.add-photo-header {
+.photo-header {
   font-size: 20px;
   color: #FF6600;
 }
 
-.add-photo {
-  width: 55%;
-  padding: 10px;
-  border: 2px solid #FF6600;
-  border-radius: 2px;
-}
-
 .add-photo input[type="submit"] {
   display: inline;
-  float: left;
+  padding: 4px 10px 5px 10px;
+  margin-left: 5px;
+  background: #5B605F;
+  color: #FF6600;
   border: 2px solid #FF6600;
   border-radius: 2px;
-  background: #464646;
-  padding: 1px;
-  margin: 0 10px;
-  color: #E3E3E3;
 }
 
 .add-photo input[type="submit"]:hover {
   background: #5B605F;
+}
+
+.add-photo input[type="file"] {
+  display: inline;
+  float: left;
+  width: 200px;
+  padding: 3px 0;
+  background: #5B605F;
+  color: #FF6600;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+}
+
+.add-photo input[type="submit"]:hover {
+  background-color: #FF6600;
+  border: 2px solid #E3E3E3;
+  color: #E3E3E3;
+}
+
+.button_to input[value="Delete Album"] {
+  display: block;
+  font-size: 16px;
+  padding: 5px 10px 5px 9px;
+  margin: 10px auto;
+  background: #5B605F;
+  color: #FF6600;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+}
+
+.button_to input[value="Delete Album"]:hover {
+  border: 2px solid #E3E3E3;
+  background-color: #FF6600;
+  color: #E3E3E3;
 }
 
 .edit-album {
@@ -126,7 +162,9 @@ img {
 }
 
 .edit-album-info input[type="submit"]:hover {
-  background: #464646;
+  border: 2px solid #E3E3E3;
+  background-color: #FF6600;
+  color: #E3E3E3;
 }
 
 </style>

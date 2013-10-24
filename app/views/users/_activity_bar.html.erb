@@ -29,7 +29,7 @@
 .activity-bar {
   display: block;
   float: left;
-  width: 660px;
+  width: 100%;
   border: 3px solid #FF6600;
   border-radius: 3px;
 }
@@ -57,9 +57,13 @@
 }
 
 .activity-bar > ul > li:hover {
-  background: #5B605F;
+  background: #FF6600;
 }
 
+.activity-bar > ul > li:hover > a {
+  color: #E3E3E3;
+  border-color: #E3E3E3;
+}
 .activity-bar > ul > li:hover > .events-dropdown {
   display: block;
 }

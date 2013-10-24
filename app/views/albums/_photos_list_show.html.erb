@@ -1,8 +1,7 @@
 <li class="photo-show group">
-  <%= image_tag photo.picture.url(:standard) %><br>
+  <%= image_tag photo.picture.url(:standard) %>
   <div class="edit-album-photo-info group">
     <%= render "albums/edit_photo_show_info", user: user, photo: photo %>
-    <%= render "remove_photo", photo: photo, user: user %>
   </div>
 
 </li>
@@ -24,10 +23,17 @@ $(document).ready(function(){
 <style>
 
 .photo-show {
-  border: 2px solid #FF6600;
+  width: 70%;
+  border: 2px solid #5B605F;
   border-radius: 2px;
   padding: 5px;
-  margin: 10px;
+  margin: 10px auto;
+}
+
+.photo-show > img {
+  width: 200px;
+  height: 200px;
+  border: 2px solid #FF6600;
 }
 
 .edit-album-photo-info {
@@ -48,10 +54,34 @@ $(document).ready(function(){
   color: #FF6600;
   border: 2px solid #FF6600;
   border-radius: 2px;
+  float: left;
 }
 
 .edit-album-photo-info-form input[type="submit"]:hover {
-  background: #464646;
+  border: 2px solid #E3E3E3;
+  background-color: #FF6600;
+  color: #E3E3E3;
+}
+
+.photo-delete {
+  display: inline;
+  float: left;
+}
+
+.photo-delete input[type="submit"] {
+  font-size: 14px;
+  padding: 5px;
+  margin: 10px 0;
+  background: #5B605F;
+  color: #FF6600;
+  border: 2px solid #FF6600;
+  border-radius: 2px;
+}
+
+.photo-delete input[type="submit"]:hover {
+  border: 2px solid #E3E3E3;
+  background-color: #FF6600;
+  color: #E3E3E3;
 }
 
 .input-field-small {
