@@ -1,9 +1,15 @@
 TO DO
 
-Style Photo Edit (Jquery edit)
-Style Event/Group (Jquery edit)
-Style Album Edit (Jquery edit)
-Style Maps
+Style Group
+properly space and code-style every page
+Style Maps (set api key to heroku)
+Fix Comment Bug
+Reset Forms after submission
+Fix all the links rollover text decorations
+Link all names to their pages
+Set error handlings
+Write tests (2-3 for each model)
+Write README
 
 
 EXTRAS

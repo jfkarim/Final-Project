@@ -2,7 +2,6 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(params[:comment])
-
     type = params[:comment][:commentable_type]
     owner_class = params[:owner_class]
 

@@ -1,15 +1,24 @@
-<section class="page">
+<section class="page group">
 <h1 class="event-name"><%= @event.name %></h1>
-
-<h2 class="event-host">Host: <%= @event.admin.artist_name %></h2>
-
+<section class="event-show-left">
+<div class="host-head">
+Host: <span class="event-host"><%= image_tag @event.admin.profile_picture.url(:icon) %><%= @event.admin.artist_name %></span>
+</div>
 <div class="event-info">
-<h3>Where: <%= @event.address %></h3>
-<h3>When: <%= @event.date %> <%= @event.time.strftime('%H:%M:%S') %> </h3>
 <h3>Description</h3>
 <p><%= @event.description %></p>
+<h3>Where</h3>
+<p><%= @event.address %></p>
+<h3>When</h3>
+<p><%= @event.date %> <%= @event.time.strftime('%H:%M:%S') %></p>
 </div>
+<% if @event.admin_id == current_user.id  %>
+  <%= link_to "Edit Event", edit_event_url(@event) %>
+<% end %>
+</section>
 
+<section class="event-show-right">
+<section class="event-show-right-right">
 <div class="invites-status">
 <h3>Invites Status</h3>
 
@@ -33,21 +42,112 @@
     <li><%= link_to user.artist_name, user_url(user) %></li>
   <% end %>
 </ul>
-</div>
-
-<div class="event-wall">
-<%= render "posts/form", owner: @event %>
-<%= render "layouts/wall", owner: @event %>
-</div>
-
 <% if @event.admin_id == current_user.id  %>
   <%= link_to "Invite People", new_event_event_user_url(@event) %>
-  <%= link_to "Edit Event", edit_event_url(@event) %>
 <% end %>
-
+</div>
 </section>
-
+<section class="event-show-right-left">
+<div class="wall">
+  <h2 class="wall-head">Wall</h2>
+  <div class="wall-body">
+    <%= render "posts/form", owner: @event %>
+    <%= render "layouts/wall", owner: @event %>
+  </div>
+</div>
+</section>
+</section>
+</section>
 
 <style>
 
+.event-name {
+  text-align: center;
+  color: #FF6600;
+  font-size: 30px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #FF6600;
+}
+
+.host-head {
+  font-size: 20px;
+}
+
+.event-host {
+  width: 100px;
+  color: #FF6600;
+  font-size: 20px;
+  padding: 10px 0;
+  margin-bottom: 0;
+  margin-right: 0;
+}
+
+.event-host > img {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #5B605F;
+  margin-right: 5px;
+}
+
+.event-show-left {
+  float: left;
+  width: 200px;
+  padding: 0 10px 0 0;
+  margin: 10px;
+  border-right: 3px solid #FF6600;
+}
+
+.event-show-left > p {
+  font-size: 18px;
+  margin: 0px 10px 0 0;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #FF6600;
+}
+
+.event-info > p {
+  margin: 0;
+}
+
+.event-info > h3 {
+  width: 40%;
+  padding: 5px 0;
+  margin: 5px 0;
+  font-size: 14px;
+  border-bottom: 2px solid #FF6600;
+}
+
+.event-show-right {
+  float: right;
+  width: 710px;
+}
+
+.event-show-right-right {
+  float: right;
+  width: 250px;
+  border-left: 2px solid #FF6600;
+  padding-left: 20px;
+}
+
+.event-show-right-left {
+  float: left;
+  width: 410px;
+}
+
+.wall {
+  width: 100%;
+  display: block;
+  float: left;
+  margin: 10px auto;
+}
+
+.wall-body {
+  display: block;
+}
+
+.wall > h2 {
+  margin-bottom: 10px;
+  color: #FF6600;
+  font-size: 20px;
+}
 </style>
