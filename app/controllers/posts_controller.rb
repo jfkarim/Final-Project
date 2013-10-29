@@ -7,7 +7,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(params[:post])
-    # throw check on server for meddling with form
+
     owner_class = params[:receiver_class]
 
     if owner_class == "User"
@@ -23,14 +23,8 @@ class PostsController < ApplicationController
     if @post.persisted? && request.xhr?
       render partial: "posts/show", locals: {post: @post, owner: @owner}
     else
-      redirect_to user_url(@user)
+      redirect_to user_url(@user)  #ERROR HANDLING NEEDED
     end
-  end
-
-  def destroy
-    # @post = Post.find(params[:id])
-    # @post.destroy
-    # redirect_to
   end
 
 end

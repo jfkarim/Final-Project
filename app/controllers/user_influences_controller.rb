@@ -1,7 +1,6 @@
 class UserInfluencesController < ApplicationController
 
   def create
-
     @influence = Influence.find_by_name(params[:influence][:name])
 
     if @influence

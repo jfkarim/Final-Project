@@ -1,4 +1,5 @@
 class UserLocationsController < ApplicationController
+
   def create
     @location = Location.find_by_city_and_country(params[:location][:city], params[:location][:country])
 

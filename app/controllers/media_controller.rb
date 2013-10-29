@@ -1,4 +1,5 @@
 class MediaController < ApplicationController
+
   def index
     @media = Medium.where(user_id: current_user.id)
     render json: @media
@@ -12,4 +13,5 @@ class MediaController < ApplicationController
       render json: @medium
     end
   end
+
 end
