@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       self.current_user = @user
       redirect_to user_url(@user)
     else
-      flash[:errors] = @user.errors.full_messages
+      render json: @user.errors.full_messages
       render :new
     end
   end
