@@ -1,27 +1,154 @@
-<section class="page">
+<section class="page group">
 <h1 class="group-name"><%= @group.name %></h1>
-
+<section class="group-show-left">
+  <div class="admin-head">
+<span class="group-admin">Admin: <%= image_tag @group.admin.profile_picture.url(:icon) %> <%= @group.admin.artist_name %></span>
+</div>
+<% if @group.admin_id == current_user.id  %>
+  <%= link_to "Add People", new_group_group_user_url(@group) %>
+  <%= link_to "Edit Group", edit_group_url(@group) %>
+<% end %>
 <div class="group-info">
-<h3>Admin: <%= @group.admin.artist_name %></h>
-
 <h3>Description</h3>
 <p><%= @group.description %></p>
-</div>
-
+<div class="members-show">
 <h3>Members</h3>
 <ul>
   <% @group.approved_users.each do |user| %>
     <li><%= link_to user.artist_name, user_url(user) %></li>
   <% end %>
 </ul>
-
-<div class="group-wall">
-<%= render "posts/form", owner: @group %>
-<%= render "layouts/wall", owner: @group %>
 </div>
-
-<% if @group.admin_id == current_user.id  %>
-  <%= link_to "Add People", new_group_group_user_url(@group) %>
-  <%= link_to "Edit Group", edit_group_url(@group) %>
-<% end %>
+</div>
 </section>
+<section class="group-show-right group">
+  <div class="wall">
+    <h2 class="wall-head">Wall</h2>
+    <div class="wall-body">
+      <%= render "posts/form", owner: @group %>
+      <%= render "layouts/wall", owner: @group %>
+    </div>
+  </div>
+</section>
+
+<script>
+$(document).ready(function() {
+  $(".wall-head").click(function (){
+    $wall = $(this).next();
+    $wall.toggle();
+  });
+
+  $(".members-show > h3").click(function (){
+    $canvas = $(this).next();
+    $canvas.toggle();
+  });
+
+});
+</script>
+
+<style>
+
+.group-name {
+  text-align: center;
+  color: #FF6600;
+  font-size: 30px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #FF6600;
+}
+
+.admin-head {
+  font-size: 20px;
+}
+
+.group-admin {
+  width: 100px;
+  color: #FF6600;
+  font-size: 20px;
+  padding: 10px 0;
+  margin-bottom: 0;
+  margin-right: 0;
+}
+
+.event-host > img {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #5B605F;
+  margin-right: 5px;
+}
+
+.group-show-left {
+  float: left;
+  width: 300px;
+  padding: 0 10px 0 0;
+  margin: 10px;
+  border-right: 2px solid #FF6600;
+}
+
+.event-show-left > p {
+  font-size: 18px;
+  margin: 0px 10px 0 0;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #FF6600;
+}
+
+.event-info > p {
+  margin: 0;
+}
+
+.event-info > h3 {
+  width: 40%;
+  padding: 5px 0;
+  margin: 5px 0;
+  font-size: 14px;
+  border-bottom: 2px solid #FF6600;
+}
+
+.group-show-right {
+  float: right;
+  width: 600px;
+}
+
+.event-show-right-right {
+  float: right;
+  width: 250px;
+  border-left: 2px solid #FF6600;
+  padding-left: 20px;
+}
+
+.event-show-right-left {
+  float: left;
+  width: 410px;
+}
+
+.wall {
+  width: 100%;
+  display: block;
+  float: left;
+  margin: 10px auto;
+}
+
+.wall-body {
+  display: block;
+}
+
+.wall > h2 {
+  margin-bottom: 10px;
+  color: #FF6600;
+  font-size: 20px;
+}
+
+.invites-status > h2 {
+  margin: 5px 0 10px 0;
+  color: #FF6600;
+  font-size: 20px;
+}
+
+.members-show > h3 {
+  width: 40%;
+  margin: 5px 0;
+  font-size: 16px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #FF6600;
+}
+</style>

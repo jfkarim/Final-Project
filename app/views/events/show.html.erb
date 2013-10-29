@@ -20,7 +20,7 @@ Host: <span class="event-host"><%= image_tag @event.admin.profile_picture.url(:i
 <section class="event-show-right">
 <section class="event-show-right-right">
 <div class="invites-status">
-<h3>Invites Status</h3>
+<h2>Invites Status</h2>
 
 <h4>Going</h4>
 <ul>
@@ -59,6 +59,21 @@ Host: <span class="event-host"><%= image_tag @event.admin.profile_picture.url(:i
 </section>
 </section>
 
+<script>
+$(document).ready(function() {
+  $(".wall-head").click(function (){
+    $wall = $(this).next();
+    $wall.toggle();
+  });
+
+  $(".invites-status > h4").click(function (){
+    $canvas = $(this).next();
+    $canvas.toggle();
+  });
+
+});
+</script>
+
 <style>
 
 .event-name {
@@ -95,7 +110,7 @@ Host: <span class="event-host"><%= image_tag @event.admin.profile_picture.url(:i
   width: 200px;
   padding: 0 10px 0 0;
   margin: 10px;
-  border-right: 3px solid #FF6600;
+  border-right: 2px solid #FF6600;
 }
 
 .event-show-left > p {
@@ -149,5 +164,19 @@ Host: <span class="event-host"><%= image_tag @event.admin.profile_picture.url(:i
   margin-bottom: 10px;
   color: #FF6600;
   font-size: 20px;
+}
+
+.invites-status > h2 {
+  margin: 5px 0 10px 0;
+  color: #FF6600;
+  font-size: 20px;
+}
+
+.invites-status > h4 {
+  width: 40%;
+  margin: 5px 0;
+  font-size: 16px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #FF6600;
 }
 </style>
