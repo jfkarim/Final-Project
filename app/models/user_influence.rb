@@ -1,4 +1,5 @@
 class UserInfluence < ActiveRecord::Base
+
   attr_accessible :user_id, :influence_id
 
   validates :user_id, :influence_id, presence: true

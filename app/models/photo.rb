@@ -1,6 +1,7 @@
 require 'addressable/uri'
 
 class Photo < ActiveRecord::Base
+
   attr_accessible :picture, :location, :description, :album_id, :user_id, :latitude, :longitude
 
   validates :picture, :user_id, presence: true

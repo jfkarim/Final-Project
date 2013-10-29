@@ -1,4 +1,5 @@
 class UserLocation < ActiveRecord::Base
+
   attr_accessible :location_id, :user_id
 
   validates :user_id, :location_id, presence: true
@@ -6,4 +7,5 @@ class UserLocation < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :location
+
 end
