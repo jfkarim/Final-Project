@@ -1,73 +1,82 @@
-<section class="page">
-<h1 class="edit-group">Edit Group</h1>
-<form action="<%= group_url(@group) %>" method="post" class="group-form">
+<section class="page group">
+  <h1 class="edit-group">Edit Group</h1>
+  <form
+    action="<%= group_url(@group) %>"
+    method="post"
+    class="group-form">
 
-  <input
-     name="_method"
-     type="hidden"
-     value="put">
+    <input
+      name="_method"
+      type="hidden"
+      value="put">
 
-  <input
-     name="authenticity_token"
-     type="hidden"
-     value="<%= form_authenticity_token %>">
+    <input
+      name="authenticity_token"
+      type="hidden"
+      value="<%= form_authenticity_token %>">
 
-  <div class="input-field">
-  <label class="input-label">Name:</label>
-  <input
-    class="input-bar"
-    name="group[name]"
-    type="text"
-    value="<%= @group.name %>">
-  </div>
+    <div class="input-field">
+      <label class="input-label">Name:</label>
+      <input
+        class="input-bar"
+        name="group[name]"
+        type="text"
+        value="<%= @group.name %>">
+    </div>
 
-  <div class="input-field">
-  <label class="input-label">Description:</label>
-  <input type="text" class="input-bar" name="group[description]" value="<%= @group.description %>">
-  </div>
+    <div class="input-field">
+      <label class="input-label">Description:</label>
+      <input
+        type="text"
+        class="input-bar"
+        name="group[description]"
+        value="<%= @group.description %>">
+    </div>
 
-  <input type="submit" value="Update Group">
-</form>
+    <input type="submit" value="Update Group">
+  </form>
 
-<h3>Members</h3>
-<ul>
-  <% @group.approved_users.each do |user| %>
-    <% unless user == current_user %>
-      <li>
-        <%= link_to user.artist_name, user_url(user) %>
-        <form action="<%= group_group_user_url(@group,
-              GroupUser.where(
-                user_id: user.id,
-                group_id: @group.id)[0]) %>" method="post">
-          <input type="hidden" name="_method" value="DELETE">
-          <input
-             name="authenticity_token"
-             type="hidden"
-             value="<%= form_authenticity_token %>">
+  <h3>Members</h3>
+  <ul>
+    <% @group.approved_users.each do |user| %>
+      <% unless user == current_user %>
+        <li>
+          <%= link_to user.artist_name, user_url(user) %>
+          <form action="<%= group_group_user_url(@group,
+                GroupUser.where(
+                  user_id: user.id,
+                  group_id: @group.id)[0]) %>" method="post">
+            <input type="hidden" name="_method" value="DELETE">
 
-          <input
-             id="user_id"
-             name="user_id"
-             type="hidden"
-             value="<%= user.id %>">
+            <input
+              name="authenticity_token"
+              type="hidden"
+              value="<%= form_authenticity_token %>">
 
-          <input type="submit" value="Remove">
-        </form>
-      </li>
+            <input
+              id="user_id"
+              name="user_id"
+              type="hidden"
+              value="<%= user.id %>">
+
+            <input type="submit" value="Remove">
+          </form>
+        </li>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
+  </ul>
 
-<%= link_to "Back To Group", group_url(@group) %>
-<form action="<%= group_url(@group) %>" method="post">
-  <input type="hidden" name="_method" value="DELETE">
-  <input
-     name="authenticity_token"
-     type="hidden"
-     value="<%= form_authenticity_token %>">
+  <%= link_to "Back To Group", group_url(@group) %>
+  <form action="<%= group_url(@group) %>" method="post">
+    <input type="hidden" name="_method" value="DELETE">
 
-  <input type="submit" value="Delete Group">
-</form>
+    <input
+      name="authenticity_token"
+      type="hidden"
+      value="<%= form_authenticity_token %>">
+
+    <input type="submit" value="Delete Group">
+  </form>
 </section>
 
 <style>

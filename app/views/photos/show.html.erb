@@ -7,34 +7,34 @@
       <%= render "photo_map", photo: @photo %>
     </div>
   </section>
-<section class="photo-show-right">
-  <%= link_to "Edit Photo", edit_user_photo_url(@user, @photo) %>
-  <ul class="group">
-    <div class="photo-info">
-    <li>
-      Location: <%= @photo.location %>
-    </li>
-    <li>
-      Description: <%= @photo.description %>
-    </li>
-    <li>
-      <div class="like">
-        <%= render "likes/show", type: @photo, sub_type: nil %>
+  <section class="photo-show-right">
+    <%= link_to "Edit Photo", edit_user_photo_url(@user, @photo) %>
+    <ul class="group">
+      <div class="photo-info">
+        <li>
+          Location: <%= @photo.location %>
+        </li>
+        <li>
+          Description: <%= @photo.description %>
+        </li>
+        <li>
+          <div class="like">
+            <%= render "likes/show", type: @photo, sub_type: nil %>
+          </div>
+        </li>
       </div>
-    </li>
-    </div>
-  </ul>
-<h2 class="comment-header">Comments:</h2>
-<div class="photo-comments">
-<ul class="comment-list group">
-<% @photo.comments.reverse.each do |comment| %>
-  <%= render "comments/show", owner: @user, comment: comment, type: @photo %>
-<% end %>
-</ul>
-<%= render "comments/form", owner: @user, type: @photo %>
-</div>
-</section>
+    </ul>
 
+    <h2 class="comment-header">Comments:</h2>
+    <div class="photo-comments">
+      <ul class="comment-list group">
+        <% @photo.comments.reverse.each do |comment| %>
+        <%= render "comments/show", owner: @user, comment: comment, type: @photo %>
+        <% end %>
+      </ul>
+      <%= render "comments/form", owner: @user, type: @photo %>
+    </div>
+  </section>
 </section>
 
 <script>
@@ -103,4 +103,5 @@ img {
   display: block;
   margin: 0;
 }
+
 </style>

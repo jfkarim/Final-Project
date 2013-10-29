@@ -5,7 +5,12 @@
   class="button_to event-attendance"
   method="post"
   data-remote="true">
-  <input type="hidden" name="_method" value="PUT">
+
+  <input
+    type="hidden"
+    name="_method"
+    value="PUT">
+
   <% eu = EventUser.where(event_id: event.id, user_id: user.id)[0]  %>
   <select name="status">
     <option value="PENDING"></option>
@@ -19,9 +24,10 @@
   </select>
 
   <input type="submit" value="Change Status">
-  <input name="authenticity_token"
-         type="hidden"
-         value="<%= form_authenticity_token %>">
+  <input
+    name="authenticity_token"
+    type="hidden"
+    value="<%= form_authenticity_token %>">
 </form>
 
 <style>

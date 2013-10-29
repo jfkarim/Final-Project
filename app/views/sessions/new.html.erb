@@ -3,34 +3,28 @@
 </section>
 
 <section class="sign-in group">
+  <h1>Sign In</h1>
 
-<h1>Sign In</h1>
+  <form action="<%= session_url %>" method="post" class="sign-in-form">
+    <input
+       name="authenticity_token"
+       type="hidden"
+       value="<%= form_authenticity_token %>">
 
-<form action="<%= session_url %>" method="post" class="sign-in-form">
-  <input
-     name="authenticity_token"
-     type="hidden"
-     value="<%= form_authenticity_token %>">
+    <div class="input-field">
+      <label class="input-label">Email:</label>
+      <input class="input-bar" name="user[email]" type="text">
+    </div>
 
-  <div class="input-field">
-  <label class="input-label">Email:</label>
-  <input
-     class="input-bar"
-     name="user[email]"
-     type="text">
-  </div>
+    <div class="input-field">
+      <label class="input-label">Password:</label>
+      <input class="input-bar" name="user[password]" type="password">
+    </div>
 
-  <div class="input-field">
-  <label class="input-label">Password:</label>
-  <input
-     class="input-bar"
-     name="user[password]"
-     type="password">
-  </div>
-  <input type="submit" value="Sign in">
-</form>
+    <input type="submit" value="Sign in">
+  </form>
 
-<%= link_to "Sign Up", new_user_url %>
+  <%= link_to "Sign Up", new_user_url %>
 </section>
 
 <style>

@@ -5,24 +5,36 @@
   data-remote="true">
 
   <input
-     name="_method"
-     type="hidden"
-     value="put">
+    name="_method"
+    type="hidden"
+    value="put">
 
-  <input type="hidden"
-         name="authenticity_token"
-         value="<%= form_authenticity_token %>">
+  <input
+    type="hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
 
   <div class="input-field">
     <label class="input-label">Title</label>
-    <input type="text" class="input-bar" name="album[title]" value="<%= album.title %>">
+    <input
+      type="text"
+      class="input-bar"
+      name="album[title]"
+      value="<%= album.title %>">
   </div>
+
   <div class="input-field">
     <label class="input-label">Description</label>
-    <input type="text" class="input-bar" name="album[description]" value="<%= album.description %>">
+    <input
+      type="text"
+      class="input-bar"
+      name="album[description]"
+      value="<%= album.description %>">
   </div>
+
   <input type="submit" value="Save Changes">
 </form>
+
 <%= button_to "Delete Album", user_album_url(album), method: :delete %>
 
 <script>

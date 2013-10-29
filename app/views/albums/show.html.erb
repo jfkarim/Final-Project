@@ -1,38 +1,38 @@
 <section class="page group">
-    <section class="album-show-left">
-<h1 class="album-title"><%= @album.title %></h1><br>
+  <section class="album-show-left">
+    <h1 class="album-title"><%= @album.title %></h1><br>
 
-<h3 class="photos-header">Photos</h3>
-<ul class="photos-list group">
-<% @album.photos.each do |photo| %>
-  <li>
-    <a href="<%= user_photo_url(@user, photo) %>">
-    <%= image_tag photo.picture.url %></a><br>
-  </li>
-<% end %>
-</ul>
-</section>
-    <section class="album-show-right">
-      <%= link_to "Edit Album", edit_user_album_url(@user, @album) %>
-<div class="album-info">
-<p><%= @album.description %></p>
+    <h3 class="photos-header">Photos</h3>
+    <ul class="photos-list group">
+      <% @album.photos.each do |photo| %>
+        <li>
+          <a href="<%= user_photo_url(@user, photo) %>">
+            <%= image_tag photo.picture.url %>
+          </a><br>
+        </li>
+      <% end %>
+    </ul>
+  </section>
 
-<div class="like group">
-  <%= render "likes/show", type: @album, sub_type: nil %>
-</div>
+  <section class="album-show-right">
+    <%= link_to "Edit Album", edit_user_album_url(@user, @album) %>
+    <div class="album-info">
+      <p><%= @album.description %></p>
+        <div class="like group">
+          <%= render "likes/show", type: @album, sub_type: nil %>
+        </div>
+    </div>
 
-</div>
-
-<h2 class="comment-header">Comments:</h2>
-<div class="album-comments">
-<ul class="comment-list">
-  <% @album.comments.reverse.each do |comment| %>
-    <%= render "comments/show", owner: @user, comment: comment, type: @album %>
-  <% end %>
-</ul>
-<%= render "comments/form", owner: @user, type: @album %>
-</div>
-</section>
+    <h2 class="comment-header">Comments:</h2>
+    <div class="album-comments">
+      <ul class="comment-list">
+        <% @album.comments.reverse.each do |comment| %>
+          <%= render "comments/show", owner: @user, comment: comment, type: @album %>
+        <% end %>
+      </ul>
+      <%= render "comments/form", owner: @user, type: @album %>
+    </div>
+  </section>
 </section>
 
 <script>
@@ -104,4 +104,5 @@ img {
   margin: 10px 0;
   color: #FF6600;
 }
+
 </style>

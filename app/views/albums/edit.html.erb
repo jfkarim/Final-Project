@@ -1,38 +1,43 @@
-<section class="page">
+<section class="page group">
+  <h1 class="edit-album">Edit Album/Add Photos</h1>
+  <div class="edit-info">
+    <%= render "edit_album_info", album: @album, user: current_user %>
+  </div>
 
-<h1 class="edit-album">Edit Album/Add Photos</h1>
-<div class="edit-info">
-  <%= render "edit_album_info", album: @album, user: current_user %>
-</div>
+  <h3 class="photo-header">Add Photo</h3>
 
-<h3 class="photo-header">Add Photo</h3>
+  <form
+    action="<%= user_photos_url %>"
+    class="add-photo group"
+    method="post"
+    enctype="multipart/form-data"
+    id="new-photo">
 
-<form
-  action="<%= user_photos_url %>"
-  class="add-photo group"
-  method="post"
-  enctype="multipart/form-data"
-  id="new-photo">
+    <input
+      type="hidden"
+      name="authenticity_token"
+      value="<%= form_authenticity_token %>">
 
-  <input type="hidden"
-         name="authenticity_token"
-         value="<%= form_authenticity_token %>">
-  <input type="file" name="photo[picture]">
-  <input type="hidden" name="photo[album_id]" value="<%= @album.id %>">
-  <input type="submit" value="Add Photo">
-</form>
+    <input type="file" name="photo[picture]">
 
-<h3 class="photo-header">Photos</h3>
-<ul class="photos-list group">
-<% @album.photos.each do |photo| %>
-  <%= render "photos_list_show", user: current_user, photo: photo %>
-<% end %>
-</ul>
+    <input
+      type="hidden"
+      name="photo[album_id]"
+      value="<%= @album.id %>">
 
+    <input type="submit" value="Add Photo">
+  </form>
 
+  <h3 class="photo-header">Photos</h3>
+  <ul class="photos-list group">
+    <% @album.photos.each do |photo| %>
+      <%= render "photos_list_show", user: current_user, photo: photo %>
+    <% end %>
+  </ul>
 </section>
 
 <script>
+
 $(document).ready(function() {
 
   $(".photo-header").click(function (){
@@ -41,10 +46,10 @@ $(document).ready(function() {
   });
 
 });
+
 </script>
 
 <style>
-
 
 .photo-header {
   font-size: 20px;

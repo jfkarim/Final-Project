@@ -1,21 +1,20 @@
-<div class="page group">
+<section class="page group">
   <section class="page-left">
     <%= image_tag @user.profile_picture.url(:standard) %>
     <%= render "users/about", user: @user %>
   </section>
 
   <section class="page-right">
-
     <%= render "activity_bar", user: @user  %>
     <section class='page-right-left'>
-    <div class="canvas group">
-      <h2 class="canvas-head">Canvas</h2>
-      <div id="map-canvas">
+      <div class="canvas group">
+        <h2 class="canvas-head">Canvas</h2>
+        <div id="map-canvas">
+        </div>
+        <%= render "map", photos: @user.photos %>
       </div>
-      <%= render "map", photos: @user.photos %>
-    </div>
-</section>
-<section class="page-right-right group">
+    </section>
+  <section class="page-right-right group">
     <div class="wall">
       <h2 class="wall-head">Wall</h2>
       <div class="wall-body">
@@ -29,7 +28,7 @@
       </div>
     </div>
   </section>
-</div>
+</section>
 
 <script>
 $(document).ready(function() {

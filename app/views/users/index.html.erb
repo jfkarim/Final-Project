@@ -1,29 +1,32 @@
-<section class="page">
-<h1 class="all-artists">All Artists</h1>
-<ul class="artist-list group">
-<% @users.each do |user| %>
-<li>
-  <%= image_tag user.profile_picture.url %>
-  <%= link_to user.artist_name, user_url(user) %>
-</li>
-<% end %>
-</ul>
-<div class="map">
-<h2>The Map of Maps</h2>
-<div id="map-canvas">
-</div>
-<%= render "map_of_maps", photos: @photos %>
-</div>
+<section class="page group">
+  <h1 class="all-artists">All Artists</h1>
+  <ul class="artist-list group">
+    <% @users.each do |user| %>
+      <li>
+        <%= image_tag user.profile_picture.url %>
+        <%= link_to user.artist_name, user_url(user) %>
+      </li>
+    <% end %>
+  </ul>
+  <div class="map">
+    <h2>The Map of Maps</h2>
+    <div id="map-canvas">
+    </div>
+    <%= render "map_of_maps", photos: @photos %>
+  </div>
 </section>
 
 <script>
+
 $(document).ready(function() {
+
   $(".all-artists").click(function (){
     $artists = $(this).next();
     $artists.toggle();
   });
 
 });
+
 </script>
 
 <style>

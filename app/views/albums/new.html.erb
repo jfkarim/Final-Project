@@ -1,22 +1,34 @@
-<section class="page">
+<section class="page group">
+  <h1 class="create-album">Create New Album</h1>
 
-<h1 class="create-album">Create New Album</h1>
+  <form
+    action="<%= user_albums_url %>"
+    method="post"
+    class="album-info-form">
 
-<form action="<%= user_albums_url %>" method="post" class="album-info-form">
-  <input type="hidden"
-         name="authenticity_token"
-         value="<%= form_authenticity_token %>">
-  <div class="input-field">
-  <label class="input-label">Title</label>
-  <input type="text" class="input-bar" name="album[title]">
-  </div>
-  <div class="input-field">
-  <label class="input-label">Description</label>
-  <input type="text" class="input-bar" name="album[description]">
-  </div>
-  <input type="submit" value="Create Album">
-</form>
+    <input
+      type="hidden"
+      name="authenticity_token"
+      value="<%= form_authenticity_token %>">
 
+    <div class="input-field">
+      <label class="input-label">Title</label>
+      <input
+        type="text"
+        class="input-bar"
+        name="album[title]">
+    </div>
+
+    <div class="input-field">
+      <label class="input-label">Description</label>
+      <input
+        type="text"
+        class="input-bar"
+        name="album[description]">
+    </div>
+
+    <input type="submit" value="Create Album">
+  </form>
 </section>
 
 <style>

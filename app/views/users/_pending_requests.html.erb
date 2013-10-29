@@ -6,9 +6,9 @@
         <li>
           <%= pending_friend.artist_name %>
           <div class="approve-deny-friend">
-          <%= render "friendships/approve_deny",
-                user: user,
-                pending_friend: pending_friend %>
+            <%= render "friendships/approve_deny",
+                  user: user,
+                  pending_friend: pending_friend %>
           </div>
         </li>
       <% end %>
@@ -22,9 +22,9 @@
         <li>
           <%= pending_group.name %>
           <div class="approve-deny-group">
-          <%= render "group_users/approve_deny",
-                user: user,
-                pending_group: pending_group %>
+            <%= render "group_users/approve_deny",
+                  user: user,
+                  pending_group: pending_group %>
           </div>
         </li>
       <% end %>

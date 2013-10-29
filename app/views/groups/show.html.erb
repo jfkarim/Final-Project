@@ -1,34 +1,37 @@
 <section class="page group">
-<h1 class="group-name"><%= @group.name %></h1>
-<section class="group-show-left">
-  <div class="admin-head">
-<span class="group-admin">Admin: <%= image_tag @group.admin.profile_picture.url(:icon) %> <%= @group.admin.artist_name %></span>
-</div>
-<% if @group.admin_id == current_user.id  %>
-  <%= link_to "Add People", new_group_group_user_url(@group) %>
-  <%= link_to "Edit Group", edit_group_url(@group) %>
-<% end %>
-<div class="group-info">
-<h3>Description</h3>
-<p><%= @group.description %></p>
-<div class="members-show">
-<h3>Members</h3>
-<ul>
-  <% @group.approved_users.each do |user| %>
-    <li><%= link_to user.artist_name, user_url(user) %></li>
-  <% end %>
-</ul>
-</div>
-</div>
-</section>
-<section class="group-show-right group">
-  <div class="wall">
-    <h2 class="wall-head">Wall</h2>
-    <div class="wall-body">
-      <%= render "posts/form", owner: @group %>
-      <%= render "layouts/wall", owner: @group %>
+  <h1 class="group-name"><%= @group.name %></h1>
+
+  <section class="group-show-left">
+    <div class="admin-head">
+      <span class="group-admin">Admin: <%= image_tag @group.admin.profile_picture.url(:icon) %> <%= @group.admin.artist_name %></span>
     </div>
-  </div>
+    <% if @group.admin_id == current_user.id  %>
+      <%= link_to "Add People", new_group_group_user_url(@group) %>
+      <%= link_to "Edit Group", edit_group_url(@group) %>
+    <% end %>
+    <div class="group-info">
+      <h3>Description</h3>
+      <p><%= @group.description %></p>
+      <div class="members-show">
+        <h3>Members</h3>
+          <ul>
+            <% @group.approved_users.each do |user| %>
+              <li><%= link_to user.artist_name, user_url(user) %></li>
+            <% end %>
+          </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="group-show-right group">
+    <div class="wall">
+      <h2 class="wall-head">Wall</h2>
+      <div class="wall-body">
+        <%= render "posts/form", owner: @group %>
+        <%= render "layouts/wall", owner: @group %>
+      </div>
+    </div>
+  </section>
 </section>
 
 <script>

@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>UrbanCanvas</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>UrbanCanvas</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-<% if !current_user.nil? %>
+  <% if !current_user.nil? %>
 
-  <% name = current_user.artist_name %>
-  <header class="header">
-    <div class="header-wrap group">
+    <% name = current_user.artist_name %>
+    <header class="header">
+      <div class="header-wrap group">
 
-      <h1 class="header-logo">
-        <%= link_to "UrbanCanvas", user_news_feed_url(current_user)%>
-      </h1>
+        <h1 class="header-logo">
+          <%= link_to "UrbanCanvas", user_news_feed_url(current_user)%>
+        </h1>
 
-      <nav class="header-nav">
-        <ul class="group">
-          <li><%= link_to name, user_url(current_user) %></li>
-          <li><%= link_to "Artists", users_url %></li>
-          <li><%= button_to "Logout", session_url, method: :delete %></li>
-        </ul>
-      </nav>
+        <nav class="header-nav">
+          <ul class="group">
+            <li><%= link_to name, user_url(current_user) %></li>
+            <li><%= link_to "Artists", users_url %></li>
+            <li><%= button_to "Logout", session_url, method: :delete %></li>
+          </ul>
+        </nav>
 
-    </div>
-  </header>
-<% end %>
+      </div>
+    </header>
+  <% end %>
 
-<%= yield %>
+  <%= yield %>
 
-</body>
+  </body>
 </html>
 
 

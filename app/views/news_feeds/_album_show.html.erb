@@ -3,13 +3,15 @@
 <li class="news-feed-album">
   <span class="artist-name"><%= image_tag owner.profile_picture.url(:icon) %> <%= owner.artist_name %></span> uploaded a new album:  <%= link_to album.title, user_album_url(owner, album) %> <br>
   <% if album.photos.length > 0 %>
-  <div class="album-images">
-    <ul class="group">
-      <% for i in 0..3 %>
-        <li class="album-image"><%= image_tag album.photos[i].picture.url(:standard) %></li>
-      <% end %>
-    </ul>
-  </div>
+    <div class="album-images">
+      <ul class="group">
+        <% for i in 0..3 %>
+          <li class="album-image">
+            <%= image_tag album.photos[i].picture.url(:standard) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
   <%= album.created_at %><br>
   <div class="like">

@@ -1,9 +1,10 @@
 <% owner = User.find(photo.user_id) %>
 
 <li class="news-feed-photo">
-    <span class="artist-name"><%= image_tag owner.profile_picture.url(:icon) %> <%= owner.artist_name %></span> uploaded a new photo<br>
-    <div class="photo-upload-show">
-  <%= image_tag photo.picture.url(:show) %></div>
+  <span class="artist-name"><%= image_tag owner.profile_picture.url(:icon) %> <%= owner.artist_name %></span> uploaded a new photo<br>
+  <div class="photo-upload-show">
+    <%= image_tag photo.picture.url(:show) %>
+  </div>
   <%= photo.created_at %>
   <%= link_to "Photo Page", user_photo_url(owner, photo) %>
   <div class="like">

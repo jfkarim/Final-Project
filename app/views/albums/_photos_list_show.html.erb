@@ -3,7 +3,6 @@
   <div class="edit-album-photo-info group">
     <%= render "albums/edit_photo_show_info", user: user, photo: photo %>
   </div>
-
 </li>
 
 <script>
@@ -11,9 +10,9 @@
 $(document).ready(function(){
 
   $(".edit-photo-info-form").on("ajax:success", function(event, data){
-    var $editInfo = $($(event.target).parent()[0])
+    var $editInfo = $($(event.target).parent()[0]);
     $editInfo.html(data);
-    $editInfo.append("<p class='saved'>Saved</p>")
+    $editInfo.append("<p class='saved'>Saved</p>");
   });
 
 });
@@ -108,4 +107,5 @@ $(document).ready(function(){
   font-size: 20px;
   color: #E3E3E3;
 }
+
 </style>

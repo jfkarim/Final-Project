@@ -6,28 +6,35 @@
   data-remote="true">
 
   <input type="text" name="comment[content]">
-  <input name="comment[commentable_id]"
-         type="hidden"
-         value="<%= type.id %>">
-  <input name="comment[commentable_type]"
-         type="hidden"
-         value="<%= type.class.to_s %>">
-  <input name="comment[user_id]"
-         type="hidden"
-         value="<%= current_user.id %>">
-  <input name="receiver_id"
-         type="hidden"
-         value="<%= type.id %>">
-  <input name="owner_id"
-         type="hidden"
-         value="<%= owner.id %>">
-  <input name="owner_class"
-         type="hidden"
-         value="<%= owner.class.to_s %>">
+  <input
+    name="comment[commentable_id]"
+    type="hidden"
+    value="<%= type.id %>">
+  <input
+    name="comment[commentable_type]"
+    type="hidden"
+    value="<%= type.class.to_s %>">
+  <input
+    name="comment[user_id]"
+    type="hidden"
+    value="<%= current_user.id %>">
+  <input
+    name="receiver_id"
+    type="hidden"
+    value="<%= type.id %>">
+  <input
+    name="owner_id"
+    type="hidden"
+    value="<%= owner.id %>">
+  <input
+    name="owner_class"
+    type="hidden"
+    value="<%= owner.class.to_s %>">
   <input type="submit" value="Create Comment">
-  <input name="authenticity_token"
-         type="hidden"
-         value="<%= form_authenticity_token %>">
+  <input
+    name="authenticity_token"
+    type="hidden"
+    value="<%= form_authenticity_token %>">
 </form>
 
 <script>
@@ -35,9 +42,7 @@
 $(document).ready(function(){
 
   $("#comment-form<%= type.id %><%= type.class.to_s %>").on("ajax:success", function(event, data){
-    console.log("here")
     var $list = $($($(event.target).parent()).find(".comment-list")[0]);
-    console.log($list)
     $list.append(data);
   });
 

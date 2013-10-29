@@ -1,53 +1,77 @@
-<section class="page">
-<h1 class="new-event">New Event</h1>
-<form action="<%= event_url(@event) %>" method="post" class="event-form">
-  <input
-     name="_method"
-     type="hidden"
-     value="put">
-  <input
-     name="authenticity_token"
-     type="hidden"
-     value="<%= form_authenticity_token %>">
+<section class="page group">
+  <h1 class="new-event">New Event</h1>
+  <form
+    action="<%= event_url(@event) %>"
+    method="post"
+    class="event-form">
 
-  <div class="input-field">
-  <label class="input-label">Name:</label>
-  <input
-     class="input-bar"
-     name="event[name]"
-     type="text"
-     value="<%= @event.name %>">
-  </div>
-  <div class="input-field">
-  <label class="input-label">Description:</label>
-  <input type="text" class="input-bar" name="event[description]" value="<%= @event.description %>">
-  </div>
-  <div class="input-field">
-  <label class="input-label">Location:</label>
-  <input type="text" class="input-bar" name="event[address]" value="<%= @event.address %>">
-  </div>
-  <div class="input-field">
-  <label class="input-label">Date:</label>
-  <input type="date" class="input-date" name="event[date]" value="<%= @event.date %>">
-  </div>
-  <div class="input-field">
-  <label class="input-label">Time</label>
-  <input type="time" class="input-time" name="event[time]" value="<%= @event.time %>">
-  </div>
+    <input
+      name="_method"
+      type="hidden"
+      value="put">
+    <input
+      name="authenticity_token"
+      type="hidden"
+      value="<%= form_authenticity_token %>">
 
-  <input type="submit" value="Update Event">
-</form>
+    <div class="input-field">
+      <label class="input-label">Name:</label>
+      <input
+        class="input-bar"
+        name="event[name]"
+        type="text"
+        value="<%= @event.name %>">
+    </div>
 
-<%= link_to "Back To Event", event_url(@event) %>
-<form action="<%= event_url(@event) %>" method="post">
-  <input type="hidden" name="_method" value="DELETE">
-  <input
-     name="authenticity_token"
-     type="hidden"
-     value="<%= form_authenticity_token %>">
+    <div class="input-field">
+      <label class="input-label">Description:</label>
+      <input
+        type="text"
+        class="input-bar"
+        name="event[description]"
+        value="<%= @event.description %>">
+    </div>
 
-  <input type="submit" value="Cancel Event">
-</form>
+    <div class="input-field">
+      <label class="input-label">Location:</label>
+      <input
+        type="text"
+        class="input-bar"
+        name="event[address]"
+        value="<%= @event.address %>">
+    </div>
+
+    <div class="input-field">
+      <label class="input-label">Date:</label>
+      <input
+        type="date"
+        class="input-date"
+        name="event[date]"
+        value="<%= @event.date %>">
+    </div>
+
+    <div class="input-field">
+      <label class="input-label">Time</label>
+      <input
+        type="time"
+        class="input-time"
+        name="event[time]"
+        value="<%= @event.time %>">
+    </div>
+
+    <input type="submit" value="Update Event">
+  </form>
+
+  <%= link_to "Back To Event", event_url(@event) %>
+  <form action="<%= event_url(@event) %>" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <input
+      name="authenticity_token"
+      type="hidden"
+      value="<%= form_authenticity_token %>">
+
+    <input type="submit" value="Cancel Event">
+  </form>
 </section>
 
 <style>

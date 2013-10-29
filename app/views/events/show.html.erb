@@ -1,66 +1,70 @@
 <section class="page group">
-<h1 class="event-name"><%= @event.name %></h1>
-<section class="event-show-left">
-<div class="host-head">
-Host: <span class="event-host"><%= image_tag @event.admin.profile_picture.url(:icon) %><%= @event.admin.artist_name %></span>
-</div>
-<div class="event-info">
-<h3>Description</h3>
-<p><%= @event.description %></p>
-<h3>Where</h3>
-<p><%= @event.address %></p>
-<h3>When</h3>
-<p><%= @event.date %> <%= @event.time.strftime('%H:%M:%S') %></p>
-</div>
-<% if @event.admin_id == current_user.id  %>
-  <%= link_to "Edit Event", edit_event_url(@event) %>
-<% end %>
-</section>
+  <h1 class="event-name"><%= @event.name %></h1>
+  <section class="event-show-left">
+    <div class="host-head">
+      Host: <span class="event-host"><%= image_tag @event.admin.profile_picture.url(:icon) %><%= @event.admin.artist_name %></span>
+    </div>
+    <div class="event-info">
+      <h3>Description</h3>
+      <p><%= @event.description %></p>
+      <h3>Where</h3>
+      <p><%= @event.address %></p>
+      <h3>When</h3>
+      <p><%= @event.date %> <%= @event.time.strftime('%H:%M:%S') %></p>
+    </div>
+    <% if @event.admin_id == current_user.id  %>
+      <%= link_to "Edit Event", edit_event_url(@event) %>
+    <% end %>
+  </section>
 
-<section class="event-show-right">
-<section class="event-show-right-right">
-<div class="invites-status">
-<h2>Invites Status</h2>
+  <section class="event-show-right">
+    <section class="event-show-right-right">
+      <div class="invites-status">
+        <h2>Invites Status</h2>
 
-<h4>Going</h4>
-<ul>
-  <% @event.going_users.each do |user| %>
-    <li><%= link_to user.artist_name, user_url(user) %></li>
-  <% end %>
-</ul>
+        <h4>Going</h4>
+        <ul>
+          <% @event.going_users.each do |user| %>
+            <li><%= link_to user.artist_name, user_url(user) %></li>
+          <% end %>
+        </ul>
 
-<h4>Maybe</h4>
-<ul>
-  <% @event.maybe_users.each do |user| %>
-    <li><%= link_to user.artist_name, user_url(user) %></li>
-  <% end %>
-</ul>
+        <h4>Maybe</h4>
+        <ul>
+          <% @event.maybe_users.each do |user| %>
+            <li><%= link_to user.artist_name, user_url(user) %></li>
+          <% end %>
+        </ul>
 
-<h4>Declined</h4>
-<ul>
-  <% @event.declined_users.each do |user| %>
-    <li><%= link_to user.artist_name, user_url(user) %></li>
-  <% end %>
-</ul>
-<% if @event.admin_id == current_user.id  %>
-  <%= link_to "Invite People", new_event_event_user_url(@event) %>
-<% end %>
-</div>
-</section>
-<section class="event-show-right-left">
-<div class="wall">
-  <h2 class="wall-head">Wall</h2>
-  <div class="wall-body">
-    <%= render "posts/form", owner: @event %>
-    <%= render "layouts/wall", owner: @event %>
-  </div>
-</div>
-</section>
-</section>
+        <h4>Declined</h4>
+        <ul>
+          <% @event.declined_users.each do |user| %>
+            <li><%= link_to user.artist_name, user_url(user) %></li>
+          <% end %>
+        </ul>
+
+        <% if @event.admin_id == current_user.id  %>
+          <%= link_to "Invite People", new_event_event_user_url(@event) %>
+        <% end %>
+      </div>
+    </section>
+
+    <section class="event-show-right-left">
+      <div class="wall">
+        <h2 class="wall-head">Wall</h2>
+        <div class="wall-body">
+          <%= render "posts/form", owner: @event %>
+          <%= render "layouts/wall", owner: @event %>
+        </div>
+      </div>
+    </section>
+  </section>
 </section>
 
 <script>
+
 $(document).ready(function() {
+
   $(".wall-head").click(function (){
     $wall = $(this).next();
     $wall.toggle();
@@ -72,6 +76,7 @@ $(document).ready(function() {
   });
 
 });
+
 </script>
 
 <style>
@@ -179,4 +184,5 @@ $(document).ready(function() {
   padding-bottom: 5px;
   border-bottom: 2px solid #FF6600;
 }
+
 </style>

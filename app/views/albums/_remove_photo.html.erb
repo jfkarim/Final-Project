@@ -1,15 +1,19 @@
-<form action="<%= user_photo_url(user, photo) %>"
-      class="photo-delete"
-      method="post"
-      data-remote="true">
+<form
+  action="<%= user_photo_url(user, photo) %>"
+  class="photo-delete"
+  method="post"
+  data-remote="true">
+
   <input
-     name="_method"
-     type="hidden"
-     value="delete">
+    name="_method"
+    type="hidden"
+    value="delete">
+
   <input
-     name="authenticity_token"
-     type="hidden"
-     value="<%= form_authenticity_token %>">
+    name="authenticity_token"
+    type="hidden"
+    value="<%= form_authenticity_token %>">
+
   <input type="submit" value="Remove Photo">
 </form>
 

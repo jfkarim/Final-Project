@@ -3,47 +3,41 @@
 </section>
 
 <section class="sign-up group">
+  <h1>New Artist</h1>
+  <form
+    action="<%= users_url %>"
+    method="post"
+    enctype="multipart/form-data"
+    class="sign-up-form">
+    <input
+      name="authenticity_token"
+      type="hidden"
+      value="<%= form_authenticity_token %>">
 
-<h1>New Artist</h1>
+    <div class="input-field">
+      <label class="input-label">Artist Name:</label>
+      <input class="input-bar" name="user[artist_name]" type="text">
+    </div>
 
-<form action="<%= users_url %>" method="post" enctype="multipart/form-data" class="sign-up-form">
-  <input
-     name="authenticity_token"
-     type="hidden"
-     value="<%= form_authenticity_token %>">
+    <div class="input-field">
+      <label class="input-label">Email:</label>
+      <input class="input-bar" name="user[email]" type="text">
+    </div>
 
-  <div class="input-field">
-  <label class="input-label">Artist Name:</label>
-  <input
-    class="input-bar"
-    name="user[artist_name]"
-    type="text">
-  </div>
+    <div class="input-field">
+      <label class="input-label">Password:</label>
+      <input class="input-bar" name="user[password]" type="password">
+    </div>
 
-  <div class="input-field">
-  <label class="input-label">Email:</label>
-  <input
-     class="input-bar"
-     name="user[email]"
-     type="text">
-   </div>
+    <div class="input-field">
+      <label class="input-label">Profile Picture:</label>
+      <input type="file" name="user[profile_picture]">
+    </div>
 
-  <div class="input-field">
-  <label class="input-label">Password:</label>
-  <input
-     class="input-bar"
-     name="user[password]"
-     type="password">
-  </div>
-
-  <div class="input-field">
-  <label class="input-label">Profile Picture:</label>
-  <input type="file" name="user[profile_picture]">
-  </div>
-
-  <input type="submit" value="Create Artist">
-</form>
+    <input type="submit" value="Create Artist">
+  </form>
 </section>
+
 <style>
 /* --- Reset user agent styles --- */
 

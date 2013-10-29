@@ -1,18 +1,18 @@
 <section class="page">
 
-<h1 class="news-feed">News Feed</h1>
+  <h1 class="news-feed">News Feed</h1>
 
-<ul class="feed-list">
-<% @news.each do |n| %>
-  <% if n.class.to_s == "Post" %>
-    <%= render "post_show", post: n %>
-  <% elsif n.class.to_s == "Album" %>
-    <%= render "album_show", album: n %>
-  <% elsif n.class.to_s == "Photo" %>
-    <%= render "photo_show", photo: n %>
+  <ul class="feed-list">
+  <% @news.each do |n| %>
+    <% if n.class.to_s == "Post" %>
+      <%= render "post_show", post: n %>
+    <% elsif n.class.to_s == "Album" %>
+      <%= render "album_show", album: n %>
+    <% elsif n.class.to_s == "Photo" %>
+      <%= render "photo_show", photo: n %>
+    <% end %>
   <% end %>
-<% end %>
-</ul>
+  </ul>
 
 </section>
 

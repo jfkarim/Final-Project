@@ -7,9 +7,10 @@
   data-remote="true">
   <input type="hidden" name="_method" value="PUT">
   <input type="submit" value="Approve">
-  <input name="authenticity_token"
-         type="hidden"
-         value="<%= form_authenticity_token %>">
+  <input
+    name="authenticity_token"
+    type="hidden"
+    value="<%= form_authenticity_token %>">
 </form>
 <form
   action="<%= user_friendship_url(user, Friendship.where(
@@ -20,9 +21,10 @@
   data-remote="true">
   <input type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Deny">
-  <input name="authenticity_token"
-         type="hidden"
-         value="<%= form_authenticity_token %>">
+  <input
+    name="authenticity_token"
+    type="hidden"
+    value="<%= form_authenticity_token %>">
 </form>
 
 <script>
