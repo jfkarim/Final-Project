@@ -8,7 +8,7 @@ development:
   encoding: unicode
   database: urban_canvas_development
   pool: 5
-  username: appacademy
+  username: jfkarim
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -18,7 +18,7 @@ test:
   encoding: unicode
   database: urban_canvas_test
   pool: 5
-  username: appacademy
+  username: jfkarim
 
 
 production:
@@ -26,4 +26,4 @@ production:
   encoding: unicode
   database: urban_canvas_production
   pool: 5
-  username: appacademy
+  username: jfkarim

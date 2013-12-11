@@ -25,6 +25,16 @@
   </form>
 
   <%= link_to "Sign Up", new_user_url %>
+	
+  <form action="<%= session_url %>" method="post" class="sign-in-form">
+    <input
+       name="authenticity_token"
+       type="hidden"
+       value="<%= form_authenticity_token %>">
+    <input name="user[email]" type="hidden" value="jfk303@nyu.edu">
+    <input type="hidden" name="user[password]" value="password">
+    <input type="submit" value="Guest">
+  </form>
 </section>
 
 <style>
@@ -104,6 +114,7 @@ img {
 
 .sign-in > h1 {
   text-align: center;
+	font-size: 30px;
   display: block;
   margin: 0;
   padding: 10px;
@@ -139,6 +150,7 @@ img {
   float: right;
   width: 200px;
   margin: 0;
+	padding: 3px;
   border: 2px solid #FF6600;
   border-radius: 2px;
   background-color: #5B605F;
