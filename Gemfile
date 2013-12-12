@@ -35,7 +35,7 @@ gem 'bcrypt-ruby', require: 'bcrypt'
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'
@@ -47,4 +47,8 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-rails', '0.1.6'
+end
+
+group :production do
+  gem 'rails_12factor'
 end
