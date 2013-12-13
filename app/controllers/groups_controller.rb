@@ -23,7 +23,7 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    @group = Group.find(params[:id])
+    @group = Group.includes(:users).find(params[:id])
     render :edit
   end
 
@@ -38,7 +38,7 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @group = Group.find(params[:id])
+    @group = Group.includes(:users).find(params[:id])
     render :show
   end
 

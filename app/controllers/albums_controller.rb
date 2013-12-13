@@ -1,7 +1,7 @@
 class AlbumsController < ApplicationController
 
   def index
-    @user = User.find(params[:user_id])
+    @user = User.includes(:albums).find(params[:user_id])
     @albums = Album.where(user_id: params[:user_id])
     render :index
   end
@@ -25,13 +25,13 @@ class AlbumsController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:user_id])
+    @user = User.includes(:albums).find(params[:user_id])
     @album = Album.find(params[:id])
     render :edit
   end
 
   def update
-    @user = User.find(params[:user_id])
+    @user = User.includes(:albums).find(params[:user_id])
     @album = Album.find(params[:id])
 
     @album.update_attributes(params[:album])
@@ -45,13 +45,13 @@ class AlbumsController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:user_id])
+    @user = User.includes(:albums).find(params[:user_id])
     @album = Album.find(params[:id])
     render :show
   end
 
   def destroy
-    @user = User.find(params[:user_id])
+    @user = User.includes(:albums).find(params[:user_id])
     @album = Album.find(params[:id])
     @album.destroy
     redirect_to user_url(@user)

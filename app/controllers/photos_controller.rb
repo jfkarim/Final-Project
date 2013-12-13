@@ -1,7 +1,7 @@
 class PhotosController < ApplicationController
 
   def index
-    @user = User.find(params[:user_id])
+    @user = User.includes(:photos).find(params[:user_id])
     @photos = Photo.where(user_id: params[:user_id])
     render :index
   end
@@ -23,13 +23,13 @@ class PhotosController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:user_id])
+    @user = User.includes(:photos).find(params[:user_id])
     @photo = Photo.find(params[:id])
     render :edit
   end
 
   def update
-    @user = User.find(params[:user_id])
+    @user = User.includes(:photos).find(params[:user_id])
 
     @photo = Photo.find(params[:id])
     @photo.location = (params[:photo][:location])
@@ -44,13 +44,13 @@ class PhotosController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:user_id])
+    @user = User.includes(:photos).find(params[:user_id])
     @photo = Photo.find(params[:id])
     render :show
   end
 
   def destroy
-    @user = User.find(params[:user_id])
+    @user = User.includes(:photos).find(params[:user_id])
     @photo = Photo.find(params[:id])
     @photo.destroy
     render json: @photo

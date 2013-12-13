@@ -21,7 +21,7 @@ class GroupUsersController < ApplicationController
   end
 
   def update
-    @group = Group.find(params[:group_id])
+    @group = Group.includes(:group_users).find(params[:group_id])
     @group_user = GroupUser.find(params[:id])
     @group_user.approve!
     render json: @group_user
