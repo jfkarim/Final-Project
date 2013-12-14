@@ -30,7 +30,7 @@
     name="owner_class"
     type="hidden"
     value="<%= owner.class.to_s %>">
-  <input type="submit" value="Create Comment">
+  <input type="submit" value="Comment">
   <input
     name="authenticity_token"
     type="hidden"
@@ -42,7 +42,7 @@
 $(document).ready(function(){
 
   $("#comment-form<%= type.id %><%= type.class.to_s %>").on("ajax:success", function(event, data){
-    var $list = $($($(event.target).parent()).find(".comment-list")[0]);
+    var $list = $($($(event.target).parent()).find(".comment-ul")[0]);
     $list.append(data);
   });
 

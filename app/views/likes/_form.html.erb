@@ -1,5 +1,3 @@
-<div class="like-count"><%= type.likes.length %> likes</div>
-
 <form
   action="<%= likes_url %>"
   class="button_to like-form<%= type.id %>"
@@ -18,10 +16,11 @@
   <input name="receiver_id"
          type="hidden"
          value="<%= !@sub_type.nil? ? @sub_type.id : type.id %>">
-  <input type="submit" value="Like">
+  <input type="image" alt="Submit" src='/assets/like_orange.png'>
   <input name="authenticity_token"
          type="hidden"
          value="<%= form_authenticity_token %>">
+	<span class="like-count"><%= type.likes.length %></span>
 </form>
 
 <script>
@@ -36,3 +35,4 @@ $(document).ready(function(){
 });
 
 </script>
+

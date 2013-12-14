@@ -1,51 +1,123 @@
 <% owner = User.find(photo.user_id) %>
 
-<li class="news-feed-photo">
-  <span class="artist-name"><%= image_tag owner.profile_picture.url(:icon) %> <%= owner.artist_name %></span> uploaded a new photo<br>
-  <div class="photo-upload-show">
-    <%= image_tag photo.picture.url(:show) %>
-  </div>
-  <%= photo.created_at %>
-  <%= link_to "Photo Page", user_photo_url(owner, photo) %>
-  <div class="like">
-    <%= render "likes/show", type: photo, sub_type: nil %>
-  </div>
-  <ul class="comment-list">
-    <% photo.comments.reverse.each do |comment| %>
-      <%= render "comments/show", owner: owner, comment: comment, type: photo %>
-    <% end %>
-  </ul>
-  <%= render "comments/form", owner: owner, type: photo %>
+<li class="news-feed-piece group">
+	<div class="post-artist-name">
+		<%= image_tag owner.profile_picture.url(:standard) %><a><%= owner.artist_name %></a> uploaded a new photo:
+	</div>
+	<div class="news-feed-left photo-news group">
+	  <div class="photo-content-format">
+	    <%= image_tag photo.picture.url(:show) %>
+	  </div>
+	</div>
+	<div class="news-feed-right group">
+	  <div class="news-feed-info group">
+	    <%= render "likes/show", type: photo, sub_type: nil %>
+			<span><%= photo.created_at %></span>
+	  </div>
+		<div class="comment-list group">
+			<%= render "comments/form", owner: owner, type: photo %>
+		  <ul class="comment-ul-photo group">
+		    <% photo.comments.reverse.each do |comment| %>
+		      <%= render "comments/show", owner: owner, comment: comment, type: photo %>
+		    <% end %>
+		  </ul>
+		</div>
+	</div>
 </li>
 
 <style>
 
-.news-feed-photo {
-  width: 500px;
-  padding: 5px;
-  margin: 10px auto;
-  border: 2px solid #5B605F;
-  border-radius: 2px;
+.news-feed-album {
+	width: 800px;
 }
 
-.photo-upload-show {
-  margin: 5px auto;
-  width: 350px;
-  height: 300px;
+.post-artist-name {
+	color: #333;
+	position: relative;
+	right: 10px;
+	margin-bottom: 5px;
+	font-size: 14pt;
+	vertical-align: bottom;
 }
 
-.photo-upload-show > img {
-  width: 100%;
-  border: 2px solid #FF6600;
+.post-artist-name > a {
+	vertical-align: bottom;
+	text-decoration: none;
+	color: #ed9a32;
 }
 
-.artist-name {
-  color: #FF6600;
+.post-artist-name > img {
+	width: 100px;
+	height: 100px;
+	position: relative;
+	top: 30px;
+	right: 20px;
+	border: 2px solid #afdaff;
+	border-radius: 50px;
 }
 
-.artist-name > img {
-  width: 30px;
-  height: 30px;
-  border: 2px solid #5B605F;;
+.album-images > ul {
+	padding-left: 10px;
 }
+
+.album-image > img {
+	width: 100px;
+	height: 100px;
+	border: 2px solid #ccc;
+	margin: 1px;
+	float: left;
+}
+
+.news-feed-left {
+	width: 460px;
+	font-size: 14pt;
+	float: left;
+}
+
+.photo-news {
+	height: 300px;
+}
+
+.photo-content-format {
+	padding: 2px;
+	font-size: 20pt;
+	background: #ccc;
+	height: 304px;
+}
+
+.photo-content-format > img {
+	width: 456px;
+	height: 300px;
+}
+
+.news-feed-right {
+	width: 300px;
+	float: left;
+	margin-left: 20px;
+}
+
+.comment-list {
+	background: #f6f6f6;
+	padding: 5px;
+	margin: 5px 0;
+}
+
+.comment-ul-photo {
+	padding-left: 20px;
+	height: 238px;
+	overflow: scroll;
+}
+
+.comment-form > input[type=text] {
+	width: 205px;
+}
+
+.news-feed-info {
+	display: inline;
+}
+
+.news-feed-info > form {
+	display: inline;
+}
+
 </style>

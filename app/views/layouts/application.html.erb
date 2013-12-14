@@ -1,242 +1,88 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+		
     <title>UrbanCanvas</title>
     <%= stylesheet_link_tag    "application", :media => "all" %>
-    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
   <body>
 
   <% if !current_user.nil? %>
-
-    <% name = current_user.artist_name %>
-    <header class="header">
-      <div class="header-wrap group">
-
-        <h1 class="header-logo">
-          <%= link_to "UrbanCanvas", user_news_feed_url(current_user)%>
-        </h1>
-
-        <nav class="header-nav">
-          <ul class="group">
-            <li><%= link_to name, user_url(current_user) %></li>
-            <li><%= link_to "Artists", users_url %></li>
-            <li><%= button_to "Logout", session_url, method: :delete %></li>
-          </ul>
-        </nav>
-
+	
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="<%=user_news_feed_url(current_user)%>">Urban Canvas</a>
       </div>
-    </header>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="<%= user_url(current_user) %>"><%= image_tag current_user.profile_picture.url(:icon) %></a></li>
+          <li><a href="#">Artists</a></li>
+          <li><%= link_to "Logout", session_url, method: :delete %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+	
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3 sidebar">
+        <ul class="nav nav-sidebar">
+          <li class="active"><a href="#">News Feed</a></li>
+					<li><a href="#">Pending</a></li>
+          <li><a href="#">Friends</a></li>
+          <li><a href="#">Photos</a></li>
+          <li><a href="#">Albums</a></li>
+					<li><a href="#">Events</a></li>
+					<li><a href="#">Groups</a></li>
+        </ul>
+        <ul class="nav nav-sidebar">
+        </ul>
+        <ul class="nav nav-sidebar">
+        </ul>
+      </div>
+			<div class="col-sm-9 col-sm-offset-3 main">
+				<%= yield %>
+			</div>
+    </div>
+  </div>
+	
   <% end %>
+  
+	
+	<% if current_user.nil? %>
+		<%= yield %>
+	<% end %>
 
-  <%= yield %>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
 
+
+	<%= javascript_include_tag "application" %>
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
   </body>
 </html>
 
 
 <style>
-
-/* --- Reset user agent styles --- */
-
-html, body, header, h1, h2, nav, ul, li, a, footer, small, input {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-
-/* --- Set basic html elements --- */
-
-html, body {
-  width: 100%;
-  height: 100%;
-}
-
-body {
-  font-family: sans-serif;
-  background: #5B605F;
-  color: white;
-}
-
-a {
-  text-decoration: none;
-  color: #FF6600;
-}
-
-a:hover {
-  text-decoration: underline;
-  cursor: default;
-}
-
-ul {
-  list-style: none;
-}
-
-/* --- Helper methods (clearfix) --- */
-
 .group:after {
   content: "";
   display: table;
   clear: both;
 }
-
-/* --- Header --- */
-
-.header {
-  margin: auto;
-  display: block;
-}
-
-.header-wrap {
-  background: #464646;
-  color: #FF6600;
-  width: 1000px;
-  margin: auto;
-  border: 3px solid #FF6600;
-  border-radius: 3px;
-}
-
-.header a {
-  color: #FF6600;
-}
-
-.header-logo {
-  float: left;
-}
-
-.header-logo > a {
-  display: block;
-  padding: 10px 20px;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.header-logo > a:hover {
-  background: #FF6600;
-  color: #E3E3E3;
-  text-decoration: none;
-}
-
-.header-nav {
-  float: right;
-}
-
-.header-nav > ul {
-}
-
-.header-nav > ul > li {
-  display: block;
-  float: left;
-  border-left: 3px solid #FF6600;
-}
-
-.header-nav > ul > li > a {
-  display: block;
-  padding: 10px 20px;
-  font-size: 20px;
-}
-
-.header-nav > ul > li > form input[type="submit"] {
-  display: block;
-  padding: 10px 20px;
-  font-size: 20px;
-  background: #464646;
-  color: #FF6600;
-}
-
-.header-nav > ul > li:hover {
-  border-left: 3px solid #464646;
-}
-
-.header-nav > ul > li:hover > a {
-  background: #FF6600;
-  color: #E3E3E3;
-  border-color: #464646;
-  text-decoration: none;
-}
-
-.header-nav > ul > li > form input[type="submit"]:hover {
-  background: #FF6600;
-  color: #E3E3E3;
-}
-
-.page {
-  background: #464646;
-  width: 960px;
-  padding: 20px;
-  margin: 10px auto;
-  border: 3px solid #FF6600;
-  border-radius: 3px;
-}
-
-.comment-list {
-  clear: left;
-  margin: 10px 0 0 20px;
-}
-
-.comment-list > li {
-  clear: left;
-  font-size: 14px;
-}
-
-.comment-form {
-  display: block;
-  font-size: 12px;
-  clear: left;
-  margin: 10px 0 0 20px;
-}
-
-.comment-form input[type="text"] {
-  width: 150px;
-  margin: 0;
-  border: 1px solid #FF6600;
-  border-radius: 1px;
-  background-color: #5B605F;
-  color: #E3E3E3;
-}
-
-.comment-form input[type="submit"] {
-  display: inline;
-  padding: 0 1px;
-  margin: 0;
-  border: 1px solid #FF6600;
-  border-radius: 1px;
-  background-color: #5B605F;
-  color: #E3E3E3;
-}
-
-.comment-form input[type="submit"]:hover {
-  border: 1px solid #E3E3E3;
-  background-color: #FF6600;
-  color: #E3E3E3;
-}
-
-.like > form input[type="submit"] {
-  display: inline;
-  float: left;
-  font-size: 10px;
-  border: 2px solid #FF6600;
-  border-radius: 2px;
-  background: #464646;
-  padding: 1px;
-  margin-left: 10px;
-  color: #E3E3E3;
-}
-
-.like > form input[type="submit"]:hover {
-  border: 2px solid #E3E3E3;
-  background-color: #FF6600;
-  color: #E3E3E3;
-}
-
-.like-count {
-  float: left;
-  padding: 3px;
-  font-size: 12px;
-}
-
 </style>

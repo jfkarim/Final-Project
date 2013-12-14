@@ -1,5 +1,3 @@
-<div class="like-count"><%= type.likes.length %> likes</div>
-
 <form
   action="<%= like_url(like) %>"
   class="button_to unlike-form<%= type.id %>"
@@ -10,10 +8,11 @@
      name="_method"
      type="hidden"
      value="delete">
-  <input type="submit" value="Unlike">
+  <input type="image" alt="Submit" src='/assets/like_blue.png'>
   <input name="authenticity_token"
          type="hidden"
          value="<%= form_authenticity_token %>">
+	<span class="like-count"><%= type.likes.length %></span>
 </form>
 
 <script>
