@@ -4,25 +4,87 @@
   method="post"
   data-remote="true">
 
-  <label>What's up?</label>
-  <input type="text" name="post[content]">
-  <input name="post[wall_id]"
-         type="hidden"
-         value="<%= owner.wall.id %>">
-  <input name="receiver_id"
-         type="hidden"
-         value="<%= owner.id %>">
-  <input name="receiver_class"
-         type="hidden"
-         value="<%= owner.class.to_s %>">
-  <input name="post[user_id]"
-         type="hidden"
-         value="<%= current_user.id %>">
-  <input type="submit" value="Create Status">
-  <input name="authenticity_token"
-         type="hidden"
-         value="<%= form_authenticity_token %>">
+	<%= image_tag owner.profile_picture.url(:standard) %>
+	<div class="post-options group">
+		<select class="font-select">
+			<options>fonts</option>
+		  <option value="volvo">font 1</option>
+		  <option value="saab">font 2</option>
+		  <option value="mercedes">font 3</option>
+		  <option value="audi">font 4</option>
+		</select>
+		<select class="color-select">
+			<options>colors</option>
+		  <option value="volvo">color 1</option>
+		  <option value="saab">color 2</option>
+		  <option value="mercedes">color 3</option>
+		  <option value="audi">color 4</option>
+		</select>
+	</div>
+	<div class="status-enter">
+	  <input type="text" class="status-input" name="post[content]" placeholder="Write New Post...">
+	  <input name="post[wall_id]"
+	         type="hidden"
+	         value="<%= owner.wall.id %>">
+	  <input name="receiver_id"
+	         type="hidden"
+	         value="<%= owner.id %>">
+	  <input name="receiver_class"
+	         type="hidden"
+	         value="<%= owner.class.to_s %>">
+	  <input name="post[user_id]"
+	         type="hidden"
+	         value="<%= current_user.id %>">
+	  <input type="submit" value="Create Status">
+	  <input name="authenticity_token"
+	         type="hidden"
+	         value="<%= form_authenticity_token %>">
+	</div>
 </form>
 
 <style>
+
+.status-enter {
+	width: 500px;
+	position: relative;
+	top: -31px;
+	left: 74px;
+}
+
+.status-input {
+	width: 350px;
+	padding-left: 10px;
+	padding-top:3px;
+	clear: both;
+	background: transparent;
+	border: none;
+}
+
+.status-enter > input[type=submit] {
+	float: right;
+}
+
+.status-form > img {
+	width: 70px;
+	height: 70px;
+	border: 2px solid #ed9a32;
+	border-radius: 35px;
+	position: relative;
+	top: 10px;
+	left: 5px;
+}
+
+textarea:focus, input:focus{
+    outline: 0;
+}
+
+.post-options {
+	display: inline-block;
+	width: 500px;
+	border-bottom: 2px solid #ccc;
+}
+
+.post-options > select {
+	float: right;
+}
 </style>

@@ -16,11 +16,11 @@
   <input name="receiver_id"
          type="hidden"
          value="<%= !@sub_type.nil? ? @sub_type.id : type.id %>">
+	<span class="like-count"><%= type.likes.length %></span>
   <input type="image" alt="Submit" src='/assets/like_orange.png'>
   <input name="authenticity_token"
          type="hidden"
          value="<%= form_authenticity_token %>">
-	<span class="like-count"><%= type.likes.length %></span>
 </form>
 
 <script>

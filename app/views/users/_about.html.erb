@@ -1,56 +1,39 @@
-<h2 class="alias"><%= @user.artist_name %></h2>
-<div class="friend-status">
-<% if @user != current_user %>
-  <% if current_user.approved_friends.include?(@user) %>
-    <%= render "remove_friend", user: @user %>
-  <% elsif @user.pending_friends.include?(current_user) %>
-    <p class="requested">Friend Request Sent</p>
-  <% else %>
-    <%= render "add_friend", user: @user %>
-  <% end %>
-<% end %>
+<div class="user-attributes group">
+	<div class="attribute-section group">
+		<h3 class="attribute-overview">Media</h3>
+		<ul class="attribute-list group">
+		  <% user.media.each do |medium| %>
+		    <li class="attribute-show">
+		      <%= medium.name %>
+		    </li>
+		  <% end %>
+		</ul>
+	</div>
+
+	<div class="attribute-section group">
+		<h3 class="attribute-overview">Themes</h3>
+		<ul class="attribute-list group">
+		  <% user.themes.each do |theme| %>
+		    <li class="attribute-show">
+		      <%= theme.name %>
+		    </li>
+		  <% end %>
+		</ul>
+	</div>
+
+	<div class="attribute-section group">
+		<h3 class="attribute-overview">Influences</h3>
+		<ul class="attribute-list group">
+		  <% user.influences.each do |influence| %>
+		    <li class="attribute-show">
+		      <%= influence.name %>
+		    </li>
+		  <% end %>
+		</ul>
+	</div>
+	<%= link_to "Edit About", edit_user_url(user) %>
 </div>
 
-<div class="user-attributes">
-<h3 class="attribute-overview">Influences</h3>
-<ul>
-  <% user.influences.each do |influence| %>
-    <li>
-      <%= influence.name %>
-    </li>
-  <% end %>
-</ul>
-
-<h3 class="attribute-overview">Media</h3>
-<ul>
-  <% user.media.each do |medium| %>
-    <li>
-      <%= medium.name %>
-    </li>
-  <% end %>
-</ul>
-
-<h3 class="attribute-overview">Themes</h3>
-<ul>
-  <% user.themes.each do |theme| %>
-    <li>
-      <%= theme.name %>
-    </li>
-  <% end %>
-</ul>
-
-<h3 class="attribute-overview">World Canvases</h3>
-<ul>
-  <% user.locations.each do |location| %>
-    <li>
-      <%= location.city %>, <%= location.country %>
-    </li>
-  <% end %>
-</ul>
-
-</div>
-<br>
-<%= link_to "Edit About", edit_user_url(user) %>
 
 <script>
 
@@ -68,4 +51,26 @@ $(document).ready( function () {
 
 
 <style>
+.user-attributes {
+	width: 500px;
+}
+
+.attribute-section {
+	width: 125px;
+	margin: 0 10px;
+	float: left;
+}
+
+.attribute-overview {
+	font-size: 10pt;
+	margin: 5px 0;
+}
+
+.attribute-list {
+	padding-left: 0;
+}
+
+.attribute-show {
+	font-size: 8pt;
+}
 </style>

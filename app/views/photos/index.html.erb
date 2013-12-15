@@ -1,19 +1,34 @@
-<section class="page">
-  <h1 class="photos-header">Photos</h1>
-  <% if is_page_owner?(@user) %>
-    <%= render "lone_upload", user: @user %>
-  <% end %>
-  <ul class="photos-list group">
-  <% @photos.each do |photo| %>
-    <li>
-      <a href="<%= user_photo_url(@user, photo) %>">
-        <%= image_tag photo.picture.url(:standard) %>
-      </a>
-    </li>
-  <% end %>
-  </ul>
-</section>
+
+<h1 class="photos-header">Photos</h1>
+<% if is_page_owner?(@user) %>
+  <%= render "lone_upload", user: @user %>
+<% end %>
+<ul class="photos-list group">
+<% @photos.each do |photo| %>
+  <li>
+    <a href="<%= user_photo_url(@user, photo) %>">
+      <%= image_tag photo.picture.url(:standard) %>
+    </a>
+  </li>
+<% end %>
+</ul>
+
 
 <style>
+
+.photos-list {
+	width: 850px;
+	margin: 20px 10px;
+	padding-left: 0;
+}
+
+.photos-list > li {
+	float: left;
+	margin: 5px;
+}
+
+.photos-list > li > a > img {
+	border: 2px solid #ccc;
+}
 
 </style>

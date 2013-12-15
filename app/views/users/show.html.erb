@@ -1,34 +1,53 @@
-<section class="page group">
-  <section class="page-left">
-    <%= image_tag @user.profile_picture.url(:standard) %>
-    <%= render "users/about", user: @user %>
-  </section>
+<div class="profile-top group">
+	<h1 class="profile-name group"><%= @user.artist_name %><div class="friend-status group">
+	<% if @user != current_user %>
+		  <% if current_user.approved_friends.include?(@user) %>
+		    <%= render "remove_friend", user: @user %>
+		  <% elsif @user.pending_friends.include?(current_user) %>
+		    <p class="requested">Friend Request Sent</p>
+		  <% else %>
+		    <%= render "add_friend", user: @user %>
+		  <% end %>
+		<% end %>
+		</div>
+	</h1>
+	<div class="profile-info group">
+	  <%= image_tag @user.profile_picture.url(:standard) %>
+	  <%= render "users/about", user: @user %>
+		<div class="photos-albums group">
+	  	<%= link_to "Photos", user_photos_url(@user) %><a>Albums</a>
+		</div>
+	</div>
+</div>
 
-  <section class="page-right">
-    <%= render "activity_bar", user: @user  %>
-    <section class='page-right-left'>
-      <div class="canvas group">
-        <h2 class="canvas-head">Canvas</h2>
-        <div id="map-canvas">
-        </div>
-        <%= render "map", photos: @user.photos %>
-      </div>
-    </section>
-  <section class="page-right-right group">
-    <div class="wall">
-      <h2 class="wall-head">Wall</h2>
-      <div class="wall-body">
-        <% if is_page_owner?(@user) %>
-          <%= render "posts/status", owner: current_user %>
-        <% end %>
-        <% if can_post_on_wall?(@user)  %>
-          <%= render "posts/form", owner: @user %>
-        <% end %>
-        <%= render "layouts/wall", owner: @user %>
-      </div>
-    </div>
-  </section>
-</section>
+<div class="canvas group">
+  <h2 class="canvas-head">Canvas</h2>
+	<div class="location-section group">
+		<ul class="location-list group">
+		  <% @user.locations.each do |location| %>
+		    <li class="attribute-show">
+		      <%= location.city %>, <%= location.country %>
+		    </li>
+		  <% end %>
+		</ul>
+	</div>
+  <div id="map-canvas">
+  </div>
+  <%= render "map", photos: @user.photos %>
+</div>
+
+<div class="wall group">
+  <h2 class="wall-head">Wall</h2>
+  <div class="wall-body">
+    <% if is_page_owner?(@user) %>
+      <%= render "posts/status", owner: current_user %>
+    <% end %>
+    <% if can_post_on_wall?(@user)  %>
+      <%= render "posts/form", owner: @user %>
+    <% end %>
+    <%= render "layouts/wall", owner: @user %>
+  </div>
+</div>
 
 <script>
 $(document).ready(function() {
@@ -46,5 +65,89 @@ $(document).ready(function() {
 </script>
 
 <style>
+.profile-top {
+	width: 900px;
+}
+
+.profile-name {
+	width: 600px;
+	border-bottom: 2px solid #ccc;
+	padding: 5px 0;
+	vertical-align: bottom;
+}
+
+.profile-info {
+	height: 100px;
+}
+
+.profile-info > img {
+	width: 230px;
+	height: 230px;
+	border: 2px solid #ed9a32;
+	border-radius: 115px;
+	position: absolute;
+	top: 70px;
+	left: 650px;
+}
+
+.friend-status {
+	display: inline;
+}
+
+.friend-status > form {
+	display: inline;
+	margin-top: 10px;
+	float: right;
+	font-size: 14pt;
+	vertical-align: bottom;
+}
+
+.photos-albums {
+	width: 300px;
+	z-index: -1;
+	display: inline-block;
+	position: relative;
+	left: 350px;
+	top: 50px;
+	border-bottom: 2px solid #ccc;
+}
+
+.photos-albums > a {
+	margin: 0 20px;
+	font-size: 20pt;
+	color: #ed9a32;
+}
+
+.canvas {
+	margin-top: 80px;
+	width: 900px;
+}
+
+.canvas-head {
+	width: 830px;
+	padding-bottom: 5px;
+	border-bottom: 2px solid #ccc;
+}
+
+.location-list {
+	padding-left: 0;
+}
+
+.location-list > li {
+	float: left;
+	padding: 5px;
+	margin: 0 15px;
+	font-size: 10pt;
+}
+
+.wall {
+	margin-top: 30px;
+}
+
+.wall-head {
+	width: 830px;
+	padding-bottom: 5px;
+	border-bottom: 2px solid #ccc;
+}
 </style>
 
