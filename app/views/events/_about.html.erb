@@ -1,0 +1,59 @@
+<div class="event-attributes group">
+	<div class="attribute-section group">
+		<h3 class="attribute-overview">Description</h3>
+		<p><%= event.description %></p>
+	</div>
+
+	<div class="attribute-section group">
+		<h3 class="attribute-overview">Where</h3>
+		<p><%= event.address %></p>
+	</div>
+
+	<div class="attribute-section group">
+		<h3 class="attribute-overview">Influences</h3>
+		<p><%= event.date %></p>
+		<p><%= event.time.strftime('%H:%M:%S') %></p>
+	</div>
+	<%= link_to "Edit About", edit_event_url(event) %>
+</div>
+
+
+<script>
+
+$(document).ready( function () {
+
+  $(".attribute-overview").click(function () {
+    $list = $(this).next();
+    $list.toggle();
+  });
+
+});
+
+</script>
+
+
+
+<style>
+.event-attributes {
+	width: 500px;
+}
+
+.attribute-section {
+	width: 125px;
+	margin: 0 10px;
+	float: left;
+}
+
+.attribute-overview {
+	font-size: 10pt;
+	margin: 5px 0;
+}
+
+.attribute-list {
+	padding-left: 0;
+}
+
+.attribute-show {
+	font-size: 8pt;
+}
+</style>

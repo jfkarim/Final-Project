@@ -1,0 +1,52 @@
+<div class="group-attributes group">
+	<div class="attribute-section group-desc group">
+		<h3 class="attribute-overview">Description</h3>
+		<p><%= group.description %></p>
+	</div>
+	<%= link_to "Edit Group", edit_user_url(user) %>
+</div>
+
+
+<script>
+
+$(document).ready( function () {
+
+  $(".attribute-overview").click(function () {
+    $list = $(this).next();
+    $list.toggle();
+  });
+
+});
+
+</script>
+
+
+
+<style>
+.group-attributes {
+	width: 500px;
+}
+
+.attribute-section {
+	width: 125px;
+	margin: 0 10px;
+	float: left;
+}
+
+.attribute-overview {
+	font-size: 10pt;
+	margin: 5px 0;
+}
+
+.attribute-list {
+	padding-left: 0;
+}
+
+.attribute-show {
+	font-size: 8pt;
+}
+
+.group-desc {
+	width: 400px;
+}
+</style>

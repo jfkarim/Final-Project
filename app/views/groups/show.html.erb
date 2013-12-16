@@ -1,38 +1,36 @@
-<section class="page group">
-  <h1 class="group-name"><%= @group.name %></h1>
-
-  <section class="group-show-left">
-    <div class="admin-head">
-      <span class="group-admin">Admin: <%= image_tag @group.admin.profile_picture.url(:icon) %> <%= @group.admin.artist_name %></span>
-    </div>
-    <% if @group.admin_id == current_user.id  %>
-      <%= link_to "Add People", new_group_group_user_url(@group) %>
-      <%= link_to "Edit Group", edit_group_url(@group) %>
-    <% end %>
-    <div class="group-info">
-      <h3>Description</h3>
-      <p><%= @group.description %></p>
-      <div class="members-show">
-        <h3>Members</h3>
-          <ul>
-            <% @group.approved_users.each do |user| %>
-              <li><%= link_to user.artist_name, user_url(user) %></li>
-            <% end %>
-          </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="group-show-right group">
-    <div class="wall">
-      <h2 class="wall-head">Wall</h2>
-      <div class="wall-body">
-        <%= render "posts/form", owner: @group %>
-        <%= render "layouts/wall", owner: @group %>
-      </div>
-    </div>
-  </section>
-</section>
+<div class="group-top group">
+  <h1 class="group-name group"><%= @group.name %></h1>
+	<div class="group-info group">
+	  <%= image_tag @group.admin.profile_picture.url(:standard) %>
+	  <%= render "groups/about", group: @group %>
+		<div class="members group">
+	  	<p><span>Members</span>
+			<% if @group.admin_id == current_user.id  %>
+	      <%= link_to "Add Artists", new_group_group_user_url(@group) %>
+	    <% end %>
+			</p>
+			<div class="members-status">
+			  <h4>Admin</h4>
+			  <ul>
+			    <li><%= link_to @event.admin.artist_name, user_url(@event.admin) %></li>
+			  </ul>
+			  <h4>Members</h4>
+        <ul>
+          <% @group.approved_users.each do |user| %>
+            <li><%= link_to user.artist_name, user_url(user) %></li>
+          <% end %>
+        </ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="wall">
+  <h2 class="wall-head">Wall</h2>
+  <div class="wall-body">
+    <%= render "posts/form", owner: @group %>
+    <%= render "layouts/wall", owner: @group %>
+  </div>
+</div>
 
 <script>
 $(document).ready(function() {
@@ -50,4 +48,58 @@ $(document).ready(function() {
 </script>
 
 <style>
+.event-top {
+	width: 900px;
+}
+
+.group-name {
+	width: 600px;
+	border-bottom: 2px solid #ccc;
+	padding: 5px 0;
+	vertical-align: bottom;
+}
+
+.group-info {
+	height: 100px;
+}
+
+.group-info > img {
+	width: 230px;
+	height: 230px;
+	border: 2px solid #ed9a32;
+	border-radius: 115px;
+	position: absolute;
+	top: 70px;
+	left: 650px;
+}
+
+.members {
+	width: 300px;
+	z-index: -1;
+	display: inline-block;
+	position: relative;
+	left: 350px;
+	top: 50px;
+	border-bottom: 2px solid #ccc;
+}
+
+.members > span {
+	float: left;
+}
+
+.members > a {
+	margin: 0 20px;
+	font-size: 20pt;
+	color: #ed9a32;
+}
+
+.wall {
+	margin-top: 30px;
+}
+
+.wall-head {
+	width: 830px;
+	padding-bottom: 5px;
+	border-bottom: 2px solid #ccc;
+}
 </style>

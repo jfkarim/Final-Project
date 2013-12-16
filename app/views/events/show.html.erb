@@ -1,65 +1,46 @@
-<section class="page group">
-  <h1 class="event-name"><%= @event.name %></h1>
-  <section class="event-show-left">
-    <div class="host-head">
-      Host: <span class="event-host"><%= image_tag @event.admin.profile_picture.url(:icon) %><%= @event.admin.artist_name %></span>
-    </div>
-    <div class="event-info">
-      <h3>Description</h3>
-      <p><%= @event.description %></p>
-      <h3>Where</h3>
-      <p><%= @event.address %></p>
-      <h3>When</h3>
-      <p><%= @event.date %> <%= @event.time.strftime('%H:%M:%S') %></p>
-    </div>
-    <% if @event.admin_id == current_user.id  %>
-      <%= link_to "Edit Event", edit_event_url(@event) %>
-    <% end %>
-  </section>
-
-  <section class="event-show-right">
-    <section class="event-show-right-right">
-      <div class="invites-status">
-        <h2>Invites Status</h2>
-
-        <h4>Going</h4>
-        <ul>
-          <% @event.going_users.each do |user| %>
-            <li><%= link_to user.artist_name, user_url(user) %></li>
-          <% end %>
-        </ul>
-
-        <h4>Maybe</h4>
-        <ul>
-          <% @event.maybe_users.each do |user| %>
-            <li><%= link_to user.artist_name, user_url(user) %></li>
-          <% end %>
-        </ul>
-
-        <h4>Declined</h4>
-        <ul>
-          <% @event.declined_users.each do |user| %>
-            <li><%= link_to user.artist_name, user_url(user) %></li>
-          <% end %>
-        </ul>
-
-        <% if @event.admin_id == current_user.id  %>
-          <%= link_to "Invite People", new_event_event_user_url(@event) %>
-        <% end %>
-      </div>
-    </section>
-
-    <section class="event-show-right-left">
-      <div class="wall">
-        <h2 class="wall-head">Wall</h2>
-        <div class="wall-body">
-          <%= render "posts/form", owner: @event %>
-          <%= render "layouts/wall", owner: @event %>
-        </div>
-      </div>
-    </section>
-  </section>
-</section>
+<div class="event-top group">
+  <h1 class="event-name group"><%= @event.name %>
+		<div class="event-status group">
+			<!-- place event status here -->
+		</div>
+	</h1>
+	<div class="event-info group">
+	  <%= image_tag @event.admin.profile_picture.url(:icon) %>
+	  <%= render "events/about", event: @event %>
+		<div class="guests group">
+	  	<p><span>Guests</span>
+				<% if @event.admin_id == current_user.id  %>
+			    <%= link_to "Invite People", new_event_event_user_url(@event) %>
+			  <% end %>
+			</p>
+			<div class="invites-status">
+			  <h4>Host</h4>
+			  <ul>
+			    <li><%= link_to @event.admin.artist_name, user_url(@event.admin) %></li>
+			  </ul>
+			  <h4>Going</h4>
+			  <ul>
+			    <% @event.going_users.each do |user| %>
+			      <li><%= link_to user.artist_name, user_url(user) %></li>
+			    <% end %>
+			  </ul>
+			  <h4>Declined</h4>
+			  <ul>
+			    <% @event.declined_users.each do |user| %>
+			      <li><%= link_to user.artist_name, user_url(user) %></li>
+			    <% end %>
+			  </ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="wall">
+  <h2 class="wall-head">Wall</h2>
+  <div class="wall-body">
+    <%= render "posts/form", owner: @event %>
+    <%= render "layouts/wall", owner: @event %>
+  </div>
+</div>
 
 <script>
 
@@ -80,4 +61,70 @@ $(document).ready(function() {
 </script>
 
 <style>
+.event-top {
+	width: 900px;
+}
+
+.event-name {
+	width: 600px;
+	border-bottom: 2px solid #ccc;
+	padding: 5px 0;
+	vertical-align: bottom;
+}
+
+.event-info {
+	height: 100px;
+}
+
+.event-info > img {
+	width: 230px;
+	height: 230px;
+	border: 2px solid #ed9a32;
+	border-radius: 115px;
+	position: absolute;
+	top: 70px;
+	left: 650px;
+}
+
+.event-status {
+	display: inline;
+}
+
+.event-status > form {
+	display: inline;
+	margin-top: 10px;
+	float: right;
+	font-size: 14pt;
+	vertical-align: bottom;
+}
+
+.guests {
+	width: 300px;
+	z-index: -1;
+	display: inline-block;
+	position: relative;
+	left: 350px;
+	top: 50px;
+	border-bottom: 2px solid #ccc;
+}
+
+.guests > span {
+	float: left;
+}
+
+.guests > a {
+	margin: 0 20px;
+	font-size: 20pt;
+	color: #ed9a32;
+}
+
+.wall {
+	margin-top: 30px;
+}
+
+.wall-head {
+	width: 830px;
+	padding-bottom: 5px;
+	border-bottom: 2px solid #ccc;
+}
 </style>
