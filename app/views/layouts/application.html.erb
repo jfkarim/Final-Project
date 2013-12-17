@@ -44,12 +44,48 @@
       <div class="col-sm-3 sidebar">
         <ul class="nav nav-sidebar">
           <li class="active"><a href="#">News Feed</a></li>
-					<li><a href="#">Pending</a></li>
-          <li><a href="#">Friends</a></li>
-          <li><a href="#">Photos</a></li>
-          <li><a href="#">Albums</a></li>
-					<li><a href="#">Events</a></li>
-					<li><a href="#">Groups</a></li>
+					<li><a data-toggle="modal" data-target="#pendingModal">Pending</a></li>
+          <li><a data-toggle="modal" data-target="#friendsModal">Friends</a></li>
+          <li><a href="<%= user_photos_url(current_user) %>">Photos</a></li>
+          <li><a id="albums-drop" href="#">Albums</a></li>
+					
+					<ul class="nav nav-sidebar albums-drop">
+					  <li>
+					    <%= link_to "Create Album", new_user_album_url(current_user) %>
+					  </li>
+					  <% current_user.albums.each do |album| %>
+					    <li>
+					      <%= link_to album.title, user_album_url(current_user, album) %>
+					    </li>
+					  <% end %>
+					</ul>
+					
+					<li><a id="events-drop" href="#">Events</a></li>
+					
+					<ul class="nav nav-sidebar events-drop">
+				    <li>
+				      <%= link_to "Create Event", new_event_url %>
+				    </li>
+					  <%(current_user.events - current_user.pending_events).each do |event|%>
+					    <li>
+					      <%= link_to event.name, event_url(event) %><br>
+					    </li>
+					  <% end %>
+					</ul>
+					
+					<li><a id="groups-drop" href="#">Groups</a></li>
+					
+					<ul class="nav nav-sidebar groups-drop">
+				    <li>
+				      <%= link_to "Create Group", new_group_url %>
+				    </li>
+					  <% current_user.approved_groups.each do |group| %>
+					    <li>
+					      <%= link_to group.name, group_url(group) %>
+					    </li>
+					  <% end %>
+					</ul>
+					
         </ul>
         <ul class="nav nav-sidebar">
         </ul>
@@ -68,14 +104,47 @@
 	<% if current_user.nil? %>
 		<%= yield %>
 	<% end %>
+	
+	<%= render "users/friends" %>
+	<%= render "users/pending_requests" %>
   </body>
 </html>
 
+
+<script>
+
+$(document).ready(function() {
+	$("#events-drop").click(function() {
+		$(".events-drop").toggle();
+	});
+	
+	$("#groups-drop").click(function() {
+		$(".groups-drop").toggle();
+	});
+	
+	$("#albums-drop").click(function() {
+		$(".albums-drop").toggle();
+	});
+})
+
+</script>
 
 <style>
 .group:after {
   content: "";
   display: table;
   clear: both;
+}
+
+.events-drop {
+	display: none;
+}
+
+.groups-drop {
+	display: none;
+}
+
+.albums-drop {
+	display: none;
 }
 </style>
