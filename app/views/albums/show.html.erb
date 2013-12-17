@@ -14,7 +14,8 @@
 	<div class="album-right group">
 	  <div class="album-info group">
 	    <%= render "likes/show", type: @album, sub_type: nil %>
-			<%= link_to "Edit Album", edit_user_album_url(@user, @album) %>
+			<a data-toggle="modal" data-target="#albumEditModal">Edit Album</a>
+			<a data-toggle="modal" data-target="#addPhotoAlbumModal">Add Photo</a>
 	  </div>
 		<div class="comment-list group">
 			<%= render "comments/form", owner: @user, type: @album %>
@@ -26,6 +27,9 @@
 		</div>
 	</div>
 </div>
+
+<%= render "albums/add_photo_modal" %>
+<%= render "albums/edit_modal" %>
 <script>
 
 $(document).ready( function () {

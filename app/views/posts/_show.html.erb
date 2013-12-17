@@ -1,12 +1,12 @@
-<li class="news-feed-piece group">
+<li class="post-piece group">
   <div class="post-artist-name">
       <%= image_tag post.user.profile_picture.url(:standard) %><a><%= post.user.artist_name %></a> posted:
   </div>
-	<div class="news-feed-left group">
+	<div class="post-left group">
 	  <p class="post-content-format"><%= post.content %></p>
 	</div>
-	<div class="news-feed-right group">
-	  <div class="news-feed-info group">
+	<div class="post-right group">
+	  <div class="post-info group">
 	    <%= render "likes/show", type: post, sub_type: nil %>
 			<span><%= post.created_at %></span>
 	  </div>
@@ -23,7 +23,7 @@
 
 <style>
 
-.news-feed-album {
+.post-piece {
 	width: 800px;
 }
 
@@ -64,7 +64,7 @@
 	float: left;
 }
 
-.news-feed-left {
+.post-left {
 	width: 460px;
 	font-size: 14pt;
 	float: left;
@@ -78,7 +78,7 @@
 	height: 205px;
 }
 
-.news-feed-right {
+.post-right {
 	width: 300px;
 	float: left;
 	margin-left: 20px;
@@ -101,11 +101,11 @@
 	width: 205px;
 }
 
-.news-feed-info {
+.post-info {
 	display: inline;
 }
 
-.news-feed-info > form {
+.post-info > form {
 	display: inline;
 }
 

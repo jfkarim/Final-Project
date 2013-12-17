@@ -43,7 +43,7 @@ $(document).ready(function(){
 
   $("#comment-form<%= type.id %><%= type.class.to_s %>").on("ajax:success", function(event, data){
     var $list = $($($(event.target).parent()).find(".comment-ul")[0]);
-    $list.append(data);
+    $list.prepend(data);
   });
 
 });

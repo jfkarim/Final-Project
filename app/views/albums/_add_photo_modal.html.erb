@@ -1,0 +1,40 @@
+<div class="modal fade" id="addPhotoAlbumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Add Photo</h4>
+      </div>
+			  <form
+			    action="<%= user_photos_url %>"
+			    class="add-photo group"
+			    method="post"
+			    enctype="multipart/form-data"
+			    id="new-photo">
+					<div class="modal-body">
+				    <input
+				      type="hidden"
+				      name="authenticity_token"
+				      value="<%= form_authenticity_token %>">
+
+				    <input type="file" name="photo[picture]">
+
+				    <input
+				      type="hidden"
+				      name="photo[album_id]"
+				      value="<%= @album.id %>">
+						
+			    </div><!-- /.modal-body -->
+					<div class="modal-footer">
+				    <input type="submit" value="Add Photo">
+			  </form>
+					</div>
+		</div>
+  </div>
+</div>
+
+<script>
+</script>
+
+<style>
+</style>

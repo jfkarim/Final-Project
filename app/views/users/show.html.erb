@@ -53,15 +53,11 @@
 
 <script>
 $(document).ready(function() {
-  $(".wall-head").click(function (){
-    $wall = $(this).next();
-    $wall.toggle();
-  });
-
-  $(".canvas-head").click(function (){
-    $canvas = $(this).next();
-    $canvas.toggle();
-  });
+	
+	$(".profile-name").click(function () {
+		event.preventDefault();
+		console.log("HERE");
+	})
 
 });
 </script>

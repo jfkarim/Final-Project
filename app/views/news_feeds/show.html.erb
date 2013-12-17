@@ -1,7 +1,7 @@
 
 <h1 class="news-feed">News Feed</h1>
 <%= render "posts/status", owner: current_user %>
-<ul class="feed-list">
+<ul class="feed-list group">
 <% @news.each do |n| %>
   <% if n.class.to_s == "Post" %>
     <%= render "post_show", post: n %>
@@ -16,8 +16,13 @@
 <script>
 
 $(document).ready(function(){
+	
+	$("#status-form").click(function () {
+		console.log("HERE");
+	})
 
   $("#status-form").on("ajax:success", function(event, data){
+		console.log(data);
     $(".feed-list").prepend(data);
   });
 
