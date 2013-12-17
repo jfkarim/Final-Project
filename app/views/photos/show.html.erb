@@ -1,42 +1,37 @@
-<section class="page group">
-  <section class="photo-show-left">
-    <div class="image">
-      <%= image_tag @photo.picture.url %>
-      <div id="map-canvas">
-      </div>
-      <%= render "photo_map", photo: @photo %>
+<div class="photo-show-page group">
+  <div class="image-show group">
+    <%= image_tag @photo.picture.url %>
+	</div>
+	<div class="photo-show group">
+    <div id="map-canvas">
     </div>
-  </section>
-  <section class="photo-show-right">
-    <%= link_to "Edit Photo", edit_user_photo_url(@user, @photo) %>
-    <ul class="group">
-      <div class="photo-info">
-        <li>
-          Location: <%= @photo.location %>
-        </li>
-        <li>
-          Description: <%= @photo.description %>
-        </li>
-        <li>
-          <div class="like">
-            <%= render "likes/show", type: @photo, sub_type: nil %>
-          </div>
-        </li>
-      </div>
-    </ul>
-
-    <h2 class="comment-header">Comments:</h2>
-    <div class="photo-comments">
-      <ul class="comment-list group">
-        <% @photo.comments.reverse.each do |comment| %>
-        <%= render "comments/show", owner: @user, comment: comment, type: @photo %>
-        <% end %>
-      </ul>
-      <%= render "comments/form", owner: @user, type: @photo %>
-    </div>
-  </section>
-</section>
-
+    <%= render "photo_map", photo: @photo %>
+		<div class="photo-attributes group">
+		  <ul class="photo-attr-show group">
+	      <li>
+	        Location: <%= @photo.location %>
+	      </li>
+	      <li>
+	        Description: <%= @photo.description %>
+	      </li>
+		  </ul>
+		</div>
+		<div class="photo-right group">
+		  <div class="photo-info group">
+		    <%= render "likes/show", type: @photo, sub_type: nil %>
+			  <%= link_to "Edit Photo", edit_user_photo_url(@user, @photo) %>
+		  </div>
+			<div class="comment-list group">
+				<%= render "comments/form", owner: @user, type: @photo %>
+			  <ul class="comment-ul-photo group">
+			    <% @photo.comments.reverse.each do |comment| %>
+			      <%= render "comments/show", owner: @user, comment: comment, type: @photo %>
+			    <% end %>
+			  </ul>
+			</div>
+		</div>
+  </div>
+</div>
 <script>
 
 $(document).ready( function () {
@@ -51,4 +46,71 @@ $(document).ready( function () {
 </script>
 
 <style>
+.photo-show-page {
+	width: 900px;
+}
+
+.image-show {
+	width: 900px;
+	text-align: center;
+}
+
+.image-show > img {
+	height: 500px;
+	margin: 10px auto;
+	border: 2px solid #ccc;
+}
+
+.photo-show {
+	width: 900px;
+}
+
+#map-canvas {
+	float: left;
+}
+
+.photo-attributes {
+	width: 250px;
+	padding: 10px;
+	margin-left: 20px;
+	font-size: 12pt;
+	float: left;
+	background: #f6f6f6;
+	height: 300px;
+}
+
+.photo-attributes > ul {
+	padding: 0;
+}
+
+.photo-right {
+	width: 300px;
+	float: left;
+	margin-left: 20px;
+}
+
+.photo-info > form {
+	display: inline;
+}
+
+.photo-info > a {
+	float: right;
+}
+
+.comment-list {
+	background: #f6f6f6;
+	padding: 5px;
+	margin: 5px 0;
+}
+
+.comment-ul-photo {
+	padding-left: 20px;
+	height: 226px;
+	overflow: scroll;
+}
+
+.comment-form > input[type=text] {
+	width: 205px;
+}
+
 </style>

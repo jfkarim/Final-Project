@@ -1,36 +1,31 @@
+<h1 class="album-title"><%= @album.title %></h1>
+<h3 class="photos-header"><%= @album.description %></h3>
+<div class="album-content group">
+	<ul class="album-photos-list group">
+	  <% @album.photos.each do |photo| %>
+	    <li>
+	      <a href="<%= user_photo_url(@user, photo) %>">
+	        <%= image_tag photo.picture.url %>
+	      </a>
+	    </li>
+	  <% end %>
+	</ul>
 
-
-<h1 class="album-title"><%= @album.title %></h1><br>
-
-<h3 class="photos-header">Photos</h3>
-<ul class="photos-list album-photos group">
-  <% @album.photos.each do |photo| %>
-    <li>
-      <a href="<%= user_photo_url(@user, photo) %>">
-        <%= image_tag photo.picture.url %>
-      </a><br>
-    </li>
-  <% end %>
-</ul>
-
-<%= link_to "Edit Album", edit_user_album_url(@user, @album) %>
-<div class="album-info">
-  <p><%= @album.description %></p>
-    <div class="like group">
-      <%= render "likes/show", type: @album, sub_type: nil %>
-    </div>
+	<div class="album-right group">
+	  <div class="album-info group">
+	    <%= render "likes/show", type: @album, sub_type: nil %>
+			<%= link_to "Edit Album", edit_user_album_url(@user, @album) %>
+	  </div>
+		<div class="comment-list group">
+			<%= render "comments/form", owner: @user, type: @album %>
+		  <ul class="comment-ul-album group">
+		    <% @album.comments.reverse.each do |comment| %>
+		      <%= render "comments/show", owner: @user, comment: comment, type: @album %>
+		    <% end %>
+		  </ul>
+		</div>
+	</div>
 </div>
-
-<h2 class="comment-header">Comments:</h2>
-<div class="comments-list group">
-  <ul class="comment-ul album-comments group">
-    <% @album.comments.reverse.each do |comment| %>
-      <%= render "comments/show", owner: @user, comment: comment, type: @album %>
-    <% end %>
-  </ul>
-  <%= render "comments/form", owner: @user, type: @album %>
-</div>
-
 <script>
 
 $(document).ready( function () {
@@ -46,19 +41,58 @@ $(document).ready( function () {
 
 <style>
 
-.photos-list {
-	width: 850px;
-	margin: 20px 10px;
+.album-content {
+	width: 900px;
+}
+
+.album-photos-list {
+	width: 475px;
+	margin: 0 10px;
 	padding-left: 0;
-}
-
-.photos-list > li {
 	float: left;
-	margin: 5px;
 }
 
-.photos-list > li > a > img {
+.album-photos-list > li {
+	float: left;
+	margin: 2px;
+}
+
+.album-photos-list > li > a > img {
+	width: 150px;
+	height: 150px;
 	border: 2px solid #ccc;
 }
+
+
+.album-right {
+	width: 300px;
+	float: left;
+	margin-left: 20px;
+}
+
+.album-info > form {
+	display: inline;
+}
+
+.album-info > a {
+	float: right;
+}
+
+.comment-list {
+	background: #f6f6f6;
+	padding: 5px;
+	margin: 5px 0;
+}
+
+.comment-ul-album {
+	padding-left: 20px;
+	height: 238px;
+	overflow: scroll;
+}
+
+.comment-form > input[type=text] {
+	width: 205px;
+}
+
 
 </style>
