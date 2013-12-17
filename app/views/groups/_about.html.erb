@@ -1,9 +1,9 @@
 <div class="group-attributes group">
-	<div class="attribute-section group-desc group">
+	<div class="attribute-section-group group">
 		<h3 class="attribute-overview">Description</h3>
 		<p><%= group.description %></p>
 	</div>
-	<%= link_to "Edit Group", edit_user_url(user) %>
+	<a data-toggle="modal" data-target="#groupEditModal">Edit About</a>
 </div>
 
 
@@ -27,8 +27,8 @@ $(document).ready( function () {
 	width: 500px;
 }
 
-.attribute-section {
-	width: 125px;
+.attribute-section-group {
+	width: 400px;
 	margin: 0 10px;
 	float: left;
 }
@@ -46,7 +46,4 @@ $(document).ready( function () {
 	font-size: 8pt;
 }
 
-.group-desc {
-	width: 400px;
-}
 </style>

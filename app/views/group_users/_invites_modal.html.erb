@@ -7,17 +7,17 @@
       </div>
       <div class="modal-body">
 			  <ul>
-			    <% @users.each do |user| %>
+			    <% current_user.approved_friends.each do |user| %>
 			      <% unless user == current_user %>
 			        <li>
 			          <%= image_tag user.profile_picture.url(:icon) %>
 			          <%= link_to user.artist_name, user_url(user) %>
 			          <div class="invite-status">
-			            <% if @event.pending_users.include?(user) %>
+			            <% if @group.pending_users.include?(user) %>
 			              <p class="invited">Invited</p>
 			            <% else %>
 			              <form
-			                action="<%= event_event_users_url(@event) %>"
+			                action="<%= group_group_users_url(@group) %>"
 			                method="post"
 			                class="invite-button"
 			                data-remote="true">
@@ -25,7 +25,6 @@
 			                  name="authenticity_token"
 			                  type="hidden"
 			                  value="<%= form_authenticity_token %>">
-
 			                <input
 			                  id="user_id"
 			                  name="user_id"
@@ -34,7 +33,7 @@
 
 			                <input type="submit" value="Invite">
 			              </form>
-			          <% end %>
+			            <% end %>
 			          </div>
 			        </li>
 			      <% end %>
@@ -42,7 +41,7 @@
 			  </ul>
       </div>
       <div class="modal-footer">
-        <%= link_to "Done", event_url(@event) %>
+        <%= link_to "Done", group_url(@group) %>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -60,6 +59,3 @@ $(document).ready(function(){
 });
 
 </script>
-
-<style>
-</style>

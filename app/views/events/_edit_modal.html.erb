@@ -1,0 +1,83 @@
+<div class="modal fade" id="eventEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content group">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Edit Event</h4>
+      </div>
+			  <form
+			    action="<%= event_url(@event) %>"
+			    method="post"
+			    class="event-form">
+					<div class="modal-body">
+				    <input
+				      name="_method"
+				      type="hidden"
+				      value="put">
+				    <input
+				      name="authenticity_token"
+				      type="hidden"
+				      value="<%= form_authenticity_token %>">
+
+				    <div class="input-field">
+				      <label class="input-label">Name:</label>
+				      <input
+				        class="input-bar"
+				        name="event[name]"
+				        type="text"
+				        value="<%= @event.name %>">
+				    </div>
+
+				    <div class="input-field">
+				      <label class="input-label">Description:</label>
+				      <input
+				        type="text"
+				        class="input-bar"
+				        name="event[description]"
+				        value="<%= @event.description %>">
+				    </div>
+
+				    <div class="input-field">
+				      <label class="input-label">Location:</label>
+				      <input
+				        type="text"
+				        class="input-bar"
+				        name="event[address]"
+				        value="<%= @event.address %>">
+				    </div>
+
+				    <div class="input-field">
+				      <label class="input-label">Date:</label>
+				      <input
+				        type="date"
+				        class="input-date"
+				        name="event[date]"
+				        value="<%= @event.date %>">
+				    </div>
+
+				    <div class="input-field">
+				      <label class="input-label">Time</label>
+				      <input
+				        type="time"
+				        class="input-time"
+				        name="event[time]"
+				        value="<%= @event.time %>">
+				    </div>
+			    </div>
+					<div class="modal-footer">
+				    <input type="submit" value="Update Event">
+			  </form>
+			  <form action="<%= event_url(@event) %>" method="post">
+			    <input type="hidden" name="_method" value="DELETE">
+			    <input
+			      name="authenticity_token"
+			      type="hidden"
+			      value="<%= form_authenticity_token %>">
+
+			    <input type="submit" value="Cancel Event">
+			  </form>
+					</div>
+				</div>
+		</div>
+  </div>
+</div>

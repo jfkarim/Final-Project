@@ -1,0 +1,69 @@
+<div class="modal fade" id="userEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Edit User Info</h4>
+      </div>
+		    <form
+		      action="<%= user_url(@user) %>"
+		      method="post"
+		      enctype="multipart/form-data"
+		      class="sign-up-form">
+			      <input
+			        name="authenticity_token"
+			        type="hidden"
+			        value="<%= form_authenticity_token %>">
+			      <input
+			        name="_method"
+			        type="hidden"
+			        value="put">
+
+			      <div class="input-field">
+			        <input type="file" name="user[profile_picture]">
+			      </div>
+						
+					  <h3 class="attribute-type">Influences</h3>
+					  <div class="edit-box">
+					    <%= render "edit_influences", user: @user %>
+					  </div>
+
+					  <h3 class="attribute-type">Media</h3>
+					  <div class="edit-box">
+					    <%= render "edit_media", user: @user %>
+					  </div>
+
+					  <h3 class="attribute-type">Themes</h3>
+					  <div class="edit-box">
+					    <%= render "edit_themes", user: @user %>
+					  </div>
+
+					  <h3 class="attribute-type">World Canvases</h3>
+					  <div class="edit-box">
+					    <%= render "edit_locations", user: @user %>
+					  </div>
+						
+			    </div><!-- /.modal-body -->
+					<div class="modal-footer">
+			      <input type="submit" value="Save">
+		    </form>
+					</div>
+		</div>
+  </div>
+</div>
+
+<script>
+
+$(document).ready( function () {
+
+  $(".attribute-type").click(function(){
+    $list = $(this).next();
+    $list.toggle();
+  });
+
+});
+
+</script>
+
+<style>
+</style>

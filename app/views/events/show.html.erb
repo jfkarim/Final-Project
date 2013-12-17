@@ -5,25 +5,30 @@
 		</div>
 	</h1>
 	<div class="event-info group">
-	  <%= image_tag @event.admin.profile_picture.url(:icon) %>
+	  <%= image_tag @event.admin.profile_picture.url(:standard) %>
 	  <%= render "events/about", event: @event %>
 		<div class="guests group">
-	  	<p><span>Guests</span>
-				<% if @event.admin_id == current_user.id  %>
-			    <%= link_to "Invite People", new_event_event_user_url(@event) %>
-			  <% end %>
-			</p>
-			<div class="invites-status">
+	  	<span>Guests</span>
+			<% if @event.admin_id == current_user.id  %>
+				<a data-toggle="modal" data-target="#invitesModal">Invite People</a>
+		  <% end %>
+		</div>
+		<div class="invites-status group">
+			<div class="invites-status-section group">
 			  <h4>Host</h4>
 			  <ul>
 			    <li><%= link_to @event.admin.artist_name, user_url(@event.admin) %></li>
 			  </ul>
+			</div>
+			<div class="invites-status-section group">
 			  <h4>Going</h4>
 			  <ul>
 			    <% @event.going_users.each do |user| %>
 			      <li><%= link_to user.artist_name, user_url(user) %></li>
 			    <% end %>
 			  </ul>
+			</div>
+			<div class="invites-status-section group">
 			  <h4>Declined</h4>
 			  <ul>
 			    <% @event.declined_users.each do |user| %>
@@ -41,6 +46,9 @@
     <%= render "layouts/wall", owner: @event %>
   </div>
 </div>
+<a data-toggle="modal" data-target="#invitesModal">Invite People</a>
+<%= render "event_users/invites_modal" %>
+<%= render "events/edit_modal" %>
 
 <script>
 
@@ -112,10 +120,41 @@ $(document).ready(function() {
 	float: left;
 }
 
-.guests > a {
+.guests > span {
 	margin: 0 20px;
 	font-size: 20pt;
 	color: #ed9a32;
+}
+
+.guests > a {
+	margin: 0 20px;
+	font-size: 12pt;
+	color: blue;
+	position: relative;
+	top: 10px;
+}
+
+.invites-status {
+	width: 300px;
+	position: relative;
+	top: 50px;
+	left: 370px;
+}
+
+.invites-status-section {
+	width: 100px;
+	float: left;
+} 
+
+.invites-status-section > h4 {
+	font-size: 10pt;
+}
+
+.invites-status-section > ul {
+	padding-left: 0;
+	font-size: 10pt;
+	height: 100px;
+	overflow: scroll;
 }
 
 .wall {

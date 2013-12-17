@@ -7,7 +7,7 @@
       </div>
       <div class="modal-body">
 			  <ul>
-			    <% @users.each do |user| %>
+			    <% current_user.approved_friends.each do |user| %>
 			      <% unless user == current_user %>
 			        <li>
 			          <%= image_tag user.profile_picture.url(:icon) %>

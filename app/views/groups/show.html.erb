@@ -4,22 +4,25 @@
 	  <%= image_tag @group.admin.profile_picture.url(:standard) %>
 	  <%= render "groups/about", group: @group %>
 		<div class="members group">
-	  	<p><span>Members</span>
+			<span>Members</span>
 			<% if @group.admin_id == current_user.id  %>
-	      <%= link_to "Add Artists", new_group_group_user_url(@group) %>
+	      <a data-toggle="modal" data-target="#invitesModal">Invite People</a>
 	    <% end %>
-			</p>
-			<div class="members-status">
+		</div>
+		<div class="members-status group">
+			<div class="members-status-section group">
 			  <h4>Admin</h4>
 			  <ul>
-			    <li><%= link_to @event.admin.artist_name, user_url(@event.admin) %></li>
+			    <li><%= link_to @group.admin.artist_name, user_url(@group.admin) %></li>
 			  </ul>
+			</div>
+			<div class="members-status-section group">
 			  <h4>Members</h4>
-        <ul>
-          <% @group.approved_users.each do |user| %>
-            <li><%= link_to user.artist_name, user_url(user) %></li>
-          <% end %>
-        </ul>
+	      <ul>
+	        <% @group.approved_users.each do |user| %>
+	          <li><%= link_to user.artist_name, user_url(user) %></li>
+	        <% end %>
+	      </ul>
 			</div>
 		</div>
 	</div>
@@ -31,6 +34,9 @@
     <%= render "layouts/wall", owner: @group %>
   </div>
 </div>
+<%= render "group_users/invites_modal" %>
+<%= render "groups/edit_modal" %>
+<a data-toggle="modal" data-target="#invitesModal">Invite People</a>
 
 <script>
 $(document).ready(function() {
@@ -87,10 +93,41 @@ $(document).ready(function() {
 	float: left;
 }
 
-.members > a {
+.members > span {
 	margin: 0 20px;
 	font-size: 20pt;
 	color: #ed9a32;
+}
+
+.members > a {
+	margin: 0 20px;
+	font-size: 12pt;
+	color: blue;
+	position: relative;
+	top: 10px;
+}
+
+.members-status {
+	width: 300px;
+	position: relative;
+	top: 50px;
+	left: 400px;
+}
+
+.members-status-section {
+	width: 100px;
+	float: left;
+} 
+
+.members-status-section > h4 {
+	font-size: 10pt;
+}
+
+.members-status-section > ul {
+	padding-left: 0;
+	font-size: 10pt;
+	height: 100px;
+	overflow: scroll;
 }
 
 .wall {
