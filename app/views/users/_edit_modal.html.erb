@@ -1,54 +1,47 @@
 <div class="modal fade" id="userEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog user-edit-box group">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Edit User Info</h4>
       </div>
+			<div class="modal-body user-edit-content">
+					
+				  <h3 class="attribute-type">Influences</h3>
+			    <%= render "edit_influences", user: @user %>
+
+				  <h3 class="attribute-type">Media</h3>
+			    <%= render "edit_media", user: @user %>
+
+				  <h3 class="attribute-type">Themes</h3>
+			    <%= render "edit_themes", user: @user %>
+
+				  <h3 class="attribute-type">World Canvases</h3>
+			    <%= render "edit_locations", user: @user %>
+					
+	    </div><!-- /.modal-body -->
+			<div class="modal-footer">
+		    <%= image_tag @user.profile_picture.url(:standard) %>
 		    <form
 		      action="<%= user_url(@user) %>"
 		      method="post"
 		      enctype="multipart/form-data"
 		      class="sign-up-form">
-					<div class="modal-body">
-			      <input
-			        name="authenticity_token"
-			        type="hidden"
-			        value="<%= form_authenticity_token %>">
-			      <input
-			        name="_method"
-			        type="hidden"
-			        value="put">
+		      <input
+		        name="authenticity_token"
+		        type="hidden"
+		        value="<%= form_authenticity_token %>">
+		      <input
+		        name="_method"
+		        type="hidden"
+		        value="put">
 
-			      <div class="input-field">
-			        <input type="file" name="user[profile_picture]">
-			      </div>
-						
-					  <h3 class="attribute-type">Influences</h3>
-					  <div class="edit-box">
-					    <%= render "edit_influences", user: @user %>
-					  </div>
-
-					  <h3 class="attribute-type">Media</h3>
-					  <div class="edit-box">
-					    <%= render "edit_media", user: @user %>
-					  </div>
-
-					  <h3 class="attribute-type">Themes</h3>
-					  <div class="edit-box">
-					    <%= render "edit_themes", user: @user %>
-					  </div>
-
-					  <h3 class="attribute-type">World Canvases</h3>
-					  <div class="edit-box">
-					    <%= render "edit_locations", user: @user %>
-					  </div>
-						
-			    </div><!-- /.modal-body -->
-					<div class="modal-footer">
-			      <input type="submit" value="Save">
+		      <div class="input-field">
+		        <input type="file" name="user[profile_picture]">
+		      </div>
+		      <input type="submit" value="Save">
 		    </form>
-					</div>
+			</div>
 		</div>
   </div>
 </div>
@@ -66,5 +59,39 @@ $(document).ready( function () {
 
 </script>
 
+</script>
+
 <style>
+
+.user-edit-box {
+	width: 440px;
+}
+
+.user-edit-box > .modal-content {
+	border: 2px solid #ed9a32;
+	border-radius: 0;
+}
+
+.user-edit-content > ul {
+	padding-left: 10px;
+}
+
+.user-edit-content > ul > li {
+	width: 363px;
+}
+
+.user-edit-content > ul > li > form {
+	display: inline;
+	float: right;
+}
+
+.modal-footer > img {
+	float: left;
+}
+
+#updateUser {
+	display: inline;
+	float: right;
+}
+
 </style>

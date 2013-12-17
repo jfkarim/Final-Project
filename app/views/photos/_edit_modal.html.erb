@@ -1,43 +1,40 @@
 <div class="modal fade" id="photoEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog photo-edit-box group">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Edit Photo</h4>
       </div>
+			<div class="modal-body">
 				<form
 				  action="<%= user_photo_url(@user, @photo) %>"
 				  method="post"
 				  class="photo-info-form">
-					<div class="modal-body">
-					  <input
-					    name="_method"
-					    type="hidden"
-					    value="put">
+					
+				  <input
+				    name="_method"
+				    type="hidden"
+				    value="put">
 
-					  <input
-					    type="hidden"
-					    name="authenticity_token"
-					    value="<%= form_authenticity_token %>">
-					  <div class="input-field">
-					    <label class="input-label">Location (if applicable)</label>
-					    <input
-					      type="text"
-					      class="input-bar"
-					      name="photo[location]"
-					      value="<%= @photo.location %>">
-					  </div>
-					  <div class="input-field">
-					    <label class="input-label">Description</label>
-					    <input
-					      type="text"
-					      class="input-bar"
-					      name="photo[description]"
-					      value="<%= @photo.description %>">
-					  </div>						
+				  <input
+				    type="hidden"
+				    name="authenticity_token"
+				    value="<%= form_authenticity_token %>">
+			    <label class="photo-input-label">Location
+				    <input
+				      type="text"
+				      name="photo[location]"
+				      value="<%= @photo.location %>">
+					</label>
+			    <label class="photo-input-label">Description
+				    <input
+				      type="text"
+				      name="photo[description]"
+				      value="<%= @photo.description %>">
+					</label>		
 			    </div><!-- /.modal-body -->
 					<div class="modal-footer">
-					  <input type="submit" value="Save Changes">
+					  <input type="submit" id="updatePhoto" value="Save Changes">
 				</form>
 						<%= button_to "Delete Photo", user_photo_url(@photo), method: :delete %>
 					</div>
@@ -60,4 +57,33 @@ $(document).ready(function(){
 </script>
 
 <style>
+
+.photo-edit-box {
+	width: 500px;
+}
+
+.photo-edit-box > .modal-content {
+	border: 2px solid #ed9a32;
+	border-radius: 0;
+}
+
+.photo-input-label {
+	width: 100%;
+}
+
+.photo-input-label > input {
+	width: 250px;
+	float: right;
+}
+
+#updatePhoto {
+	display: inline;
+	float: right;
+}
+
+input[value="Delete Photo"] {
+	display: inline;
+	float: left;
+}
+
 </style>

@@ -1,6 +1,6 @@
 <div class="modal fade" id="eventEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content group">
+  <div class="modal-dialog event-edit-box group">
+    <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Edit Event</h4>
@@ -18,54 +18,49 @@
 				      name="authenticity_token"
 				      type="hidden"
 				      value="<%= form_authenticity_token %>">
-
-				    <div class="input-field">
-				      <label class="input-label">Name:</label>
+							
+			      <label class="event-input-label">Name
 				      <input
 				        class="input-bar"
 				        name="event[name]"
 				        type="text"
 				        value="<%= @event.name %>">
-				    </div>
 
-				    <div class="input-field">
-				      <label class="input-label">Description:</label>
+			      <label class="event-input-label">Description
 				      <input
 				        type="text"
 				        class="input-bar"
 				        name="event[description]"
 				        value="<%= @event.description %>">
-				    </div>
+						</label>
 
-				    <div class="input-field">
-				      <label class="input-label">Location:</label>
+				    <label class="event-input-label">Location
 				      <input
 				        type="text"
 				        class="input-bar"
 				        name="event[address]"
 				        value="<%= @event.address %>">
-				    </div>
+						</label>
 
-				    <div class="input-field">
-				      <label class="input-label">Date:</label>
+			      <label class="event-input-label">Date
 				      <input
 				        type="date"
 				        class="input-date"
 				        name="event[date]"
 				        value="<%= @event.date %>">
-				    </div>
+						</label>
 
-				    <div class="input-field">
-				      <label class="input-label">Time</label>
+			      <label class="event-input-label">Time
 				      <input
 				        type="time"
 				        class="input-time"
 				        name="event[time]"
 				        value="<%= @event.time %>">
-				    </div>
+						</label>
+						
 			    </div>
 					<div class="modal-footer">
-				    <input type="submit" value="Update Event">
+				    <input type="submit" id="updateEvent" value="Update Event">
 			  </form>
 			  <form action="<%= event_url(@event) %>" method="post">
 			    <input type="hidden" name="_method" value="DELETE">
@@ -74,10 +69,42 @@
 			      type="hidden"
 			      value="<%= form_authenticity_token %>">
 
-			    <input type="submit" value="Cancel Event">
+			    <input type="submit" id="deleteEvent" value="Cancel Event">
 			  </form>
 					</div>
 				</div>
 		</div>
   </div>
 </div>
+
+<style>
+
+.event-edit-box {
+	width: 400px;
+}
+
+.event-edit-box > .modal-content {
+	border: 2px solid #ed9a32;
+	border-radius: 0;
+}
+
+.event-input-label {
+	width: 100%;
+}
+
+.event-input-label > input {
+	width: 250px;
+	float: right;
+}
+
+#updateEvent {
+	display: inline;
+	float: right;
+}
+
+#deleteEvent {
+	display: inline;
+	float: left;
+}
+
+</style>

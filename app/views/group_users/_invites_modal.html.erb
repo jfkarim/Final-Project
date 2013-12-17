@@ -1,15 +1,16 @@
 <div class="modal fade" id="invitesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog group-invites-box group">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Invite</h4>
+        <h4 class="modal-title" id="myModalLabel">Add/Remove Members</h4>
       </div>
-      <div class="modal-body">
-			  <ul>
+      <div class="modal-body invites-content">
+				<h3>Invite Members</h3>
+			  <ul class="group">
 			    <% current_user.approved_friends.each do |user| %>
 			      <% unless user == current_user %>
-			        <li>
+			        <li class="group">
 			          <%= image_tag user.profile_picture.url(:icon) %>
 			          <%= link_to user.artist_name, user_url(user) %>
 			          <div class="invite-status">
@@ -39,6 +40,36 @@
 			      <% end %>
 			    <% end %>
 			  </ul>
+			  <h3>Remove Members</h3>
+			  <ul class="group">
+			    <% @group.approved_users.each do |user| %>
+			      <% unless user == current_user %>
+			        <li class="group">
+								<%= image_tag user.profile_picture.url(:icon) %>
+			          <%= link_to user.artist_name, user_url(user) %>
+			          <form action="<%= group_group_user_url(@group,
+			                GroupUser.where(
+			                  user_id: user.id,
+			                  group_id: @group.id)[0]) %>" method="post">
+			            <input type="hidden" name="_method" value="DELETE">
+
+			            <input
+			              name="authenticity_token"
+			              type="hidden"
+			              value="<%= form_authenticity_token %>">
+
+			            <input
+			              id="user_id"
+			              name="user_id"
+			              type="hidden"
+			              value="<%= user.id %>">
+
+			            <input type="submit" value="Remove">
+			          </form>
+			        </li>
+			      <% end %>
+			    <% end %>
+			  </ul>
       </div>
       <div class="modal-footer">
         <%= link_to "Done", group_url(@group) %>
@@ -59,3 +90,50 @@ $(document).ready(function(){
 });
 
 </script>
+
+<style>
+.group-invites-box {
+	width: 400px;
+}
+
+.group-invites-box > .modal-content {
+	border-radius: 0;
+	border: 2px solid #ed9a32;
+}
+
+.invites-content > h3 {
+	font-size: 12pt;
+}
+
+.invites-content > h3:first-child {
+	margin-top: 0;
+}
+
+.invites-content > ul {
+	padding-left: 10px;
+}
+
+.invites-content > ul > li {
+	width: 100%;
+}
+
+.invites-content > ul > li > img {
+	float: left;
+}
+
+.invites-content > ul > li > a {
+	padding: 5px;
+	font-weight: 12pt;
+	float: left;
+}
+
+.invites-content > ul > li > form {
+	display: inline;
+	float: right;
+}
+
+.invite-status {
+	display: inline;
+	float: right;
+}
+</style>

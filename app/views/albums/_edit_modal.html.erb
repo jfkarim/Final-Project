@@ -1,9 +1,9 @@
 <div class="modal fade" id="albumEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog album-edit-box group">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Edit Group</h4>
+        <h4 class="modal-title" id="myModalLabel">Edit Album</h4>
       </div>
 				<form
 				  action="<%= user_album_url(@user, @album) %>"
@@ -21,26 +21,24 @@
 					    name="authenticity_token"
 					    value="<%= form_authenticity_token %>">
 
-					  <div class="input-field">
-					    <label class="input-label">Title</label>
+				    <label class="album-input-label">Title
 					    <input
 					      type="text"
 					      class="input-bar"
 					      name="album[title]"
 					      value="<%= @album.title %>">
-					  </div>
+						</label>
 
-					  <div class="input-field">
-					    <label class="input-label">Description</label>
+				    <label class="album-input-label">Description
 					    <input
 					      type="text"
 					      class="input-bar"
 					      name="album[description]"
 					      value="<%= @album.description %>">
-					  </div>						
+						</label>
 			    </div><!-- /.modal-body -->
 					<div class="modal-footer">
-					  <input type="submit" value="Save Changes">
+					  <input type="submit" id="updateAlbum" value="Save Changes">
 				</form>
 						<%= button_to "Delete Album", user_album_url(@album), method: :delete %>
 					</div>
@@ -52,15 +50,38 @@
 
 $(document).ready(function(){
 
-  $(".edit-album-info").on("ajax:success", function(event, data){
-    var $editInfo = $($(event.target).parent()[0])
-    $editInfo.html(data);
-    $(".edit-album-info").append("<p class='saved'>Saved</p>")
-  });
-
 });
 
 </script>
 
 <style>
+
+.album-edit-box {
+	width: 500px;
+}
+
+.album-edit-box > .modal-content {
+	border: 2px solid #ed9a32;
+	border-radius: 0;
+}
+
+.album-input-label {
+	width: 100%;
+}
+
+.album-input-label > input {
+	width: 250px;
+	float: right;
+}
+
+#updateAlbum {
+	display: inline;
+	float: right;
+}
+
+input[value="Delete Album"] {
+	display: inline;
+	float: left;
+}
+
 </style>

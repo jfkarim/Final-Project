@@ -98,6 +98,9 @@
     </div>
   </div>
 	
+	<%= render "users/friends" %>
+	<%= render "users/pending_requests" %>
+	
   <% end %>
   
 	
@@ -105,8 +108,7 @@
 		<%= yield %>
 	<% end %>
 	
-	<%= render "users/friends" %>
-	<%= render "users/pending_requests" %>
+
   </body>
 </html>
 
