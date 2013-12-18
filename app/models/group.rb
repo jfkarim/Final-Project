@@ -7,16 +7,15 @@ class Group < ActiveRecord::Base
 
   has_many :group_users, dependent: :destroy
   has_many :users, through: :group_users, source: :user
+  
+  has_many :approved_group_users, class_name: "GroupUser", primary_key: :id, foreign_key: :group_id, conditions: "status = 'APPROVED'"
+  has_many :approved_users, through: :approved_group_users, source: :user
+  
+  has_many :pending_group_users, class_name: "GroupUser", primary_key: :id, foreign_key: :group_id, conditions: "status = 'PENDING'"
+  has_many :pending_users, through: :pending_group_users, source: :user
 
   def admin
     User.find(self.admin_id)
   end
 
-  def approved_users
-    self.group_users.where(status: "APPROVED").map { |gu| gu.user }
-  end
-
-  def pending_users
-    self.group_users.where(status: "PENDING").map { |gu| gu.user }
-  end
 end

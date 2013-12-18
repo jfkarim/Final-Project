@@ -8,25 +8,21 @@ class Event < ActiveRecord::Base
 
   has_many :event_users, dependent: :destroy
   has_many :users, through: :event_users, source: :user
-
+  
+  has_many :going_event_users, class_name: "EventUser", primary_key: :id, foreign_key: :event_id, conditions: "status = 'GOING'"
+  has_many :going_users, through: :going_event_users, source: :user
+  
+  has_many :maybe_event_users, class_name: "EventUser", primary_key: :id, foreign_key: :event_id, conditions: "status = 'MAYBE'"
+  has_many :maybe_users, through: :maybe_event_users, source: :user
+  
+  has_many :declined_event_users, class_name: "EventUser", primary_key: :id, foreign_key: :event_id, conditions: "status = 'DECLINED'"
+  has_many :declined_users, through: :declined_event_users, source: :user
+  
+  has_many :pending_event_users, class_name: "EventUser", primary_key: :id, foreign_key: :event_id, conditions: "status = 'PENDING'"
+  has_many :pending_users, through: :pending_event_users, source: :user
+  
   def admin
     User.find(self.admin_id)
-  end
-
-  def going_users
-    self.event_users.where(status: "GOING").map { |gu| gu.user }
-  end
-
-  def maybe_users
-    self.event_users.where(status: "MAYBE").map { |gu| gu.user }
-  end
-
-  def declined_users
-    self.event_users.where(status: "DECLINE").map { |gu| gu.user }
-  end
-
-  def pending_users
-    self.event_users.where(status: "PENDING").map { |gu| gu.user }
   end
 
 end

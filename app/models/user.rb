@@ -23,11 +23,26 @@ class User < ActiveRecord::Base
   has_many :approved_friendships, class_name: "Friendship", primary_key: :id, foreign_key: :in_friend_id, conditions: "status = 'APPROVED'"
   has_many :friends, through: :approved_friendships, source: :out_friend
 
+  has_many :pending_friendships, class_name: "Friendship", primary_key: :id, foreign_key: :in_friend_id, conditions: "status = 'PENDING'"
+  has_many :pending_friends, through: :pending_friendships, source: :out_friend
+
   has_many :group_users
   has_many :groups, through: :group_users, source: :group
+  
+  has_many :approved_group_users, class_name: "GroupUser", primary_key: :id, foreign_key: :user_id, conditions: "status = 'APPROVED'"
+  has_many :approved_groups, through: :approved_group_users, source: :group
+  
+  has_many :pending_group_users, class_name: "GroupUser", primary_key: :id, foreign_key: :user_id, conditions: "status = 'PENDING'"
+  has_many :pending_groups, through: :pending_group_users, source: :group
 
   has_many :event_users
   has_many :events, through: :event_users, source: :event
+  
+  has_many :going_event_users, class_name: "EventUser", primary_key: :id, foreign_key: :user_id, conditions: "status = 'GOING'"
+  has_many :going_events, through: :going_event_users, source: :event
+  
+  has_many :pending_event_users, class_name: "EventUser", primary_key: :id, foreign_key: :user_id, conditions: "status = 'PENDING'"
+  has_many :pending_events, through: :pending_event_users, source: :event
 
   has_many :photos, dependent: :destroy
   has_many :albums, dependent: :destroy
@@ -41,26 +56,6 @@ class User < ActiveRecord::Base
     standard: "200x200>",
     icon: "30x30>"
   }
-
-  def pending_friends
-    self.friendships.where(status: "PENDING").map { |fr| fr.out_friend }
-  end
-
-  def approved_friends
-    self.friendships.where(status: "APPROVED").map { |fr| fr.out_friend }
-  end
-
-  def pending_groups
-    self.group_users.where(status: "PENDING").map { |gu| gu.group }
-  end
-
-  def approved_groups
-    self.group_users.where(status: "APPROVED").map { |gu| gu.group }
-  end
-
-  def pending_events
-    self.event_users.where(status: "PENDING").map { |eu| eu.event }
-  end
 
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)
