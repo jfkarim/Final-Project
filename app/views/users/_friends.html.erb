@@ -7,7 +7,7 @@
       </div>
 			<div class="modal-body">
 				<ul class="friends-list">
-				  <% current_user.approved_friends.each do |friend| %>
+				  <% current_user.friends.each do |friend| %>
 				    <li>
 				      <%= link_to friend.artist_name, user_url(friend) %>
 				    </li>
