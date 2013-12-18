@@ -42,16 +42,16 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-3 sidebar">
-        <ul class="nav nav-sidebar">
-          <li class="active"><a href="#">News Feed</a></li>
+        <ul class="nav nav-sidebar group">
+          <li class="active"><a href="<%=user_news_feed_url(current_user)%>">News Feed</a></li>
 					<li><a data-toggle="modal" data-target="#pendingModal">Pending</a></li>
           <li><a data-toggle="modal" data-target="#friendsModal">Friends</a></li>
           <li><a href="<%= user_photos_url(current_user) %>">Photos</a></li>
           <li><a id="albums-drop" href="#">Albums</a></li>
 					
-					<ul class="nav nav-sidebar albums-drop">
+					<ul class="nav nav-sidebar albums-drop drop group">
 					  <li>
-					    <%= link_to "Create Album", new_user_album_url(current_user) %>
+							<a data-toggle="modal" data-target="#albumCreateModal">Create Album</a>
 					  </li>
 					  <% current_user.albums.each do |album| %>
 					    <li>
@@ -62,9 +62,9 @@
 					
 					<li><a id="events-drop" href="#">Events</a></li>
 					
-					<ul class="nav nav-sidebar events-drop">
+					<ul class="nav nav-sidebar events-drop drop group">
 				    <li>
-				      <%= link_to "Create Event", new_event_url %>
+							<a data-toggle="modal" data-target="#eventCreateModal">Create Event</a>
 				    </li>
 					  <%(current_user.events - current_user.pending_events).each do |event|%>
 					    <li>
@@ -75,9 +75,9 @@
 					
 					<li><a id="groups-drop" href="#">Groups</a></li>
 					
-					<ul class="nav nav-sidebar groups-drop">
+					<ul class="nav nav-sidebar groups-drop drop group">
 				    <li>
-				      <%= link_to "Create Group", new_group_url %>
+							<a data-toggle="modal" data-target="#groupCreateModal">Create Group</a>
 				    </li>
 					  <% current_user.approved_groups.each do |group| %>
 					    <li>
@@ -100,6 +100,9 @@
 	
 	<%= render "users/friends" %>
 	<%= render "users/pending_requests" %>
+	<%= render "albums/new_modal" %>
+	<%= render "events/new_modal" %>
+	<%= render "groups/new_modal" %>
 	
   <% end %>
   
@@ -146,7 +149,18 @@ $(document).ready(function() {
 	display: none;
 }
 
-.albums-drop {
+.drop {
 	display: none;
+	width: 100%;
+	padding-left: 20px;
+	margin-right: 0;
+}
+
+.drop > li {
+	width: 320px;
+}
+
+.drop > li:first-child > a {
+	font-style: italic;
 }
 </style>

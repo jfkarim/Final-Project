@@ -1,0 +1,42 @@
+<div class="modal fade" id="albumIndexModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog album-new-box group">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Albums</h4>
+      </div>
+			<div class="modal-body">
+				<ul>
+				  <% @user.albums.each do |album| %>
+				    <li>
+				      <%= link_to album.title, user_album_url(@user, album) %>
+				    </li>
+				  <% end %>
+				</ul>
+	    </div><!-- /.modal-body -->
+			<div class="modal-footer">
+			</div>
+		</div>
+  </div>
+</div>
+
+<script>
+
+$(document).ready(function(){
+
+});
+
+</script>
+
+<style>
+
+.album-index-box {
+	width: 400px;
+}
+
+.album-index-box > .modal-content {
+	border: 2px solid #ed9a32;
+	border-radius: 0;
+}
+
+</style>

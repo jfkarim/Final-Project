@@ -1,0 +1,88 @@
+<div class="modal fade" id="eventCreateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog event-new-box group">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">New Event</h4>
+      </div>
+				<form action="<%= events_url %>" method="post" class="event-form">
+					<div class="modal-body">
+				    <input
+				      name="_method"
+				      type="hidden"
+				      value="put">
+				    <input
+				      name="authenticity_token"
+				      type="hidden"
+				      value="<%= form_authenticity_token %>">
+							
+			      <label class="event-input-label">Name
+				      <input
+				        class="input-bar"
+				        name="event[name]"
+				        type="text">
+
+			      <label class="event-input-label">Description
+				      <input
+				        type="text"
+				        class="input-bar"
+				        name="event[description]"
+						</label>
+
+				    <label class="event-input-label">Location
+				      <input
+				        type="text"
+				        class="input-bar"
+				        name="event[address]">
+						</label>
+
+			      <label class="event-input-label">Date
+				      <input
+				        type="date"
+				        class="input-date"
+				        name="event[date]">
+						</label>
+
+			      <label class="event-input-label">Time
+				      <input
+				        type="time"
+				        class="input-time"
+				        name="event[time]">
+						</label>
+						
+			    </div>
+					<div class="modal-footer">
+				    <input type="submit" id="createEvent" value="Create Event">
+			  </form>
+					</div>
+				</div>
+		</div>
+  </div>
+</div>
+
+<style>
+
+.event-new-box {
+	width: 400px;
+}
+
+.event-new-box > .modal-content {
+	border: 2px solid #ed9a32;
+	border-radius: 0;
+}
+
+.event-input-label {
+	width: 100%;
+}
+
+.event-input-label > input {
+	width: 250px;
+	float: right;
+}
+
+#createEvent {
+	display: inline;
+	float: right;
+}
+
+</style>

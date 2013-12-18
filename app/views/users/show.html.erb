@@ -15,7 +15,7 @@
 	  <%= image_tag @user.profile_picture.url(:standard) %>
 	  <%= render "users/about", user: @user %>
 		<div class="photos-albums group">
-	  	<%= link_to "Photos", user_photos_url(@user) %><a>Albums</a>
+	  	<%= link_to "Photos", user_photos_url(@user) %><a data-toggle="modal" data-target="#albumIndexModal">Albums</a>
 		</div>
 	</div>
 </div>
@@ -50,6 +50,7 @@
 </div>
 
 <%= render "users/edit_modal" %>
+<%= render "albums/index_modal" %>
 
 <script>
 $(document).ready(function() {

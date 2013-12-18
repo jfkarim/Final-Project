@@ -1,0 +1,65 @@
+<div class="modal fade" id="groupCreateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog group-new-box group">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">New Group</h4>
+      </div>
+			<div class="modal-body">
+				<form action="<%= groups_url %>" method="post" class="group-form">
+			    <input
+			      name="_method"
+			      type="hidden"
+			      value="put">
+
+			    <input
+			      name="authenticity_token"
+			      type="hidden"
+			      value="<%= form_authenticity_token %>">
+
+		      <label class="group-input-label">Name
+			      <input
+			        name="group[name]"
+			        type="text">
+					</label>
+
+		      <label class="group-input-label">Description
+			      <input
+			        type="text"
+			        name="group[description]">
+					</label>
+			</div><!-- /.modal-body -->
+			<div class="modal-footer">
+			    <input type="submit" id="createGroup" value="Create Group">
+			  </form>
+			</div>
+		</div>
+  </div>
+</div>
+
+<style>
+
+.group-new-box {
+	width: 400px;
+}
+
+.group-new-box > .modal-content {
+	border: 2px solid #ed9a32;
+	border-radius: 0;
+}
+
+.group-input-label {
+	width: 100%;
+}
+
+.group-input-label > input[type=text] {
+	width: 250px;
+	float: right;
+}
+
+#createGroup {
+	display: inline;
+	float: right;
+}
+
+</style>
