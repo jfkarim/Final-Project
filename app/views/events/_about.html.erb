@@ -11,8 +11,8 @@
 
 	<div class="attribute-section group">
 		<h3 class="attribute-overview">When</h3>
-		<p><%= event.date %></p>
-		<p><%= event.time.strftime('%H:%M:%S') %></p>
+		<p><%= event.date.to_formatted_s(:long) %></p>
+		<p><%= event.time.strftime('%I:%M %p') %></p>
 	</div>
 	<a data-toggle="modal" data-target="#eventEditModal">Edit About</a>
 </div>

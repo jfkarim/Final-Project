@@ -23,16 +23,31 @@
          value="<%= form_authenticity_token %>">
 </form>
 
+
 <script>
 
 $(document).ready(function(){
 
   $(".like-form<%= type.id %>").on("ajax:success", function(event, data){
     $like = $($(event.target).parent()[0])
-    $like.html(data)
+		console.log("TOP");
+		console.log($like);
+		console.log("BOT");
+    $like.html(data);
   });
 
 });
 
 </script>
 
+<style>
+
+.like-div {
+	display: inline;
+}
+
+.like-div > form {
+	display: inline;
+}
+
+</style>

@@ -9,21 +9,28 @@
 		<div class="photo-attributes group">
 		  <ul class="photo-attr-show group">
 	      <li>
-	        Location: <%= @photo.location %>
+	        <h4>Location</h4>
+					<p><%= @photo.location %></p>
 	      </li>
 	      <li>
-	        Description: <%= @photo.description %>
+	        <h4>Description</h4>
+					<p><%= @photo.description %></p>
 	      </li>
+				<li>
+					<h4>Uploaded</h4>
+					<p><%= @photo.created_at.to_formatted_s(:long) %></p>
 		  </ul>
 		</div>
 		<div class="photo-right group">
 		  <div class="photo-info group">
-		    <%= render "likes/show", type: @photo, sub_type: nil %>
+				<div class="like-div">
+			    <%= render "likes/show", type: @photo, sub_type: nil %>
+				</div>
 			  <a data-toggle="modal" data-target="#photoEditModal">Edit Photo</a>
 		  </div>
 			<div class="comment-list group">
 				<%= render "comments/form", owner: @user, type: @photo %>
-			  <ul class="comment-ul-photo group">
+			  <ul class="comment-ul group">
 			    <% @photo.comments.reverse.each do |comment| %>
 			      <%= render "comments/show", owner: @user, comment: comment, type: @photo %>
 			    <% end %>
@@ -104,12 +111,11 @@ $(document).ready( function () {
 }
 
 .comment-list {
-	background: #f6f6f6;
 	padding: 5px;
 	margin: 5px 0;
 }
 
-.comment-ul-photo {
+.comment-ul {
 	padding-left: 20px;
 	height: 226px;
 	overflow: scroll;

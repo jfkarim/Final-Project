@@ -13,7 +13,9 @@
 
 	<div class="album-right group">
 	  <div class="album-info group">
-	    <%= render "likes/show", type: @album, sub_type: nil %>
+			<div class="like-div">
+		    <%= render "likes/show", type: @album, sub_type: nil %>
+			</div>
 			<a data-toggle="modal" data-target="#albumEditModal">Edit Album</a>
 			<a data-toggle="modal" data-target="#addPhotoAlbumModal">Add Photo</a>
 	  </div>

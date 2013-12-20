@@ -19,8 +19,10 @@
 	<% end %>
 	<div class="news-feed-right group">
 	  <div class="news-feed-info group">
-	    <%= render "likes/show", type: album, sub_type: nil %>
-			<span><%= album.created_at %></span>
+			<div class="like-div">
+		    <%= render "likes/show", type: album, sub_type: nil %>
+			</div>
+			<span><%= album.created_at.to_formatted_s(:long) %></span>
 	  </div>
   
 		<div class="comment-list group">
@@ -105,10 +107,6 @@
 }
 
 .news-feed-info {
-	display: inline;
-}
-
-.news-feed-info > form {
-	display: inline;
+	display: block;
 }
 </style>
