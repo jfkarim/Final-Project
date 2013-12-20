@@ -19,28 +19,27 @@
 				  <h3 class="attribute-type">World Canvases</h3>
 			    <%= render "edit_locations", user: @user %>
 					
+			    <%= image_tag @user.profile_picture.url(:standard) %>
+			    <form
+			      action="<%= user_url(current_user) %>"
+			      method="post"
+			      enctype="multipart/form-data"
+			      class="sign-up-form">
+			      <input
+			        name="authenticity_token"
+			        type="hidden"
+			        value="<%= form_authenticity_token %>">
+			      <input
+			        name="_method"
+			        type="hidden"
+			        value="put">
+
+		        <input type="file" name="user[profile_picture]">
+
 	    </div><!-- /.modal-body -->
 			<div class="modal-footer">
-		    <%= image_tag @user.profile_picture.url(:standard) %>
-		    <form
-		      action="<%= user_url(@user) %>"
-		      method="post"
-		      enctype="multipart/form-data"
-		      class="sign-up-form">
-		      <input
-		        name="authenticity_token"
-		        type="hidden"
-		        value="<%= form_authenticity_token %>">
-		      <input
-		        name="_method"
-		        type="hidden"
-		        value="put">
-
-		      <div class="input-field">
-		        <input type="file" name="user[profile_picture]">
-		      </div>
-		      <input type="submit" value="Save">
-		    </form>
+	      <input type="submit" id="submitEditUser" value="Save">
+			</form>
 			</div>
 		</div>
   </div>
@@ -73,7 +72,7 @@ $(document).ready( function () {
 }
 
 .user-edit-content > ul {
-	padding-left: 10px;
+	padding-left: 0;
 }
 
 .user-edit-content > ul > li {
@@ -82,15 +81,57 @@ $(document).ready( function () {
 
 .user-edit-content > ul > li > form {
 	display: inline;
+	float: left;
+	margin-right: 5px;
 }
 
-.modal-footer > img {
+.modal-body > img {
+	margin-top: 20px;
 	float: left;
+	border: 2px solid #ed9a32;
+	border-radius: 100px;
 }
 
 #updateUser {
 	display: inline;
 	float: right;
+}
+
+.attribute-type {
+	font-size: 12pt;
+}
+
+.new-attr > input[type=text] {
+	background: transparent;
+	border: none;
+	border-bottom: 1px solid #ccc;
+	margin-left: 15px;
+}
+
+.new-attr > input[type=submit] {
+	display: none;
+}
+
+.sign-up-form > input[type=file] {
+	clear: both;
+	position: relative;
+	top: -50px;
+	left: 200px;
+}
+
+#submitEditUser {
+	clear: both;
+	float: right;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	padding: 2px 15px;
+}
+
+#submitEditUser:focus {
+	background: #ed9a32;
 }
 
 </style>

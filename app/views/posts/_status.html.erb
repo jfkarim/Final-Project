@@ -36,7 +36,7 @@
 	  <input name="post[user_id]"
 	         type="hidden"
 	         value="<%= current_user.id %>">
-	  <input type="submit" value="Create Status">
+	  <input type="submit" value="Post">
 	  <input name="authenticity_token"
 	         type="hidden"
 	         value="<%= form_authenticity_token %>">
@@ -63,7 +63,18 @@
 
 .status-enter > input[type=submit] {
 	float: right;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	padding: 2px 15px;
 }
+
+.status-enter > input[type=submit]:focus {
+	background: #ed9a32;
+}
+
 
 .status-form > img {
 	width: 100px;

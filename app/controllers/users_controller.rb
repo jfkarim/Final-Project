@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   def update
     @user = User.includes(:locations, :influences, :media, :themes).find(params[:id])
     if @user.update_attributes(params[:user])
-      redirect_to edit_user_url(@user)
+      redirect_to user_url(@user)
     else
       flash[:errors] = @user.errors.full_messages
       render :edit
