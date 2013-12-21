@@ -12,7 +12,7 @@
      name="authenticity_token"
      type="hidden"
      value="<%= form_authenticity_token %>">
-  <input type="submit" value="Remove Friend">
+  <input type="submit" id="removeSubmit" value="Remove Friend">
 </form>
 
 <script>
@@ -20,6 +20,8 @@
 $(document).ready(function() {
 
   $("#remove-friend").on("ajax:success", function(event, data){
+		console.log("HERE");
+		console.log(data);
     $(".friend-status").html(data);
   });
 

@@ -1,14 +1,15 @@
 <div class="profile-top group">
-	<h1 class="profile-name group"><%= @user.artist_name %><div class="friend-status group">
-	<% if @user != current_user %>
-		  <% if current_user.friends.include?(@user) %>
-		    <%= render "remove_friend", user: @user %>
-		  <% elsif @user.pending_friends.include?(current_user) %>
-		    <p class="requested">Friend Request Sent</p>
-		  <% else %>
-		    <%= render "add_friend", user: @user %>
-		  <% end %>
-		<% end %>
+	<h1 class="profile-name group"><span><%= @user.artist_name %></span>
+		<div class="friend-status group">
+			<% if @user != current_user %>
+			  <% if current_user.friends.include?(@user) %>
+			    <%= render "remove_friend", user: @user %>
+			  <% elsif @user.pending_friends.include?(current_user) %>
+			    <p class="requested">Friend Request Sent</p>
+			  <% else %>
+			    <%= render "add_friend", user: @user %>
+			  <% end %>
+			<% end %>
 		</div>
 	</h1>
 	<div class="profile-info group">
@@ -53,14 +54,6 @@
 <%= render "albums/index_modal" %>
 
 <script>
-$(document).ready(function() {
-	
-	$(".profile-name").click(function () {
-		event.preventDefault();
-		console.log("HERE");
-	})
-
-});
 </script>
 
 <style>
@@ -73,6 +66,10 @@ $(document).ready(function() {
 	border-bottom: 2px solid #ccc;
 	padding: 5px 0;
 	vertical-align: bottom;
+}
+
+.profile-name > span {
+	float: left;
 }
 
 .profile-info {
@@ -92,6 +89,17 @@ $(document).ready(function() {
 
 .friend-status {
 	display: inline;
+	float: right;
+}
+
+.friend-status > p {
+	display: inline;
+	font-size: 14pt;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	padding: 2px 15px;
 }
 
 .friend-status > form {
@@ -100,6 +108,15 @@ $(document).ready(function() {
 	float: right;
 	font-size: 14pt;
 	vertical-align: bottom;
+}
+
+.friend-status > form > input[type=submit] {
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 14pt;
+	padding: 2px 15px;
 }
 
 .photos-albums {
