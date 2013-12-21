@@ -1,0 +1,85 @@
+<div class="modal fade" id="newUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog user-new-box group">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">New Artist</h4>
+      </div>
+			<div class="modal-body group">
+			  <form
+			    action="<%= users_url %>"
+			    method="post"
+			    enctype="multipart/form-data"
+			    class="sign-up-form">
+				    <input
+				      name="authenticity_token"
+				      type="hidden"
+				      value="<%= form_authenticity_token %>">
+
+			      <label class="user-input-label">Email
+				      <input class="input-bar" name="user[email]" type="text">
+				    </label>
+
+			      <label class="user-input-label">Password
+				      <input class="input-bar" name="user[password]" type="password">
+				    </label>
+
+			      <label class="user-input-label">Artist Name
+				      <input class="input-bar" name="user[artist_name]" type="text">
+				    </label>
+
+			      <label class="user-input-label prof-pic">Profile Picture
+				      <input type="file" name="user[profile_picture]">
+						</label>
+					  <input type="submit" id="createArtist" value="Create Artist">
+				</form>
+			</div>
+		</div>
+  </div>
+</div>
+
+<style>
+
+.user-new-box {
+	width: 400px;
+}
+
+.user-new-box > .modal-content {
+	border: 2px solid #ed9a32;
+	border-radius: 0;
+}
+
+.user-input-label {
+	width: 100%;
+}
+
+.user-input-label > input {
+	width: 250px;
+	float: right;
+	background: transparent;
+	border: 2px solid #eee;
+}
+
+#createArtist {
+	display: inline;
+	float: right;
+	margin-top: 10px;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	padding: 2px 15px;
+}
+
+input[name="user[profile_picture]"] {
+	width: 200px;
+	float: right;
+	border: 0;
+	margin-bottom: 10px;
+}
+
+.prof-pic {
+	margin-top: 20px;
+}
+</style>

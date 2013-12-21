@@ -18,7 +18,7 @@ class AlbumsController < ApplicationController
     @album = Album.new(params[:album])
 
     if @album.save
-      redirect_to edit_user_album_url(@user, @album)
+      redirect_to user_album_url(@user, @album)
     else
       render :new
     end

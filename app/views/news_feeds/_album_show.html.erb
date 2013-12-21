@@ -9,6 +9,9 @@
     <div class="album-images">
       <ul class="group">
         <% for i in 0..7 %>
+					<% if album.photos[i].nil?  %>
+						<% break %>
+					<% end %>
           <li class="album-image">
             <%= image_tag album.photos[i].picture.url(:standard) %>
           </li>

@@ -16,7 +16,7 @@
 								</div>
 			          <div class="invite-status">
 			            <% if @event.pending_users.include?(user) %>
-			              <span class="invited">Invited</span>
+			              <p class="invited">Invited</p>
 			            <% else %>
 			              <form
 			                action="<%= event_event_users_url(@event) %>"
@@ -54,7 +54,7 @@ $(document).ready(function(){
   $(".invite-button").on("ajax:success", function(event, data){
 		console.log("HERE");
     $inviteStatus = $($(event.target).parent()[0]);
-    $inviteStatus.html("<span class='invited'>Invited</span>");
+    $inviteStatus.html("<p class='invited'>Invited</p>");
   });
 
 });

@@ -1,9 +1,6 @@
-<section class="logo group">
-  <h1>UrbanCanvas</h1>
-</section>
 
-<section class="sign-in group">
-  <h1>Sign In</h1>
+<div class="sign-in group">
+  <h1>For the artist who loves anarchy,</h1>
 
   <form action="<%= session_url %>" method="post" class="sign-in-form">
     <input
@@ -11,31 +8,57 @@
        type="hidden"
        value="<%= form_authenticity_token %>">
 
-    <div class="input-field">
-      <label class="input-label">Email:</label>
-      <input class="input-bar" name="user[email]" type="text">
-    </div>
-
-    <div class="input-field">
-      <label class="input-label">Password:</label>
-      <input class="input-bar" name="user[password]" type="password">
-    </div>
-
-    <input type="submit" value="Sign in">
+    <input id="emailInput" name="user[email]" type="text" placeholder="Email">
+    <input id="passwordInput" name="user[password]" type="password" placeholder="Password">
+    <input id="signInSubmit" type="submit" value="Sign in">
   </form>
-
-  <%= link_to "Sign Up", new_user_url %>
-	
-  <form action="<%= session_url %>" method="post" class="sign-in-form">
-    <input
-       name="authenticity_token"
-       type="hidden"
-       value="<%= form_authenticity_token %>">
-    <input name="user[email]" type="hidden" value="jfk303@nyu.edu">
-    <input type="hidden" name="user[password]" value="password">
-    <input type="submit" value="Guest">
-  </form>
-</section>
+</div>
 
 <style>
+
+.sign-in {
+	width: 800px;
+	margin: 0 auto;
+	margin-top: 200px;
+}
+
+.sign-in > h1 {
+	width: 370px;
+	font-size: 16pt;
+	font-weight: normal;
+	margin: 20px auto;
+}
+
+.sign-in > form {
+	margin: 0 auto;
+	width: 380px;
+}
+
+.sign-in > form > input {
+	border: 0;
+	background: transparent;
+}
+
+#emailInput {
+	border-top: 2px solid #eee;
+	border-right: 2px solid #eee;
+	position: relative;
+	left: 5px;
+}
+
+#passwordInput {
+	border-top: 2px solid #eee;
+	border-left: 2px solid #eee;
+}
+
+#signInSubmit {
+	display: inline;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 11pt;
+	padding: 2px 10px;
+}
+
 </style>

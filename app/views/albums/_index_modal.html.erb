@@ -12,6 +12,9 @@
 				      <h3><%= link_to album.title, user_album_url(@user, album) %></h3>
 							<ul class="album-index-photos group">
 				        <% for i in 0..3 %>
+									<% if album.photos[i].nil?  %>
+										<% break %>
+									<% end %>
 				          <li class="album-index-image">
 				            <%= image_tag album.photos[i].picture.url(:standard) %>
 				          </li>

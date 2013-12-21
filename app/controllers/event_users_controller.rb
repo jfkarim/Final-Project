@@ -12,6 +12,7 @@ class EventUsersController < ApplicationController
       user_id: params[:user_id],
       event_id: params[:event_id],
       status: "PENDING")
+      
     if @event_user.save
       render json: @event_user
     else
@@ -24,7 +25,7 @@ class EventUsersController < ApplicationController
     @event_user = EventUser.find(params[:id])
     @user = @event_user.user
     @event_user.update_attributes(status: params[:status])
-    render partial: "event_users/status", locals: {user: @user, event: @event}
+    render json: @event_user
   end
 
 
