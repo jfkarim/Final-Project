@@ -26,7 +26,7 @@
 				<div class="like-div">
 			    <%= render "likes/show", type: @photo, sub_type: nil %>
 				</div>
-			  <a data-toggle="modal" data-target="#photoEditModal">Edit Photo</a>
+			  <a data-toggle="modal" class="edit-anything-link" data-target="#photoEditModal">Edit Photo</a>
 		  </div>
 			<div class="comment-list group">
 				<%= render "comments/form", owner: @user, type: @photo %>

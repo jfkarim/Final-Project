@@ -16,9 +16,9 @@ class PhotosController < ApplicationController
     @photo.save
 
     if @photo.album_id.nil?
-      redirect_to edit_user_photo_url(@user, @photo)
+      redirect_to user_photo_url(@user, @photo)
     else
-      redirect_to edit_user_album_url(@user, Album.find(@photo.album_id))  #ERROR HANDLING NEEDED
+      redirect_to user_album_url(@user, Album.find(@photo.album_id))  #ERROR HANDLING NEEDED
     end
   end
 

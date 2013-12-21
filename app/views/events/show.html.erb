@@ -10,7 +10,7 @@
 		<div class="guests group">
 	  	<span>Guests</span>
 			<% if @event.admin_id == current_user.id  %>
-				<a data-toggle="modal" data-target="#invitesModal">Invite People</a>
+				<a data-toggle="modal" class="edit-anything-link" data-target="#invitesModal">Invite People</a>
 		  <% end %>
 		</div>
 		<div class="invites-status group">
@@ -127,7 +127,6 @@ $(document).ready(function() {
 .guests > a {
 	margin: 0 20px;
 	font-size: 12pt;
-	color: blue;
 	position: relative;
 	top: 10px;
 }

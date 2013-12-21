@@ -22,7 +22,7 @@ module SessionsHelper
   end
 
   def can_post_on_wall?(user)
-    current_user != user && user.approved_friends.include?(current_user)
+    current_user != user && user.friends.include?(current_user)
   end
 
   def is_page_owner?(user)

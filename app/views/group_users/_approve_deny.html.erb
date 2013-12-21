@@ -6,7 +6,7 @@
   method="post"
   data-remote="true">
   <input type="hidden" name="_method" value="PUT">
-  <input type="submit" value="Approve">
+  <input type="submit" id="approveGroup" value="Approve">
   <input name="authenticity_token"
          type="hidden"
          value="<%= form_authenticity_token %>">
@@ -19,7 +19,7 @@ action="<%= group_group_user_url(pending_group, GroupUser.where(
   method="post"
   data-remote="true">
   <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Deny">
+  <input type="submit" id="denyGroup" value="Deny">
   <input name="authenticity_token"
          type="hidden"
          value="<%= form_authenticity_token %>">
@@ -44,4 +44,33 @@ $(document).ready(function(){
 </script>
 
 <style>
+
+#approveGroup {
+	display: inline;
+	float: right;
+	margin-top: 10px;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	width: 65px;
+	font-size: 10pt;
+	position: relative;
+	top: -55px;
+}
+
+#denyGroup {
+	display: inline;
+	float: right;
+	margin-top: 0;
+	background: #ffacad;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	width: 65px;
+	position: relative;
+	top: -18px;
+	left: 65px;
+}
 </style>

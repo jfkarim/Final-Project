@@ -1,19 +1,22 @@
 <div class="modal fade" id="pendingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog pending-box group">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Pending Requests</h4>
       </div>
-			<div class="modal-body">
-				<ul class="pending-list">
-				  <li>
-				    Friends
-				    <ul class="pending-friends-side-drop group">
+			<div class="modal-body group">
+				<ul class="pending-list group">
+				  <li class="group">
+				    <h3>Friends</h3>
+				    <ul class="pending-friends-list group">
 				      <% current_user.pending_friends.each do |pending_friend| %>
 				        <li>
-				          <%= pending_friend.artist_name %>
-				          <div class="approve-deny-friend">
+									<div class="pending-show group">
+					          <%= image_tag pending_friend.profile_picture.url(:standard) %>
+					          <p><%= link_to pending_friend.artist_name, user_url(pending_friend) %></p>
+									</div>
+				          <div class="approve-deny-friend group">
 				            <%= render "friendships/approve_deny",
 				                  user: current_user,
 				                  pending_friend: pending_friend %>
@@ -22,17 +25,37 @@
 				      <% end %>
 				    </ul>
 				  </li>
-
-				  <li>
-				    Groups
-				    <ul class="pending-groups-side-drop group">
+				  <li class="group">
+				    <h3>Groups</h3>
+				    <ul class="pending-groups-list group">
 				      <% current_user.pending_groups.each do |pending_group| %>
 				        <li>
-				          <%= pending_group.name %>
-				          <div class="approve-deny-group">
+									<div class="pending-show group">
+										<%= image_tag pending_group.admin.profile_picture.url(:standard) %>
+					          <p><%= pending_group.name %></p>
+									</div>
+				          <div class="approve-deny-group group">
 				            <%= render "group_users/approve_deny",
 				                  user: current_user,
 				                  pending_group: pending_group %>
+				          </div>
+				        </li>
+				      <% end %>
+				    </ul>
+				  </li>
+				  <li class="group">
+				    <h3>Events</h3>
+				    <ul class="pending-events-list group">
+				      <% current_user.pending_events.each do |pending_event| %>
+				        <li>
+									<div class="pending-show group">
+										<%= image_tag pending_event.admin.profile_picture.url(:standard) %>
+					          <p><%= pending_event.name %></p>
+									</div>
+				          <div class="event-status">
+				            <%= render "event_users/status",
+				                  user: current_user,
+				                  event: pending_event %>
 				          </div>
 				        </li>
 				      <% end %>
@@ -43,3 +66,79 @@
 		</div>
   </div>
 </div>
+
+
+<style>
+.pending-box {
+	width: 550px;
+}
+
+.pending-box > .modal-content {
+	border-radius: 0;
+	border: 2px solid #ed9a32;
+}
+
+.pending-box > .modal-content > .modal-body > ul {
+	padding-left: 10px;
+}
+
+.pending-box > .modal-content > .modal-body > ul > li {
+	margin: 5px;
+}
+
+.pending-box > .modal-content > .modal-body > ul > li > h3 {
+	margin: 5px 0 20px 0;
+	font-size: 12pt;
+}
+
+.pending-friends-list, .pending-groups-list, .pending-events-list {
+	padding-left: 0;
+}
+
+.pending-friends-list > li, .pending-groups-list > li, .pending-events-list > li {
+	width: 220px;
+	height: 60px;
+	float: left;
+	margin-right: 20px;
+}
+
+.pending-show {
+	display: inline;
+	float: left;
+	width: 160px;
+}
+
+.pending-show > img {
+	float: left;
+	width: 40px;
+	height: 40px;
+	border: 2px solid #aedaff;
+	border-radius: 25px;
+	position: relative;
+	top: -10px;
+	z-index: 1;
+}
+
+.pending-show > p {
+	border-bottom: 2px solid #eee;
+	position: relative;
+	left: 10px;
+}
+
+.pending-show > p > a {
+	font-weight: 10pt;
+}
+
+.approve-deny-friend {
+	display: inline;
+}
+
+.approve-deny-group {
+	display: inline;
+}
+
+.event-status {
+	display: inline;
+}
+
+</style>

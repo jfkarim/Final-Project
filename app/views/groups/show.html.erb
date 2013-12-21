@@ -6,7 +6,7 @@
 		<div class="members group">
 			<span>Members</span>
 			<% if @group.admin_id == current_user.id  %>
-	      <a data-toggle="modal" data-target="#invitesModal">Invite People</a>
+	      <a data-toggle="modal" class="edit-anything-link" data-target="#invitesModal">Edit Roster</a>
 	    <% end %>
 		</div>
 		<div class="members-status group">
@@ -101,9 +101,9 @@ $(document).ready(function() {
 .members > a {
 	margin: 0 20px;
 	font-size: 12pt;
-	color: blue;
 	position: relative;
 	top: 10px;
+	left: -10px;
 }
 
 .members-status {

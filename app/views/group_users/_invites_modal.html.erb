@@ -5,74 +5,79 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Add/Remove Members</h4>
       </div>
-      <div class="modal-body invites-content">
-				<h3>Invite Members</h3>
-			  <ul class="group">
-			    <% current_user.friends.each do |user| %>
-			      <% unless user == current_user %>
-			        <li class="group">
-			          <%= image_tag user.profile_picture.url(:icon) %>
-			          <%= link_to user.artist_name, user_url(user) %>
-			          <div class="invite-status">
-			            <% if @group.pending_users.include?(user) %>
-			              <p class="invited">Invited</p>
-			            <% else %>
-			              <form
-			                action="<%= group_group_users_url(@group) %>"
-			                method="post"
-			                class="invite-button"
-			                data-remote="true">
-			                <input
-			                  name="authenticity_token"
-			                  type="hidden"
-			                  value="<%= form_authenticity_token %>">
-			                <input
-			                  id="user_id"
-			                  name="user_id"
-			                  type="hidden"
-			                  value="<%= user.id %>">
+      <div class="modal-body invites-content group">
+				<div class="invite-new-members group">
+					<h3>Invite Members</h3>
+				  <ul class="group">
+				    <% current_user.friends.each do |user| %>
+				      <% unless user == current_user %>
+				        <li class="group">
+									<div class="invitee-show group">
+					          <%= image_tag user.profile_picture.url(:icon) %>
+					          <p><%= link_to user.artist_name, user_url(user) %></p>
+									</div>
+				          <div class="invite-status">
+				            <% if @group.pending_users.include?(user) %>
+				              <p class="invited">Invited</p>
+				            <% else %>
+				              <form
+				                action="<%= group_group_users_url(@group) %>"
+				                method="post"
+				                class="invite-button"
+				                data-remote="true">
+				                <input
+				                  name="authenticity_token"
+				                  type="hidden"
+				                  value="<%= form_authenticity_token %>">
+				                <input
+				                  id="user_id"
+				                  name="user_id"
+				                  type="hidden"
+				                  value="<%= user.id %>">
 
-			                <input type="submit" value="Invite">
-			              </form>
-			            <% end %>
-			          </div>
-			        </li>
-			      <% end %>
-			    <% end %>
-			  </ul>
-			  <h3>Remove Members</h3>
-			  <ul class="group">
-			    <% @group.approved_users.each do |user| %>
-			      <% unless user == current_user %>
-			        <li class="group">
-								<%= image_tag user.profile_picture.url(:icon) %>
-			          <%= link_to user.artist_name, user_url(user) %>
-			          <form action="<%= group_group_user_url(@group,
-			                GroupUser.where(
-			                  user_id: user.id,
-			                  group_id: @group.id)[0]) %>" method="post">
-			            <input type="hidden" name="_method" value="DELETE">
+				                <input type="submit" class="sendInvite" value="Invite">
+				              </form>
+				            <% end %>
+				          </div>
+				        </li>
+				      <% end %>
+				    <% end %>
+				  </ul>
+				</div>
+				<div class="remove-members group">
+				  <h3>Remove Members</h3>
+				  <ul class="group">
+				    <% @group.approved_users.each do |user| %>
+				      <% unless user == current_user %>
+				        <li class="group">
+									<div class="invitee-show group">
+										<%= image_tag user.profile_picture.url(:icon) %>
+					          <p><%= link_to user.artist_name, user_url(user) %></p>
+									</div>
+									<form action="<%= group_group_user_url(@group,
+				                GroupUser.where(
+				                  user_id: user.id,
+				                  group_id: @group.id)[0]) %>" method="post">
+				            <input type="hidden" name="_method" value="DELETE">
 
-			            <input
-			              name="authenticity_token"
-			              type="hidden"
-			              value="<%= form_authenticity_token %>">
+				            <input
+				              name="authenticity_token"
+				              type="hidden"
+				              value="<%= form_authenticity_token %>">
 
-			            <input
-			              id="user_id"
-			              name="user_id"
-			              type="hidden"
-			              value="<%= user.id %>">
+				            <input
+				              id="user_id"
+				              name="user_id"
+				              type="hidden"
+				              value="<%= user.id %>">
 
-			            <input type="submit" value="Remove">
-			          </form>
-			        </li>
-			      <% end %>
-			    <% end %>
-			  </ul>
-      </div>
-      <div class="modal-footer">
-        <%= link_to "Done", group_url(@group) %>
+				            <input type="submit" class="removeUser" value="Remove">
+				          </form>
+				        </li>
+				      <% end %>
+				    <% end %>
+				  </ul>
+				</div>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -93,7 +98,7 @@ $(document).ready(function(){
 
 <style>
 .group-invites-box {
-	width: 400px;
+	width: 550px;
 }
 
 .group-invites-box > .modal-content {
@@ -101,35 +106,76 @@ $(document).ready(function(){
 	border: 2px solid #ed9a32;
 }
 
-.invites-content > h3 {
+.invites-content > div {
+	width: 230px;
+	float: left;
+}
+
+.remove-members {
+	margin-left: 10px;
+}
+
+.invites-content > div > h3 {
 	font-size: 12pt;
-}
-
-.invites-content > h3:first-child {
 	margin-top: 0;
+	margin-bottom: 15px;
 }
 
-.invites-content > ul {
+.invites-content > div > ul {
 	padding-left: 10px;
 }
 
-.invites-content > ul > li {
-	width: 100%;
+.invites-content > div > ul > li {
+	width: 220px;
+	float: left;
+	margin: 5px;
 }
 
-.invites-content > ul > li > img {
+.invitee-show {
+	display: inline;
 	float: left;
+	width: 160px;
 }
 
-.invites-content > ul > li > a {
-	padding: 5px;
-	font-weight: 12pt;
+.invitee-show > img {
 	float: left;
+	width: 40px;
+	height: 40px;
+	border: 2px solid #aedaff;
+	border-radius: 25px;
+	position: relative;
+	top: -10px;
+	z-index: 1;
+}
+
+.invitee-show > p {
+	border-bottom: 2px solid #eee;
+	position: relative;
+	left: 10px;
+}
+
+.invitee-show > p > a {
+	font-weight: 10pt;
 }
 
 .invites-content > ul > li > form {
 	display: inline;
 	float: right;
+}
+
+.sendInvite, .invited, .removeUser {
+	display: inline;
+	float: right;
+	margin-top: 10px;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	padding: 2px 5px;
+	position: relative;
+	top: -12px;
+	left: -8px;
 }
 
 .invite-status {

@@ -1,8 +1,5 @@
 
 <h1 class="photos-header">Photos</h1>
-<% if is_page_owner?(@user) %>
-  <%= render "lone_upload", user: @user %>
-<% end %>
 <ul class="photos-list group">
 <% @photos.each do |photo| %>
   <li>

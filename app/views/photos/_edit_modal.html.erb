@@ -5,7 +5,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Edit Photo</h4>
       </div>
-			<div class="modal-body">
+			<div class="modal-body group">
 				<form
 				  action="<%= user_photo_url(@user, @photo) %>"
 				  method="post"
@@ -32,12 +32,10 @@
 				      name="photo[description]"
 				      value="<%= @photo.description %>">
 					</label>		
-			    </div><!-- /.modal-body -->
-					<div class="modal-footer">
 					  <input type="submit" id="updatePhoto" value="Save Changes">
 				</form>
-						<%= button_to "Delete Photo", user_photo_url(@photo), method: :delete %>
-					</div>
+				<%= button_to "Delete Photo", user_photo_url(@photo), method: :delete %>
+			</div>
 		</div>
   </div>
 </div>
@@ -59,7 +57,7 @@ $(document).ready(function(){
 <style>
 
 .photo-edit-box {
-	width: 500px;
+	width: 400px;
 }
 
 .photo-edit-box > .modal-content {
@@ -79,11 +77,25 @@ $(document).ready(function(){
 #updatePhoto {
 	display: inline;
 	float: right;
+	margin-top: 10px;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	padding: 2px 15px;
 }
 
 input[value="Delete Photo"] {
 	display: inline;
 	float: left;
+	margin-top: 10px;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	padding: 2px 15px;
 }
 
 </style>

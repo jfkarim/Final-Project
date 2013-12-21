@@ -5,16 +5,18 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Invitations</h4>
       </div>
-      <div class="modal-body invites-content">
+      <div class="modal-body invites-content group">
 			  <ul class="group">
 			    <% current_user.friends.each do |user| %>
 			      <% unless user == current_user %>
 			        <li class="group">
-			          <%= image_tag user.profile_picture.url(:icon) %>
-			          <%= link_to user.artist_name, user_url(user) %>
+								<div class="invitee-show group">
+				          <%= image_tag user.profile_picture.url(:standard) %>
+				          <p><%= link_to user.artist_name, user_url(user) %></p>
+								</div>
 			          <div class="invite-status">
 			            <% if @event.pending_users.include?(user) %>
-			              <p class="invited">Invited</p>
+			              <span class="invited">Invited</span>
 			            <% else %>
 			              <form
 			                action="<%= event_event_users_url(@event) %>"
@@ -32,7 +34,7 @@
 			                  type="hidden"
 			                  value="<%= user.id %>">
 
-			                <input type="submit" value="Invite">
+			                <input type="submit" class="sendInvite" value="Invite">
 			              </form>
 			          <% end %>
 			          </div>
@@ -40,9 +42,6 @@
 			      <% end %>
 			    <% end %>
 			  </ul>
-      </div>
-      <div class="modal-footer">
-        <%= link_to "Done", event_url(@event) %>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -53,8 +52,9 @@
 $(document).ready(function(){
 
   $(".invite-button").on("ajax:success", function(event, data){
-    $inviteStatus = $($(event.target).parent()[0])
-    $inviteStatus.html("<p class='invited'>Invited</p>");
+		console.log("HERE");
+    $inviteStatus = $($(event.target).parent()[0]);
+    $inviteStatus.html("<span class='invited'>Invited</span>");
   });
 
 });
@@ -63,7 +63,7 @@ $(document).ready(function(){
 
 <style>
 .event-invites-box {
-	width: 400px;
+	width: 550px;
 }
 
 .event-invites-box > .modal-content {
@@ -84,22 +84,56 @@ $(document).ready(function(){
 }
 
 .invites-content > ul > li {
-	width: 100%;
+	width: 220px;
+	float: left;
+	margin: 5px;
 }
 
-.invites-content > ul > li > img {
+.invitee-show {
+	display: inline;
 	float: left;
+	width: 160px;
 }
 
-.invites-content > ul > li > a {
-	padding: 5px;
-	font-weight: 12pt;
+.invitee-show > img {
 	float: left;
+	width: 40px;
+	height: 40px;
+	border: 2px solid #aedaff;
+	border-radius: 25px;
+	position: relative;
+	top: -10px;
+	z-index: 1;
+}
+
+.invitee-show > p {
+	border-bottom: 2px solid #eee;
+	position: relative;
+	left: 10px;
+}
+
+.invitee-show > p > a {
+	font-weight: 10pt;
 }
 
 .invites-content > ul > li > form {
 	display: inline;
 	float: right;
+}
+
+.sendInvite, .invited {
+	display: inline;
+	float: right;
+	margin-top: 10px;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	padding: 2px 5px;
+	position: relative;
+	top: -12px;
+	left: -8px;
 }
 
 .invite-status {

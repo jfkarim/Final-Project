@@ -5,23 +5,19 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">New Event</h4>
       </div>
-				<form action="<%= events_url %>" method="post" class="event-form">
-					<div class="modal-body">
-				    <input
-				      name="_method"
-				      type="hidden"
-				      value="put">
+				<div class="modal-body group">
+					<form action="<%= events_url %>" method="post" class="event-form">
 				    <input
 				      name="authenticity_token"
 				      type="hidden"
 				      value="<%= form_authenticity_token %>">
 							
-			      <label class="event-input-label">Name
+			      <label class="event-input-label">Title
 				      <input
 				        class="input-bar"
 				        name="event[name]"
 				        type="text">
-
+						</label>
 			      <label class="event-input-label">Description
 				      <input
 				        type="text"
@@ -29,33 +25,27 @@
 				        name="event[description]"
 						</label>
 
-				    <label class="event-input-label">Location
+				    <label class="event-input-label">Where
 				      <input
 				        type="text"
 				        class="input-bar"
 				        name="event[address]">
 						</label>
 
-			      <label class="event-input-label">Date
+			      <label class="event-input-label">When
 				      <input
 				        type="date"
 				        class="input-date"
 				        name="event[date]">
-						</label>
-
-			      <label class="event-input-label">Time
 				      <input
 				        type="time"
 				        class="input-time"
 				        name="event[time]">
 						</label>
-						
-			    </div>
-					<div class="modal-footer">
 				    <input type="submit" id="createEvent" value="Create Event">
-			  </form>
-					</div>
+				  </form>
 				</div>
+			</div>
 		</div>
   </div>
 </div>
@@ -73,16 +63,40 @@
 
 .event-input-label {
 	width: 100%;
+	margin: 5px 0;
 }
 
 .event-input-label > input {
-	width: 250px;
 	float: right;
+	background: transparent;
+	border: 2px solid #eee;
+}
+
+.input-bar {
+	width: 250px;
+}
+
+.input-date {
+	display: inline;
+	width: 150px;
+}
+
+.input-time {
+	display: inline;
+	width: 95px;
+	margin-right: 5px;
 }
 
 #createEvent {
-	display: inline;
+	clear: both;
 	float: right;
+	margin-top: 10px;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	padding: 2px 15px;
 }
 
 </style>

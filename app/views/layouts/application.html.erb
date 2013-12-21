@@ -43,10 +43,20 @@
     <div class="row">
       <div class="col-sm-3 sidebar">
         <ul class="nav nav-sidebar group">
-          <li class="active"><a href="<%=user_news_feed_url(current_user)%>">News Feed</a></li>
+          <li><a href="<%=user_news_feed_url(current_user)%>">News Feed</a></li>
 					<li><a data-toggle="modal" data-target="#pendingModal">Pending</a></li>
           <li><a data-toggle="modal" data-target="#friendsModal">Friends</a></li>
-          <li><a href="<%= user_photos_url(current_user) %>">Photos</a></li>
+          <li><a id="photos-drop" href="#">Photos</a></li>
+
+					<ul class="nav nav-sidebar photos-drop drop group">
+					  <li>
+							<a data-toggle="modal" data-target="#photoCreateModal">Upload Photo</a>
+					  </li>
+				    <li>
+							<a href="<%= user_photos_url(current_user) %>">Index</a>
+				    </li>
+					</ul>
+						
           <li><a id="albums-drop" href="#">Albums</a></li>
 					
 					<ul class="nav nav-sidebar albums-drop drop group">
@@ -101,6 +111,7 @@
 	<%= render "users/friends" %>
 	<%= render "users/pending_requests" %>
 	<%= render "albums/new_modal" %>
+	<%= render "photos/new_modal" %>
 	<%= render "events/new_modal" %>
 	<%= render "groups/new_modal" %>
 	
@@ -129,6 +140,10 @@ $(document).ready(function() {
 	
 	$("#albums-drop").click(function() {
 		$(".albums-drop").toggle();
+	});
+	
+	$("#photos-drop").click(function() {
+		$(".photos-drop").toggle();
 	});
 })
 
@@ -162,5 +177,9 @@ $(document).ready(function() {
 
 .drop > li:first-child > a {
 	font-style: italic;
+}
+
+.drop > li > a {
+	color: #aedaff;
 }
 </style>

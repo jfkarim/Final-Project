@@ -1,7 +1,7 @@
 <div class="profile-top group">
 	<h1 class="profile-name group"><%= @user.artist_name %><div class="friend-status group">
 	<% if @user != current_user %>
-		  <% if current_user.approved_friends.include?(@user) %>
+		  <% if current_user.friends.include?(@user) %>
 		    <%= render "remove_friend", user: @user %>
 		  <% elsif @user.pending_friends.include?(current_user) %>
 		    <p class="requested">Friend Request Sent</p>

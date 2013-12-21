@@ -1,15 +1,16 @@
 <div class="modal fade" id="friendsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog friends-index-box group">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Friends</h4>
       </div>
-			<div class="modal-body">
-				<ul class="friends-list">
+			<div class="modal-body group">
+				<ul class="friends-list group">
 				  <% current_user.friends.each do |friend| %>
-				    <li>
-				      <%= link_to friend.artist_name, user_url(friend) %>
+				    <li class="friend-show group">
+		          <%= image_tag friend.profile_picture.url(:standard) %>
+		          <p><%= link_to friend.artist_name, user_url(friend) %></p>
 				    </li>
 				  <% end %>
 				</ul>
@@ -17,3 +18,48 @@
 		</div>
   </div>
 </div>
+
+
+<style>
+.friends-index-box {
+	width: 500px;
+}
+
+.friends-index-box > .modal-content {
+	border-radius: 0;
+	border: 2px solid #ed9a32;
+}
+
+.friends-list {
+	padding-left: 0;
+}
+
+.friend-show {
+	width: 200px;
+	float: left;
+	margin: 5px;
+	margin-left: 15px;
+}
+
+.friend-show > img {
+	float: left;
+	width: 40px;
+	height: 40px;
+	border: 2px solid #aedaff;
+	border-radius: 25px;
+	position: relative;
+	top: -10px;
+	z-index: 1;
+}
+
+.friend-show > p {
+	border-bottom: 2px solid #eee;
+	position: relative;
+	left: 10px;
+}
+
+.friend-show > p > a {
+	font-weight: 10pt;
+}
+
+</style>

@@ -2,7 +2,7 @@
   action="<%= event_event_user_url(event, EventUser.where(
               event_id: event.id,
               user_id: user.id)[0]) %>"
-  class="button_to event-attendance"
+  class="button_to event-attendance group"
   method="post"
   data-remote="true">
 
@@ -23,7 +23,7 @@
     <% end %>
   </select>
 
-  <input type="submit" value="Change Status">
+  <input type="submit" id="saveStatus" value="Save">
   <input
     name="authenticity_token"
     type="hidden"
@@ -31,4 +31,32 @@
 </form>
 
 <style>
+
+select[name="status"] {
+	display: inline;
+	margin-top: 10px;
+	background: transparent;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	font-size: 10pt;
+	height: 25px;
+	position: relative;
+	top: -28px;
+	left: 70px;
+}
+
+#saveStatus {
+	display: inline;
+	float: right;
+	margin-top: 10px;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	width: 65px;
+	font-size: 10pt;
+	position: relative;
+	top: -28px;
+}
+
 </style>

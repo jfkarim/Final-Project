@@ -12,7 +12,6 @@ class EventUsersController < ApplicationController
       user_id: params[:user_id],
       event_id: params[:event_id],
       status: "PENDING")
-
     if @event_user.save
       render json: @event_user
     else

@@ -62,6 +62,10 @@ body {
 	background: #ccc;
 }
 
+.nav-sidebar > li > a:focus {
+  color: #fff;
+  background-color: #ed9a32;
+}
 
 /*
  * Main content
@@ -106,4 +110,14 @@ ul {
 .navbar-right > li > a > img {
 	border-radius: 15px;
 	border: 1px solid #afdaff;
+}
+
+a {
+	color: #aedaff;
+	cursor: pointer;
+}
+
+a:hover {
+	color: #ed9a32;
+	text-decoration: none;
 }

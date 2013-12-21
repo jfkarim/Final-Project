@@ -34,11 +34,7 @@ class AlbumsController < ApplicationController
     @user = User.includes(:albums).find(params[:user_id])
     @album = Album.find(params[:id])
 
-    @album.update_attributes(params[:album])
-
-    if request.xhr?
-      render partial: "albums/edit_album_info", locals: {user: @user, album: @album}
-    else
+    if @album.update_attributes(params[:album])
       redirect_to user_album_url(@user, @album)
     end
 

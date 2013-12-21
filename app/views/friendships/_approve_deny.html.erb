@@ -2,11 +2,11 @@
   action="<%= user_friendship_url(user, Friendship.where(
               in_friend_id: user.id,
               out_friend_id: pending_friend.id)[0]) %>"
-  class="button_to approve-friendship"
+  class="button_to approve-friendship group"
   method="post"
   data-remote="true">
   <input type="hidden" name="_method" value="PUT">
-  <input type="submit" value="Approve">
+  <input type="submit" id="approveFriend" value="Approve">
   <input
     name="authenticity_token"
     type="hidden"
@@ -16,11 +16,11 @@
   action="<%= user_friendship_url(user, Friendship.where(
               in_friend_id: user.id,
               out_friend_id: pending_friend.id)[0]) %>"
-  class="button_to deny-friendship"
+  class="button_to deny-friendship group"
   method="post"
   data-remote="true">
   <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Deny">
+  <input type="submit" id="denyFriend" value="Deny">
   <input
     name="authenticity_token"
     type="hidden"
@@ -46,4 +46,32 @@ $(document).ready(function(){
 </script>
 
 <style>
+
+#approveFriend {
+	display: inline;
+	float: right;
+	margin-top: 10px;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	width: 65px;
+	font-size: 10pt;
+	position: relative;
+	top: -55px;
+}
+
+#denyFriend {
+	display: inline;
+	float: right;
+	margin-top: 0;
+	background: #ffacad;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	width: 65px;
+	position: relative;
+	top: -53px;
+}
 </style>

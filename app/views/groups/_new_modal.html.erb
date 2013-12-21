@@ -5,7 +5,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">New Group</h4>
       </div>
-			<div class="modal-body">
+			<div class="modal-body group">
 				<form action="<%= groups_url %>" method="post" class="group-form">
 			    <input
 			      name="_method"
@@ -28,10 +28,7 @@
 			        type="text"
 			        name="group[description]">
 					</label>
-			</div><!-- /.modal-body -->
-			<div class="modal-footer">
 			    <input type="submit" id="createGroup" value="Create Group">
-			  </form>
 			</div>
 		</div>
   </div>
@@ -55,11 +52,20 @@
 .group-input-label > input[type=text] {
 	width: 250px;
 	float: right;
+	background: transparent;
+	border: 2px solid #eee;
 }
 
 #createGroup {
 	display: inline;
 	float: right;
+	margin-top: 10px;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	padding: 2px 15px;
 }
 
 </style>

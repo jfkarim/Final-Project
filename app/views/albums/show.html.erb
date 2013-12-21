@@ -16,8 +16,8 @@
 			<div class="like-div">
 		    <%= render "likes/show", type: @album, sub_type: nil %>
 			</div>
-			<a data-toggle="modal" data-target="#albumEditModal">Edit Album</a>
-			<a data-toggle="modal" data-target="#addPhotoAlbumModal">Add Photo</a>
+			<a data-toggle="modal" class="edit-anything-link" data-target="#albumEditModal">Edit Album</a>
+			<a data-toggle="modal" class="edit-anything-link" data-target="#addPhotoAlbumModal">Add Photo</a>
 	  </div>
 		<div class="comment-list group">
 			<%= render "comments/form", owner: @user, type: @album %>

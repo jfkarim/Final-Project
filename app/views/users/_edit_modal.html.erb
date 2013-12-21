@@ -5,41 +5,38 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Edit User Info</h4>
       </div>
-			<div class="modal-body user-edit-content">
-					
-				  <h3 class="attribute-type">Influences</h3>
-			    <%= render "edit_influences", user: @user %>
+			<div class="modal-body user-edit-content group">
+			  <h3 class="attribute-type">Influences</h3>
+		    <%= render "edit_influences", user: @user %>
 
-				  <h3 class="attribute-type">Media</h3>
-			    <%= render "edit_media", user: @user %>
+			  <h3 class="attribute-type">Media</h3>
+		    <%= render "edit_media", user: @user %>
 
-				  <h3 class="attribute-type">Themes</h3>
-			    <%= render "edit_themes", user: @user %>
+			  <h3 class="attribute-type">Themes</h3>
+		    <%= render "edit_themes", user: @user %>
 
-				  <h3 class="attribute-type">World Canvases</h3>
-			    <%= render "edit_locations", user: @user %>
-					
-			    <%= image_tag @user.profile_picture.url(:standard) %>
-			    <form
-			      action="<%= user_url(current_user) %>"
-			      method="post"
-			      enctype="multipart/form-data"
-			      class="sign-up-form">
-			      <input
-			        name="authenticity_token"
-			        type="hidden"
-			        value="<%= form_authenticity_token %>">
-			      <input
-			        name="_method"
-			        type="hidden"
-			        value="put">
+			  <h3 class="attribute-type">World Canvases</h3>
+		    <%= render "edit_locations", user: @user %>
+				
+		    <%= image_tag @user.profile_picture.url(:standard) %>
+		    <form
+		      action="<%= user_url(current_user) %>"
+		      method="post"
+		      enctype="multipart/form-data"
+		      class="sign-up-form">
+		      <input
+		        name="authenticity_token"
+		        type="hidden"
+		        value="<%= form_authenticity_token %>">
+		      <input
+		        name="_method"
+		        type="hidden"
+		        value="put">
 
-		        <input type="file" name="user[profile_picture]">
+	        <input type="file" name="user[profile_picture]">
 
-	    </div><!-- /.modal-body -->
-			<div class="modal-footer">
-	      <input type="submit" id="submitEditUser" value="Save">
-			</form>
+		      <input type="submit" id="submitEditUser" value="Save">
+					</form>
 			</div>
 		</div>
   </div>
@@ -104,7 +101,7 @@ $(document).ready( function () {
 .new-attr > input[type=text] {
 	background: transparent;
 	border: none;
-	border-bottom: 1px solid #ccc;
+	border: 2px solid #eee;
 	margin-left: 15px;
 }
 
