@@ -1,9 +1,0 @@
-<%= link_to "All Photos", user_photos_url(@user) %>
-
-<ul>
-  <% @albums.each do |album| %>
-    <li>
-      <%= link_to album.title, user_album_url(@user, album) %>
-    </li>
-  <% end %>
-</ul>

@@ -66,3 +66,16 @@
 		</div>
   </div>
 </div>
+
+<script>
+
+$(document).ready(function(){
+
+  $(".event-attendance").on("ajax:success", function(event, data) {
+    $attendance = $($(event.target).parent()[0])
+    $attendance.html(data)
+  });
+
+});
+
+</script>
