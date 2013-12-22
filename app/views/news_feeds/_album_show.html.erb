@@ -5,20 +5,23 @@
 		<%= image_tag owner.profile_picture.url(:standard) %><a><%= owner.artist_name %></a> uploaded a new album:  <%= link_to album.title, user_album_url(owner, album) %>
 	</div>
   <% if album.photos.length > 0 %>
-	<div class="news-feed-left group">
-    <div class="album-images">
-      <ul class="group">
-        <% for i in 0..7 %>
-					<% if album.photos[i].nil?  %>
-						<% break %>
-					<% end %>
-          <li class="album-image">
-            <%= image_tag album.photos[i].picture.url(:standard) %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-	</div>
+		<div class="news-feed-left group">
+	    <div class="album-images">
+	      <ul class="group">
+	        <% for i in 0..7 %>
+						<% if album.photos[i].nil?  %>
+							<% break %>
+						<% end %>
+	          <li class="album-image">
+	            <%= image_tag album.photos[i].picture.url(:standard) %>
+	          </li>
+	        <% end %>
+	      </ul>
+	    </div>
+		</div>
+	<% else %>
+		<div class="empty-album-news group">
+		</div>
 	<% end %>
 	<div class="news-feed-right group">
 	  <div class="news-feed-info group">
@@ -85,6 +88,12 @@
 .news-feed-left {
 	width: 460px;
 	font-size: 14pt;
+	float: left;
+}
+
+.empty-album-news {
+	width: 460px;
+	height: 200px;
 	float: left;
 }
 

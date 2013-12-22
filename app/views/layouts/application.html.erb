@@ -199,13 +199,15 @@ $(document).ready(function() {
 
 .drop {
 	display: none;
+	position: relative;
+	left: 20px;
 	width: 100%;
-	padding-left: 20px;
 	margin-right: 0;
 }
 
 .drop > li {
-	width: 320px;
+	position: relative;
+	display: block;
 }
 
 .drop > li:first-child > a {
@@ -213,13 +215,10 @@ $(document).ready(function() {
 }
 
 .drop > li > a {
+	position: relative;
+	display: block;
+	padding: 10px 20px;
 	color: #aedaff;
-}
-
-.guest-sign-in > input[type=submit] {
-	background: transparent;
-	border: none;
-	color: #999;	
 }
 
 </style>

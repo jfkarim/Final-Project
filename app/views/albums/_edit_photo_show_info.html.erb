@@ -41,20 +41,3 @@
 </form>
 
 <%= render "remove_photo", photo: photo, user: user %>
-
-<script>
-
-$(document).ready(function(){
-
-  $(".edit-album-photo-info-form").on("ajax:success", function(event, data){
-    var $editInfo = $($(event.target).parent()[0]);
-    $editInfo.html(data);
-    $(".edit-album-photo-info-form").append("<span class='saved'>Saved</p>");
-  });
-
-});
-
-</script>
-
-<style>
-</style>

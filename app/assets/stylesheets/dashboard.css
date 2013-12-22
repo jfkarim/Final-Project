@@ -112,6 +112,35 @@ ul {
 	border: 1px solid #afdaff;
 }
 
+.navbar-right > li:first-child > a {
+	padding: 9px;
+}
+
+.navbar-right > li > form {
+	padding: 15px;
+	color: #eee;
+}
+
+.navbar-right > li > form:hover {
+	color: #eee;
+}
+
+input[value="Guest"] {
+	padding: 0;
+	background: transparent;
+	border: none;
+	color: #999;
+}
+
+input[value="Guest"]:hover {
+	color: #eee;
+}
+
+.navbar-right {
+	position: relative;
+	right: 20px;
+}
+
 a {
 	color: #aedaff;
 	cursor: pointer;
@@ -121,3 +150,1951 @@ a:hover {
 	color: #ed9a32;
 	text-decoration: none;
 }
+
+.navbar-fixed-top {
+	margin-bottom: 0;
+}
+
+.drop {
+	display: none;
+	color: #aedaff;
+}
+
+.nav-sidebar {
+	margin-bottom: 5px;
+}
+
+.album-add-photo-box {
+	width: 400px;
+}
+
+.album-add-photo-box > .modal-content {
+	border: 2px solid #ed9a32;
+	border-radius: 0;
+}
+
+.photo-input-label {
+	width: 100%;
+}
+
+.photo-input-label > input {
+	width: 250px;
+	float: right;
+	background: transparent;
+	border: 2px solid #eee;
+}
+
+#createAlbumPhoto {
+	display: inline;
+	float: right;
+	margin-top: 10px;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	padding: 2px 15px;
+}
+
+input[name="photo[picture]"] {
+	width: 250px;
+	float: right;
+	border: 0;
+	margin-bottom: 10px;
+}
+
+.album-edit-box {
+	width: 500px;
+}
+
+.album-edit-box > .modal-content {
+	border: 2px solid #ed9a32;
+	border-radius: 0;
+}
+
+.album-input-label {
+	width: 100%;
+}
+
+.album-input-label > input {
+	width: 250px;
+	float: right;
+	background: transparent;
+	border: 2px solid #eee;
+}
+
+#updateAlbum {
+	display: inline;
+	float: right;
+	margin-top: 10px;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	padding: 2px 15px;
+}
+
+input[value="Delete Album"] {
+	display: inline;
+	float: left;
+	margin-top: 10px;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	padding: 2px 15px;
+}
+
+.album-new-box {
+	width: 400px;
+}
+
+.album-new-box > .modal-content {
+	border: 2px solid #ed9a32;
+	border-radius: 0;
+}
+
+.album-input-label {
+	width: 100%;
+}
+
+.album-input-label > input {
+	width: 250px;
+	float: right;
+	background: transparent;
+	border: 2px solid #eee;
+}
+
+#createAlbum {
+	display: inline;
+	float: right;
+	margin-top: 10px;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	padding: 2px 15px;
+}
+
+.album-index-box {
+	width: 500px;
+}
+
+.album-index-box > .modal-content {
+	border: 2px solid #ed9a32;
+	border-radius: 0;
+}
+
+.albums-list-modal {
+	padding: 0;
+}
+
+.albums-list-modal > li > h3 {
+	border-bottom: 1px solid #eee;
+	padding-bottom: 5px;
+}
+
+.albums-list-modal > li > h3 > a {
+	color: #ed9a32;
+	font-size: 16pt;
+}
+
+.albums-list-modal > li > h3 > a:hover {
+	color: #aedaff;
+	text-decoration: none;
+}
+
+.albums-list-modal > li {
+}
+
+.album-index-photos {
+	clear: both;
+	padding-left: 0;
+}
+
+.album-index-photos > li {
+	float: left;
+}
+
+.album-index-photos > li > img {
+	width: 100px;
+	height: 100px;
+	border: 2px solid #ccc;
+	margin: 7px;
+}
+
+.album-content {
+	width: 900px;
+}
+
+.album-photos-div {
+	width: 475px;
+	height: 200px;
+	float: left;
+}
+
+.album-photos-list {
+	width: 475px;
+	margin: 0 10px;
+	padding-left: 0;
+	float: left;
+}
+
+.album-photos-list > li {
+	float: left;
+	margin: 2px;
+}
+
+.album-photos-list > li > a > img {
+	width: 150px;
+	height: 150px;
+	border: 2px solid #ccc;
+}
+
+
+.album-right {
+	width: 300px;
+	float: left;
+	margin-left: 20px;
+}
+
+.album-info > form {
+	display: inline;
+}
+
+.album-info > a {
+	margin-left: 20px;
+	float: right;
+}
+
+.comment-list {
+	padding: 5px;
+	margin: 5px 0;
+}
+
+.comment-ul-album {
+	clear: both;
+	padding-left: 20px;
+	height: 238px;
+	overflow: scroll;
+}
+
+.comment-form {
+	margin-bottom: 20px;
+}
+
+.comment-form > img {
+	display: inline;
+	float: left;
+	border-radius: 15px;
+	border: 2px solid #aedaff;
+}
+
+.comment-form > input[type=text] {
+	width: 205px;
+	border: 0;
+	border-top: 2px solid #ccc;
+	background: transparent;
+	padding-left: 10px;
+	position: relative;
+	top: 10px;
+	left: -1px;
+}
+
+.comment-form > input[type="submit"] {
+	display: none;
+}
+
+.comment-artist-name {
+	color: #ed9a32;
+	position: relative;
+	right: 15px;
+	border-bottom: 2px solid #ccc;
+	vertical-align: bottom;
+}
+
+.comment-artist-name > img {
+	border: 2px solid #afdaff;
+	border-radius: 15px;
+	position: relative;
+	top: 10px;
+	right: 5px;
+}
+
+.comment-info > p {
+	margin: 7px 7px 3px 7px;
+}
+
+.like {
+	display: inline;
+	vertical-align: bottom;
+	float: right;
+}
+
+.like > form {
+	display: inline;
+	vertical-align: bottom;
+	position: relative;
+	top: 12px;
+}
+
+select[name="status"] {
+	display: inline;
+	margin-top: 10px;
+	background: transparent;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	font-size: 10pt;
+	height: 25px;
+	position: relative;
+	top: -28px;
+	left: 70px;
+}
+
+#saveStatus {
+	display: inline;
+	float: right;
+	margin-top: 10px;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	width: 65px;
+	font-size: 10pt;
+	position: relative;
+	top: -28px;
+}
+
+.event-invites-box {
+	width: 550px;
+}
+
+.event-invites-box > .modal-content {
+	border-radius: 0;
+	border: 2px solid #ed9a32;
+}
+
+.invites-content > h3 {
+	font-size: 12pt;
+}
+
+.invites-content > h3:first-child {
+	margin-top: 0;
+}
+
+.invites-content > ul {
+	padding-left: 10px;
+}
+
+.invites-content > ul > li {
+	width: 220px;
+	float: left;
+	margin: 5px;
+}
+
+.invitee-show {
+	display: inline;
+	float: left;
+	width: 160px;
+}
+
+.invitee-show > img {
+	float: left;
+	width: 40px;
+	height: 40px;
+	border: 2px solid #aedaff;
+	border-radius: 25px;
+	position: relative;
+	top: -10px;
+	z-index: 1;
+}
+
+.invitee-show > p {
+	border-bottom: 2px solid #eee;
+	position: relative;
+	left: 10px;
+}
+
+.invitee-show > p > a {
+	font-weight: 10pt;
+}
+
+.invites-content > ul > li > form {
+	display: inline;
+	float: right;
+}
+
+.sendInvite, .invited {
+	display: inline;
+	float: right;
+	margin-top: 10px;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	padding: 2px 5px;
+	position: relative;
+	top: -12px;
+	left: -8px;
+}
+
+.invite-status {
+	display: inline;
+	float: right;
+}
+
+.event-attributes {
+	width: 600px;
+	height: 100px;
+}
+
+.attribute-section {
+	width: 125px;
+	margin: 0 10px;
+	float: left;
+}
+
+.attribute-overview {
+	font-size: 10pt;
+	margin: 5px 0;
+}
+
+.attribute-list {
+	padding-left: 0;
+}
+
+.attribute-show {
+	font-size: 8pt;
+}
+
+a[data-target="#eventEditModal"] {
+	float: right;
+}
+
+.event-top {
+	width: 900px;
+}
+
+.event-name {
+	width: 600px;
+	border-bottom: 2px solid #ccc;
+	padding: 5px 0;
+	vertical-align: bottom;
+}
+
+.event-info {
+	height: 100px;
+}
+
+.event-info > img {
+	width: 230px;
+	height: 230px;
+	border: 2px solid #ed9a32;
+	border-radius: 115px;
+	position: absolute;
+	top: 70px;
+	left: 650px;
+	z-index: 2;
+}
+
+.event-status {
+	display: inline;
+}
+
+.event-status > form {
+	display: inline;
+	margin-top: 10px;
+	float: right;
+	font-size: 14pt;
+	vertical-align: bottom;
+}
+
+.guests {
+	width: 300px;
+	display: inline-block;
+	position: relative;
+	left: 350px;
+	border-bottom: 2px solid #ccc;
+}
+
+.guests > span {
+	float: left;
+}
+
+.guests > span {
+	margin: 0 20px;
+	font-size: 20pt;
+	color: #ed9a32;
+}
+
+.guests > a {
+	margin: 0 20px;
+	font-size: 12pt;
+	position: relative;
+	top: 10px;
+}
+
+.invites-status {
+	width: 300px;
+	position: relative;
+	left: 350px;
+}
+
+.invites-status-section {
+	width: 100px;
+	float: left;
+} 
+
+.invites-status-section > h4 {
+	font-size: 10pt;
+}
+
+.invites-status-section > ul {
+	padding-left: 0;
+	font-size: 10pt;
+	height: 100px;
+	overflow: scroll;
+}
+
+.wall {
+	margin-top: 30px;
+}
+
+.wall-head {
+	width: 830px;
+	padding-bottom: 5px;
+	border-bottom: 2px solid #ccc;
+}
+
+.group-attributes {
+	width: 600px;
+	height: 100px;
+}
+
+.attribute-section-group {
+	width: 400px;
+	margin: 0 10px;
+	float: left;
+}
+
+.attribute-overview {
+	font-size: 10pt;
+	margin: 5px 0;
+}
+
+.attribute-list {
+	padding-left: 0;
+}
+
+.attribute-show {
+	font-size: 8pt;
+}
+
+a[data-target="#groupEditModal"] {
+	float: right;
+}
+
+.event-edit-box {
+	width: 400px;
+}
+
+.event-edit-box > .modal-content {
+	border: 2px solid #ed9a32;
+	border-radius: 0;
+}
+
+.event-input-label {
+	width: 100%;
+	margin: 5px 0;
+}
+
+.event-input-label > input {
+	float: right;
+	background: transparent;
+	border: 2px solid #eee;
+}
+
+.input-bar {
+	width: 250px;
+}
+
+.input-date {
+	display: inline;
+	width: 150px;
+}
+
+.input-time {
+	display: inline;
+	width: 95px;
+	margin-right: 5px;
+}
+
+#updateEvent {
+	display: inline;
+	float: right;
+	margin-top: 10px;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	padding: 2px 15px;
+}
+
+#deleteEvent {
+	display: inline;
+	float: left;
+	margin-top: 10px;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	padding: 2px 15px;
+}
+
+.event-new-box {
+	width: 400px;
+}
+
+.event-new-box > .modal-content {
+	border: 2px solid #ed9a32;
+	border-radius: 0;
+}
+
+.event-input-label {
+	width: 100%;
+	margin: 5px 0;
+}
+
+.event-input-label > input {
+	float: right;
+	background: transparent;
+	border: 2px solid #eee;
+}
+
+.input-bar {
+	width: 250px;
+}
+
+.input-date {
+	display: inline;
+	width: 150px;
+}
+
+.input-time {
+	display: inline;
+	width: 95px;
+	margin-right: 5px;
+}
+
+#createEvent {
+	clear: both;
+	float: right;
+	margin-top: 10px;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	padding: 2px 15px;
+}
+
+#approveFriend {
+	display: inline;
+	float: right;
+	margin-top: 10px;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	width: 65px;
+	font-size: 10pt;
+	position: relative;
+	top: -55px;
+}
+
+#denyFriend {
+	display: inline;
+	float: right;
+	margin-top: 0;
+	background: #ffacad;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	width: 65px;
+	position: relative;
+	top: -53px;
+}
+
+.group-invites-box {
+	width: 550px;
+}
+
+.group-invites-box > .modal-content {
+	border-radius: 0;
+	border: 2px solid #ed9a32;
+}
+
+.invites-content > div {
+	width: 230px;
+	float: left;
+}
+
+.remove-members {
+	margin-left: 10px;
+}
+
+.invites-content > div > h3 {
+	font-size: 12pt;
+	margin-top: 0;
+	margin-bottom: 15px;
+}
+
+.invites-content > div > ul {
+	padding-left: 10px;
+}
+
+.invites-content > div > ul > li {
+	width: 220px;
+	float: left;
+	margin: 5px;
+}
+
+.invitee-show {
+	display: inline;
+	float: left;
+	width: 160px;
+}
+
+.invitee-show > img {
+	float: left;
+	width: 40px;
+	height: 40px;
+	border: 2px solid #aedaff;
+	border-radius: 25px;
+	position: relative;
+	top: -10px;
+	z-index: 1;
+}
+
+.invitee-show > p {
+	border-bottom: 2px solid #eee;
+	position: relative;
+	left: 10px;
+}
+
+.invitee-show > p > a {
+	font-weight: 10pt;
+}
+
+.invites-content > ul > li > form {
+	display: inline;
+	float: right;
+}
+
+.sendInvite, .invited, .removeUser {
+	display: inline;
+	float: right;
+	margin-top: 10px;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	padding: 2px 5px;
+	position: relative;
+	top: -12px;
+	left: -8px;
+}
+
+.invite-status {
+	display: inline;
+	float: right;
+}
+
+#approveGroup {
+	display: inline;
+	float: right;
+	margin-top: 10px;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	width: 65px;
+	font-size: 10pt;
+	position: relative;
+	top: -55px;
+}
+
+#denyGroup {
+	display: inline;
+	float: right;
+	margin-top: 0;
+	background: #ffacad;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	width: 65px;
+	position: relative;
+	top: -18px;
+	left: 65px;
+}
+
+.group-edit-box {
+	width: 400px;
+}
+
+.group-edit-box > .modal-content {
+	border: 2px solid #ed9a32;
+	border-radius: 0;
+}
+
+.group-input-label {
+	width: 100%;
+}
+
+.group-input-label > input[type=text] {
+	width: 250px;
+	float: right;
+	background: transparent;
+	border: 2px solid #eee;
+}
+
+#updateGroup {
+	display: inline;
+	float: right;
+	margin-top: 10px;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	padding: 2px 15px;
+}
+
+#deleteGroup {
+	display: inline;
+	float: left;
+	margin-top: 10px;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	padding: 2px 15px;
+}
+
+.event-top {
+	width: 900px;
+}
+
+.group-name {
+	width: 600px;
+	border-bottom: 2px solid #ccc;
+	padding: 5px 0;
+	vertical-align: bottom;
+}
+
+.group-info {
+	height: 100px;
+}
+
+.group-info > img {
+	width: 230px;
+	height: 230px;
+	border: 2px solid #ed9a32;
+	border-radius: 115px;
+	position: absolute;
+	top: 70px;
+	left: 650px;
+	z-index: 2;
+}
+
+.members {
+	width: 300px;
+	display: inline-block;
+	position: relative;
+	left: 350px;
+	border-bottom: 2px solid #ccc;
+}
+
+.members > span {
+	float: left;
+}
+
+.members > span {
+	margin: 0 20px;
+	font-size: 20pt;
+	color: #ed9a32;
+}
+
+.members > a {
+	margin: 0 20px;
+	font-size: 12pt;
+	position: relative;
+	top: 10px;
+	left: -10px;
+}
+
+.members-status {
+	width: 300px;
+	position: relative;
+	left: 400px;
+}
+
+.members-status-section {
+	width: 100px;
+	float: left;
+} 
+
+.members-status-section > h4 {
+	font-size: 10pt;
+}
+
+.members-status-section > ul {
+	padding-left: 0;
+	font-size: 10pt;
+	height: 100px;
+	overflow: scroll;
+}
+
+.wall {
+	margin-top: 30px;
+}
+
+.wall-head {
+	width: 830px;
+	padding-bottom: 5px;
+	border-bottom: 2px solid #ccc;
+}
+
+.group-new-box {
+	width: 400px;
+}
+
+.group-new-box > .modal-content {
+	border: 2px solid #ed9a32;
+	border-radius: 0;
+}
+
+.group-input-label {
+	width: 100%;
+}
+
+.group-input-label > input[type=text] {
+	width: 250px;
+	float: right;
+	background: transparent;
+	border: 2px solid #eee;
+}
+
+#createGroup {
+	display: inline;
+	float: right;
+	margin-top: 10px;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	padding: 2px 15px;
+}
+
+.like-div {
+	display: inline;
+}
+
+.like-div > form {
+	display: inline;
+}
+
+.news-feed-piece {
+	width: 800px;
+}
+
+.post-artist-name {
+	color: #ccc;
+	position: relative;
+	right: 10px;
+	margin-bottom: 5px;
+	font-size: 14pt;
+	vertical-align: bottom;
+}
+
+.post-artist-name > a {
+	vertical-align: bottom;
+	text-decoration: none;
+	color: #ed9a32;
+}
+
+.post-artist-name > img {
+	width: 100px;
+	height: 100px;
+	position: relative;
+	top: 30px;
+	right: 20px;
+	border: 2px solid #afdaff;
+	border-radius: 50px;
+}
+
+.album-images > ul {
+	padding-left: 10px;
+}
+
+.album-image > img {
+	width: 100px;
+	height: 100px;
+	border: 2px solid #ccc;
+	margin: 1px;
+	float: left;
+}
+
+.news-feed-left {
+	width: 460px;
+	font-size: 14pt;
+	float: left;
+}
+
+.post-content-format {
+	padding: 30px;
+	font-size: 20pt;
+	border-top: 2px solid #ccc;
+	height: 205px;
+}
+
+.news-feed-right {
+	width: 300px;
+	float: left;
+	margin-left: 20px;
+}
+
+.comment-list {
+	padding: 5px;
+	margin: 5px 0;
+}
+
+.comment-ul {
+	padding-left: 20px;
+	height: 140px;
+	overflow: scroll;
+}
+
+.comment-form > input[type=text] {
+	width: 205px;
+}
+
+.news-feed-info {
+	display: block;
+}
+
+.news-feed-piece {
+	width: 800px;
+}
+
+.post-artist-name {
+	color: #ccc;
+	position: relative;
+	right: 10px;
+	margin-bottom: 5px;
+	font-size: 14pt;
+	vertical-align: bottom;
+}
+
+.post-artist-name > a {
+	vertical-align: bottom;
+	text-decoration: none;
+	color: #ed9a32;
+}
+
+.post-artist-name > img {
+	width: 100px;
+	height: 100px;
+	position: relative;
+	top: 30px;
+	right: 20px;
+	border: 2px solid #afdaff;
+	border-radius: 50px;
+}
+
+.album-images > ul {
+	padding-left: 10px;
+}
+
+.album-image > img {
+	width: 100px;
+	height: 100px;
+	border: 2px solid #ccc;
+	margin: 1px;
+	float: left;
+}
+
+.news-feed-left {
+	width: 460px;
+	font-size: 14pt;
+	float: left;
+}
+
+.photo-news {
+	height: 300px;
+}
+
+.photo-content-format {
+	padding: 2px;
+	font-size: 20pt;
+	background: #ccc;
+	height: 304px;
+}
+
+.photo-content-format > img {
+	width: 456px;
+	height: 300px;
+}
+
+.news-feed-right {
+	width: 300px;
+	float: left;
+	margin-left: 20px;
+}
+
+.comment-list {
+	padding: 5px;
+	margin: 5px 0;
+}
+
+.comment-ul-photo {
+	padding-left: 20px;
+	height: 238px;
+	overflow: scroll;
+}
+
+.comment-form > input[type=text] {
+	width: 205px;
+}
+
+.news-feed-info {
+	display: block;
+}
+
+.photo-show-page {
+	width: 900px;
+}
+
+.image-show {
+	width: 900px;
+	text-align: center;
+	padding-bottom: 10px;
+	border-bottom: 2px solid #ccc;
+	margin-bottom: 10px;
+}
+
+.image-show > img {
+	height: 500px;
+	margin: 10px auto;
+	border: 2px solid #ccc;
+}
+
+.photo-show {
+	width: 900px;
+}
+
+#map-canvas {
+	float: left;
+}
+
+.photo-attributes {
+	width: 250px;
+	padding: 10px;
+	margin-left: 20px;
+	font-size: 12pt;
+	float: left;
+	background: #f6f6f6;
+	height: 300px;
+}
+
+.photo-attributes > ul {
+	padding: 0;
+}
+
+.photo-right {
+	width: 300px;
+	float: left;
+	margin-left: 20px;
+}
+
+.photo-info > form {
+	display: inline;
+}
+
+.photo-info > a {
+	float: right;
+}
+
+.comment-list {
+	padding: 5px;
+	margin: 5px 0;
+}
+
+.comment-ul {
+	padding-left: 20px;
+	height: 226px;
+	overflow: scroll;
+}
+
+.comment-form > input[type=text] {
+	width: 205px;
+}
+
+.photos-list {
+	width: 900px;
+	margin: 20px 10px;
+	padding-left: 0;
+}
+
+.photos-list > li {
+	float: left;
+	margin: 5px;
+}
+
+.photos-list > li > a > img {
+	border: 2px solid #ccc;
+}
+
+.photo-edit-box {
+	width: 400px;
+}
+
+.photo-edit-box > .modal-content {
+	border: 2px solid #ed9a32;
+	border-radius: 0;
+}
+
+.photo-input-label {
+	width: 100%;
+}
+
+.photo-input-label > input {
+	width: 250px;
+	float: right;
+}
+
+#updatePhoto {
+	display: inline;
+	float: right;
+	margin-top: 10px;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	padding: 2px 15px;
+}
+
+input[value="Delete Photo"] {
+	display: inline;
+	float: left;
+	margin-top: 10px;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	padding: 2px 15px;
+}
+
+.lone-upload > input[type="file"] {
+	display: inline;
+}
+
+.photo-new-box {
+	width: 400px;
+}
+
+.photo-new-box > .modal-content {
+	border: 2px solid #ed9a32;
+	border-radius: 0;
+}
+
+.photo-input-label {
+	width: 100%;
+}
+
+.photo-input-label > input {
+	width: 250px;
+	float: right;
+	background: transparent;
+	border: 2px solid #eee;
+}
+
+#createPhoto {
+	display: inline;
+	float: right;
+	margin-top: 10px;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	padding: 2px 15px;
+}
+
+input[name="photo[picture]"] {
+	width: 250px;
+	float: right;
+	border: 0;
+	margin-bottom: 10px;
+}
+
+.status-enter {
+	width: 500px;
+	position: relative;
+	top: -48px;
+	left: 105px;
+}
+
+.status-input {
+	width: 350px;
+	padding-left: 10px;
+	padding-top:3px;
+	clear: both;
+	background: transparent;
+	border: none;
+}
+
+.status-enter > input[type=submit] {
+	float: right;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	padding: 2px 15px;
+}
+
+.status-enter > input[type=submit]:focus {
+	background: #ed9a32;
+}
+
+
+.status-form > img {
+	width: 100px;
+	height: 100px;
+	border: 2px solid #ed9a32;
+	border-radius: 50px;
+	position: relative;
+	top: 20px;
+	left: 10px;
+}
+
+textarea:focus, input:focus{
+    outline: 0;
+}
+
+.post-options {
+	display: inline-block;
+	width: 500px;
+	border-bottom: 2px solid #ccc;
+}
+
+.post-options > select {
+	float: right;
+}
+
+.post-piece {
+	width: 800px;
+}
+
+.post-artist-name {
+	color: #eee;
+	position: relative;
+	right: 10px;
+	margin-bottom: 5px;
+	font-size: 14pt;
+	vertical-align: bottom;
+}
+
+.post-artist-name > a {
+	vertical-align: bottom;
+	text-decoration: none;
+	color: #ed9a32;
+}
+
+.post-artist-name > img {
+	width: 100px;
+	height: 100px;
+	position: relative;
+	top: 30px;
+	right: 20px;
+	border: 2px solid #afdaff;
+	border-radius: 50px;
+}
+
+.album-images > ul {
+	padding-left: 10px;
+}
+
+.album-image > img {
+	width: 100px;
+	height: 100px;
+	border: 2px solid #ccc;
+	margin: 1px;
+	float: left;
+}
+
+.post-left {
+	width: 460px;
+	font-size: 14pt;
+	float: left;
+}
+
+.post-content-format {
+	padding: 30px;
+	font-size: 20pt;
+	height: 205px;
+	border-top: 2px solid #ccc;
+}
+
+.post-right {
+	width: 300px;
+	float: left;
+	margin-left: 20px;
+}
+
+.comment-list {
+	padding: 5px;
+	margin: 5px 0;
+}
+
+.comment-ul {
+	padding-left: 20px;
+	height: 140px;
+	overflow: scroll;
+}
+
+.comment-form > input[type=text] {
+	width: 205px;
+}
+
+.post-info {
+	display: inline;
+}
+
+.post-info > form {
+	display: inline;
+}
+
+.post-enter {
+	width: 500px;
+	position: relative;
+	top: -48px;
+	left: 105px;
+}
+
+.post-input {
+	width: 350px;
+	padding-left: 10px;
+	padding-top: 3px;
+	clear: both;
+	background: transparent;
+	border: none;
+}
+
+.post-enter > input[type=submit] {
+	float: right;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	padding: 2px 15px;
+}
+
+.post-enter > input[type=submit]:focus {
+	background: #ed9a32;
+}
+
+.post-form > img {
+	width: 100px;
+	height: 100px;
+	border: 2px solid #ed9a32;
+	border-radius: 50px;
+	position: relative;
+	top: 20px;
+	left: 10px;
+}
+
+textarea:focus, input:focus{
+    outline: 0;
+}
+
+.post-options {
+	display: inline-block;
+	width: 500px;
+	border-bottom: 2px solid #ccc;
+}
+
+.post-options > select {
+	float: right;
+}
+
+.user-attributes {
+	width: 600px;
+	height: 100px;
+}
+
+.attribute-section {
+	width: 125px;
+	margin: 0 10px;
+	float: left;
+}
+
+.attribute-overview {
+	font-size: 10pt;
+	margin: 5px 0;
+}
+
+.attribute-list {
+	padding-left: 0;
+}
+
+.attribute-show {
+	font-size: 8pt;
+}
+
+a[data-target="#userEditModal"] {
+	float: right;
+}
+
+.user-edit-box {
+	width: 440px;
+}
+
+.user-edit-box > .modal-content {
+	border: 2px solid #ed9a32;
+	border-radius: 0;
+}
+
+.user-edit-content > ul {
+	padding-left: 0;
+}
+
+.user-edit-content > ul > li {
+	width: 363px;
+}
+
+.user-edit-content > ul > li > form {
+	display: inline;
+	float: left;
+	margin-right: 5px;
+}
+
+.modal-body > img {
+	margin-top: 20px;
+	float: left;
+	border: 2px solid #ed9a32;
+	border-radius: 100px;
+}
+
+#updateUser {
+	display: inline;
+	float: right;
+}
+
+.attribute-type {
+	font-size: 12pt;
+}
+
+.new-attr > input[type=text] {
+	background: transparent;
+	border: none;
+	border: 2px solid #eee;
+	margin-left: 15px;
+}
+
+.new-attr > input[type=submit] {
+	display: none;
+}
+
+.sign-up-form > input[type=file] {
+	clear: both;
+	position: relative;
+	top: -50px;
+	left: 200px;
+}
+
+#submitEditUser {
+	clear: both;
+	float: right;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	padding: 2px 15px;
+}
+
+#submitEditUser:focus {
+	background: #ed9a32;
+}
+
+.profile-top {
+	width: 900px;
+}
+
+.profile-name {
+	width: 600px;
+	border-bottom: 2px solid #ccc;
+	padding: 5px 0;
+	vertical-align: bottom;
+}
+
+.profile-name > span {
+	float: left;
+}
+
+.profile-info {
+	height: 100px;
+}
+
+.profile-info > img {
+	width: 230px;
+	height: 230px;
+	border: 2px solid #ed9a32;
+	border-radius: 115px;
+	position: absolute;
+	top: 70px;
+	left: 650px;
+	z-index: 2;
+}
+
+.friend-status {
+	display: inline;
+	float: right;
+}
+
+.friend-status > p {
+	display: inline;
+	font-size: 14pt;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	padding: 2px 15px;
+}
+
+.friend-status > form {
+	display: inline;
+	margin-top: 10px;
+	float: right;
+	font-size: 14pt;
+	vertical-align: bottom;
+}
+
+.friend-status > form > input[type=submit] {
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 14pt;
+	padding: 2px 15px;
+}
+
+.photos-albums {
+	width: 300px;
+	display: inline-block;
+	position: relative;
+	left: 350px;
+	border-bottom: 2px solid #ccc;
+}
+
+.photos-albums > a {
+	margin: 0 20px;
+	font-size: 20pt;
+	color: #ed9a32;
+}
+
+.photos-albums > a:hover {
+	text-decoration: none;
+	color: #aedaff;
+}
+
+.canvas {
+	margin-top: 80px;
+	width: 900px;
+}
+
+.canvas-head {
+	width: 830px;
+	padding-bottom: 5px;
+	border-bottom: 2px solid #ccc;
+}
+
+.location-list {
+	padding-left: 0;
+}
+
+.location-list > li {
+	float: left;
+	padding: 5px;
+	margin: 0 15px;
+	font-size: 10pt;
+}
+
+.wall {
+	margin-top: 30px;
+}
+
+.wall-head {
+	width: 830px;
+	padding-bottom: 5px;
+	border-bottom: 2px solid #ccc;
+}
+
+.news-feed-album {
+	width: 800px;
+}
+
+.post-artist-name {
+	color: #333;
+	position: relative;
+	right: 10px;
+	margin-bottom: 5px;
+	font-size: 14pt;
+	vertical-align: bottom;
+}
+
+.post-artist-name > a {
+	vertical-align: bottom;
+	text-decoration: none;
+	color: #ed9a32;
+}
+
+.post-artist-name > img {
+	width: 100px;
+	height: 100px;
+	position: relative;
+	top: 30px;
+	right: 20px;
+	border: 2px solid #afdaff;
+	border-radius: 50px;
+}
+
+.album-images > ul {
+	padding-left: 10px;
+}
+
+.album-image > img {
+	width: 100px;
+	height: 100px;
+	border: 2px solid #ccc;
+	margin: 1px;
+	float: left;
+}
+
+.news-feed-left {
+	width: 460px;
+	font-size: 14pt;
+	float: left;
+}
+
+.post-content-format {
+	padding: 20px;
+	font-size: 20pt;
+	background: #f6f6f6;
+	border: 1px solid #ccc;
+	height: 205px;
+}
+
+.news-feed-right {
+	width: 300px;
+	float: left;
+	margin-left: 20px;
+}
+
+.comment-list {
+	background: #f6f6f6;
+	padding: 5px;
+	margin: 5px 0;
+	border: 1px solid #ccc;
+}
+
+.comment-ul {
+	padding-left: 20px;
+	height: 140px;
+	overflow: scroll;
+}
+
+.comment-form > input[type=text] {
+	width: 205px;
+}
+
+.news-feed-info {
+	display: inline;
+}
+
+.news-feed-info > form {
+	display: inline;
+}
+
+.pending-box {
+	width: 550px;
+}
+
+.pending-box > .modal-content {
+	border-radius: 0;
+	border: 2px solid #ed9a32;
+}
+
+.pending-box > .modal-content > .modal-body > ul {
+	padding-left: 10px;
+}
+
+.pending-box > .modal-content > .modal-body > ul > li {
+	margin: 5px;
+}
+
+.pending-box > .modal-content > .modal-body > ul > li > h3 {
+	margin: 5px 0 20px 0;
+	font-size: 12pt;
+}
+
+.pending-friends-list, .pending-groups-list, .pending-events-list {
+	padding-left: 0;
+}
+
+.pending-friends-list > li, .pending-groups-list > li, .pending-events-list > li {
+	width: 220px;
+	height: 60px;
+	float: left;
+	margin-right: 20px;
+}
+
+.pending-show {
+	display: inline;
+	float: left;
+	width: 160px;
+}
+
+.pending-show > img {
+	float: left;
+	width: 40px;
+	height: 40px;
+	border: 2px solid #aedaff;
+	border-radius: 25px;
+	position: relative;
+	top: -10px;
+	z-index: 1;
+}
+
+.pending-show > p {
+	border-bottom: 2px solid #eee;
+	position: relative;
+	left: 10px;
+}
+
+.pending-show > p > a {
+	font-weight: 10pt;
+}
+
+.approve-deny-friend {
+	display: inline;
+}
+
+.approve-deny-group {
+	display: inline;
+}
+
+.event-status {
+	display: inline;
+}
+
+.user-new-box {
+	width: 400px;
+}
+
+.user-new-box > .modal-content {
+	border: 2px solid #ed9a32;
+	border-radius: 0;
+}
+
+.user-input-label {
+	width: 100%;
+}
+
+.user-input-label > input {
+	width: 250px;
+	float: right;
+	background: transparent;
+	border: 2px solid #eee;
+}
+
+#createArtist {
+	display: inline;
+	float: right;
+	margin-top: 10px;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 10pt;
+	padding: 2px 15px;
+}
+
+input[name="user[profile_picture]"] {
+	width: 200px;
+	float: right;
+	border: 0;
+	margin-bottom: 10px;
+}
+
+.prof-pic {
+	margin-top: 20px;
+}
+
+.friends-index-box {
+	width: 500px;
+}
+
+.friends-index-box > .modal-content {
+	border-radius: 0;
+	border: 2px solid #ed9a32;
+}
+
+.friends-list {
+	padding-left: 0;
+}
+
+.friend-show {
+	width: 200px;
+	float: left;
+	margin: 5px;
+	margin-left: 15px;
+}
+
+.friend-show > img {
+	float: left;
+	width: 40px;
+	height: 40px;
+	border: 2px solid #aedaff;
+	border-radius: 25px;
+	position: relative;
+	top: -10px;
+	z-index: 1;
+}
+
+.friend-show > p {
+	border-bottom: 2px solid #eee;
+	position: relative;
+	left: 10px;
+}
+
+.friend-show > p > a {
+	font-weight: 10pt;
+}
+

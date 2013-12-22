@@ -46,96 +46,15 @@
 </div>
 
 <script>
-// 
-// $(document).ready(function(){
-// 
-//   $(".invite-button").on("ajax:success", function(event, data){
-// 		console.log("HERE");
-//     $inviteStatus = $($(event.target).parent()[0]);
-//     $inviteStatus.html("<p class='invited'>Invited</p>");
-//   });
-// 
-// });
+
+$(document).ready(function(){
+
+  $(".invite-button").on("ajax:success", function(event, data){
+		console.log("HERE");
+    $inviteStatus = $($(event.target).parent()[0]);
+    $inviteStatus.html("<p class='invited'>Invited</p>");
+  });
+
+});
 
 </script>
-
-<style>
-.event-invites-box {
-	width: 550px;
-}
-
-.event-invites-box > .modal-content {
-	border-radius: 0;
-	border: 2px solid #ed9a32;
-}
-
-.invites-content > h3 {
-	font-size: 12pt;
-}
-
-.invites-content > h3:first-child {
-	margin-top: 0;
-}
-
-.invites-content > ul {
-	padding-left: 10px;
-}
-
-.invites-content > ul > li {
-	width: 220px;
-	float: left;
-	margin: 5px;
-}
-
-.invitee-show {
-	display: inline;
-	float: left;
-	width: 160px;
-}
-
-.invitee-show > img {
-	float: left;
-	width: 40px;
-	height: 40px;
-	border: 2px solid #aedaff;
-	border-radius: 25px;
-	position: relative;
-	top: -10px;
-	z-index: 1;
-}
-
-.invitee-show > p {
-	border-bottom: 2px solid #eee;
-	position: relative;
-	left: 10px;
-}
-
-.invitee-show > p > a {
-	font-weight: 10pt;
-}
-
-.invites-content > ul > li > form {
-	display: inline;
-	float: right;
-}
-
-.sendInvite, .invited {
-	display: inline;
-	float: right;
-	margin-top: 10px;
-	background: #aedaff;
-	border: 1px solid #ccc;
-	border-radius: 3px;
-	color: #fff;
-	font-size: 10pt;
-	padding: 2px 5px;
-	position: relative;
-	top: -12px;
-	left: -8px;
-}
-
-.invite-status {
-	display: inline;
-	float: right;
-}
-</style>

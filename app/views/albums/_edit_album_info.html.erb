@@ -36,20 +36,3 @@
 </form>
 
 <%= button_to "Delete Album", user_album_url(album), method: :delete %>
-
-<script>
-
-$(document).ready(function(){
-
-  $(".edit-album-info").on("ajax:success", function(event, data){
-    var $editInfo = $($(event.target).parent()[0])
-    $editInfo.html(data);
-    $(".edit-album-info").append("<p class='saved'>Saved</p>")
-  });
-
-});
-
-</script>
-
-<style>
-</style>
