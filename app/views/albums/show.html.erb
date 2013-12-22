@@ -1,16 +1,20 @@
 <h1 class="album-title"><%= @album.title %></h1>
 <h3 class="photos-header"><%= @album.description %></h3>
 <div class="album-content group">
-	<ul class="album-photos-list group">
-	  <% @album.photos.each do |photo| %>
-	    <li>
-	      <a href="<%= user_photo_url(@user, photo) %>">
-	        <%= image_tag photo.picture.url %>
-	      </a>
-	    </li>
-	  <% end %>
-	</ul>
-
+	<% if @album.photos.length < 1 %>
+		<div class="album-photos-div group">
+		</div>
+	<% else %>
+		<ul class="album-photos-list group">
+		  <% @album.photos.each do |photo| %>
+		    <li>
+		      <a href="<%= user_photo_url(@user, photo) %>">
+		        <%= image_tag photo.picture.url %>
+		      </a>
+		    </li>
+		  <% end %>
+		</ul>
+	<% end %>
 	<div class="album-right group">
 	  <div class="album-info group">
 			<div class="like-div">
@@ -49,6 +53,12 @@ $(document).ready( function () {
 
 .album-content {
 	width: 900px;
+}
+
+.album-photos-div {
+	width: 475px;
+	height: 200px;
+	float: left;
 }
 
 .album-photos-list {

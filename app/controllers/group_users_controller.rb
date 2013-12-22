@@ -10,8 +10,7 @@ class GroupUsersController < ApplicationController
     @group = Group.find(params[:group_id])
     @group_user = GroupUser.new(
       user_id: params[:user_id],
-      group_id: params[:group_id],
-      status: "PENDING")
+      group_id: params[:group_id])
 
     if @group_user.save
       render json: @group_user

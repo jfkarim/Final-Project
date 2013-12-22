@@ -11,23 +11,21 @@
 			      <% unless user == current_user %>
 			        <li class="group">
 								<div class="invitee-show group">
-				          <%= image_tag user.profile_picture.url(:standard) %>
+				          <%= image_tag user.profile_picture.url(:icon) %>
 				          <p><%= link_to user.artist_name, user_url(user) %></p>
 								</div>
 			          <div class="invite-status">
-			            <% if @event.pending_users.include?(user) %>
+			            <% if @event.users.include?(user)  %>
 			              <p class="invited">Invited</p>
 			            <% else %>
 			              <form
 			                action="<%= event_event_users_url(@event) %>"
 			                method="post"
-			                class="invite-button"
-			                data-remote="true">
+			                class="invite-button">
 			                <input
 			                  name="authenticity_token"
 			                  type="hidden"
 			                  value="<%= form_authenticity_token %>">
-
 			                <input
 			                  id="user_id"
 			                  name="user_id"
@@ -36,7 +34,7 @@
 
 			                <input type="submit" class="sendInvite" value="Invite">
 			              </form>
-			          <% end %>
+			            <% end %>
 			          </div>
 			        </li>
 			      <% end %>
@@ -48,16 +46,16 @@
 </div>
 
 <script>
-
-$(document).ready(function(){
-
-  $(".invite-button").on("ajax:success", function(event, data){
-		console.log("HERE");
-    $inviteStatus = $($(event.target).parent()[0]);
-    $inviteStatus.html("<p class='invited'>Invited</p>");
-  });
-
-});
+// 
+// $(document).ready(function(){
+// 
+//   $(".invite-button").on("ajax:success", function(event, data){
+// 		console.log("HERE");
+//     $inviteStatus = $($(event.target).parent()[0]);
+//     $inviteStatus.html("<p class='invited'>Invited</p>");
+//   });
+// 
+// });
 
 </script>
 

@@ -10,9 +10,8 @@ class EventUsersController < ApplicationController
     @event = Event.find(params[:event_id])
     @event_user = EventUser.new(
       user_id: params[:user_id],
-      event_id: params[:event_id],
-      status: "PENDING")
-      
+      event_id: params[:event_id])
+      fail
     if @event_user.save
       render json: @event_user
     else

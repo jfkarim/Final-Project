@@ -34,7 +34,6 @@
 				                  name="user_id"
 				                  type="hidden"
 				                  value="<%= user.id %>">
-
 				                <input type="submit" class="sendInvite" value="Invite">
 				              </form>
 				            <% end %>
@@ -57,20 +56,20 @@
 									<form action="<%= group_group_user_url(@group,
 				                GroupUser.where(
 				                  user_id: user.id,
-				                  group_id: @group.id)[0]) %>" method="post">
+				                  group_id: @group.id)[0]) %>"
+												method="post"
+												class="remove-from-group"
+												data-remote="true">
 				            <input type="hidden" name="_method" value="DELETE">
-
 				            <input
 				              name="authenticity_token"
 				              type="hidden"
 				              value="<%= form_authenticity_token %>">
-
 				            <input
 				              id="user_id"
 				              name="user_id"
 				              type="hidden"
 				              value="<%= user.id %>">
-
 				            <input type="submit" class="removeUser" value="Remove">
 				          </form>
 				        </li>
@@ -90,6 +89,11 @@ $(document).ready(function(){
   $(".invite-button").on("ajax:success", function(event, data){
     $inviteStatus = $($(event.target).parent()[0])
     $inviteStatus.html("<p class='invited'>Invited</p>");
+  });
+
+  $(".remove-from-group").on("ajax:success", function(event, data){
+    $inviteStatus = $($(event.target).parent()[0])
+    $inviteStatus.html("");
   });
 
 });
