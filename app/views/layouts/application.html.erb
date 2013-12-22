@@ -157,68 +157,27 @@
 	
 
   </body>
+	
+	<script>
+
+	$(document).ready(function() {
+		$("#events-drop").click(function() {
+			$(".events-drop").toggle();
+		});
+	
+		$("#groups-drop").click(function() {
+			$(".groups-drop").toggle();
+		});
+	
+		$("#albums-drop").click(function() {
+			$(".albums-drop").toggle();
+		});
+	
+		$("#photos-drop").click(function() {
+			$(".photos-drop").toggle();
+		});
+	})
+
+	</script>
+	
 </html>
-
-
-<script>
-
-$(document).ready(function() {
-	$("#events-drop").click(function() {
-		$(".events-drop").toggle();
-	});
-	
-	$("#groups-drop").click(function() {
-		$(".groups-drop").toggle();
-	});
-	
-	$("#albums-drop").click(function() {
-		$(".albums-drop").toggle();
-	});
-	
-	$("#photos-drop").click(function() {
-		$(".photos-drop").toggle();
-	});
-})
-
-</script>
-
-<style>
-.group:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.events-drop {
-	display: none;
-}
-
-.groups-drop {
-	display: none;
-}
-
-.drop {
-	display: none;
-	position: relative;
-	left: 20px;
-	width: 100%;
-	margin-right: 0;
-}
-
-.drop > li {
-	position: relative;
-	display: block;
-}
-
-.drop > li:first-child > a {
-	font-style: italic;
-}
-
-.drop > li > a {
-	position: relative;
-	display: block;
-	padding: 10px 20px;
-	color: #aedaff;
-}
-
-</style>

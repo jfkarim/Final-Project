@@ -11,56 +11,7 @@
     <input id="passwordInput" name="user[password]" type="password" placeholder="Password">
     <input id="signInSubmit" type="submit" value="Sign in">
   </form>
-	<% if @error %>
-		<p>Wrong Credentials</p>
-	<% end %>
 </div>
-
-<style>
-
-.sign-in {
-	width: 800px;
-	margin: 0 auto;
-	margin-top: 200px;
-}
-
-.sign-in > h1 {
-	width: 370px;
-	font-size: 16pt;
-	font-weight: normal;
-	margin: 20px auto;
-}
-
-.sign-in > form {
-	margin: 0 auto;
-	width: 380px;
-}
-
-.sign-in > form > input {
-	border: 0;
-	background: transparent;
-}
-
-#emailInput {
-	border-top: 2px solid #eee;
-	border-right: 2px solid #eee;
-	position: relative;
-	left: 5px;
-}
-
-#passwordInput {
-	border-top: 2px solid #eee;
-	border-left: 2px solid #eee;
-}
-
-#signInSubmit {
-	display: inline;
-	background: #aedaff;
-	border: 1px solid #ccc;
-	border-radius: 3px;
-	color: #fff;
-	font-size: 11pt;
-	padding: 2px 10px;
-}
-
-</style>
+<% if flash[:error] %>
+	<%= flash[:error] %>
+<% end %>

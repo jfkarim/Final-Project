@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.14'
 gem 'rspec-core'
-gem 'shoulda-matchers'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -46,10 +45,23 @@ gem 'unicorn'
 # gem 'debugger'
 
 group :development do
-  gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'pry-rails', '0.1.6'
+  gem 'better_errors'
+  gem 'pry-rails'
+  gem "letter_opener"
+end
+
+group :test, :development do
   gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'faker'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'launchy'
 end
 
 group :production do

@@ -16,9 +16,9 @@ UrbanCanvas::Application.routes.draw do
 
     resources :friendships, only: [:create, :destroy, :update]
 
-    resources :albums, only: [:create, :destroy, :update]
+    resources :albums, only: [:create, :destroy, :update, :show]
 
-    resources :photos, only: [:create, :destroy, :update]
+    resources :photos, only: [:create, :destroy, :update, :index, :show]
 
     resource :news_feed, only: [:show]
   end

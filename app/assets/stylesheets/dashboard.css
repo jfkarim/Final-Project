@@ -17,6 +17,11 @@ body {
   border-bottom: 1px solid #eee;
 }
 
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
 /*
  * Sidebar
@@ -65,6 +70,38 @@ body {
 .nav-sidebar > li > a:focus {
   color: #fff;
   background-color: #ed9a32;
+}
+
+.events-drop {
+	display: none;
+}
+
+.groups-drop {
+	display: none;
+}
+
+.drop {
+	display: none;
+	position: relative;
+	left: 20px;
+	width: 100%;
+	margin-right: 0;
+}
+
+.drop > li {
+	position: relative;
+	display: block;
+}
+
+.drop > li:first-child > a {
+	font-style: italic;
+}
+
+.drop > li > a {
+	position: relative;
+	display: block;
+	padding: 10px 20px;
+	color: #aedaff;
 }
 
 /*
@@ -158,6 +195,51 @@ a:hover {
 .drop {
 	display: none;
 	color: #aedaff;
+}
+
+.sign-in {
+	width: 800px;
+	margin: 0 auto;
+	margin-top: 200px;
+}
+
+.sign-in > h1 {
+	width: 370px;
+	font-size: 16pt;
+	font-weight: normal;
+	margin: 20px auto;
+}
+
+.sign-in > form {
+	margin: 0 auto;
+	width: 380px;
+}
+
+.sign-in > form > input {
+	border: 0;
+	background: transparent;
+}
+
+#emailInput {
+	border-top: 2px solid #eee;
+	border-right: 2px solid #eee;
+	position: relative;
+	left: 5px;
+}
+
+#passwordInput {
+	border-top: 2px solid #eee;
+	border-left: 2px solid #eee;
+}
+
+#signInSubmit {
+	display: inline;
+	background: #aedaff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 11pt;
+	padding: 2px 10px;
 }
 
 .nav-sidebar {
