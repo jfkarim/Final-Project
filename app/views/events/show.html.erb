@@ -9,7 +9,7 @@
 	  <%= render "events/about", event: @event %>
 		<div class="guests group">
 	  	<span>Guests</span>
-			<% if @event.admin_id == current_user.id  %>
+			<% if is_page_owner?(@event.admin) %>
 				<a data-toggle="modal" class="edit-anything-link" data-target="#invitesModal">Invite People</a>
 		  <% end %>
 		</div>
@@ -46,5 +46,8 @@
     <%= render "layouts/wall", owner: @event %>
   </div>
 </div>
-<%= render "event_users/invites_modal" %>
-<%= render "events/edit_modal" %>
+
+<% if is_page_owner?(@event.admin) %>
+	<%= render "event_users/invites_modal" %>
+	<%= render "events/edit_modal" %>
+<% end %>

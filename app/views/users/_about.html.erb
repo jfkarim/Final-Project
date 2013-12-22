@@ -31,5 +31,7 @@
 		  <% end %>
 		</ul>
 	</div>
-	<a data-toggle="modal" class="edit-anything-link" data-target="#userEditModal">Edit About</a>
+	<% if is_page_owner?(user) %>
+		<a data-toggle="modal" class="edit-anything-link" data-target="#userEditModal">Edit About</a>
+	<% end %>
 </div>

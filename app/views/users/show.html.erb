@@ -49,7 +49,8 @@
     <%= render "layouts/wall", owner: @user %>
   </div>
 </div>
-
-<%= render "users/edit_modal" %>
-<%= render "albums/index_modal" %>
+<% if is_page_owner?(@user) %>
+	<%= render "users/edit_modal" %>
+	<%= render "albums/index_modal" %>
+<% end %>
 

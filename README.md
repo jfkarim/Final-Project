@@ -1,6 +1,6 @@
 #Welcome to Urban Canvas
 
-[Urban Canvas](http://urban-canvas.herokuapp.com) is a Rails based Facebook clone with a focus on Street Art.
+[Urban Canvas](http://urban-canvas.herokuapp.com) is a Rails based Facebook clone with a focus on Street Art. For the artist who loves anarchy.
 
 ##Basic Facebook Functionality
 * Add/Remove Friends
@@ -25,7 +25,7 @@
 
 ##Future Features
 * Group/Event activity added to News Feed (controller work).
-* Dynamic Photo flip through (Next/Previous) (using js).
+* Dynamic Photo flip through (Next/Previous) (using js/ajax).
 * Email password reset/confirmation (using mailers).
 * Create Notifications (not necessarily replacing pending)
 * Group and Album 'Canvas'. Place a map of all the pieces of the album or group's artists.

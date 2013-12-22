@@ -14,5 +14,7 @@
 		<p><%= event.date.to_formatted_s(:long) %></p>
 		<p><%= event.time.strftime('%I:%M %p') %></p>
 	</div>
-	<a data-toggle="modal" class="edit-anything-link" data-target="#eventEditModal">Edit About</a>
+	<% if is_page_owner?(event.admin) %>
+		<a data-toggle="modal" class="edit-anything-link" data-target="#eventEditModal">Edit About</a>
+	<% end %>
 </div>

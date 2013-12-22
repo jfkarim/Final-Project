@@ -5,7 +5,7 @@
 	  <%= render "groups/about", group: @group %>
 		<div class="members group">
 			<span>Members</span>
-			<% if @group.admin_id == current_user.id  %>
+			<% if is_page_owner?(@group.admin) %>
 	      <a data-toggle="modal" class="edit-anything-link" data-target="#invitesModal">Edit Roster</a>
 	    <% end %>
 		</div>
@@ -34,21 +34,8 @@
     <%= render "layouts/wall", owner: @group %>
   </div>
 </div>
-<%= render "group_users/invites_modal" %>
-<%= render "groups/edit_modal" %>
-<a data-toggle="modal" data-target="#invitesModal">Invite People</a>
 
-<script>
-$(document).ready(function() {
-  $(".wall-head").click(function (){
-    $wall = $(this).next();
-    $wall.toggle();
-  });
-
-  $(".members-show > h3").click(function (){
-    $canvas = $(this).next();
-    $canvas.toggle();
-  });
-
-});
-</script>
+<% if is_page_owner?(@group.admin) %>
+	<%= render "group_users/invites_modal" %>
+	<%= render "groups/edit_modal" %>
+<% end %>
