@@ -1,3 +1,6 @@
+<div class="flash-notice group">
+  <p><%= flash.notice %></p>
+</div>
 <div class="sign-in group">
   <h1>For the artist who loves anarchy,</h1>
 
@@ -12,6 +15,3 @@
     <input id="signInSubmit" type="submit" value="Sign in">
   </form>
 </div>
-<% if flash[:error] %>
-	<%= flash[:error] %>
-<% end %>

@@ -121,7 +121,6 @@ body {
   margin-top: 0;
 }
 
-
 /*
  * Placeholder dashboard ideas
  */
@@ -2172,3 +2171,17 @@ input[name="user[profile_picture]"] {
 	font-weight: 10pt;
 }
 
+.flash-notice {
+  background-color: #ed9a32;
+  height: 34px;
+  opacity: .8;
+  display: none;
+}
+
+.flash-notice > p {
+  color: #eee;
+  font-size: 12pt;
+  text-align: center;
+  margin: auto;
+  padding: 5px;
+}

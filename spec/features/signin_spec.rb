@@ -10,12 +10,12 @@ describe "the signin process", type: :feature do
   end
 
   it 'signs me in' do
-    visit '/session/new'
+    visit root_url
     within('.sign-in-form') do
-      fill_in 'emailInput', with: "jfk303@nyu.edu" # user.email
-      fill_in 'passwordInput', with: "password" # user.password
+      fill_in 'emailInput', with: "jfk303@nyu.edu"
+      fill_in 'passwordInput', with: "password"
     end
     click_button 'signInSubmit'
-    expect(page).to have_content 'NoGod'
+    expect(page).to have_content "Log in successful!"
   end
 end

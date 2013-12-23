@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
       self.current_user = user
       redirect_to user_url(user)
     else
-      flash[:error] = "Wrong Credentials"
+      flash[:notice] = "Wrong Credentials"
       user = User.new(email: params[:user][:email])
       render :new
     end

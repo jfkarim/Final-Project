@@ -8,7 +8,7 @@
 	<div class="post-right group">
 	  <div class="post-info group">
 	    <%= render "likes/show", type: post, sub_type: nil %>
-			<span><%= post.created_at %></span>
+			<span><%= post.created_at.to_formatted_s(:long) %></span>
 	  </div>
 		<div class="comment-list group">
 			<%= render "comments/form", owner: owner, type: post %>
