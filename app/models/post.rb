@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
 
-  attr_accessible :user_id, :wall_id, :content
+  attr_accessible :user_id, :wall_id, :content, :color, :font
 
   validates :user_id, :wall_id, :content, presence: true
 

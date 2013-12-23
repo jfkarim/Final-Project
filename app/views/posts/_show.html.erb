@@ -3,7 +3,7 @@
       <%= image_tag post.user.profile_picture.url(:standard) %><a><%= post.user.artist_name %></a> posted:
   </div>
 	<div class="post-left group">
-	  <p class="post-content-format"><%= post.content %></p>
+	  <p class="post-content-format" style="font-family:<%= post.font if post.font %>;color:<%= post.color if post.color %>;"><%= post.content %></p>
 	</div>
 	<div class="post-right group">
 	  <div class="post-info group">

@@ -6,19 +6,19 @@
 
 	<%= image_tag current_user.profile_picture.url(:standard) %>
 	<div class="post-options group">
-		<select class="font-select">
-			<options>fonts</option>
-		  <option value="volvo">font 1</option>
-		  <option value="saab">font 2</option>
-		  <option value="mercedes">font 3</option>
-		  <option value="audi">font 4</option>
+		<select class="font-select" name="post[font]">
+			<options>Basic</option>
+		  <option value="Comic Sans MS">Comic Sans</option>
+		  <option value="Wingdings">Wingdings</option>
+		  <option value="Lucida Console">Console</option>
+		  <option value="Playbill">Playbill</option>
 		</select>
-		<select class="color-select">
-			<options>colors</option>
-		  <option value="volvo">color 1</option>
-		  <option value="saab">color 2</option>
-		  <option value="mercedes">color 3</option>
-		  <option value="audi">color 4</option>
+		<select class="color-select" name="post[color]">
+			<options>Basic</option>
+		  <option value="#1950A8">Blue</option>
+		  <option value="#A023D9">Purple</option>
+		  <option value="#97DB53">Green</option>
+		  <option value="#D6312D">Red</option>
 		</select>
 	</div>
 	<div class="post-enter">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131022133030) do
+ActiveRecord::Schema.define(:version => 20131222224516) do
 
   create_table "albums", :force => true do |t|
     t.integer  "user_id"
@@ -171,8 +171,12 @@ ActiveRecord::Schema.define(:version => 20131022133030) do
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "font"
+    t.string   "color"
   end
 
+  add_index "posts", ["color"], :name => "index_posts_on_color"
+  add_index "posts", ["font"], :name => "index_posts_on_font"
   add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
   add_index "posts", ["wall_id", "user_id"], :name => "index_posts_on_wall_id_and_user_id"
   add_index "posts", ["wall_id"], :name => "index_posts_on_wall_id"

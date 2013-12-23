@@ -11,7 +11,7 @@
     <% end %>
   </div>
 	<div class="news-feed-left group">
-	  <p class="post-content-format"><%= post.content %></p>
+	  <p class="post-content-format" style="font-family:<%= post.font if post.font %>;color:<%= post.color if post.color %>;"><%= post.content %></p>
 	</div>
 	<div class="news-feed-right group">
 	  <div class="news-feed-info group">
