@@ -456,6 +456,12 @@ input[value="Delete Album"] {
 	margin: 5px 0;
 }
 
+.comment-ul {
+	padding-left: 20px;
+	height: 140px;
+	overflow: scroll;
+}
+
 .comment-ul-album {
 	clear: both;
 	padding-left: 20px;
