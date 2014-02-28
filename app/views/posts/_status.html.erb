@@ -27,15 +27,6 @@
 	  <input name="post[wall_id]"
 	         type="hidden"
 	         value="<%= owner.wall.id %>">
-	  <input name="receiver_id"
-	         type="hidden"
-	         value="<%= owner.id %>">
-	  <input name="receiver_class"
-	         type="hidden"
-	         value="<%= owner.class.to_s %>">
-	  <input name="post[user_id]"
-	         type="hidden"
-	         value="<%= current_user.id %>">
 	  <input type="submit" value="Post">
 	  <input name="authenticity_token"
 	         type="hidden"

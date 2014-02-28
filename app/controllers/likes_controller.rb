@@ -1,6 +1,7 @@
 class LikesController < ApplicationController
 
   def create
+    params[:like][:user_id] = current_user.id
     @like = Like.new(params[:like])
     type = params[:like][:likeable_type]
 

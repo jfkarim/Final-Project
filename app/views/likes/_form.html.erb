@@ -10,9 +10,6 @@
   <input name="like[likeable_type]"
          type="hidden"
          value="<%= type.class.to_s %>">
-  <input name="like[user_id]"
-         type="hidden"
-         value="<%= current_user.id %>">
   <input name="receiver_id"
          type="hidden"
          value="<%= !@sub_type.nil? ? @sub_type.id : type.id %>">
@@ -29,11 +26,7 @@
 $(document).ready(function(){
 
   $(".like-form<%= type.id %>").on("ajax:success", function(event, data){
-    $like = $($(event.target).parent()[0])
-		console.log("TOP");
-		console.log($like);
-		console.log("BOT");
-    $like.html(data);
+		$(event.target).replaceWith(data);
   });
 
 });

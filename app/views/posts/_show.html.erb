@@ -11,10 +11,10 @@
 			<span><%= post.created_at.to_formatted_s(:long) %></span>
 	  </div>
 		<div class="comment-list group">
-			<%= render "comments/form", owner: owner, type: post %>
-		  <ul class="comment-ul group">
+			<%= render "comments/form", type: post %>
+		  <ul class="comment-ul post-comments group">
 		    <% post.comments.reverse.each do |comment| %>
-		      <%= render "comments/show", owner: owner, comment: comment, type: post %>
+		      <%= render "comments/show", comment: comment, type: post %>
 		    <% end %>
 		  </ul>
 		</div>

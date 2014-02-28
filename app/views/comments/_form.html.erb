@@ -15,22 +15,6 @@
     name="comment[commentable_type]"
     type="hidden"
     value="<%= type.class.to_s %>">
-  <input
-    name="comment[user_id]"
-    type="hidden"
-    value="<%= current_user.id %>">
-  <input
-    name="receiver_id"
-    type="hidden"
-    value="<%= type.id %>">
-  <input
-    name="owner_id"
-    type="hidden"
-    value="<%= owner.id %>">
-  <input
-    name="owner_class"
-    type="hidden"
-    value="<%= owner.class.to_s %>">
   <input type="submit" value="Comment">
   <input
     name="authenticity_token"
@@ -44,8 +28,9 @@ $(document).ready(function(){
 
   $("#comment-form<%= type.id %><%= type.class.to_s %>").on("ajax:success", function(event, data){
     var $list = $($($(event.target).parent()).find(".comment-ul")[0]);
-		console.log($list);
     $list.prepend(data);
+		var $textInput = $($(event.target).find('.input[type="text"]')[0]);
+		$textInput.val("");
   });
 
 });
