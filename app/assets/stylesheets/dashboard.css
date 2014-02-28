@@ -7,6 +7,17 @@ body {
   padding-top: 50px;
 }
 
+.col-sm-3 {
+	width: 250px;
+}
+
+.col-sm-9 {
+	width: 900px;
+}
+
+.col-sm-offset-3 {
+	margin-left: 250px;
+}
 
 /*
  * Global add-ons
@@ -1870,6 +1881,10 @@ a[data-target="#userEditModal"] {
 	height: 60px;
 	float: left;
 	margin-right: 20px;
+}
+
+.pending-events-list > li {
+	width: 400px;
 }
 
 .pending-show {

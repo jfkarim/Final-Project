@@ -20,8 +20,7 @@
 $(document).ready(function(){
 
   $(".unlike-form<%= type.id %>").on("ajax:success", function(event, data){
-    $like = $($(event.target).parent()[0])
-    $like.html(data)
+    $(event.target).replaceWith(data);
   });
 
 });
