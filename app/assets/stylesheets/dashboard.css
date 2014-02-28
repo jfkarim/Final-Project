@@ -720,9 +720,9 @@ a[data-target="#eventEditModal"] {
 }
 
 .invites-status {
-	width: 300px;
+	width: 500px;
 	position: relative;
-	left: 350px;
+	left: 200px;
 }
 
 .invites-status-section {
@@ -1243,65 +1243,14 @@ a[data-target="#groupEditModal"] {
 	float: left;
 }
 
-.post-content-format {
-	padding: 30px;
-	font-size: 20pt;
-	border-top: 2px solid #ccc;
-	height: 205px;
-}
-
 .news-feed-right {
 	width: 300px;
 	float: left;
 	margin-left: 20px;
 }
 
-.comment-list {
-	padding: 5px;
-	margin: 5px 0;
-}
-
-.comment-ul {
-	padding-left: 20px;
-	height: 140px;
-	overflow: scroll;
-}
-
-.comment-form > input[type=text] {
-	width: 205px;
-}
-
 .news-feed-info {
 	display: block;
-}
-
-.news-feed-piece {
-	width: 800px;
-}
-
-.post-artist-name {
-	color: #ccc;
-	position: relative;
-	right: 10px;
-	margin-bottom: 5px;
-	font-size: 14pt;
-	vertical-align: bottom;
-}
-
-.post-artist-name > a {
-	vertical-align: bottom;
-	text-decoration: none;
-	color: #ed9a32;
-}
-
-.post-artist-name > img {
-	width: 100px;
-	height: 100px;
-	position: relative;
-	top: 30px;
-	right: 20px;
-	border: 2px solid #afdaff;
-	border-radius: 50px;
 }
 
 .album-images > ul {
@@ -1313,12 +1262,6 @@ a[data-target="#groupEditModal"] {
 	height: 100px;
 	border: 2px solid #ccc;
 	margin: 1px;
-	float: left;
-}
-
-.news-feed-left {
-	width: 460px;
-	font-size: 14pt;
 	float: left;
 }
 
@@ -1338,29 +1281,10 @@ a[data-target="#groupEditModal"] {
 	height: 300px;
 }
 
-.news-feed-right {
-	width: 300px;
-	float: left;
-	margin-left: 20px;
-}
-
-.comment-list {
-	padding: 5px;
-	margin: 5px 0;
-}
-
 .comment-ul-photo {
 	padding-left: 20px;
 	height: 238px;
 	overflow: scroll;
-}
-
-.comment-form > input[type=text] {
-	width: 205px;
-}
-
-.news-feed-info {
-	display: block;
 }
 
 .photo-show-page {
@@ -1417,19 +1341,10 @@ a[data-target="#groupEditModal"] {
 	float: right;
 }
 
-.comment-list {
-	padding: 5px;
-	margin: 5px 0;
-}
-
-.comment-ul {
+.post-comments {
 	padding-left: 20px;
 	height: 226px;
 	overflow: scroll;
-}
-
-.comment-form > input[type=text] {
-	width: 205px;
 }
 
 .photos-list {
@@ -1591,31 +1506,6 @@ textarea:focus, input:focus{
 	width: 800px;
 }
 
-.post-artist-name {
-	color: #eee;
-	position: relative;
-	right: 10px;
-	margin-bottom: 5px;
-	font-size: 14pt;
-	vertical-align: bottom;
-}
-
-.post-artist-name > a {
-	vertical-align: bottom;
-	text-decoration: none;
-	color: #ed9a32;
-}
-
-.post-artist-name > img {
-	width: 100px;
-	height: 100px;
-	position: relative;
-	top: 30px;
-	right: 20px;
-	border: 2px solid #afdaff;
-	border-radius: 50px;
-}
-
 .album-images > ul {
 	padding-left: 10px;
 }
@@ -1634,32 +1524,10 @@ textarea:focus, input:focus{
 	float: left;
 }
 
-.post-content-format {
-	padding: 30px;
-	font-size: 20pt;
-	height: 205px;
-	border-top: 2px solid #ccc;
-}
-
 .post-right {
 	width: 300px;
 	float: left;
 	margin-left: 20px;
-}
-
-.comment-list {
-	padding: 5px;
-	margin: 5px 0;
-}
-
-.comment-ul {
-	padding-left: 20px;
-	height: 140px;
-	overflow: scroll;
-}
-
-.comment-form > input[type=text] {
-	width: 205px;
 }
 
 .post-info {
@@ -1941,31 +1809,6 @@ a[data-target="#userEditModal"] {
 	width: 800px;
 }
 
-.post-artist-name {
-	color: #333;
-	position: relative;
-	right: 10px;
-	margin-bottom: 5px;
-	font-size: 14pt;
-	vertical-align: bottom;
-}
-
-.post-artist-name > a {
-	vertical-align: bottom;
-	text-decoration: none;
-	color: #ed9a32;
-}
-
-.post-artist-name > img {
-	width: 100px;
-	height: 100px;
-	position: relative;
-	top: 30px;
-	right: 20px;
-	border: 2px solid #afdaff;
-	border-radius: 50px;
-}
-
 .album-images > ul {
 	padding-left: 10px;
 }
@@ -1978,37 +1821,12 @@ a[data-target="#userEditModal"] {
 	float: left;
 }
 
-.news-feed-left {
-	width: 460px;
-	font-size: 14pt;
-	float: left;
-}
-
 .post-content-format {
 	padding: 30px;
 	font-size: 20pt;
 	height: 300px;
 	background-image:url('brick-wall.png');
-}
-
-.news-feed-right {
-	width: 300px;
-	float: left;
-	margin-left: 20px;
-}
-
-.comment-ul {
-	padding-left: 20px;
-	height: 140px;
-	overflow: scroll;
-}
-
-.comment-form > input[type=text] {
-	width: 205px;
-}
-
-.news-feed-info {
-	display: inline;
+	border-top: 2px solid #ccc;
 }
 
 .news-feed-info > form {
@@ -2184,4 +2002,22 @@ input[name="user[profile_picture]"] {
   text-align: center;
   margin: auto;
   padding: 5px;
+}
+
+.album-images > ul {
+	padding-left: 10px;
+}
+
+.album-image > img {
+	width: 100px;
+	height: 100px;
+	border: 2px solid #ccc;
+	margin: 1px;
+	float: left;
+}
+
+.empty-album-news {
+	width: 460px;
+	height: 200px;
+	float: left;
 }

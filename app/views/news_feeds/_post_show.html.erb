@@ -22,7 +22,7 @@
 	  </div>
 		<div class="comment-list group">
 			<%= render "comments/form", owner: owner, type: post %>
-		  <ul class="comment-ul group">
+		  <ul class="comment-ul post-comments group">
 		    <% post.comments.reverse.each do |comment| %>
 		      <%= render "comments/show", owner: owner, comment: comment, type: post %>
 		    <% end %>

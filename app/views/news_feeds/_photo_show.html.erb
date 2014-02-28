@@ -18,7 +18,7 @@
 	  </div>
 		<div class="comment-list group">
 			<%= render "comments/form", owner: owner, type: photo %>
-		  <ul class="comment-ul-photo group">
+		  <ul class="comment-ul comment-ul-photo group">
 		    <% photo.comments.reverse.each do |comment| %>
 		      <%= render "comments/show", owner: owner, comment: comment, type: photo %>
 		    <% end %>

@@ -27,7 +27,7 @@
 	  </div>
 		<div class="comment-list group">
 			<%= render "comments/form", owner: @user, type: @album %>
-		  <ul class="comment-ul-album group">
+		  <ul class="comment-ul comment-ul-album group">
 		    <% @album.comments.reverse.each do |comment| %>
 		      <%= render "comments/show", owner: @user, comment: comment, type: @album %>
 		    <% end %>
